@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2768be67e9b766b449ac04079aa578fb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 268076
+  packageName: Customizable 3D City Characters Vol 1
+  packageVersion: 1.0
+  assetPath: Assets/Customizable 3D City Characters Vol 1/Scripts/UI/UI_OptionButton.cs
+  uploadId: 660820
