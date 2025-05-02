@@ -5,41 +5,41 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed; // current speed of the player
-    public float walkSpeed; // speed when walking
-    public float sprintSpeed; // speed when sprinting
+    [SerializeField] private float walkSpeed; // speed when walking
+    [SerializeField] private float sprintSpeed; // speed when sprinting
 
-    public float groundDrag; // drag when on the ground
+    [SerializeField] private float groundDrag; // drag when on the ground
 
-    public float jumpForce; // force of the jump
-    public float jumpCooldown; // cooldown between jumps
-    bool readyToJump = true;
+    [SerializeField] private float jumpForce; // force of the jump
+    [SerializeField] private float jumpCooldown; // cooldown between jumps
+    private bool readyToJump = true;
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     
     [Header("Camera controls")]
-    public CinemachineCamera cinemachineCamera;
-    public float amplitudeGain = 0.2f;
-    public float frequencyGain = 0.84f;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private float amplitudeGain = 0.2f;
+    [SerializeField] private float frequencyGain = 0.84f;
     private float currentAmplitude = 0f;
     private float currentFrequency = 0f;
 
     [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded;
-    public Transform orientation;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask whatIsGround;
+    private bool grounded;
+    [SerializeField] private Transform orientation;
 
     [Header("Inputs")]
-    float horizontalInput;
-    float verticalInput;
+    private float horizontalInput;
+    private float verticalInput;
 
-    Vector3 moveDirection;
-    Rigidbody rb;
+    private Vector3 moveDirection;
+    private Rigidbody rb;
 
-    public MoveState moveState;
-    public enum MoveState
+    private MoveState moveState;
+    private enum MoveState
     {
         Walking,
         Sprinting,
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = walkSpeed;
     }
 
-    private void Update()
+    public void UpdateMovement()
     {
         // ground check
         grounded = Physics.Raycast(transform.position + Vector3.up * (playerHeight * 0.5f), Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearDamping = 0;
     }
 
-    private void FixedUpdate()
+    public void FixedMovement()
     {
         MovePlayer();
 
