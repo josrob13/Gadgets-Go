@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -9,9 +10,10 @@ public class ChatBubble : MonoBehaviour
         Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
         chatBubbleTransform.localPosition = localPosition;
 
-        chatBubbleTransform.GetComponent<ChatBubble>().Setup(iconType, text);
+        ChatBubble chatBubble = chatBubbleTransform.GetComponent<ChatBubble>();
 
-        Destroy(chatBubbleTransform.gameObject, 4f);
+        chatBubble.Setup(iconType, text);
+        chatBubble.StartCoroutine(chatBubble.DestroyAfterAnimation());
     }
 
     public enum IconType {
@@ -35,11 +37,6 @@ public class ChatBubble : MonoBehaviour
         textMeshPro = transform.Find("Text").GetComponent<TextMeshPro>();
     }
 
-    private void Start()
-    {
-        Setup(IconType.Neutral, "Hello, this is a chat bubble! AAAAAAAAAA, el gobierno chino nos espia cuando menos lo esperamos");
-    }
-
     private void Setup(IconType iconType, String text)
     {
         textMeshPro.SetText(text);
@@ -53,6 +50,20 @@ public class ChatBubble : MonoBehaviour
         backgroundSpriteRenderer.transform.localPosition = new Vector3(backgroundSpriteRenderer.size.x / 2f, 0f, 0f) + offset;
 
         iconSpriteRenderer.sprite = GetIcon(iconType);
+        
+        // Just for the visual effect
+        TextWriter.AddWriter_Static(textMeshPro, text, 0.05f, true, true);
+    }
+
+    private IEnumerator DestroyAfterAnimation()
+    {
+        while (TextWriter.Instance().isTextActive(textMeshPro))
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 
     private Sprite GetIcon(IconType iconType)
