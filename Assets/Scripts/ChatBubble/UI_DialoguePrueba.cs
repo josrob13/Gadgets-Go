@@ -11,6 +11,7 @@ public class UI_DialoguePrueba : MonoBehaviour
     {
         messageText = transform.Find("MessageText").GetComponent<TextMeshPro>();
 
+        // EJEMPLO PARA USAR UN BOTON E IR PASANDO DE MENSAJE EN MENSAJE, UTIL A FUTURO
         // transform.Find("message").GetComponent<Button_UI>().ClickFunc = () =>
         // {
         //     if (textWriterSingle != null && textWriterSingle.IsActive())

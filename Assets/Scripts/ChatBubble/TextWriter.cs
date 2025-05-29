@@ -13,17 +13,19 @@ public class TextWriter : MonoBehaviour
         textWriterSingleList = new List<TextWriterSingle>();
     }
 
-    public static void AddWriter_Static(TextMeshPro uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, bool removeWriterBeforeAdd)
+    // It returns the TextWriterSingle instance to make the "click to skip animation" functionality
+    public static TextWriterSingle AddWriter_Static(TextMeshPro uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, bool removeWriterBeforeAdd)
     {
         if (removeWriterBeforeAdd)
             instance.RemoveWriter(uiText);
-        instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters);
+        return instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters);
     }
 
-    private void AddWriter(TextMeshPro uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    private TextWriterSingle AddWriter(TextMeshPro uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
     {
         TextWriterSingle textWriterSingle = new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacters);
         textWriterSingleList.Add(textWriterSingle);
+        return textWriterSingle;
     }
 
     public static void RemoveWriter_Static(TextMeshPro uiText)
@@ -48,6 +50,7 @@ public class TextWriter : MonoBehaviour
         return false;
     }
 
+    // Remove a writer that's using current uiText source
     private void RemoveWriter(TextMeshPro uiText)
     {
         for (int i = 0; i < textWriterSingleList.Count; i++)

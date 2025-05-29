@@ -7,6 +7,10 @@ public class ChatBubble : MonoBehaviour
 {
     public static void Create(Transform parent, Vector3 localPosition, IconType iconType, String text)
     {
+        foreach (Transform child in parent)
+            if (child.GetComponent<ChatBubble>() != null)
+                return;
+
         Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
         chatBubbleTransform.localPosition = localPosition;
 
