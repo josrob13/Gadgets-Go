@@ -35,7 +35,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (collider.TryGetComponent(out NPCInteractable npcInteractable))
             {
-                npcInteractable.Interact();
+                npcInteractable.Interact(transform);
             }
         }
     }
