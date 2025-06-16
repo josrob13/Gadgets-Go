@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -14,7 +15,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(interactKey))
         {
-            CheckInteractions();
+            IInteractable interactable = GetInteractableObject();
+            if (interactable != null)
+                interactable.Interact(transform);
         }
 
         if (Input.GetKeyDown(pauseKey))
@@ -28,15 +31,32 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private void CheckInteractions()
+    public IInteractable GetInteractableObject()
     {
+        List<IInteractable> interactables = new List<IInteractable>();
         Collider[] colliders = Physics.OverlapSphere(transform.position, interactDistance);
         foreach (Collider collider in colliders)
         {
-            if (collider.TryGetComponent(out NPCInteractable npcInteractable))
+            if (collider.TryGetComponent(out IInteractable interactable))
+                interactables.Add(interactable);
+        }
+
+        IInteractable closestInteractable = null;
+        foreach (IInteractable interactable in interactables)
+        {
+            if (closestInteractable == null)
+                closestInteractable = interactable;
+            else
             {
-                npcInteractable.Interact(transform);
+                float currentDistance = Vector3.Distance(transform.position, interactable.GetTransform().position);
+                float closestDistance = Vector3.Distance(transform.position, closestInteractable.GetTransform().position);
+                if (currentDistance < closestDistance)
+                {
+                    closestInteractable = interactable;
+                }
             }
         }
+
+        return closestInteractable;
     }
 }

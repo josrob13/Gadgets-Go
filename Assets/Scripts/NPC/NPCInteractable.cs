@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class NPCInteractable : MonoBehaviour
+public class NPCInteractable : MonoBehaviour, IInteractable
 {
+    [SerializeField] private string interactText;
+
     private NPCLookAt npcLookAt;
     private bool isOnCooldown = false;
 
@@ -12,6 +14,16 @@ public class NPCInteractable : MonoBehaviour
     }
 
     public void Interact(Transform playerTransform)
+    {
+        if (gameObject.CompareTag("MainNPC"))
+        {
+            // Do the MainNPC interaction
+        }
+        else if (gameObject.CompareTag("BasicNPC"))
+            BasicNPCInteract(playerTransform);
+    }
+
+    private void BasicNPCInteract(Transform playerTransform)
     {
         if (isOnCooldown)
         {
@@ -33,5 +45,15 @@ public class NPCInteractable : MonoBehaviour
         isOnCooldown = true;
         yield return new WaitForSeconds(5f); // Cooldown duration
         isOnCooldown = false;
+    }
+    
+    public string GetInteractText()
+    {
+        return interactText;
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }
