@@ -9,7 +9,6 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private KeyCode menuKey = KeyCode.Tab; // Key to press for pausing the game
     [SerializeField] private InteractiveMenu interactiveMenu;
     public UIManager uiManager;
-    public Fade fade;
 
     public void KeyInteract()
     {

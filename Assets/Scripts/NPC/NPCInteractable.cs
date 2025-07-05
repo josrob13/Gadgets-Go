@@ -7,19 +7,22 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     private NPCLookAt npcLookAt;
     private bool isOnCooldown = false;
+    private IMissionProvider missionProvider;
 
     private void Awake()
     {
         npcLookAt = GetComponent<NPCLookAt>();
+        missionProvider = GetComponent<IMissionProvider>();
     }
 
     public void Interact(Transform playerTransform)
     {
-        if (gameObject.CompareTag("MainNPC"))
+        if (missionProvider != null)
         {
-            // Do the MainNPC interaction
+            Debug.Log("Interacting with NPC for mission.");
+            missionProvider.StartMission();
         }
-        else if (gameObject.CompareTag("BasicNPC"))
+        else
             BasicNPCInteract(playerTransform);
     }
 
