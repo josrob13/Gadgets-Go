@@ -15,8 +15,5 @@ MonoBehaviour:
   missionName: mision_papi
   missionDescription: prueba ojala funcione
   fadeDuration: 1.5
-  cameraPosition: {x: 0, y: 0, z: 0}
-  cameraRotation: {x: 0, y: 0, z: 0}
-  panAngle: 10
-  panSpeed: 0.55
-  dialogueNodes: []
+  dialogueNode: {fileID: 11400000, guid: 4d063931c5000244bb163fdcb6eaef38, type: 2}
+  dialogueLines: []

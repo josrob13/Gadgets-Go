@@ -40,19 +40,29 @@ public class MissionManager : MonoBehaviour
     {
         player.enabled = false;
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
-        // 2) Posicionar y empezar paneo de cámara
+        
         vCamMission.Priority++;
         normalUI.SetActive(false);
-        // un pequeño delay para que el jugador lo perciba
+        
         yield return new WaitForSeconds(2f);
 
-        // 3) Ejecutar diálogo / preguntas
-        // yield return DialogueManager.Instance.RunDialogue(currentMission.GetDialogueNodes());
+        Debug.Log($"Mission Name: {currentMission.GetMissionName()} HASTA AQUI GUAY");
 
-        // // 4) Detener paneo si lo deseas
-        // CameraController.Instance.StopPan();
-
-        // 5) Fade in y fin
         yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        yield return DialogueManager.Instance.StartDialogue(currentMission.GetDialogueNode());
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
+        vCamMission.Priority--;
+        normalUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
+        player.enabled = true;
     }
 }

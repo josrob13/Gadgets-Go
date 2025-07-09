@@ -4,8 +4,12 @@ using UnityEngine;
 public class QuestionNode : DialogueNode
 {
     [TextArea(1, 3)]
-    public string questionText;   // Texto de la pregunta
+    public string questionText;
 
     [Tooltip("Hasta 4 opciones máximo")]
     public string[] options = new string[4];
+
+    public DialogueNode onCorrect;
+    public DialogueNode onIncorrect;
+    public int correctOptionIndex;
 }

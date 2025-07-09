@@ -4,7 +4,7 @@ using UnityEngine;
 public class DialogueNode : ScriptableObject
 {
     [TextArea(2, 6)]
-    public string text;            // El texto que mostrará este nodo
+    public string text;
 
-    public DialogueNode nextNode;  // Referencia al siguiente nodo (puede ser null si es el último)
+    public DialogueNode nextNode;
 }

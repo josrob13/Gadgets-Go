@@ -1,25 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-    // [Header("UI References")]
-    // [SerializeField] private DialogueUI dialogueUI;
-    // [SerializeField] private QuestionUI questionUI;
+    [Header("UI References")]
+    [SerializeField] private DialogueUI dialogueUI;
+    [SerializeField] private QuestionUI questionUI;
+    [SerializeField] private float textSpeed = 0.6f;
 
     private void Awake()
     {
-        // Singleton
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            // ESTO HAY QUE CAMBIARLOA AAAAAAAAAAAAA
-            // if (dialogueUI == null) dialogueUI = FindObjectOfType<DialogueUI>();
-            // if (questionUI == null) questionUI = FindObjectOfType<QuestionUI>();
         }
         else
         {
@@ -27,34 +24,61 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    /*
-    public IEnumerator RunDialogue(DialogueNode[] nodes)
+    public IEnumerator StartDialogue(DialogueNode start)
     {
-        foreach (var node in nodes)
+        Debug.Log("Starting dialogue...");
+        var node = start;
+        while (node != null)
         {
-            // Si es un QuestionNode, mostramos las opciones
-            if (node is QuestionNode qNode)
+            if (node is QuestionNode questionNode)
             {
-                // Mostrar la UI de pregunta y esperar respuesta
-                questionUI.ShowQuestion(qNode.questionText, qNode.options);
-                yield return new WaitUntil(() => questionUI.HasAnswered);
-
-                // (Opcional) obtén el índice elegido:
-                int selectedIndex = questionUI.SelectedIndex;
-                Debug.Log($"Respuesta seleccionada: {selectedIndex} – “{qNode.options[selectedIndex]}”");
-
-                questionUI.Hide();
+                yield return ShowQuestion(questionNode);
+                node = (questionUI.SelectedIndex == questionNode.correctOptionIndex)
+                    ? questionNode.onCorrect : questionNode.onIncorrect;
             }
             else
             {
-                // Nodo de diálogo genérico
-                dialogueUI.ShowDialogue(node.text);
-                yield return new WaitUntil(() => dialogueUI.NextPressed);
-
-                dialogueUI.ResetNext();  // preparamos para el siguiente nodo
-                dialogueUI.Hide();
+                yield return ShowDialogueLine(node.text);
+                node = node.nextNode;
             }
         }
     }
-    */
+
+    public IEnumerator ShowDialogueLine(string line)
+    {
+        dialogueUI.Show();
+        dialogueUI.SetText(string.Empty);
+        dialogueUI.NextPressed = false;
+
+        foreach (char c in line)
+        {
+            if (dialogueUI.NextPressed)
+            {
+                dialogueUI.SetText(line);
+                break;
+            }
+
+            dialogueUI.GetTextComponent().text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+
+        dialogueUI.SetText(line);
+        // Espera a que el usuario presione el botón "Siguiente"
+        dialogueUI.NextPressed = false;
+
+        yield return new WaitUntil(() => dialogueUI.NextPressed);
+
+        dialogueUI.Hide();
+    }
+
+    private IEnumerator ShowQuestion(QuestionNode questionNode)
+    {
+        questionUI.ShowQuestion(questionNode.questionText, questionNode.options);
+        yield return new WaitUntil(() => questionUI.HasAnswered);
+
+        int selectedIndex = questionUI.SelectedIndex;
+        Debug.Log($"Respuesta seleccionada: {selectedIndex} – “{questionNode.options[selectedIndex]}”");
+
+        questionUI.Hide();
+    }
 }
