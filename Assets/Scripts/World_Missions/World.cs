@@ -4,8 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "World", menuName = "Scriptable Objects/World")]
 public class World : ScriptableObject
 {
-    public string worldName;
-    public List<Mission> missions;
+    [SerializeField] private string worldName;
+    [SerializeField] private string sceneName;
+    [SerializeField] private List<Mission> missions;
+
+    public List<Mission> Missions => missions;
+    public string WorldName => worldName;
+    public string SceneName => sceneName;
 
     public void StartWorld()
     {

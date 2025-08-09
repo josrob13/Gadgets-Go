@@ -4,16 +4,38 @@ using UnityEngine;
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
-    public List<World> worlds;
-    public int currentWorldIndex = 0;
-    public int currentMissionIndex = 0;
+    public WorldsDB worldsDB;
+    public int indexWorld = 0;
 
-    private void Awake() {
-        if (Instance != null) {
+    private void Awake()
+    {
+        if (Instance != null)
+        {
             Destroy(gameObject);
             return;
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+    
+    public bool NextWorld()
+    {
+        if (worldsDB?.worlds == null || worldsDB.worlds.Length == 0) return false;
+
+        int idx = Mathf.Clamp(indexWorld, 0, worldsDB.worlds.Length - 1);
+        var current = worldsDB.worlds[idx];
+        if (!PlayerProgress.Instance.IsWorldCompleted(current)) return false;
+
+        if (idx >= worldsDB.worlds.Length - 1)
+        {
+            return false;
+        }
+
+        indexWorld = idx + 1;
+        var next = worldsDB.worlds[indexWorld];
+        Debug.Log($"[Progress] Avanzando a mundo {indexWorld}: {next?.name}");
+
+        // Aquí no cargo escena para no acoplar. Hazlo en tu MissionManager/SceneController.
+        return true;
     }
 }
