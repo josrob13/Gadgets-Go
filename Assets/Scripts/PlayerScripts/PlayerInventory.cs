@@ -5,7 +5,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [Header("Inventory Keybinds")]
     [SerializeField] private KeyCode inventoryKey = KeyCode.Tab; // Key to press for interaction
-    private int spyCoins = 0; // Number of spy coins in the inventory
+    [SerializeField] private int spyCoins = 0; // Number of spy coins in the inventory
 
     [Header("Inventory Gadgets and Collectibles")]
     // !!!!! SHOULD BE LIST OF GADGETS AND NOT GAMEOBJETS !!!!!

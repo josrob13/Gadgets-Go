@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
+    public event Action<bool> OnQuestionAnswered;
 
     [Header("UI References")]
     [SerializeField] private DialogueUI dialogueUI;
@@ -33,8 +35,10 @@ public class DialogueManager : MonoBehaviour
             if (node is QuestionNode questionNode)
             {
                 yield return ShowQuestion(questionNode);
-                node = (questionUI.SelectedIndex == questionNode.correctOptionIndex)
-                    ? questionNode.onCorrect : questionNode.onIncorrect;
+                bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
+
+                OnQuestionAnswered?.Invoke(isCorrect);
+                node = isCorrect ? questionNode.onCorrect : questionNode.onIncorrect;
             }
             else
             {

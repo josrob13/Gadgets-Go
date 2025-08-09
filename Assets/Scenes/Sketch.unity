@@ -163070,6 +163070,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5774915150194936821, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1259838724}
+    - targetCorrespondingSourceObject: {fileID: 5774915150194936821, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1259838728}
     - targetCorrespondingSourceObject: {fileID: 5774915148546068651, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1410622516}
@@ -250337,6 +250340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryKey: 9
+  spyCoins: 0
   gadgets: []
   collectibles: []
 --- !u!114 &1259838726
@@ -250354,6 +250358,23 @@ MonoBehaviour:
   playerName: Player
   playerMovement: {fileID: 1259838718}
   playerInteraction: {fileID: 1259838723}
+--- !u!114 &1259838728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259838711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b527bf2857ce17241bdc0ba2aeccb82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completedMissions: []
+  indexWorld: 0
+  missionPoints: 0
+  totalErrors: 0
+  errorsByMission: []
 --- !u!1001 &1259854260
 PrefabInstance:
   m_ObjectHideFlags: 0
