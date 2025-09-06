@@ -15,7 +15,6 @@ public class PlayerProgress : MonoBehaviour
     // I use here serialized structures in order to save the data. Hashsets for example are not serializable
     [Header("Player Progress")]
     [SerializeField] private List<string> completedMissionsSerialized = new();
-    [SerializeField] private int indexWorld = 0;
 
     [Header("Mission Error Tracking")]
     [SerializeField] private int totalErrors = 0;
@@ -49,6 +48,9 @@ public class PlayerProgress : MonoBehaviour
         {
             completedMissions.Add(missionId);
             Debug.Log($"Mission '{missionId}' completed!");
+
+            // Little reward for player
+            PlayerInventory.Instance?.AddSpyCoins(25);
             return true;
         }
         else
@@ -56,6 +58,31 @@ public class PlayerProgress : MonoBehaviour
             Debug.LogWarning($"Mission '{missionId}' was already completed.");
             return false;
         }
+    }
+
+    public bool IsMissionCompleted(string missionId)
+    {
+        return !string.IsNullOrEmpty(missionId) && completedMissions.Contains(missionId);
+    }
+
+    public bool IsWorldCompleted(World world)
+    {
+        if (world == null || world.Missions == null || world.Missions.Count == 0)
+        {
+            Debug.LogWarning("World is null or has no missions.");
+            return false;
+        }
+
+        foreach (var mission in world.Missions)
+        {
+            if (mission != null && !IsMissionCompleted(mission.GetMissionName()))
+            {
+                Debug.Log($"World '{world.name}' is not completed. Missing mission: '{mission.GetMissionName()}'");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void RegisterError(string missionId)
@@ -90,26 +117,4 @@ public class PlayerProgress : MonoBehaviour
         => errorsByMission.ContainsKey(missionId) ? errorsByMission[missionId] : 0;
 
     public int GetTotalErrors() => totalErrors;
-
-    public bool IsMissionCompleted(string missionId)
-    {
-        return !string.IsNullOrEmpty(missionId) && completedMissions.Contains(missionId);
-    }
-
-    public bool IsWorldCompleted(World world)
-    {
-        if (world == null || world.Missions == null || world.Missions.Count == 0)
-        {
-            Debug.LogWarning("World is null or has no missions.");
-            return false;
-        }
-
-        foreach (var mission in world.Missions)
-        {
-            if (mission != null && !IsMissionCompleted(mission.GetMissionName()))
-                return false;
-        }
-
-        return true;
-    }
 }

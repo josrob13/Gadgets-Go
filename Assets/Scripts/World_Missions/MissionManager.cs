@@ -32,8 +32,14 @@ public class MissionManager : MonoBehaviour
     public void StartMission(Mission mission)
     {
         currentMission = mission;
-        Debug.Log($"Starting mission: {currentMission.name}");
+        Debug.Log($"Starting mission: {currentMission.GetMissionName()}");
         StartCoroutine(RunMission());
+    }
+
+    private void ToErrorRegister(bool isCorrect)
+    {
+        if (!isCorrect && !string.IsNullOrEmpty(currentMission?.GetMissionName()))
+            PlayerProgress.Instance?.RegisterError(currentMission.GetMissionName());
     }
 
     private IEnumerator RunMission()
@@ -53,15 +59,16 @@ public class MissionManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        System.Action<bool> handler = (isCorrect) =>
+        DialogueManager.Instance.OnQuestionAnswered += ToErrorRegister;
+        try
         {
-            if (!isCorrect)
-                PlayerProgress.Instance?.RegisterError(currentMission.name);
-        };
-        DialogueManager.Instance.OnQuestionAnswered += handler;
-
-        // Activate dialogue system
-        yield return DialogueManager.Instance.StartDialogue(currentMission.GetDialogueNode());
+            // Activate dialogue system
+            yield return DialogueManager.Instance.StartDialogue(currentMission.GetDialogueNode());
+        }
+        finally
+        {
+            DialogueManager.Instance.OnQuestionAnswered -= ToErrorRegister;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -75,12 +82,15 @@ public class MissionManager : MonoBehaviour
         player.enabled = true;
 
         // Complete the mission
-        Debug.Log($"Terminating and saving mission: {currentMission.name}");
-        PlayerProgress.Instance.CompleteMission(currentMission.name);
+        Debug.Log($"Terminating and saving mission: {currentMission.GetMissionName()}");
+        if (PlayerProgress.Instance.CompleteMission(currentMission.GetMissionName()))
+        {
+            GameHandler.Instance?.NextWorld();
+        }
     }
     
     public string GetCurrentMissionId()
     {
-        return currentMission != null ? currentMission.name : "Unkown Mission";
+        return currentMission != null ? currentMission.GetMissionName() : "Unkown Mission";
     }
 }

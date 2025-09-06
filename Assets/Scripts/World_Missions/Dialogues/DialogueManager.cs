@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
                 yield return ShowQuestion(questionNode);
                 bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
 
+                // Call to the event, in which the errors will be registered
                 OnQuestionAnswered?.Invoke(isCorrect);
                 node = isCorrect ? questionNode.onCorrect : questionNode.onIncorrect;
             }

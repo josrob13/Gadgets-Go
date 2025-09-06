@@ -204101,6 +204101,7 @@ GameObject:
   - component: {fileID: 994760027}
   - component: {fileID: 994760028}
   - component: {fileID: 994760029}
+  - component: {fileID: 994760030}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -204157,6 +204158,20 @@ MonoBehaviour:
   vCamMission: {fileID: 894095542}
   player: {fileID: 1259838726}
   normalUI: {fileID: 1797123051}
+--- !u!114 &994760030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994760026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5c55de700b17c47a5ecbeacd3a7639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldsDB: {fileID: 11400000, guid: e39f23e473e3d63479e90cc295e53741, type: 2}
+  indexWorld: 0
 --- !u!1001 &995530610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250370,11 +250385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b527bf2857ce17241bdc0ba2aeccb82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completedMissions: []
-  indexWorld: 0
-  missionPoints: 0
+  completedMissionsSerialized: []
   totalErrors: 0
-  errorsByMission: []
+  errorsByMissionSerialized: []
 --- !u!1001 &1259854260
 PrefabInstance:
   m_ObjectHideFlags: 0

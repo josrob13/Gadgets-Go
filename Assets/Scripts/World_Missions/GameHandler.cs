@@ -20,20 +20,28 @@ public class GameHandler : MonoBehaviour
     
     public bool NextWorld()
     {
-        if (worldsDB?.worlds == null || worldsDB.worlds.Length == 0) return false;
+        Debug.Log($"[Progress] Intentando avanzar de mundo desde {indexWorld}");
+
+        if (worldsDB?.worlds == null || worldsDB.worlds.Length == 0)
+        {
+            Debug.LogWarning("WorldsDB is not set or empty.");
+            return false;
+        }
 
         int idx = Mathf.Clamp(indexWorld, 0, worldsDB.worlds.Length - 1);
         var current = worldsDB.worlds[idx];
         if (!PlayerProgress.Instance.IsWorldCompleted(current)) return false;
 
-        if (idx >= worldsDB.worlds.Length - 1)
-        {
-            return false;
-        }
-
         indexWorld = idx + 1;
-        var next = worldsDB.worlds[indexWorld];
-        Debug.Log($"[Progress] Avanzando a mundo {indexWorld}: {next?.name}");
+        if (indexWorld >= worldsDB.worlds.Length)
+        {
+            Debug.LogWarning("No more worlds to advance to. JUEGO FINALIZADO!");
+        }
+        else
+        {
+            var next = worldsDB.worlds[indexWorld];
+            Debug.Log($"[Progress] Avanzando a mundo {indexWorld}: {next?.name}");
+        }
 
         // Aquí no cargo escena para no acoplar. Hazlo en tu MissionManager/SceneController.
         return true;

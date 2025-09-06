@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3cfcddb456e83f4c8b619c855d0b5c8, type: 3}
-  m_Name: Mission1
+  m_Script: {fileID: 11500000, guid: 93ba383ade84c7b4593a7c216e3b0aa9, type: 3}
+  m_Name: WorldsDB
   m_EditorClassIdentifier: 
-  missionName: MisionProfesora
-  missionDescription: prueba ojala funcione
-  fadeDuration: 1.5
-  dialogueNode: {fileID: 11400000, guid: 4d063931c5000244bb163fdcb6eaef38, type: 2}
-  dialogueLines: []
+  worlds:
+  - {fileID: 11400000, guid: 46e9d1e1c9eb1ac498373ed747311352, type: 2}
