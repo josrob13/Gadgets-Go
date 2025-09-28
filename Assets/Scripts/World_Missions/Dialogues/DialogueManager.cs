@@ -11,7 +11,9 @@ public class DialogueManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private QuestionUI questionUI;
-    [SerializeField] private float textSpeed = 0.6f;
+    [SerializeField] private float textSpeed = 1f;
+
+    [SerializeField] private DialogueNodeEvents events;
 
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class DialogueManager : MonoBehaviour
         var node = start;
         while (node != null)
         {
+            Debug.Log("-------------------Se mete antes del INVOKE...");
+            events?.InvokeFor(node);
             if (node is QuestionNode questionNode)
             {
                 yield return ShowQuestion(questionNode);

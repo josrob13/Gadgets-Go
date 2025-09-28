@@ -180090,6 +180090,7 @@ MonoBehaviour:
   dialogueUI: {fileID: 914433625}
   questionUI: {fileID: 1378656929}
   textSpeed: 0.3
+  events: {fileID: 994760031}
 --- !u!4 &868266526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9205441457839070953, guid: 4cb05c3a56b68794ea12165bc83f04b1, type: 3}
@@ -204102,6 +204103,7 @@ GameObject:
   - component: {fileID: 994760028}
   - component: {fileID: 994760029}
   - component: {fileID: 994760030}
+  - component: {fileID: 994760031}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -204172,6 +204174,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldsDB: {fileID: 11400000, guid: e39f23e473e3d63479e90cc295e53741, type: 2}
   indexWorld: 0
+--- !u!114 &994760031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994760026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5150adaa795a0bb45a44af01a880026c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entries:
+  - node: {fileID: 11400000, guid: 6336fde973ff04c46819d6f713def917, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 994760031}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: Prueba
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1001 &995530610
 PrefabInstance:
   m_ObjectHideFlags: 0
