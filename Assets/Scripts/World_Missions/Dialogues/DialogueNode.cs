@@ -7,4 +7,14 @@ public class DialogueNode : ScriptableObject
     public string text;
 
     public DialogueNode nextNode;
+
+    public string GetText()
+    {
+        return text;
+    }
+    
+    public void SetText(string newText)
+    {
+        text = newText;
+    }
 }

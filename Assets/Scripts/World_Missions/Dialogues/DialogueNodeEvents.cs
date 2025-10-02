@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 
 public class DialogueNodeEvents : MonoBehaviour
 {
@@ -34,8 +35,13 @@ public class DialogueNodeEvents : MonoBehaviour
         }
     }
 
-    public void Prueba()
+    public void AddPriorityCamera(CinemachineCamera camera)
     {
-        Debug.Log("eventooooooooooooooooooooos :)");
+        camera.Priority = 5;
+    }
+
+    public void QuitCamera(CinemachineCamera camera)
+    {
+        camera.Priority = 0;
     }
 }

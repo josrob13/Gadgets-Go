@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Mission", menuName = "Scriptable Objects/Mission")]
@@ -13,6 +14,9 @@ public class Mission : ScriptableObject
     [Header("Dialogue Tree")]
     [SerializeField] private DialogueNode dialogueNode;
     [SerializeField] private List<string> dialogueLines;
+
+    [Header("Camera")]
+    [SerializeField] private string cameraID;
 
     public string GetMissionName()
     {
@@ -33,9 +37,14 @@ public class Mission : ScriptableObject
     {
         return fadeDuration;
     }
-    
+
     public List<string> GetDialogueLines()
     {
         return dialogueLines;
+    }
+    
+    public string GetCameraID()
+    {
+        return cameraID;
     }
 }

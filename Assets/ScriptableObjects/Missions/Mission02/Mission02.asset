@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3cfcddb456e83f4c8b619c855d0b5c8, type: 3}
-  m_Name: Mission1
+  m_Name: Mission02
   m_EditorClassIdentifier: 
-  missionName: MisionProfesora
-  missionDescription: prueba ojala funcione
+  missionName: prueba2
+  missionDescription: una prueba
   fadeDuration: 1.5
-  dialogueNode: {fileID: 11400000, guid: 4d063931c5000244bb163fdcb6eaef38, type: 2}
+  dialogueNode: {fileID: 11400000, guid: 54f22071e517bb2409240ed4afde0e0b, type: 2}
   dialogueLines: []
-  cameraID: cameraMission01
+  cameraID: cameraMission02

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
-  m_Name: DialogueMission1 0
+  m_Name: 02 - 0
   m_EditorClassIdentifier: 
-  text: "No te preocupes Ram\xF3n, no lo has hecho tan mal..."
-  nextNode: {fileID: 11400000, guid: 70c32ae2bf76d3740b2b1f338ebfe2f7, type: 2}
+  text: "Hola\u2026 qu\xE9 coincidencia verte por aqu\xED."
+  nextNode: {fileID: 11400000, guid: aeda637cfa773464398b3d4e2c752687, type: 2}

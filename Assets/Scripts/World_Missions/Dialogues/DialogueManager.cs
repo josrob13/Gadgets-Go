@@ -43,7 +43,11 @@ public class DialogueManager : MonoBehaviour
 
                 // Call to the event, in which the errors will be registered
                 OnQuestionAnswered?.Invoke(isCorrect);
-                node = isCorrect ? questionNode.onCorrect : questionNode.onIncorrect;
+                if (questionNode.nextNode is PostAnswerNode p)
+                {
+                    node = p;
+                    node.SetText(isCorrect ? p.correctAnswer : p.badAnswer);
+                }
             }
             else
             {

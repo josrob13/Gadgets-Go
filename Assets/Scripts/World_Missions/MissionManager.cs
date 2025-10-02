@@ -6,9 +6,7 @@ public class MissionManager : MonoBehaviour
 {
     public static MissionManager Instance;
     private Mission currentMission;
-
-    [Header("Mission Cameras")]
-    [SerializeField] private CinemachineCamera vCamMission;
+    private CinemachineCamera vCamMission;
 
     [Header("Player Scripts")]
     [SerializeField] private Player player;
@@ -32,6 +30,7 @@ public class MissionManager : MonoBehaviour
     public void StartMission(Mission mission)
     {
         currentMission = mission;
+        vCamMission = CameraManager.Instance.GetCamera(currentMission.GetCameraID());
         Debug.Log($"Starting mission: {currentMission.GetMissionName()}");
         StartCoroutine(RunMission());
     }

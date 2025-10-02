@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
-  m_Name: Has_Fallado
+  m_Name: 02 - 7
   m_EditorClassIdentifier: 
-  text: "Qu\xE9 mal, fallaste..."
+  text: "Claro, ya hablaremos, \xA1que vaya bien!"
   nextNode: {fileID: 0}

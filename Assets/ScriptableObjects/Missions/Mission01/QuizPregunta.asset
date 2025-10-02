@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: QuestionMission1 0
+  m_Name: QuizPregunta
   m_EditorClassIdentifier: 
   text: 
-  nextNode: {fileID: 0}
+  nextNode: {fileID: 11400000, guid: a1f80cb5c5334d240995f8adf848ceab, type: 2}
   questionText: "\xBFQu\xE9 emociones expresa la profesora?"
   options:
   - "Est\xE1 feliz"

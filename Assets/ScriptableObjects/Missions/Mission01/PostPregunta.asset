@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9906f4baf17eaab44823a659bef97796, type: 3}
-  m_Name: World1
+  m_Script: {fileID: 11500000, guid: 59ed09c3adaca1746a5f4b4926831d97, type: 3}
+  m_Name: PostPregunta
   m_EditorClassIdentifier: 
-  worldName: Colegio
-  sceneName: Sketch
-  missions:
-  - {fileID: 11400000, guid: c28eea46214e45d4bbad5c07f5306ffe, type: 2}
-  - {fileID: 11400000, guid: 6daea3b8f4c7c254f92f1d0ce0f23967, type: 2}
+  text: MEESSSIIII
+  nextNode: {fileID: 0}
+  correctAnswer: Muy bien! Acertaste
+  badAnswer: "Qu\xE9 mal, fallaste..."
