@@ -6,14 +6,13 @@ using UnityEngine;
 public class Mission : ScriptableObject
 {
     [SerializeField] private string missionName;
-    [SerializeField] private string missionDescription;
+    [SerializeField] private string description;
 
     [Header("Fade Settings")]
     [SerializeField] private float fadeDuration = 1.5f;
 
     [Header("Dialogue Tree")]
     [SerializeField] private DialogueNode dialogueNode;
-    [SerializeField] private List<string> dialogueLines;
 
     [Header("Camera")]
     [SerializeField] private string cameraID;
@@ -25,7 +24,7 @@ public class Mission : ScriptableObject
 
     public string GetMissionDescription()
     {
-        return missionDescription;
+        return description;
     }
 
     public DialogueNode GetDialogueNode()
@@ -36,11 +35,6 @@ public class Mission : ScriptableObject
     public float GetFadeDuration()
     {
         return fadeDuration;
-    }
-
-    public List<string> GetDialogueLines()
-    {
-        return dialogueLines;
     }
     
     public string GetCameraID()

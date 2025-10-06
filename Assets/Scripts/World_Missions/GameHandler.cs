@@ -4,8 +4,8 @@ using UnityEngine;
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
-    public WorldsDB worldsDB;
-    public int indexWorld = 0;
+    private WorldsDB worldsDB;
+    private int indexWorld = 0;
 
     private void Awake()
     {
