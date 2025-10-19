@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Vaya, lo siento, si te puedo ayudar en algo, me dices.
   nextNode: {fileID: 11400000, guid: bfdf97436311b804f90c26be3b69ff2b, type: 2}
+  speakerAnimator: M_C3CC1_ModularMale_07
+  speakingTrigger: Talk

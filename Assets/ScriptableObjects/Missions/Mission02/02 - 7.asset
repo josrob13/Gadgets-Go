@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "Claro, ya hablaremos, \xA1que vaya bien!"
   nextNode: {fileID: 0}
+  speakerAnimator: M_C3CC1_ModularMale_07
+  speakingTrigger: Talk

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Me alegro por ti. Bueno, tengo que irme que voy con la hora pegada...
   nextNode: {fileID: 11400000, guid: 11ebdd88d36c4154c9c21bc87137a434, type: 2}
+  speakerAnimator: M_C3CC1_ModularMale_03
+  speakingTrigger: Talk
