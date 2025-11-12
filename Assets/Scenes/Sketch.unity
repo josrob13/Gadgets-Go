@@ -25750,15 +25750,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1846722420977101931, guid: 88a275f132cb5974eab15a9f284386d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.51
+      value: -7.3827257
       objectReference: {fileID: 0}
     - target: {fileID: 1846722420977101931, guid: 88a275f132cb5974eab15a9f284386d6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27
+      value: 0.26000118
       objectReference: {fileID: 0}
     - target: {fileID: 1846722420977101931, guid: 88a275f132cb5974eab15a9f284386d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.01
+      value: 8.746702
       objectReference: {fileID: 0}
     - target: {fileID: 1846722420977101931, guid: 88a275f132cb5974eab15a9f284386d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25804,9 +25804,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1846722420977101925, guid: 88a275f132cb5974eab15a9f284386d6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121656936}
     - targetCorrespondingSourceObject: {fileID: 1846722420977101925, guid: 88a275f132cb5974eab15a9f284386d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 121656931}
@@ -25892,33 +25889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 121656932}
---- !u!54 &121656936
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121656928}
-  serializedVersion: 4
-  m_Mass: 25
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!1001 &121696512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29433,7 +29403,7 @@ PrefabInstance:
     - target: {fileID: 636111675328382752, guid: c3bf2c4411f90f4488565ca8dc131192, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6cb56bd8bc3719243b0f1cc5a1b50be6, type: 2}
+      objectReference: {fileID: 9100000, guid: 24a03314baf87b4448138c3a3113a702, type: 2}
     - target: {fileID: 636111675328382753, guid: c3bf2c4411f90f4488565ca8dc131192, type: 3}
       propertyPath: m_Name
       value: M_C3CC1_ModularMale_07
@@ -29530,9 +29500,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.0376794
+  m_Height: 2.050095
   m_Direction: 1
-  m_Center: {x: -0, y: 1.0183858, z: 0}
+  m_Center: {x: -0, y: 1.012178, z: 0}
 --- !u!95 &137157909 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 636111675328382752, guid: c3bf2c4411f90f4488565ca8dc131192, type: 3}
@@ -41871,24 +41841,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Muy buenas! Qu\xE9 tal?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb46868b589a66e47bc375755dbb11bb, type: 2}
+  m_sharedMaterial: {fileID: 8343806363609213737, guid: eb46868b589a66e47bc375755dbb11bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0, g: 0, b: 0, a: 1}
+    topRight: {r: 0, g: 0, b: 0, a: 1}
+    bottomLeft: {r: 0.2784314, g: 0.14901961, b: 0.5764706, a: 1}
+    bottomRight: {r: 0.2784314, g: 0.14901961, b: 0.5764706, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -109631,15 +109601,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 794b4dcbbdbd9dc4c842e0cf1749b1b6, type: 2}
     - target: {fileID: 5774915150194936779, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.642
+      value: -7.631508
       objectReference: {fileID: 0}
     - target: {fileID: 5774915150194936779, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28900003
+      value: 0.26000035
       objectReference: {fileID: 0}
     - target: {fileID: 5774915150194936779, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.57
+      value: -24.641571
       objectReference: {fileID: 0}
     - target: {fileID: 5774915150194936779, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       propertyPath: m_LocalRotation.w
@@ -109670,9 +109640,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5774915150194936820, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774915150194936820, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 24a03314baf87b4448138c3a3113a702, type: 2}
+    - target: {fileID: 5774915150194936820, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774915150194936820, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5774915150194936821, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       propertyPath: m_Name
       value: M_C3CC1_ModularMale_04
@@ -190114,6 +190096,7 @@ GameObject:
   - component: {fileID: 914433624}
   - component: {fileID: 914433623}
   - component: {fileID: 914433625}
+  - component: {fileID: 914433626}
   m_Layer: 0
   m_Name: DialoguePanel
   m_TagString: Untagged
@@ -190161,8 +190144,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c33871c8638eb4c41bfb4577f3b58627, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -190193,6 +190176,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 914433621}
   textComp: {fileID: 193857877}
+--- !u!114 &914433626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914433621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.08747275, g: 0, b: 0.2924528, a: 1}
+  m_EffectDistance: {x: 12, y: 12}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &914669865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369149,15 +369147,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 794b4dcbbdbd9dc4c842e0cf1749b1b6, type: 2}
     - target: {fileID: 9125128593334242458, guid: 4fcf6724f7296554e936fbe748aa57f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.517
+      value: -9.533889
       objectReference: {fileID: 0}
     - target: {fileID: 9125128593334242458, guid: 4fcf6724f7296554e936fbe748aa57f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32
+      value: 0.25999844
       objectReference: {fileID: 0}
     - target: {fileID: 9125128593334242458, guid: 4fcf6724f7296554e936fbe748aa57f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.012
+      value: -10.092872
       objectReference: {fileID: 0}
     - target: {fileID: 9125128593334242458, guid: 4fcf6724f7296554e936fbe748aa57f9, type: 3}
       propertyPath: m_LocalRotation.w
