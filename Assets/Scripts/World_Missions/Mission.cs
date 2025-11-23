@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class Mission : ScriptableObject
 
     [Header("Camera")]
     [SerializeField] private string cameraID;
+    [SerializeField] private string cameraContainerName;
 
     public string GetMissionName()
     {
@@ -40,5 +42,32 @@ public class Mission : ScriptableObject
     public string GetCameraID()
     {
         return cameraID;
+    }
+
+    public void DeactivateCameras()
+    {
+        // Validate that we've got a name to search for
+        if (string.IsNullOrEmpty(cameraContainerName))
+        {
+            Debug.LogWarning("Camera container name is null or empty.");
+            return;
+        }
+
+        // Search the object in the scene by its name
+        GameObject container = GameObject.Find(cameraContainerName);
+        if (container != null)
+        {
+            foreach (Transform camTransform in container.transform)
+            {
+                CinemachineCamera cam = camTransform.GetComponent<CinemachineCamera>();
+                if (cam != null)
+                {
+                    cam.Priority = 0;
+                }
+            }
+        }else
+        {
+            Debug.LogWarning($"No se encontró el contenedor de cámaras con el nombre '{cameraContainerName}' en la escena.");
+        }
     }
 }

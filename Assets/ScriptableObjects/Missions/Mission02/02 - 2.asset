@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "Hoy teniendo un d\xEDa complicado, pero bueno."
   nextNode: {fileID: 11400000, guid: 92299a5488cd0024fa621a635c56de93, type: 2}
-  speakerAnimator: M_C3CC1_ModularMale_03
-  speakingTrigger: Talk
+  speakerAnimator: M_C3CC1_ModularMale_07
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 

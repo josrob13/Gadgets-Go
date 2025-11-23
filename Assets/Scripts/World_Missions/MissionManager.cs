@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -74,7 +75,9 @@ public class MissionManager : MonoBehaviour
 
         // Fade, activate the control of player, show normal UI...
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
-        vCamMission.Priority--;
+        // OLD VERSION:
+        //vCamMission.Priority--;
+        currentMission.DeactivateCameras();
         normalUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
@@ -87,7 +90,7 @@ public class MissionManager : MonoBehaviour
             GameHandler.Instance?.NextWorld();
         }
     }
-    
+
     public string GetCurrentMissionId()
     {
         return currentMission != null ? currentMission.GetMissionName() : "Unkown Mission";

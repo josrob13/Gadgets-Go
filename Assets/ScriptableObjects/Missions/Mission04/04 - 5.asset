@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
+  m_Name: 04 - 5
+  m_EditorClassIdentifier: 
+  text: "\xA1Qu\xE9 dices! \xBFEn serio? \xBFPara las pr\xE1cticas de verano?"
+  nextNode: {fileID: 11400000, guid: f070d2b4af91d974dba3714b6f10ee86, type: 2}
+  speakerAnimator: Kanye
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: Delighted

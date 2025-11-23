@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Mission02
   m_EditorClassIdentifier: 
   missionName: prueba2
-  missionDescription: una prueba
+  description: Pepe se encuentra con Juan, triste
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 54f22071e517bb2409240ed4afde0e0b, type: 2}
-  dialogueLines: []
   cameraID: cameraMission02
+  cameraContainerName: Mission02

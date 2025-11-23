@@ -62,10 +62,14 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("-------------------Se mete antes del INVOKE...");
             events?.InvokeFor(node);
+            /* ANTIGUA VERSION:
             if (speakers.TryGetValue(node.GetSpeaker(), out DialogueAnimator newSpeaker))
             {
                 HandleAnimations(newSpeaker, node);
             }
+            */
+            // NUEVA VERSION:
+            UpdateSpeakerState(node);
 
             if (node is QuestionNode questionNode)
             {
@@ -88,12 +92,38 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void UpdateSpeakerState(DialogueNode node) {
+        string speakerName = node.GetSpeaker();
+        Debug.Log($"ENTRA AL UPDATE SPEAKER STATE{speakerName}");
+
+        // Search for the character in the map
+        if (speakers.TryGetValue(speakerName, out DialogueAnimator nextSpeaker))
+        {
+            Debug.Log($"TENEMOS EL NUEVO SPEAKER: {nextSpeaker.gameObject.name}");
+            // Updating reference of current speaker
+            if (currentSpeaker != nextSpeaker)
+            {
+                Debug.Log("EL CURRENT NO ES IGUAL AL NEXT...");
+                currentSpeaker = nextSpeaker;
+            }
+
+            // Give the whole complete state to the Animator
+            if (currentSpeaker != null)
+            {
+                Debug.Log($"Applying state for speaker: {speakerName}");
+                currentSpeaker.ApplyState(node.actorState);
+            }else{
+                Debug.LogWarning($"Current speaker is null for speaker name: {speakerName}");
+            }
+        }
+    }
+
+
+    /*
     private void HandleAnimations(DialogueAnimator newSpeaker, DialogueNode node)
     {
         if (currentSpeaker != null && currentSpeaker != newSpeaker)
-        {/*
-            if (currentSpeaker.TryGetComponent<DialogueAnimator>(out var DialogueAnimator))
-                DialogueAnimator.SetBool(speakingTrigger, false);*/
+        {
             Debug.Log("Poniendo a false el trigger de hablar...");
             currentSpeaker.TurnSpeakingAnimation(node.speakingTrigger, false);
         }
@@ -101,9 +131,6 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(newSpeaker == null ? "Nuevo speaker es null" : "Nuevo speaker NO es null");
         if (newSpeaker != null)
         {
-            /*
-            if (newSpeaker.TryGetComponent<DialogueAnimator>(out var DialogueAnimator))
-                DialogueAnimator.SetBool(speakingTrigger, true); */
             Debug.Log("ACTIVANDO SPEAKER...");
             newSpeaker.TurnSpeakingAnimation(node.speakingTrigger, true);
             currentSpeaker = newSpeaker;
@@ -114,6 +141,7 @@ public class DialogueManager : MonoBehaviour
             currentSpeaker = null;
         }
     }
+    */
 
     public IEnumerator ShowDialogueLine(string line)
     {

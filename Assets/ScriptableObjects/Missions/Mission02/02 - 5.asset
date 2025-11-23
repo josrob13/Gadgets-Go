@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Yo muy bien, justo hoy me dieron una buena noticia.
   nextNode: {fileID: 11400000, guid: b6df48a3cc3ee3b4a8f0f90deacdf9fb, type: 2}
-  speakerAnimator: M_C3CC1_ModularMale_07
-  speakingTrigger: Talk
+  speakerAnimator: M_C3CC1_ModularMale_03
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 

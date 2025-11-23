@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "Pues s\xED! Cu\xE1nto me alegro de verte, \xBFc\xF3mo est\xE1s?"
   nextNode: {fileID: 11400000, guid: 786368eac5397ae4abb42f520a9586a8, type: 2}
-  speakerAnimator: M_C3CC1_ModularMale_07
-  speakingTrigger: Talk
+  speakerAnimator: M_C3CC1_ModularMale_03
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 

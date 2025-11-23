@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "Hola\u2026 qu\xE9 coincidencia verte por aqu\xED."
   nextNode: {fileID: 11400000, guid: aeda637cfa773464398b3d4e2c752687, type: 2}
-  speakerAnimator: M_C3CC1_ModularMale_03
-  speakingTrigger: Talk
+  speakerAnimator: M_C3CC1_ModularMale_07
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 

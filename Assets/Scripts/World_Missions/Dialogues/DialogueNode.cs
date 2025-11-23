@@ -2,6 +2,16 @@ using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
 
+[System.Serializable]
+public struct ActorState
+{
+    [Tooltip("Nombre de la animación del cuerpo. Vacío = mantendrá la postura anterior.")]
+    public string BodyAnimation;
+
+    [Tooltip("Nombre de la emoción. Vacío = mantendrá la cara anterior.")]
+    public string FaceExpression;
+}
+
 [CreateAssetMenu(fileName = "NewDialogueNode", menuName = "Dialogue/Dialogue Node")]
 public class DialogueNode : ScriptableObject
 {
@@ -13,7 +23,9 @@ public class DialogueNode : ScriptableObject
     [Header("Animation")]
     [SerializeField] private string speakerAnimator;
 
-    public string speakingTrigger = "Talk";
+    // NUEVA VERSION DE DIALOGUE NODE:
+    [Header("Visuals")]
+    public ActorState actorState;
 
     public string GetText()
     {

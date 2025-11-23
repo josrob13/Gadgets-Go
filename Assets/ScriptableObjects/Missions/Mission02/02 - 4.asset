@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "No te preocupes, seguir\xE9 avanzando poco a poco. \xBFT\xFA qu\xE9 tal?"
   nextNode: {fileID: 11400000, guid: f769997fa345a7e47953b1f50577abc6, type: 2}
-  speakerAnimator: M_C3CC1_ModularMale_03
-  speakingTrigger: Talk
+  speakerAnimator: M_C3CC1_ModularMale_07
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 
