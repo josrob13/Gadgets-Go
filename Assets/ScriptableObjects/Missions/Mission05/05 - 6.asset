@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
-  m_Name: 04 - 7
+  m_Name: 05 - 6
   m_EditorClassIdentifier: 
-  text: 
-  nextNode: {fileID: 0}
-  speakerAnimator: 
-  speakingTrigger: Talk
+  text: "Genial Miguel, \xA1nos vemos!"
+  nextNode: {fileID: 11400000, guid: 63093c67858674d44a34fea886f78b4a, type: 2}
+  speakerAnimator: Pepe
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 

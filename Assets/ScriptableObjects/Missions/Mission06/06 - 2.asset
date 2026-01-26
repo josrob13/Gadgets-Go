@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
+  m_Name: 06 - 2
+  m_EditorClassIdentifier: 
+  text: Te lo juro, no puedo respirar. Siento que ahora mismo no tengo nariz.
+  nextNode: {fileID: 11400000, guid: b5733cc3945bfb54ba78218dba115b96, type: 2}
+  speakerAnimator: Paco
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 

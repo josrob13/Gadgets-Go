@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "\xA1S\xED! \xA1Estoy dentro! \xA1Es la mejor noticia que he recibido este
     mes!"
-  nextNode: {fileID: 0}
+  nextNode: {fileID: 11400000, guid: 1654fc238701c9944b120fa3920c9963, type: 2}
   speakerAnimator: Angela
   actorState:
     BodyAnimation: Talk

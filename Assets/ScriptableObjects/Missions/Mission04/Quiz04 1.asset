@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz04 1
+  m_EditorClassIdentifier: 
+  text: "\xBFCu\xE1l ha sido el mensaje general?"
+  nextNode: {fileID: 11400000, guid: 734c9f1ee5de52b4fbbadbb6699acdbb, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFCu\xE1l ha sido el mensaje general?"
+  options:
+  - Ha habido una buena noticia
+  - Ha pasado algo malo
+  - No ha ocurrido nada
+  - '-'
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 0
