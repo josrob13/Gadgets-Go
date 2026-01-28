@@ -15,6 +15,8 @@ public struct ActorState
 [CreateAssetMenu(fileName = "NewDialogueNode", menuName = "Dialogue/Dialogue Node")]
 public class DialogueNode : ScriptableObject
 {
+    public Mission relatedMission;
+
     [TextArea(2, 6)]
     public string text;
 
