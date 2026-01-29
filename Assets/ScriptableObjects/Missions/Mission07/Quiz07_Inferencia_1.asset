@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz07_Mensaje_2ndtry
+  m_Name: Quiz07_Inferencia_1
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 492db644f64b5af4c8ffd1e7f74d76ac, type: 2}
+  nextNode: {fileID: 11400000, guid: e42c5cd14581da54a8c02109648ccfb1, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 ha pasado entre Ra\xFAl y Eva?"
+  questionText: "\xBFQu\xE9 crees que va a pasar ahora?"
   options:
-  - "Ra\xFAl se va a casa de trabajar y no saldr\xE1 hasta ma\xF1ana."
-  - "Eva le ha vendido una entrada a Ra\xFAl"
-  - "Eva ha invitado a Ra\xFAl a un concierto, y \xE9l ha aceptado encantado"
-  - "A Ra\xFAl no le gusta el concierto al que va Eva."
+  - "Ra\xFAl ir\xE1 solo al concierto con la entrada que le ha regalado Eva"
+  - "Eva ir\xE1 sola al concierto"
+  - "Esa noche, ir\xE1n juntos al concierto"
+  - "Esa noche, Ra\xFAl se quedar\xE1 en casa descansando"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2

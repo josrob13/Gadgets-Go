@@ -35,6 +35,15 @@ public class DialogueAnimator : MonoBehaviour
             Debug.Log($"Applying face expression: {state.FaceExpression}");
             emotionController.SetExpression(state.FaceExpression);
         }
+
+        if (emotionController == null)
+        {
+            Debug.LogWarning("EmotionController is null in DialogueAnimator.");
+        }
+        if (string.IsNullOrEmpty(state.FaceExpression))
+        {
+            Debug.Log("No face expression to apply.");
+        }
     }
 
     private void PlayBodyAnimation(string bodyAnimation)

@@ -31,7 +31,11 @@ public class EmotionController : MonoBehaviour
 
     public void SetExpression(string emotionName)
     {
-        if (layerIndex == -1) return;
+        if (layerIndex == -1)
+        {
+            Debug.Log($"Cannot set expression because layer '{layerName}' was not found.");
+            return;
+        }
         
         string fullStateName;
         fullStateName = emotionName.StartsWith(PREFIX) ? emotionName : PREFIX + emotionName;

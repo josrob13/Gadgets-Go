@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz07_Mensaje
+  m_Name: Quiz07_Inferencia_2
   m_EditorClassIdentifier: 
-  relatedMission: {fileID: 11400000, guid: 6d427ce90b567d44b82a1de240fd1bf2, type: 2}
+  relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: d6b5a41a6ff46e84c90cbf52b9d4a040, type: 2}
+  nextNode: {fileID: 11400000, guid: e42c5cd14581da54a8c02109648ccfb1, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 ha pasado entre Ra\xFAl y Eva?"
+  questionText: "\xBFCu\xE1nto crees que se conocen Ra\xFAl y Eva?"
   options:
-  - "Ra\xFAl se va a casa de trabajar y no saldr\xE1 hasta ma\xF1ana."
-  - "Eva le ha vendido una entrada a Ra\xFAl"
-  - "Eva ha invitado a Ra\xFAl a un concierto, y \xE9l ha aceptado encantado"
-  - "A Ra\xFAl no le gusta el concierto al que va Eva."
+  - "No se conoc\xEDan, se acaban de conocer"
+  - Son conocidos, pero no se llevan bien
+  - Son amigos
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
