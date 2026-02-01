@@ -1779,7 +1779,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 11816036}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!4 &13213051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4811773899302328925, guid: b8f1c977a19323e4b87a8752dab2fb0c, type: 3}
@@ -20422,7 +20421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95233413}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!1001 &95393486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26162,7 +26160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 121656932}
   layerName: Emotion_Additive
-  transitionDuration: 0.25
 --- !u!1001 &121696512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79667,7 +79664,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 390596245}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!95 &390596245 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6978041620106403016, guid: 12913438a9495414f88d0a46ea8840a7, type: 3}
@@ -164525,6 +164521,15 @@ PrefabInstance:
     - {fileID: 5774915149751851803, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
     - {fileID: 5774915149760590867, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
     - {fileID: 5774915148223166875, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915148909422193, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915149944892335, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915149401629282, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915149004495028, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915150079328660, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915148980829547, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915150046052235, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915150199812180, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
+    - {fileID: 5774915148546068651, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5774915150194936779, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       insertIndex: -1
@@ -164554,9 +164559,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5774915150194936821, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1259838728}
-    - targetCorrespondingSourceObject: {fileID: 5774915148546068651, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1410622516}
   m_SourcePrefab: {fileID: 100100000, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
 --- !u!4 &780026614 stripped
 Transform:
@@ -212360,7 +212362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1032894577}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!114 &1032894582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281903,19 +281904,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1209372785840707146, guid: 2aebe71049f13db4e83625fd2faaa0c7, type: 3}
   m_PrefabInstance: {fileID: 1410621874}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1410622513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5774915148546068651, guid: 2895e1e66dc06f749b2001498f3f1f61, type: 3}
-  m_PrefabInstance: {fileID: 779901708}
-  m_PrefabAsset: {fileID: 0}
---- !u!33 &1410622516
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410622513}
-  m_Mesh: {fileID: 0}
 --- !u!1001 &1411029504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321061,7 +321049,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 69.54
+      value: 69.596
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalPosition.y
@@ -321069,11 +321057,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.34
+      value: -8.423
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98588866
+      value: 0.90919995
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalRotation.x
@@ -321081,7 +321069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.16740239
+      value: 0.4163599
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalRotation.z
@@ -321093,7 +321081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 19.274
+      value: 49.21
       objectReference: {fileID: 0}
     - target: {fileID: 3273830371448400153, guid: 156e406f6fd914341badad2e7899a225, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -321219,7 +321207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 964323406}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!4 &1604108299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 138407978737412187, guid: d5014bfe7ac15954988f8522217d0e04, type: 3}
@@ -345658,7 +345645,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1723799007}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!1001 &1724415838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376621,7 +376607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885401002559050935, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9864476
+      value: 0.943014
       objectReference: {fileID: 0}
     - target: {fileID: 6885401002559050935, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -376629,7 +376615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885401002559050935, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.16407737
+      value: -0.3327529
       objectReference: {fileID: 0}
     - target: {fileID: 6885401002559050935, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
       propertyPath: m_LocalRotation.z
@@ -376641,7 +376627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885401002559050935, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -18.887
+      value: -38.872
       objectReference: {fileID: 0}
     - target: {fileID: 6885401002559050935, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -376719,7 +376705,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1887453469}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!95 &1887453469 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2443401841898010951, guid: 5f1f73baff2181a4894ad40d0f74b9b6, type: 3}
@@ -423826,7 +423811,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2138159772}
   layerName: Emotion_Real
-  transitionDuration: 0.25
 --- !u!1001 &2138189895
 PrefabInstance:
   m_ObjectHideFlags: 0

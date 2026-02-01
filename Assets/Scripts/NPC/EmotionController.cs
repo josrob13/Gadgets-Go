@@ -5,7 +5,7 @@ public class EmotionController : MonoBehaviour
     [Header("Configuración")]
     [SerializeField] private Animator animator;
     [SerializeField] private string layerName = "Emotion_Real";
-    [SerializeField] private float transitionDuration = 0.25f;
+    private float transitionDuration = 0.35f;
 
     private const string PREFIX = "A_FacePose_"; 
     private int layerIndex;
