@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PostAnswer07 3
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: 
+  text: Muy bien!
   nextNode: {fileID: 11400000, guid: 659f92c0dc36d05439082db992e93631, type: 2}
   speakerAnimator: 
   actorState:

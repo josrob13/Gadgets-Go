@@ -29,8 +29,10 @@ public class QuestionUI : MonoBehaviour
         for (int i = 0; i < optionButtons.Length; i++)
         {
             optionButtons[i].gameObject.SetActive(i < options.Length);
-            if (i < options.Length)
-                optionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = options[i];
+            if (i < options.Length) {
+                optionButtons[i].transform.Find("DialogueText").GetComponent<TextMeshProUGUI>().text = options[i];
+                //optionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = options[i];
+            }
         }
     }
 

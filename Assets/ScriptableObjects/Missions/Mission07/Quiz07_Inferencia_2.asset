@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: e42c5cd14581da54a8c02109648ccfb1, type: 2}
+  nextNode: {fileID: 11400000, guid: 5652671380c85424b962842aed6f8cca, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
