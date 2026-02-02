@@ -125,8 +125,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5546555014965455605, guid: 6c39249bf65af8a4c8af2f6432af9bec,
-    type: 3}
+  m_Motion: {fileID: -5546555014965455605, guid: 6c39249bf65af8a4c8af2f6432af9bec, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -224,13 +223,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Expression_Y_f
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -259,7 +258,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Emotion_Additive
     m_StateMachine: {fileID: 3631586463400097538}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: a8ac0e48367311e4fa24453967d7a154, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 1

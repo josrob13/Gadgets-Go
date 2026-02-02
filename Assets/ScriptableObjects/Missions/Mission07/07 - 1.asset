@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 07 - 1
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: "Pues espera un momento, porque ven\xEDa a proponerte un planazo esta tarde."
   nextNode: {fileID: 11400000, guid: afb6911948419344e813055639acc724, type: 2}
   speakerAnimator: Eva
