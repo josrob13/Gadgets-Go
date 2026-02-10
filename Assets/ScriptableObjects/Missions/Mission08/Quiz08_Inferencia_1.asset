@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz08_Inferencia_1
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: 
+  nextNode: {fileID: 11400000, guid: 91a2b6c7205c93f48a97763c20571283, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 crees que va a pasar ahora?"
+  options:
+  - "Mar\xEDa se queda en el banco, tranquila"
+  - "Mar\xEDa quiz\xE1 llame a Manu si necesita ayuda"
+  - "Manu ofrece su ayuda pero es solo una expresi\xF3n, si Mar\xEDa le llama, probablemente
+    no coger\xE1 el tel\xE9fono"
+  - Manu va a pasear al perro Toby
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 1

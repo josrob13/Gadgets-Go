@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz08_Emociones
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: 
+  nextNode: {fileID: 11400000, guid: e64728df041299e448edf65c4263d0c4, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 emoci\xF3n expresaba Mar\xEDa en la conversaci\xF3n?"
+  options:
+  - "Est\xE1 contenta por estar con Manu"
+  - "Est\xE1 enfadada con el veterinario"
+  - "Est\xE1 triste y preocupada por la operaci\xF3n"
+  - "Est\xE1 indiferente, como un d\xEDa cualquiera"
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 2
