@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz06
+  m_Name: Quiz06_Inferencia2
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 492db644f64b5af4c8ffd1e7f74d76ac, type: 2}
+  nextNode: {fileID: 11400000, guid: 3aeccb6941ff4fc46980129702383a72, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 ha pasado entre Pablo y Paco?"
+  questionText: "\xBFCu\xE1nto crees que se conocen Paco y Pablo?"
   options:
-  - "Ten\xEDan f\xFAtbol"
-  - Han quedado a cenar
-  - "Ya se conoc\xEDan, pero no mucho"
-  - Son mejores amigos
+  - "No se conoc\xEDan, se acaban de conocer"
+  - Son conocidos, pero no tienen mucha confianza
+  - Son amigos
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2

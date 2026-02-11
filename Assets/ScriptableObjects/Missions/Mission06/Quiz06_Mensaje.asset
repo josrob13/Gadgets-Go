@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz06 1
+  m_Name: Quiz06_Mensaje
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: aec9e816a8e859544822f17837ab3c48, type: 2}
+  nextNode: {fileID: 11400000, guid: 492db644f64b5af4c8ffd1e7f74d76ac, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 emoci\xF3n transmite Paco?"
+  questionText: "\xBFQu\xE9 ha pasado entre Pablo y Paco?"
   options:
-  - Estaba feliz
-  - Estada enfadado
-  - Estaba muy asqueado
-  - "Est\xE1 aburrido"
+  - Tienen prisa porque van al trabajo
+  - Tienen mucha hambre
+  - La calle huele bien
+  - "Paco ha exagerado, pero la calle s\xED huele mal"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
-  correctOptionIndex: 2
+  correctOptionIndex: 3

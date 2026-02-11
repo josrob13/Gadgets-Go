@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 06 - 4
   m_EditorClassIdentifier: 
-  text: Necesito coger un respiro.
+  relatedMission: {fileID: 0}
+  text: Necesito coger un respiro...
   nextNode: {fileID: 11400000, guid: ca5fbc7355585d5458c22e14dfdb4ff4, type: 2}
   speakerAnimator: Paco
   actorState:
