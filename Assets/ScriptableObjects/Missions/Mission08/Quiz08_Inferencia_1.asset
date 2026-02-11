@@ -23,8 +23,8 @@ MonoBehaviour:
   options:
   - "Mar\xEDa se queda en el banco, tranquila"
   - "Mar\xEDa quiz\xE1 llame a Manu si necesita ayuda"
-  - "Manu ofrece su ayuda pero es solo una expresi\xF3n, si Mar\xEDa le llama, probablemente
-    no coger\xE1 el tel\xE9fono"
+  - "Manu ofrece su ayuda pero es solo una expresi\xF3n: si Mar\xEDa le llama quiz\xE1
+    no lo coja"
   - Manu va a pasear al perro Toby
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}

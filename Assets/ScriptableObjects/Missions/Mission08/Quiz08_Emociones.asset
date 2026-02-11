@@ -19,7 +19,7 @@ MonoBehaviour:
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 emoci\xF3n expresaba Mar\xEDa en la conversaci\xF3n?"
+  questionText: "\xBFQu\xE9 emoci\xF3n expresa Mar\xEDa?"
   options:
   - "Est\xE1 contenta por estar con Manu"
   - "Est\xE1 enfadada con el veterinario"
