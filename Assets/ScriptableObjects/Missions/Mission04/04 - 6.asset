@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 04 - 6
   m_EditorClassIdentifier: 
-  text: "\xA1S\xED! \xA1Estoy dentro! \xA1Es la mejor noticia que he recibido este
-    mes!"
-  nextNode: {fileID: 11400000, guid: 1654fc238701c9944b120fa3920c9963, type: 2}
+  relatedMission: {fileID: 0}
+  text: "S\xED, \xA1pues al parecer ya se ha cansado!"
+  nextNode: {fileID: 11400000, guid: 728bdfd7bc3534841a4f079946523e4a, type: 2}
   speakerAnimator: Angela
   actorState:
     BodyAnimation: Talk

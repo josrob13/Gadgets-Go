@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz04_Mensaje
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFCu\xE1l ha sido el mensaje general?"
+  nextNode: {fileID: 11400000, guid: 3ef72c8c444e1bf4da61710a018a57e3, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 ha pasado entre Kanye y Angela?"
+  options:
+  - "Ed Sheeran sacar\xE1 nuevo \xE1lbum"
+  - "A \xC1ngela le encantar\xEDa conocer a Ed Sheeran"
+  - "Un amigo se va a te\xF1ir el pelo"
+  - "Ed Sheeran se ha te\xF1ido el pelo"
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 3

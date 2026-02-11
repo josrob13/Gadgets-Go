@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 04 - 4
   m_EditorClassIdentifier: 
-  text: "\xA1No me lo puedo creer! \xA1Me han aceptado!"
+  relatedMission: {fileID: 0}
+  text: "\xA1No me lo puedo creer! \xA1Ed Sheeran se ha te\xF1ido el pelo!"
   nextNode: {fileID: 11400000, guid: 1d18251874218614ca8ec0d94ea2b08b, type: 2}
   speakerAnimator: Angela
   actorState:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mission04
   m_EditorClassIdentifier: 
   missionName: Alegria_Noticia_Agradable
-  description: Una buena noticia
+  description: 'Ed Sheeran: sorpresa'
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 1fb934496527f284aa7cab88ecdb2de4, type: 2}
   cameraID: cameraMission04

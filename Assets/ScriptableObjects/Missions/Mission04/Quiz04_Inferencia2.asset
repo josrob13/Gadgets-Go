@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz04 1
+  m_Name: Quiz04_Inferencia2
   m_EditorClassIdentifier: 
-  text: "\xBFCu\xE1l ha sido el mensaje general?"
-  nextNode: {fileID: 11400000, guid: 734c9f1ee5de52b4fbbadbb6699acdbb, type: 2}
+  relatedMission: {fileID: 0}
+  text: 
+  nextNode: {fileID: 11400000, guid: f67994aea74c3e34da15b35d33a26a67, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFCu\xE1l ha sido el mensaje general?"
+  questionText: "\xBFCu\xE1nto crees que se conocen Kanye y \xC1ngela?"
   options:
-  - Ha habido una buena noticia
-  - Ha pasado algo malo
-  - No ha ocurrido nada
-  - '-'
+  - "No se conoc\xEDan, se acaban de conocer"
+  - Son conocidos, pero no tienen mucha confianza
+  - Son amigos
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
-  correctOptionIndex: 0
+  correctOptionIndex: 2

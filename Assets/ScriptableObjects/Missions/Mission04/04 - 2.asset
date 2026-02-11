@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 04 - 2
   m_EditorClassIdentifier: 
-  text: Oh, espera, me acaba de llegar un email importante.
+  relatedMission: {fileID: 0}
+  text: "Oh, espera, que me suena el m\xF3vil."
   nextNode: {fileID: 11400000, guid: ae3127a9980d11144956f208e6d63089, type: 2}
   speakerAnimator: Angela
   actorState:

@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz04
+  m_Name: Quiz04_Emociones
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 3ef72c8c444e1bf4da61710a018a57e3, type: 2}
+  nextNode: {fileID: 11400000, guid: d30d7099de5ebd644918f5c7175b8932, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 emoci\xF3n expresan ambas personas tras la noticia?"
+  questionText: "\xBFQu\xE9 emoci\xF3n expresan ambos?"
   options:
-  - Enfado
-  - "Alegr\xEDa"
-  - Tristeza
   - Miedo
+  - Sorpresa
+  - Tristeza
+  - "Alegr\xEDa"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1

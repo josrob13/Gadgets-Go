@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 04 - 3
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: ...
   nextNode: {fileID: 11400000, guid: cddb6f3a0a9a21e47abfc5ac5b6fceb2, type: 2}
   speakerAnimator: Angela
   actorState:
     BodyAnimation: 
-    FaceExpression: Happy
+    FaceExpression: Surprised
