@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz01_Emociones
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "F\xEDjate en los pu\xF1os y el tono de Dani. \xBFC\xF3mo se siente?"
+  nextNode: {fileID: 11400000, guid: 5188f10eb824f394b864f93cffed42e6, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFC\xF3mo se siente Dani?"
+  options:
+  - "Est\xE1 asustado porque parece sangre"
+  - "Est\xE1 triste y decepcionado"
+  - "Est\xE1 furioso e indignado"
+  - "Est\xE1 bromeando"
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 2
