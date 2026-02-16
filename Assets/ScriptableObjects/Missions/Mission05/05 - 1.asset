@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 05 - 1
   m_EditorClassIdentifier: 
-  text: "Hola, Pepe. S\xED, es verdad. \xBFQu\xE9 tal?"
+  relatedMission: {fileID: 0}
+  text: "Hola, Pepe. S\xED, es verdad... \xBFQu\xE9 tal?"
   nextNode: {fileID: 11400000, guid: e891aa0f43361884b99aed599312a44d, type: 2}
   speakerAnimator: Miguel
   actorState:

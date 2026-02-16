@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 05 - 5
   m_EditorClassIdentifier: 
-  text: "S\xED, est\xE1 muy contento. Oye, me tengo que ir, \xA1ya nos veremos otro
-    d\xEDa!"
+  relatedMission: {fileID: 0}
+  text: Pues bueno, bien, pero me duele un poco.
   nextNode: {fileID: 11400000, guid: 1177d398bfad92b4d8a6074058c53743, type: 2}
   speakerAnimator: Miguel
   actorState:

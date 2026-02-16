@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 05 - 6
   m_EditorClassIdentifier: 
-  text: "Genial Miguel, \xA1nos vemos!"
+  relatedMission: {fileID: 0}
+  text: "Bueno Miguel, te dejo entonces. \xA1Mej\xF3rate!"
   nextNode: {fileID: 11400000, guid: 63093c67858674d44a34fea886f78b4a, type: 2}
   speakerAnimator: Pepe
   actorState:

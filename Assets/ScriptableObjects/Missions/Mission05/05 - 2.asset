@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 05 - 2
   m_EditorClassIdentifier: 
-  text: "Pues genial. Justo ven\xEDa de la panader\xEDa. Oye, \xBFsabes a qui\xE9n
-    vi ayer? A tu primo."
+  relatedMission: {fileID: 0}
+  text: "Pues genial. Justo ven\xEDa de la panader\xEDa. Oye, \xBFhas visto lo del
+    Atleti?."
   nextNode: {fileID: 11400000, guid: 43013db77cc60be4792dea3295821273, type: 2}
   speakerAnimator: Pepe
   actorState:

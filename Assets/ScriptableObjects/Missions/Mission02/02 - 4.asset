@@ -18,4 +18,4 @@ MonoBehaviour:
   speakerAnimator: Angel
   actorState:
     BodyAnimation: Talk
-    FaceExpression: 
+    FaceExpression: Scared
