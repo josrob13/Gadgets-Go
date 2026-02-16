@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
+  m_Name: 02 - 0
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "Mam\xE1 me va a matar si llego tarde... Ojal\xE1 no estuviera tan oscuro."
+  nextNode: {fileID: 11400000, guid: 49dfb7d496f66cf43b1738d22ab8bfa0, type: 2}
+  speakerAnimator: Angel
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: Scared

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cfcddb456e83f4c8b619c855d0b5c8, type: 3}
+  m_Name: Mission02
+  m_EditorClassIdentifier: 
+  missionName: Parque_Guarda
+  description: 'Angel y el Guarda: El atajo prohibido'
+  fadeDuration: 1.5
+  dialogueNode: {fileID: 11400000, guid: 5de06180a25f2e94b9ed79a619d8eb26, type: 2}
+  cameraID: cameraMission02
+  cameraContainerName: Mission02
