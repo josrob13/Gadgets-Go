@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "Bueno Miguel, te dejo entonces. \xA1Mej\xF3rate!"
-  nextNode: {fileID: 11400000, guid: 63093c67858674d44a34fea886f78b4a, type: 2}
+  nextNode: {fileID: 11400000, guid: 479ff9bbec6899a43ba2c8af798f55ae, type: 2}
   speakerAnimator: Pepe
   actorState:
     BodyAnimation: Talk

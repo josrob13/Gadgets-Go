@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ed09c3adaca1746a5f4b4926831d97, type: 3}
   m_Name: PostAnswer05
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: facec0f535ebb4d4d9a5adc78388293c, type: 2}
+  nextNode: {fileID: 11400000, guid: c596ad51afc803146bd7674cbc402f33, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 

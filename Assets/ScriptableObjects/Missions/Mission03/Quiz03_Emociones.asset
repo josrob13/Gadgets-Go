@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
-  m_Name: Quiz05
+  m_Name: Quiz03_Emociones
   m_EditorClassIdentifier: 
-  text: 
-  nextNode: {fileID: 11400000, guid: 5b63290e7f519464eb3bcf295144243d, type: 2}
+  relatedMission: {fileID: 0}
+  text: "\xBFCu\xE1l es la emoci\xF3n dominante en Carla?"
+  nextNode: {fileID: 11400000, guid: 046d6b05930dd9549a266fea327f273e, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 ha pasado entre Pepe y Miguel?"
+  questionText: "\xBFCu\xE1l es la emoci\xF3n que expresa Carla?"
   options:
-  - "No se conoc\xEDan de nada"
-  - Se han hecho amigos ahora
-  - "Ya se conoc\xEDan, pero no mucho"
-  - Son mejores amigos
+  - "Alegr\xEDa"
+  - Miedo
+  - Sospecha
+  - Tristeza
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3cfcddb456e83f4c8b619c855d0b5c8, type: 3}
   m_Name: Mission05
   m_EditorClassIdentifier: 
-  missionName: Conversacion_normal
-  description: Normal
+  missionName: Esqui_Dolor
+  description: 'Pepe y Miguel: dolor por el accidente'
   fadeDuration: 1.5
-  dialogueNode: {fileID: 11400000, guid: 143948591582e704bb1f6474963fbe0d, type: 2}
+  dialogueNode: {fileID: 11400000, guid: c98a1171d115fda448fff2304e0cda67, type: 2}
   cameraID: cameraMission05
   cameraContainerName: Mission05

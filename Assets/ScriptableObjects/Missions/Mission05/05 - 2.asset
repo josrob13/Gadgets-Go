@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "Pues genial. Justo ven\xEDa de la panader\xEDa. Oye, \xBFhas visto lo del
-    Atleti?."
-  nextNode: {fileID: 11400000, guid: 43013db77cc60be4792dea3295821273, type: 2}
+    Atleti?"
+  nextNode: {fileID: 11400000, guid: ee2632063bd3de845857f60d757581f6, type: 2}
   speakerAnimator: Pepe
   actorState:
     BodyAnimation: Talk

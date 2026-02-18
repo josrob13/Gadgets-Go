@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xA1Anda, no me digas! No ten\xEDa ni idea macho, \xBFc\xF3mo est\xE1s?"
-  nextNode: {fileID: 11400000, guid: e5ace639f26dc844094224676491f232, type: 2}
+  nextNode: {fileID: 11400000, guid: 0ff92bcc033daac4a8ab4caede2fba0f, type: 2}
   speakerAnimator: Pepe
   actorState:
     BodyAnimation: Talk
-    FaceExpression: 
+    FaceExpression: Worried

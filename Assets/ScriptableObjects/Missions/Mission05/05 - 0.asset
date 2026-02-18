@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 05 - 0
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: "\xA1Anda! \xA1Hola, Miguel! \xA1Cu\xE1nto tiempo sin verte!"
-  nextNode: {fileID: 11400000, guid: 407b73194a497d046bad9e00fc0fe1a3, type: 2}
+  nextNode: {fileID: 11400000, guid: 534790a30858e564f935d01c9365aab9, type: 2}
   speakerAnimator: Pepe
   actorState:
     BodyAnimation: Talk
-    FaceExpression: 
+    FaceExpression: Happy

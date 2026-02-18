@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: Pues bueno, bien, pero me duele un poco.
-  nextNode: {fileID: 11400000, guid: 1177d398bfad92b4d8a6074058c53743, type: 2}
+  nextNode: {fileID: 11400000, guid: c4085f68dc58bfb4282802500e9933df, type: 2}
   speakerAnimator: Miguel
   actorState:
     BodyAnimation: Talk

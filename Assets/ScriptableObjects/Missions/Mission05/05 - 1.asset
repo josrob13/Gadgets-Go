@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "Hola, Pepe. S\xED, es verdad... \xBFQu\xE9 tal?"
-  nextNode: {fileID: 11400000, guid: e891aa0f43361884b99aed599312a44d, type: 2}
+  nextNode: {fileID: 11400000, guid: 6da0bcbde5c314d428b5c1b1d2ecd2b0, type: 2}
   speakerAnimator: Miguel
   actorState:
     BodyAnimation: Talk

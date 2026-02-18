@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: Uf que va, no he tenido tiempo y encima me hice una herida en el brazo esquiando...
-  nextNode: {fileID: 11400000, guid: eff7a489eb223c84c8ff186892a431a1, type: 2}
+  nextNode: {fileID: 11400000, guid: 949551eaad9f3c5439f2120b25bf6f42, type: 2}
   speakerAnimator: Miguel
   actorState:
     BodyAnimation: Talk
