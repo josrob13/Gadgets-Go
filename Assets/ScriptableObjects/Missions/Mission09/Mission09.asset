@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3cfcddb456e83f4c8b619c855d0b5c8, type: 3}
-  m_Name: Mission06
+  m_Name: Mission09
   m_EditorClassIdentifier: 
-  missionName: Asco_Conversacion
-  description: Paco y Pablo
+  missionName: LenguajeFigurado
+  description: 'Leo y Sofia: Lenguaje Figurado'
   fadeDuration: 1.5
-  dialogueNode: {fileID: 11400000, guid: 851d87da7fde5414395640b73026dfa6, type: 2}
-  cameraID: cameraMission06
-  cameraContainerName: Mission06
+  dialogueNode: {fileID: 11400000, guid: 58cf1858732317f4588bef173163aaa7, type: 2}
+  cameraID: cameraMission09
+  cameraContainerName: Mission09

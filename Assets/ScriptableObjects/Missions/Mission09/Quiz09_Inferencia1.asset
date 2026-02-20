@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz09_Inferencia1
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFQu\xE9 quiso decir Sof\xEDa con la frase 'al final todo fue sobre ruedas'?"
+  nextNode: {fileID: 11400000, guid: 37c9e5e05f8660541aef8247af41e5be, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 quiso decir Sof\xEDa con 'al final todo fue sobre ruedas'?"
+  options:
+  - Que tuvo que usar una bicicleta o un coche
+  - "Que el proyecto avanz\xF3 de forma muy fluida y f\xE1cil"
+  - "Que el trabajo de clase trataba sobre veh\xEDculos"
+  - "Que todo fue muy r\xE1pido y acab\xF3 perdiendo el control"
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 1
