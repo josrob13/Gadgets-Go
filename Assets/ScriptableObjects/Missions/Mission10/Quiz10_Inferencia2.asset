@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz10_Inferencia2
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFQu\xE9 siente Marcos cuando dice que en atenci\xF3n al cliente le est\xE1n
+    'tomando el pelo'?"
+  nextNode: {fileID: 11400000, guid: 7e1aac2a09021974092b297e234f65e2, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 siente Marcos cuando dice que en atenci\xF3n al cliente
+    le est\xE1n 'tomando el pelo'?"
+  options:
+  - "Que siente que le est\xE1n enga\xF1ando o burl\xE1ndose de \xE9l al no atenderle"
+  - "Que el operador le estaba haciendo perder el tiempo con preguntas t\xE9cnicas."
+  - "Que est\xE1n abusando de su paciencia alargando la llamada para cobrarle m\xE1s
+    dinero"
+  - "Que la m\xFAsica de espera era demasiado repetitiva y molesta."
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 0

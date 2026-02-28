@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz10_Inferencia1
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFQu\xE9 quiere decir Laura con la expresi\xF3n 'nos ha costado un ojo
+    de la cara'?"
+  nextNode: {fileID: 11400000, guid: 8918af5ced44f634fac01d011953d2b7, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 quiere decir Laura con la expresi\xF3n 'nos ha costado
+    un ojo de la cara'?"
+  options:
+  - Que han tenido que esforzarse visualmente para encontrar el mueble.
+  - Que la mesa era extremadamente cara y pagaron mucho dinero por ella
+  - "Que el montaje requiere tanta atenci\xF3n a los detalles que les est\xE1 agotando
+    la vista"
+  - Que tuvieron que sacrificar otras compras importantes de la tienda para llevarse
+    la mesa
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 1

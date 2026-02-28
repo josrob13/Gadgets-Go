@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz10_Emociones
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFCu\xE1l es la emoci\xF3n principal de Marcos?"
+  nextNode: {fileID: 11400000, guid: 7b7f2d60ee1ec154195f237383cd2cb8, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "Fij\xE1ndote en el rostro de Marcos, \xBFCu\xE1l es su emoci\xF3n
+    principal?"
+  options:
+  - "Est\xE1 muy triste y tiene ganas de llorar"
+  - "Est\xE1 asustado porque el mueble es peligroso"
+  - "Est\xE1 frustrado, agobiado y un poco enfadado por la situaci\xF3n"
+  - "Est\xE1 relajado y disfrutando del proceso de montaje"
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 2

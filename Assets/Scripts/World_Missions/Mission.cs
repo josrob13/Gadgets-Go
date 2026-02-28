@@ -57,11 +57,13 @@ public class Mission : ScriptableObject
         GameObject container = GameObject.Find(cameraContainerName);
         if (container != null)
         {
+            Debug.Log($"Found camera container: {cameraContainerName}. Deactivating cameras...");
             foreach (Transform camTransform in container.transform)
             {
                 CinemachineCamera cam = camTransform.GetComponent<CinemachineCamera>();
                 if (cam != null)
                 {
+                    Debug.Log($"Deactivating camera: {cam.name}. Priority = 0");
                     cam.Priority = 0;
                 }
             }

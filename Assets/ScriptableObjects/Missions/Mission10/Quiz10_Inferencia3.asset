@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz10_Inferencia3
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFQu\xE9 le pide Marcos a Laura cuando le dice 'no eches le\xF1a al fuego'?"
+  nextNode: {fileID: 11400000, guid: 77443849bba797c4bb398743c3116df8, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  questionText: "\xBFQu\xE9 le pide Marcos a Laura cuando le dice 'no eches le\xF1a
+    al fuego'?"
+  options:
+  - "Que no aplique tanta fuerza bruta sobre la madera porque podr\xEDa astillar
+    las piezas"
+  - "Que deje de darle consejos y opiniones que solo le est\xE1n distrayendo del
+    manual"
+  - "Que no empeore la situaci\xF3n haciendo algo que pueda romper el mueble."
+  - Que no intente hacer el trabajo ella sola porque es un mueble demasiado pesado.
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 2
