@@ -18,6 +18,7 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Show(IInteractable interactable)
     {
+        Debug.Log("[!!!] Showing interaction UI for: " + interactable.GetInteractText());
         interactionTextMeshProGUI.text = interactable.GetInteractText();
         container.SetActive(true);
     }
