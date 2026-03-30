@@ -133693,7 +133693,7 @@ Transform:
   m_GameObject: {fileID: 649428672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.10899, y: -1.8479317, z: 0.20937945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -133701,7 +133701,7 @@ Transform:
   - {fileID: 1829570347}
   - {fileID: 1394533286}
   - {fileID: 1523321328}
-  m_Father: {fileID: 994760027}
+  m_Father: {fileID: 1135488356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &649720465
 PrefabInstance:
@@ -158150,8 +158150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740780198}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.10899, y: -1.8479317, z: 0.20937945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -158165,7 +158165,7 @@ Transform:
   - {fileID: 1822945267}
   - {fileID: 1487778192}
   - {fileID: 209475924}
-  m_Father: {fileID: 994760027}
+  m_Father: {fileID: 1135488356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &740780200
 MonoBehaviour:
@@ -184675,7 +184675,7 @@ MonoBehaviour:
   dialogueUI: {fileID: 914433625}
   questionUI: {fileID: 462053565}
   textSpeed: 0.035
-  events: {fileID: 994760031}
+  events: {fileID: 1135488361}
 --- !u!4 &868266526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9205441457839070953, guid: 4cb05c3a56b68794ea12165bc83f04b1, type: 3}
@@ -188882,7 +188882,6 @@ GameObject:
   - component: {fileID: 890754110}
   - component: {fileID: 890754109}
   - component: {fileID: 890754111}
-  - component: {fileID: 890754112}
   m_Layer: 0
   m_Name: Fade
   m_TagString: Untagged
@@ -188969,18 +188968,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &890754112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890754107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 614c592d8c1693e4fa15c95f119309e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &890957368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 138407978737412187, guid: d5014bfe7ac15954988f8522217d0e04, type: 3}
@@ -208946,12 +208933,12 @@ GameObject:
   - component: {fileID: 994760030}
   - component: {fileID: 994760031}
   m_Layer: 0
-  m_Name: GameHandler
+  m_Name: GameHandler__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &994760027
 Transform:
   m_ObjectHideFlags: 0
@@ -208964,10 +208951,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1371057508}
-  - {fileID: 649428673}
-  - {fileID: 740780199}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &994760028
@@ -208977,7 +208961,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994760026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e446273e656eaa45a491b428ad7571b, type: 3}
   m_Name: 
@@ -208993,7 +208977,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994760026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72553cb8ac740c043a3bd081ceb2e30c, type: 3}
   m_Name: 
@@ -209007,7 +208991,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994760026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff5c55de700b17c47a5ecbeacd3a7639, type: 3}
   m_Name: 
@@ -209019,7 +209003,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994760026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5150adaa795a0bb45a44af01a880026c, type: 3}
   m_Name: 
@@ -233195,6 +233179,470 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5014bfe7ac15954988f8522217d0e04, type: 3}
+--- !u!1 &1135488355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135488356}
+  - component: {fileID: 1135488359}
+  - component: {fileID: 1135488358}
+  - component: {fileID: 1135488361}
+  m_Layer: 0
+  m_Name: LocalSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1135488356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135488355}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.10899, y: 1.8479317, z: -0.20937945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1371057508}
+  - {fileID: 649428673}
+  - {fileID: 740780199}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135488358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135488355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72553cb8ac740c043a3bd081ceb2e30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1259838726}
+  normalUI: {fileID: 1797123051}
+--- !u!114 &1135488359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135488355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e446273e656eaa45a491b428ad7571b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1259838714}
+  npcTransformArray:
+  - {fileID: 1571963963}
+  pfChatBubble: {fileID: 1216468738}
+--- !u!114 &1135488361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135488355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5150adaa795a0bb45a44af01a880026c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entries:
+  - node: {fileID: 11400000, guid: c88a30e18314a7941b8621184ffb9b8c, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 683756213}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 49dfb7d496f66cf43b1738d22ab8bfa0, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 308222207}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: e4606dd943c0af541967ef612d9be03f, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: QuitCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 308222207}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1183153523}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 5b1198dbe10abe643a8550ec6e9cd6d1, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: QuitCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1183153523}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 308222207}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: d139fef1b438df94280a5d19d2933654, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: QuitCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 308222207}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1183153523}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: ee9007ae9846c0440976569f95ce3e29, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: QuitCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1183153523}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 308222207}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: db9f22f21dcf45f49acae3197cecf801, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: QuitCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 308222207}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1183153523}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 799ceaeab7d4aed4b9aa2d4638beaa7a, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: QuitCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1183153523}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 425157125}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 9399eb7e7ec9e6242a7197d662c58402, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 364944119}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 728bdfd7bc3534841a4f079946523e4a, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 647802329}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 479ff9bbec6899a43ba2c8af798f55ae, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1118461331}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: cae1112986f65e9438ea61a5bcb464ad, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1904448622}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: c3fe78d7b370a3042b4e6782d545a575, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 376383349}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 50740d300493ef74ca34d96aa12f790e, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1683905048}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: 3ae35efb8f63db240bfe9396b89c04ab, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1683905048}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: cc5b4fe6fb587c145bfe37688f8d7501, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 99697136}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: b79050ba66f17a74d821e5263b5d27f4, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 448949745}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - node: {fileID: 11400000, guid: b79050ba66f17a74d821e5263b5d27f4, type: 2}
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1135488361}
+          m_TargetAssemblyTypeName: DialogueNodeEvents, Assembly-CSharp
+          m_MethodName: AddPriorityCamera
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 448949745}
+            m_ObjectArgumentAssemblyTypeName: Unity.Cinemachine.CinemachineCamera,
+              Unity.Cinemachine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1135592131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277505,13 +277953,13 @@ Transform:
   m_GameObject: {fileID: 1371057506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.10899, y: -1.8479317, z: 0.20937945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 795804493}
   - {fileID: 746708826}
-  m_Father: {fileID: 994760027}
+  m_Father: {fileID: 1135488356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1371645800
 PrefabInstance:
@@ -431431,6 +431879,7 @@ SceneRoots:
   - {fileID: 779901708}
   - {fileID: 31591099}
   - {fileID: 25216470}
+  - {fileID: 1135488356}
   - {fileID: 994760027}
   - {fileID: 1200768997391157895}
   - {fileID: 1857657395}

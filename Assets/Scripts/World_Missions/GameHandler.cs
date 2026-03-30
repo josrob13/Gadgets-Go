@@ -9,13 +9,41 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance == null)
         {
-            Destroy(gameObject);
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Debug.LogWarning($"[GameHandler] Se ha encontrado una segunda instancia de GameHandler en la escena. El objeto '{this.name}' será destruido para mantener el singleton.");
+            Destroy(gameObject);
+        }
+    }
+
+    public void StartNewGame()
+    {
+        Debug.Log("[GameHandler] Iniciando Nueva Partida...");
+
+        // 1. Creamos datos limpios por defecto
+        GameData newGameData = new GameData();
+        
+        // 2. Sobrescribimos el archivo viejo en el disco duro
+        // SaveSystem.Save(newGameData);
+
+        // 3. Reiniciamos las variables internas del GameHandler por si acaso
+        this.indexWorld = newGameData.savedWorldIndex;
+
+        // 4. Llamamos al SceneLoader para ir al juego
+        // Asegúrate de que "RealGame" esté en File -> Build Settings
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadSceneAsync("RealGame");
+        }
+        else
+        {
+            Debug.LogError("¡No se encontró el SceneLoader en la escena!");
+        }
     }
     
     public bool NextWorld()

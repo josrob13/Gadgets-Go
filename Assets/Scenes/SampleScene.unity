@@ -566,6 +566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa09600a63a0194b861ed94c88f6916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensX: 0
+  sensY: 0
+  orientation: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,9 +1727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e6763a4970bda4790aeda66e4d9753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  velocity: 10
-  jumpForce: 20
+  playerName: Player
+  playerMovement: {fileID: 0}
+  playerInteraction: {fileID: 0}
 --- !u!1 &1251891532 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4842329568159195307, guid: 3ec6f4750ab053143b71610de9cb7398, type: 3}
