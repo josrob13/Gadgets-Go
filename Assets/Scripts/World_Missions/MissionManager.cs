@@ -27,6 +27,7 @@ public class MissionManager : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning($"[MissionManager] Se ha encontrado una segunda instancia de MissionManager en la escena. El objeto '{this.name}' será destruido para mantener el singleton.");
             Destroy(gameObject);
         }
     }
