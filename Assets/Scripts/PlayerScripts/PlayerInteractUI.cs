@@ -10,8 +10,9 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Update()
     {
-        if (playerInteraction.GetInteractableObject() != null)
-            Show(playerInteraction.GetInteractableObject());
+        IInteractable i = playerInteraction.GetInteractableObject();
+        if (i != null)
+            Show(i);
         else
             Hide();
     }

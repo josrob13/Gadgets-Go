@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThemeSettings_ModernMenuUI
   m_EditorClassIdentifier: 
   custom1:
-    graphic1: {r: 1, g: 0.6862745, b: 0, a: 1}
+    graphic1: {r: 0.06915272, g: 0.3551445, b: 0.6981132, a: 1}
     text1:
       serializedVersion: 2
       rgba: 4294967295

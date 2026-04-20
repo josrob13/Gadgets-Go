@@ -33,7 +33,7 @@ public class SceneLoader : MonoBehaviour
             return;
         }
 #endif
-        LoadSceneAsync("IntroDialog");
+        LoadSceneAsync("Intro");
     }
 
     public void LoadSceneAsync(string sceneName)
