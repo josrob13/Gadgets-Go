@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueNodeEvents events;
     private DialogueAnimator currentSpeaker = null;
     private Dictionary<string, DialogueAnimator> speakers = new();
+    private Dictionary<QuestionNode, int> questionAttempts = new();
 
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator StartDialogue(DialogueNode start)
     {
         Debug.Log("Starting dialogue...");
+        questionAttempts.Clear();
         DialogueNode node = start;
         while (node != null)
         {
@@ -73,16 +75,41 @@ public class DialogueManager : MonoBehaviour
 
             if (node is QuestionNode questionNode)
             {
-                yield return ShowQuestion(questionNode);
-                bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
+                // Initialize attempts if not present
+                if (!questionAttempts.ContainsKey(questionNode))
+                    questionAttempts[questionNode] = 0;
 
-                // Call to the event, in which the errors will be registered
-                OnQuestionAnswered?.Invoke(isCorrect);
-                if (questionNode.nextNode is PostAnswerNode p)
+                bool answeredCorrectly = false;
+                while (!answeredCorrectly && questionAttempts[questionNode] < 3)
                 {
-                    node = p;
-                    node.SetText(isCorrect ? p.correctAnswer : p.badAnswer);
+                    yield return ShowQuestion(questionNode);
+                    bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
+                    questionAttempts[questionNode]++;
+
+                    // Call to the event, in which the errors will be registered
+                    OnQuestionAnswered?.Invoke(isCorrect);
+
+                    if (isCorrect)
+                    {
+                        answeredCorrectly = true;
+                        // Show correct answer message
+                        yield return ShowDialogueLine(questionNode.correctText);
+                    }
+                    else if (questionAttempts[questionNode] < 3)
+                    {
+                        // Show wrong answer message
+                        yield return ShowDialogueLine(questionNode.wrongText);
+                    }
                 }
+
+                if (!answeredCorrectly)
+                {
+                    // Failed 3 times, show reveal
+                    yield return ShowDialogueLine(questionNode.revealText);
+                }
+
+                // Proceed to next node
+                node = questionNode.nextNode;
             }
             else
             {

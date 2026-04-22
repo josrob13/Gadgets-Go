@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFCu\xE1nto crees que se conocen?"
-  nextNode: {fileID: 11400000, guid: 1fc7ffb14c587b449b3370c8bcf210d0, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
@@ -27,3 +27,6 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  correctText: Muy bien!
+  wrongText: "Fallaste, int\xE9ntalo de nuevo!"
+  revealText: A primera vista, son amigas o conocidas con confianza

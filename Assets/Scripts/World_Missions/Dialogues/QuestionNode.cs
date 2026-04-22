@@ -12,4 +12,13 @@ public class QuestionNode : DialogueNode
     public DialogueNode onCorrect;
     public DialogueNode onIncorrect;
     public int correctOptionIndex;
+
+    [TextArea(1, 3)]
+    public string correctText; // Text shown when answered correctly
+
+    [TextArea(1, 3)]
+    public string wrongText; // Text shown when answered incorrectly (for retries)
+
+    [TextArea(1, 3)]
+    public string revealText; // Text shown when player fails 3 times
 }
