@@ -17,4 +17,13 @@ public class QuestionNode : DialogueNode
     [TextArea(2, 5)]
     [Tooltip("Explanation shown in the VR Guide when the player asks for a hint during this question. Leave empty to show a generic 'no hint' message.")]
     public string hint;
+
+    [TextArea(1, 3)]
+    public string correctText;
+
+    [TextArea(1, 3)]
+    public string wrongText;
+
+    [TextArea(1, 3)]
+    public string revealText;
 }

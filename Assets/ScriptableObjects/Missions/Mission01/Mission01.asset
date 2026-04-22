@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mission01
   m_EditorClassIdentifier: 
   missionName: Cazadora_Prestada
-  description: 'Dani y Bea: La mancha de pizza'
+  description: 'Dani y Bea: La mancha de grasa'
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 1b9ea75ae948bfd4e873057e5221347c, type: 2}
   cameraID: cameraMission01

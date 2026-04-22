@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "F\xEDjate en los pu\xF1os y el tono de Dani. \xBFC\xF3mo se siente?"
-  nextNode: {fileID: 11400000, guid: 5188f10eb824f394b864f93cffed42e6, type: 2}
+  nextNode: {fileID: 11400000, guid: db4a5c63998a6ea42a8849ad2d2212ef, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  voiceClip: {fileID: 0}
   questionText: "\xBFC\xF3mo se siente Dani?"
   options:
   - "Est\xE1 asustado porque parece sangre"
@@ -29,4 +28,6 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
-  hint: Pereira7
+  correctText: Eso es!
+  wrongText: Vaya...
+  revealText: "Creo que m\xE1s bien, Dani se siente furiosa e indignada"

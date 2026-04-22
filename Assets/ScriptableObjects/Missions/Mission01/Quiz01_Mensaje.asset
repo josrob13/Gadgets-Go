@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 ha pasado realmente en esta escena?"
-  nextNode: {fileID: 11400000, guid: 7de10be5468750c4f8806b3bdf5fe73d, type: 2}
+  nextNode: {fileID: 11400000, guid: 5a6e622ae309701428ef40e702d0dd75, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
@@ -28,3 +28,6 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  correctText: "Guau!\t"
+  wrongText: "Int\xE9ntalo de nuevo."
+  revealText: Parece que Bea ha devuelto la chaqueta de Dani sucia

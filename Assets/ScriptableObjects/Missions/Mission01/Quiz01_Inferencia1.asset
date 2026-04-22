@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 crees que pasar\xE1 justo despu\xE9s?"
-  nextNode: {fileID: 11400000, guid: a41b1f2e6be80da4c9fb941cdf71a01a, type: 2}
+  nextNode: {fileID: 11400000, guid: 28104e8552e574345a8022137aefed94, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
@@ -28,3 +28,6 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  correctText: Bien!
+  wrongText: "Int\xE9ntalo de nuevo."
+  revealText: "Con lo que sabemos, lo m\xE1s probable es que Dani se vaya enfadada."

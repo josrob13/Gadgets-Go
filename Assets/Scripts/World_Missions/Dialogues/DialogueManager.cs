@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueNodeEvents events;
     private DialogueAnimator currentSpeaker = null;
     private Dictionary<string, DialogueAnimator> speakers = new();
+    private Dictionary<QuestionNode, int> questionAttempts = new();
 
     // Two independent pause sources — dialogue only runs when neither is active.
     private bool _faceTrackingPaused = false;
@@ -113,9 +114,11 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator StartDialogue(DialogueNode start, Vector3? canvasPosition = null, Quaternion? canvasRotation = null)
     {
+        Debug.Log("Starting dialogue...");
+        questionAttempts.Clear();
         if (canvasController != null)
             canvasController.OnDialogueStart(canvasPosition, canvasRotation);
-        
+
         DialogueNode node = start;
         while (node != null)
         {
@@ -134,24 +137,47 @@ public class DialogueManager : MonoBehaviour
 
             if (node is QuestionNode questionNode)
             {
-                // Read the question aloud while choices are displayed
-                DialogueAudioManager.Instance?.PlayVoice(questionNode.voiceClip, speakerTransform);
+                // Initialize attempts if not present
+                if (!questionAttempts.ContainsKey(questionNode))
+                    questionAttempts[questionNode] = 0;
 
-                yield return ShowQuestion(questionNode);
-
-                // Stop question voice once the player has answered
-                DialogueAudioManager.Instance?.StopVoice(fade: true);
-
-                bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
-                _lastAnswerWasCorrect = isCorrect;
-
-                // Call to the event, in which the errors will be registered
-                OnQuestionAnswered?.Invoke(isCorrect);
-                if (questionNode.nextNode is PostAnswerNode p)
+                bool answeredCorrectly = false;
+                while (!answeredCorrectly && questionAttempts[questionNode] < 3)
                 {
-                    node = p;
-                    node.SetText(isCorrect ? p.correctAnswer : p.badAnswer);
+                    // Repeating the audio for each attempt, as the player might want to hear the question again after getting it wrong
+                    DialogueAudioManager.Instance?.PlayVoice(questionNode.voiceClip, speakerTransform);
+                    yield return ShowQuestion(questionNode);
+                    DialogueAudioManager.Instance?.StopVoice(fade: true); // Stop question voice once the player has answered
+
+                    bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
+                    questionAttempts[questionNode]++;
+
+                    // Call to the event, in which the errors will be registered
+                    OnQuestionAnswered?.Invoke(isCorrect);
+
+                    if (isCorrect)
+                    {
+                        answeredCorrectly = true;
+                        _lastAnswerWasCorrect = true;
+                        // Show correct answer message
+                        yield return ShowDialogueLine(questionNode.correctText);
+                    }
+                    else if (questionAttempts[questionNode] < 3)
+                    {
+                        // Show wrong answer message
+                        yield return ShowDialogueLine(questionNode.wrongText);
+                    }
                 }
+
+                if (!answeredCorrectly)
+                {
+                    // Failed 3 times, show reveal
+                    _lastAnswerWasCorrect = false;
+                    yield return ShowDialogueLine(questionNode.revealText);
+                }
+
+                // Proceed to next node
+                node = questionNode.nextNode;
             }
             else
             {
