@@ -19,6 +19,9 @@ public class QuestionNode : DialogueNode
     [TextArea(1, 3)]
     public string wrongText; // Text shown when answered incorrectly (for retries)
 
+    [Header("Analytics")]
+    public SocialInferenceCategory inferenceCategory;
+
     [TextArea(1, 3)]
     public string revealText; // Text shown when player fails 3 times
 }

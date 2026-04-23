@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
-    public event Action<bool> OnQuestionAnswered;
+    public event Action<bool, QuestionNode> OnQuestionAnswered;
 
     [Header("UI References")]
     [SerializeField] private DialogueUI dialogueUI;
@@ -55,8 +55,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartDialogue(DialogueNode start)
+    public IEnumerator StartDialogue(DialogueNode start, string dialogueId = null)
     {
+        if (!string.IsNullOrEmpty(dialogueId))
+            AnalyticsManager.Instance?.BeginDialogue(dialogueId);
+
         Debug.Log("Starting dialogue...");
         questionAttempts.Clear();
         DialogueNode node = start;
@@ -87,7 +90,7 @@ public class DialogueManager : MonoBehaviour
                     questionAttempts[questionNode]++;
 
                     // Call to the event, in which the errors will be registered
-                    OnQuestionAnswered?.Invoke(isCorrect);
+                    OnQuestionAnswered?.Invoke(isCorrect, questionNode);
 
                     if (isCorrect)
                     {
@@ -117,6 +120,9 @@ public class DialogueManager : MonoBehaviour
                 node = node.nextNode;
             }
         }
+
+        if (!string.IsNullOrEmpty(dialogueId))
+            AnalyticsManager.Instance?.EndDialogue();
     }
 
     private void UpdateSpeakerState(DialogueNode node) {

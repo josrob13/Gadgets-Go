@@ -11,8 +11,17 @@ public class GameHandler : MonoBehaviour
     {
         if (Instance == null)
         {
+            Debug.Log("[GameHandler] Instancia creada y persistente entre escenas.");
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            GameObject rootObject = transform.root.gameObject;
+            DontDestroyOnLoad(rootObject);
+
+            if (AnalyticsManager.Instance == null && rootObject.GetComponentInChildren<AnalyticsManager>() == null)
+            {
+                Debug.Log("[GameHandler] AnalyticsManager no encontrado. Agregando componente.");
+                // Verifying if AnalyticsManager is already in the scene before adding it to avoid duplicates
+                rootObject.AddComponent<AnalyticsManager>();
+            }
         }
         else
         {
