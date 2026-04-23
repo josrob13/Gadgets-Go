@@ -40,10 +40,14 @@ public class MissionManager : MonoBehaviour
         StartCoroutine(RunMission());
     }
 
-    private void ToErrorRegister(bool isCorrect)
+    private void ToErrorRegister(bool isCorrect, QuestionNode questionNode)
     {
         if (!isCorrect && !string.IsNullOrEmpty(currentMission?.GetMissionName()))
+        {
             PlayerProgress.Instance?.RegisterError(currentMission.GetMissionName());
+            AnalyticsManager.Instance?.RegisterInferenceError(questionNode.inferenceCategory);
+            AnalyticsManager.Instance?.RegisterCurrentDialogueWrongAnswer();
+        }
     }
 
     private IEnumerator RunMission()
@@ -158,8 +162,9 @@ public class MissionManager : MonoBehaviour
         try
         {
             yield return DialogueManager.Instance.StartDialogue(
-                currentMission.GetDialogueNode(), 
-                canvasPosition, 
+                currentMission.GetDialogueNode(),
+                currentMission.GetMissionName(),
+                canvasPosition,
                 canvasRotation
             );
         }

@@ -21,6 +21,9 @@ public class QuestionNode : DialogueNode
     [TextArea(1, 3)]
     public string correctText;
 
+    [Header("Analytics")]
+    public SocialInferenceCategory inferenceCategory;
+
     [TextArea(1, 3)]
     public string wrongText;
 

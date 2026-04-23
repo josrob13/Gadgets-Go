@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
+using System.Text;
 
 public static class SaveSystem
 {
@@ -9,7 +11,9 @@ public static class SaveSystem
     {
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(saveFilePath, json);
+        string reportPath = AnalyticsManager.Instance.ExportTherapistCsv();
         Debug.Log($"[SaveSystem] Partida guardada exitosamente en: {saveFilePath}");
+        Debug.Log($"[SaveSystem] Reporte CSV exportado a: {reportPath}");
     }
 
     public static GameData Load()
