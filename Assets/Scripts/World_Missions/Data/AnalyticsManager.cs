@@ -112,7 +112,17 @@ public class AnalyticsManager : MonoBehaviour
     
     public string ExportTherapistCsv()
     {
-        string reportPath = Application.persistentDataPath + "/gamedata_report.csv";
+        string basePath = Application.persistentDataPath;
+        string therapistFolder = SaveSystem.GetCurrentTherapistFolder();
+        if (!string.IsNullOrEmpty(therapistFolder))
+        {
+            basePath = Path.Combine(basePath, therapistFolder);
+            if (!Directory.Exists(basePath))
+            {
+                Directory.CreateDirectory(basePath);
+            }
+        }
+        string reportPath = Path.Combine(basePath, "gamedata_report.csv");
         var lines = new List<string>
         {
             "Tipo;Valor",
@@ -178,7 +188,7 @@ public class AnalyticsManager : MonoBehaviour
         return entry;
     }
 
-    private void LoadAnalyticsFromSave()
+    public void LoadAnalyticsFromSave()
     {
         GameData savedData = SaveSystem.Load();
         if (savedData == null)
@@ -197,6 +207,18 @@ public class AnalyticsManager : MonoBehaviour
         data.dialogueAnalyticsSessions = dialogueAnalyticsSessions ?? new List<DialogueAnalyticsEntry>();
         data.inferenceCategoryErrors = inferenceCategoryErrors ?? new List<InferenceCategoryErrorCounter>();
         SaveSystem.Save(data);
+    }
+
+    public void ResetAnalytics()
+    {
+        totalPlayedTime = 0f;
+        currentDialogueId = null;
+        currentDialogueElapsed = 0f;
+        dialogueAnalyticsSessions.Clear();
+        inferenceCategoryErrors.Clear();
+        dialogueAnalyticsMap.Clear();
+        inferenceErrorMap.Clear();
+        Debug.Log("[AnalyticsManager] Analytics reseteados para nueva partida.");
     }
 
     private void OnApplicationQuit()

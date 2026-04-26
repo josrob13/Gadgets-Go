@@ -21,6 +21,7 @@ public class PlayerInventory : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadInventoryData();
         }
         else
         {
@@ -37,5 +38,38 @@ public class PlayerInventory : MonoBehaviour
     {
         spyCoins += amount;
         Debug.Log($"Added {amount} spy coins. Total now: {spyCoins}");
+        SaveInventoryData();
+    }
+
+    public int GetSpyCoins()
+    {
+        return spyCoins;
+    }
+
+    private void LoadInventoryData()
+    {
+        GameData savedData = SaveSystem.Load();
+        if (savedData != null && savedData.inventory != null)
+        {
+            spyCoins = savedData.inventory.spyCoins;
+            Debug.Log($"[PlayerInventory] Loaded {spyCoins} spy coins from save.");
+        }
+        else
+        {
+            spyCoins = 0;
+            Debug.Log("[PlayerInventory] No saved inventory data found, starting with 0 spy coins.");
+        }
+    }
+
+    private void SaveInventoryData()
+    {
+        GameData data = SaveSystem.Load() ?? new GameData();
+        if (data.inventory == null)
+        {
+            data.inventory = new InventoryData();
+        }
+        data.inventory.spyCoins = spyCoins;
+        SaveSystem.Save(data);
+        Debug.Log($"[PlayerInventory] Saved {spyCoins} spy coins.");
     }
 }
