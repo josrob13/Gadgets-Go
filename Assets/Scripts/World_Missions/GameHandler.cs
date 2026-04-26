@@ -30,21 +30,76 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void StartNewGame()
+    public void StartNewGame(string baseTherapistId)
     {
         Debug.Log("[GameHandler] Iniciando Nueva Partida...");
 
-        // 1. Creamos datos limpios por defecto
+        // 1. Crear nueva carpeta con timestamp
+        string therapistFolder = SaveSystem.CreateNewTherapistFolder(baseTherapistId);
+        SaveSystem.SetTherapistFolder(therapistFolder);
+
+        // 2. Reseteamos los analytics para empezar de cero
+        AnalyticsManager.Instance?.ResetAnalytics();
+
+        // 3. Creamos datos limpios por defecto
         GameData newGameData = new GameData();
         
-        // 2. Sobrescribimos el archivo viejo en el disco duro
-        // SaveSystem.Save(newGameData);
+        // 4. Sobrescribimos el archivo viejo en el disco duro
+        SaveSystem.Save(newGameData);
 
-        // 3. Reiniciamos las variables internas del GameHandler por si acaso
+        // 5. Reiniciamos las variables internas del GameHandler por si acaso
         this.indexWorld = newGameData.savedWorldIndex;
 
-        // 4. Llamamos al SceneLoader para ir al juego
+        // 6. Llamamos al SceneLoader para ir al juego
         // Asegúrate de que "RealGame" esté en File -> Build Settings
+        if (SceneLoader.Instance != null)
+        {
+            SceneLoader.Instance.LoadSceneAsync("RealGame");
+        }
+        else
+        {
+            Debug.LogError("¡No se encontró el SceneLoader en la escena!");
+        }
+    }
+
+    public void ContinueGame()
+    {
+        string mostRecentFolder = SaveSystem.GetMostRecentTherapistFolder();
+        if (!string.IsNullOrEmpty(mostRecentFolder))
+        {
+            SaveSystem.SetTherapistFolder(mostRecentFolder);
+            GameData loadedData = SaveSystem.Load();
+            // Restaurar estado del juego
+            this.indexWorld = loadedData.savedWorldIndex;
+            AnalyticsManager.Instance?.LoadAnalyticsFromSave();
+
+            Debug.Log($"[GameHandler] Continuando partida en carpeta: {mostRecentFolder}");
+
+            if (SceneLoader.Instance != null)
+            {
+                SceneLoader.Instance.LoadSceneAsync("RealGame");
+            }
+            else
+            {
+                Debug.LogError("¡No se encontró el SceneLoader en la escena!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[GameHandler] No hay partidas guardadas para continuar.");
+        }
+    }
+
+    public void LoadGame(string therapistId)
+    {
+        SaveSystem.SetTherapistFolder(therapistId);
+        GameData loadedData = SaveSystem.Load();
+        // Restaurar estado del juego
+        this.indexWorld = loadedData.savedWorldIndex;
+        AnalyticsManager.Instance?.LoadAnalyticsFromSave();
+
+        Debug.Log($"[GameHandler] Cargando partida desde carpeta: {therapistId}");
+
         if (SceneLoader.Instance != null)
         {
             SceneLoader.Instance.LoadSceneAsync("RealGame");

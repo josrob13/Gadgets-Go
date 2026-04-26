@@ -20,6 +20,19 @@ namespace SlimUI.ModernMenu{
         public GameObject exitMenu;
         [Tooltip("Optional 4th Menu")]
         public GameObject extrasMenu;
+		
+        [Tooltip("Popup for entering folder name before new game")]
+        public GameObject newGamePopup;
+
+        [Header("PLAY MENU UI")]
+        public Button newGameFromPlayMenuButton;
+        public Button continueFromPlayMenuButton;
+        public Button loadGameFromPlayMenuButton;
+
+        [Header("NEW GAME POPUP UI")]
+        public TMP_InputField folderNameInput;
+        public Button confirmNewGameButton;
+        public Button cancelNewGameButton;
 
         public enum Theme {custom1, custom2, custom3};
         [Header("THEME SETTINGS")]
@@ -82,10 +95,12 @@ namespace SlimUI.ModernMenu{
 			playMenu.SetActive(false);
 			exitMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
+			if(newGamePopup) newGamePopup.SetActive(false);
 			firstMenu.SetActive(true);
 			mainMenu.SetActive(true);
 
 			SetThemeColors();
+			SetupNewGamePopup();
 		}
 
 		void SetThemeColors()
@@ -113,24 +128,75 @@ namespace SlimUI.ModernMenu{
 			}
 		}
 
-		public void PlayCampaign(){
-			exitMenu.SetActive(false);
-			if(extrasMenu) extrasMenu.SetActive(false);
-			playMenu.SetActive(true);
+		void SetupNewGamePopup()
+		{
+			if (confirmNewGameButton != null)
+				confirmNewGameButton.onClick.AddListener(OnConfirmNewGame);
+			if (cancelNewGameButton != null)
+				cancelNewGameButton.onClick.AddListener(HideNewGamePopup);
+			if (newGameFromPlayMenuButton != null)
+				newGameFromPlayMenuButton.onClick.AddListener(ShowNewGamePopup);
+			if (continueFromPlayMenuButton != null)
+				continueFromPlayMenuButton.onClick.AddListener(OnContinueFromPlayMenu);
+			if (loadGameFromPlayMenuButton != null)
+				loadGameFromPlayMenuButton.onClick.AddListener(OnLoadGameFromPlayMenu);
 		}
-		
-		public void PlayCampaignMobile(){
-			exitMenu.SetActive(false);
-			if(extrasMenu) extrasMenu.SetActive(false);
-			playMenu.SetActive(true);
-			mainMenu.SetActive(false);
+
+		public void ShowNewGamePopup(){
+			if(newGamePopup) newGamePopup.SetActive(true);
+			if(folderNameInput) folderNameInput.text = ""; // Limpiar el input
+		}
+
+		void HideNewGamePopup()
+		{
+			if(newGamePopup) newGamePopup.SetActive(false);
+		}
+
+		void OnContinueFromPlayMenu()
+		{
+			GameHandler.Instance.ContinueGame();
+		}
+
+		void OnLoadGameFromPlayMenu()
+		{
+			// Aquí podrías mostrar un menú de carga o directamente llamar a ContinueGame por ahora
+			GameHandler.Instance.ContinueGame();
+		}
+
+		void OnConfirmNewGame()
+		{
+			if (folderNameInput == null) return;
+
+			string folderName = folderNameInput.text.Trim();
+			if (string.IsNullOrEmpty(folderName))
+			{
+				Debug.LogWarning("Por favor ingresa un nombre para la carpeta.");
+				return;
+			}
+
+			HideNewGamePopup();
+			GameHandler.Instance.StartNewGame(folderName);
 		}
 
 		public void ReturnMenu(){
 			playMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			exitMenu.SetActive(false);
+			if(newGamePopup) newGamePopup.SetActive(false);
 			mainMenu.SetActive(true);
+		}
+
+		public void PlayCampaign(){
+			exitMenu.SetActive(false);
+			if(extrasMenu) extrasMenu.SetActive(false);
+			playMenu.SetActive(true);
+		}
+
+		public void PlayCampaignMobile(){
+			exitMenu.SetActive(false);
+			if(extrasMenu) extrasMenu.SetActive(false);
+			playMenu.SetActive(true);
+			mainMenu.SetActive(false);
 		}
 
 		public void LoadScene(string scene){

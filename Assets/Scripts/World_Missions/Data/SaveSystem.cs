@@ -2,25 +2,52 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 public static class SaveSystem
 {
-    private static string saveFilePath = Application.persistentDataPath + "/gamedata.json";
+    private static string currentTherapistFolder = "";
+
+    public static void SetTherapistFolder(string therapistId)
+    {
+        currentTherapistFolder = therapistId;
+    }
+
+    public static string GetCurrentTherapistFolder()
+    {
+        return currentTherapistFolder;
+    }
+
+    private static string GetSaveFilePath()
+    {
+        string basePath = Application.persistentDataPath;
+        if (!string.IsNullOrEmpty(currentTherapistFolder))
+        {
+            basePath = Path.Combine(basePath, currentTherapistFolder);
+            if (!Directory.Exists(basePath))
+            {
+                Directory.CreateDirectory(basePath);
+            }
+        }
+        return Path.Combine(basePath, "gamedata.json");
+    }
 
     public static void Save(GameData data)
     {
         string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(saveFilePath, json);
+        string filePath = GetSaveFilePath();
+        File.WriteAllText(filePath, json);
         string reportPath = AnalyticsManager.Instance.ExportTherapistCsv();
-        Debug.Log($"[SaveSystem] Partida guardada exitosamente en: {saveFilePath}");
+        Debug.Log($"[SaveSystem] Partida guardada exitosamente en: {filePath}");
         Debug.Log($"[SaveSystem] Reporte CSV exportado a: {reportPath}");
     }
 
     public static GameData Load()
     {
-        if (File.Exists(saveFilePath))
+        string filePath = GetSaveFilePath();
+        if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(saveFilePath);
+            string json = File.ReadAllText(filePath);
             GameData loadedData = JsonUtility.FromJson<GameData>(json);
             
             Debug.Log("[SaveSystem] Partida cargada correctamente.");
@@ -31,5 +58,61 @@ public static class SaveSystem
             Debug.LogWarning("[SaveSystem] No se encontró partida guardada. Creando datos nuevos.");
             return new GameData();
         }
+    }
+
+    public static string CreateNewTherapistFolder(string baseTherapistId)
+    {
+        string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        string folderName = $"Terapeuta_{baseTherapistId}_{timestamp}";
+        string fullPath = Path.Combine(Application.persistentDataPath, folderName);
+        if (!Directory.Exists(fullPath))
+        {
+            Directory.CreateDirectory(fullPath);
+        }
+        return folderName;
+    }
+
+    public static string GetMostRecentTherapistFolder()
+    {
+        List<string> folders = GetAvailableTherapistFolders();
+        if (folders.Count == 0) return "";
+
+        string basePath = Application.persistentDataPath;
+        string mostRecent = "";
+        DateTime mostRecentTime = DateTime.MinValue;
+
+        foreach (string folder in folders)
+        {
+            string folderPath = Path.Combine(basePath, folder);
+            string filePath = Path.Combine(folderPath, "gamedata.json");
+            if (File.Exists(filePath))
+            {
+                DateTime lastWrite = File.GetLastWriteTime(filePath);
+                if (lastWrite > mostRecentTime)
+                {
+                    mostRecentTime = lastWrite;
+                    mostRecent = folder;
+                }
+            }
+        }
+        return mostRecent;
+    }
+
+    public static List<string> GetAvailableTherapistFolders()
+    {
+        string basePath = Application.persistentDataPath;
+        List<string> folders = new List<string>();
+        if (Directory.Exists(basePath))
+        {
+            foreach (string dir in Directory.GetDirectories(basePath))
+            {
+                string folderName = Path.GetFileName(dir);
+                if (folderName.StartsWith("Terapeuta_"))
+                {
+                    folders.Add(folderName);
+                }
+            }
+        }
+        return folders;
     }
 }
