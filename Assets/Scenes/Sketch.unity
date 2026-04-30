@@ -48967,6 +48967,7 @@ GameObject:
   - component: {fileID: 218802444}
   - component: {fileID: 218802443}
   - component: {fileID: 218802442}
+  - component: {fileID: 218802445}
   m_Layer: 3
   m_Name: OpcionA
   m_TagString: Untagged
@@ -49077,6 +49078,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218802440}
   m_CullTransparentMesh: 1
+--- !u!65 &218802445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218802440}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &218879958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97301,6 +97323,10 @@ MonoBehaviour:
   - {fileID: 1561578310}
   - {fileID: 1458962919}
   - {fileID: 2142572304}
+  enableVRInteraction: 1
+  pinchGestureButton: 16384
+  controller: 2
+  raycastDistance: 1000
 --- !u!1001 &462247441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188829,6 +188855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 914433625}
   questionUI: {fileID: 462053565}
+  canvasController: {fileID: 1012271032}
   textSpeed: 0.035
   events: {fileID: 994760031}
 --- !u!4 &868266526 stripped
@@ -198686,6 +198713,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 914433621}
   textComp: {fileID: 193857877}
+  enableVRInteraction: 1
+  continueGestureButton: 16384
+  controller: 2
 --- !u!114 &914433626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217381,6 +217411,7 @@ GameObject:
   - component: {fileID: 1012271031}
   - component: {fileID: 1012271030}
   - component: {fileID: 1012271029}
+  - component: {fileID: 1012271032}
   m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
@@ -217474,6 +217505,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1012271032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012271027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfc9424c2eefad41bfa703264d298bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1012271031}
+  distanceFromPlayer: 2.5
+  heightOffset: 0
 --- !u!1001 &1012425480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301752,6 +301798,7 @@ GameObject:
   - component: {fileID: 1458962921}
   - component: {fileID: 1458962920}
   - component: {fileID: 1458962919}
+  - component: {fileID: 1458962922}
   m_Layer: 3
   m_Name: OpcionC
   m_TagString: Untagged
@@ -301862,6 +301909,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458962917}
   m_CullTransparentMesh: 1
+--- !u!65 &1458962922
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458962917}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1459137591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324209,6 +324277,7 @@ GameObject:
   - component: {fileID: 1561578312}
   - component: {fileID: 1561578311}
   - component: {fileID: 1561578310}
+  - component: {fileID: 1561578313}
   m_Layer: 3
   m_Name: OpcionB
   m_TagString: Untagged
@@ -324319,6 +324388,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561578308}
   m_CullTransparentMesh: 1
+--- !u!65 &1561578313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561578308}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1561580587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442109,6 +442199,7 @@ GameObject:
   - component: {fileID: 2142572306}
   - component: {fileID: 2142572305}
   - component: {fileID: 2142572304}
+  - component: {fileID: 2142572307}
   m_Layer: 3
   m_Name: OpcionD
   m_TagString: Untagged
@@ -442219,6 +442310,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142572302}
   m_CullTransparentMesh: 1
+--- !u!65 &2142572307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142572302}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2142612383
 PrefabInstance:
   m_ObjectHideFlags: 0

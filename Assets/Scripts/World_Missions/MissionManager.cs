@@ -15,6 +15,9 @@ public class MissionManager : MonoBehaviour
     [Header("Player UI")]
     [SerializeField] private GameObject normalUI;
 
+    private Vector3 playerStartPosition;
+    private SmoothTeleport smoothTeleport;
+
     private void Awake()
     {
         if (Instance == null)
@@ -44,7 +47,32 @@ public class MissionManager : MonoBehaviour
 
     private IEnumerator RunMission()
     {
+        // Obtener referencias necesarias
+        smoothTeleport = smoothTeleport ?? FindObjectOfType<SmoothTeleport>();
+        
+        // Guardar posición inicial del jugador
+        playerStartPosition = player.transform.position;
+
+        // Desactivar movimiento del jugador (teleportación)
         player.enabled = false;
+        if (smoothTeleport != null) 
+            smoothTeleport.enabled = false;
+
+        // Teleportar jugador a posición de misión si está definida en el ScriptableObject
+        Vector3 missionStartPosition = currentMission.GetMissionStartPosition();
+        Vector3 missionStartRotation = currentMission.GetMissionStartRotation();
+
+        if (missionStartPosition != Vector3.zero)
+        {
+            player.transform.position = missionStartPosition;
+            player.transform.rotation = Quaternion.Euler(missionStartRotation);
+            Debug.Log($"[MissionManager] Jugador teleportado a posición de misión: {missionStartPosition}");
+        }
+        else
+        {
+            Debug.LogWarning("[MissionManager] No se pudo calcular posición de misión. El jugador permanece en su posición actual.");
+        }
+
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
 
         vCamMission.Priority++;
@@ -52,7 +80,7 @@ public class MissionManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        Debug.Log($"Mission Name: {currentMission.GetMissionName()} HASTA AQUI GUAY");
+        Debug.Log($"Mission Name: {currentMission.GetMissionName()} - Iniciando diálogo");
 
         yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
 
@@ -62,7 +90,7 @@ public class MissionManager : MonoBehaviour
         DialogueManager.Instance.OnQuestionAnswered += ToErrorRegister;
         try
         {
-            // Activate dialogue system
+            // Iniciar sistema de diálogos
             yield return DialogueManager.Instance.StartDialogue(currentMission.GetDialogueNode());
         }
         finally
@@ -73,18 +101,23 @@ public class MissionManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Fade, activate the control of player, show normal UI...
+        // Fade out y limpieza
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
-        // OLD VERSION:
-        //vCamMission.Priority--;
         currentMission.DeactivateCameras();
         normalUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
-        player.enabled = true;
 
-        // Complete the mission
-        Debug.Log($"Terminating and saving mission: {currentMission.GetMissionName()}");
+        // Reactivar movimiento del jugador y devolverlo a su posición anterior
+        player.enabled = true;
+        if (smoothTeleport != null) 
+            smoothTeleport.enabled = true;
+        
+        player.transform.position = playerStartPosition;
+        Debug.Log($"[MissionManager] Jugador liberado. Movimiento reactivado en posición anterior.");
+
+        // Completar la misión
+        Debug.Log($"Finalizando y guardando misión: {currentMission.GetMissionName()}");
         if (PlayerProgress.Instance.CompleteMission(currentMission.GetMissionName()))
         {
             GameHandler.Instance?.NextWorld();

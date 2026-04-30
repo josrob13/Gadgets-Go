@@ -18,3 +18,6 @@ MonoBehaviour:
   dialogueNode: {fileID: 11400000, guid: 1b9ea75ae948bfd4e873057e5221347c, type: 2}
   cameraID: cameraMission01
   cameraContainerName: Mission01
+  missionStartTransform: {fileID: 1862190778121117722, guid: 86a04230c9ccd664aac5947514ce0aae, type: 3}
+  useGlobalCoordinates: 1
+  lockPlayerDuringMission: 1

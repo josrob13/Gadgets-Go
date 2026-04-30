@@ -19,6 +19,11 @@ public class Mission : ScriptableObject
     [SerializeField] private string cameraID;
     [SerializeField] private string cameraContainerName;
 
+    [Header("Mission Position (Transform Reference)")]
+    [SerializeField] private Transform missionStartTransform;
+    [SerializeField] private bool useGlobalCoordinates = true;
+    [SerializeField] private bool lockPlayerDuringMission = true;
+
     public string GetMissionName()
     {
         return missionName;
@@ -42,6 +47,37 @@ public class Mission : ScriptableObject
     public string GetCameraID()
     {
         return cameraID;
+    }
+
+    public Vector3 GetMissionStartPosition()
+    {
+        if (missionStartTransform != null)
+        {
+            // Usar coordenadas globales (world space) para posiciones absolutas en el mundo
+            // Transform.position ya es global, Transform.localPosition es relativo al padre
+            return useGlobalCoordinates ? missionStartTransform.position : missionStartTransform.localPosition;
+        }
+
+        Debug.LogWarning($"[Mission] No se encontró Transform asignado para la posición de misión. Usando posición del jugador actual.");
+        return Vector3.zero;
+    }
+
+    public Vector3 GetMissionStartRotation()
+    {
+        if (missionStartTransform != null)
+        {
+            // Para rotación: rotation es global (world space), localRotation es relativa al padre
+            // Para posiciones absolutas, queremos que el jugador mire en una dirección absoluta
+            Quaternion rotation = useGlobalCoordinates ? missionStartTransform.rotation : missionStartTransform.localRotation;
+            return rotation.eulerAngles;
+        }
+
+        return Vector3.zero;
+    }
+
+    public bool ShouldLockPlayerDuringMission()
+    {
+        return lockPlayerDuringMission;
     }
 
     public void DeactivateCameras()

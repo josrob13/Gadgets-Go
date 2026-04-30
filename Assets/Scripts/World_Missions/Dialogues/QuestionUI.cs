@@ -1,15 +1,29 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class QuestionUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI questionComp;
     [SerializeField] private Button[] optionButtons;
+    
+    [Header("VR Settings")]
+    [SerializeField] private bool enableVRInteraction = true;
+    [SerializeField] private OVRInput.Button pinchGestureButton = OVRInput.Button.PrimaryHandTrigger;
+    [SerializeField] private OVRInput.Controller controller = OVRInput.Controller.RTouch;
+    [SerializeField] private float raycastDistance = 1000f;
 
     public bool HasAnswered { get; private set; }
     public int SelectedIndex { get; private set; }
+
+    private OVRCameraRig ovrCameraRig;
+    private Transform centerEyeAnchor;
+    private bool previousPinchState = false;
+    private Canvas targetCanvas;
+    private GraphicRaycaster graphicRaycaster;
 
     private void Awake()
     {
@@ -17,6 +31,23 @@ public class QuestionUI : MonoBehaviour
         {
             int idx = i;
             optionButtons[i].onClick.AddListener(() => OnOptionClicked(idx));
+        }
+
+        // Obtener referencias VR
+        ovrCameraRig = FindObjectOfType<OVRCameraRig>();
+        if (ovrCameraRig != null)
+        {
+            centerEyeAnchor = ovrCameraRig.centerEyeAnchor;
+        }
+
+        // Obtener referencias UI
+        targetCanvas = GetComponentInParent<Canvas>();
+        if (targetCanvas == null)
+            targetCanvas = FindObjectOfType<Canvas>();
+
+        if (targetCanvas != null)
+        {
+            graphicRaycaster = targetCanvas.GetComponent<GraphicRaycaster>();
         }
     }
 
@@ -31,7 +62,6 @@ public class QuestionUI : MonoBehaviour
             optionButtons[i].gameObject.SetActive(i < options.Length);
             if (i < options.Length) {
                 optionButtons[i].transform.Find("DialogueText").GetComponent<TextMeshProUGUI>().text = options[i];
-                //optionButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = options[i];
             }
         }
     }
@@ -43,4 +73,117 @@ public class QuestionUI : MonoBehaviour
     }
 
     public void Hide() => panel.SetActive(false);
+
+    /// <summary>
+    /// Detecta gestos VR y dispara los botones correspondientes
+    /// </summary>
+    private void Update()
+    {
+        if (!enableVRInteraction || centerEyeAnchor == null || !panel.activeSelf)
+            return;
+
+        // Detectar el gesto de pellizcar (trigger presionado)
+        bool currentPinchState = OVRInput.Get(pinchGestureButton, controller);
+
+        // Si el trigger fue presionado en este frame
+        if (currentPinchState && !previousPinchState)
+        {
+            HandleVRPinch();
+        }
+
+        previousPinchState = currentPinchState;
+    }
+
+    /// <summary>
+    /// Maneja el gesto de pellizcar en VR detectando qué botón está bajo la mirada del jugador
+    /// </summary>
+    private void HandleVRPinch()
+    {
+        Debug.Log("[QuestionUI] Gesto de pellizcar detectado");
+        
+        // Intentar primero con raycast gráfico (más confiable para UI)
+        Button detectedButton = DetectButtonWithGraphicRaycast();
+        
+        // Si no funciona raycast gráfico, intentar raycast físico
+        if (detectedButton == null)
+            detectedButton = DetectButtonWithPhysicsRaycast();
+
+        if (detectedButton != null && detectedButton.interactable)
+        {
+            Debug.Log($"[QuestionUI] Botón detectado: {detectedButton.gameObject.name}");
+            
+            // Obtener el índice del botón presionado
+            for (int i = 0; i < optionButtons.Length; i++)
+            {
+                if (optionButtons[i] == detectedButton)
+                {
+                    Debug.Log($"[QuestionUI] Ejecutando OnOptionClicked con índice {i}");
+                    OnOptionClicked(i);
+                    return;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[QuestionUI] No se detectó ningún botón bajo la mirada del jugador");
+        }
+    }
+
+    /// <summary>
+    /// Intenta detectar un botón usando raycast gráfico (para Canvas en Screen Space)
+    /// </summary>
+    private Button DetectButtonWithGraphicRaycast()
+    {
+        if (graphicRaycaster == null || targetCanvas == null)
+            return null;
+
+        // Para Canvas en WorldSpace, necesitamos convertir el rayo a posición en pantalla
+        if (targetCanvas.renderMode == RenderMode.WorldSpace)
+        {
+            return null; // Usar raycast físico en su lugar
+        }
+
+        var eventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        var results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(eventData, results);
+
+        foreach (var result in results)
+        {
+            Button button = result.gameObject.GetComponent<Button>();
+            if (button != null)
+                return button;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Intenta detectar un botón usando raycast físico
+    /// </summary>
+    private Button DetectButtonWithPhysicsRaycast()
+    {
+        Ray ray = new Ray(centerEyeAnchor.position, centerEyeAnchor.forward);
+        RaycastHit hit;
+
+        // Raycast físico para detectar colisores de los botones
+        if (Physics.Raycast(ray, out hit, raycastDistance))
+        {
+            Button button = hit.collider.GetComponent<Button>();
+            if (button != null)
+                return button;
+
+            // Si el collider no tiene Button, buscar en el padre
+            button = hit.collider.GetComponentInParent<Button>();
+            if (button != null)
+                return button;
+        }
+
+        return null;
+    }
 }
+
+

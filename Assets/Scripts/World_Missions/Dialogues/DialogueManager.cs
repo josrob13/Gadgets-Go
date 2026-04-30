@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private QuestionUI questionUI;
+    [SerializeField] private DialogueCanvasController canvasController;
     [SerializeField] private float textSpeed = 0.035f;
 
     [SerializeField] private DialogueNodeEvents events;
@@ -26,6 +27,12 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             CacheSpeakerAnimators();
+            
+            // Obtener referencia al controlador de Canvas si no está asignado
+            if (canvasController == null)
+                canvasController = GetComponentInChildren<DialogueCanvasController>();
+            if (canvasController == null)
+                canvasController = FindObjectOfType<DialogueCanvasController>();
         }
         else
         {
@@ -57,6 +64,11 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator StartDialogue(DialogueNode start)
     {
         Debug.Log("Starting dialogue...");
+        
+        // Activar controlador de Canvas para fijar su posición
+        if (canvasController != null)
+            canvasController.OnDialogueStart();
+        
         DialogueNode node = start;
         while (node != null)
         {
@@ -90,6 +102,10 @@ public class DialogueManager : MonoBehaviour
                 node = node.nextNode;
             }
         }
+        
+        // Desactivar controlador de Canvas cuando termina el diálogo
+        if (canvasController != null)
+            canvasController.OnDialogueEnd();
     }
 
     private void UpdateSpeakerState(DialogueNode node) {
