@@ -1,0 +1,120 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 10
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 80
+
+' --- COLORES ---
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+skinparam ClassBackgroundColor<<Service>> #FDEDEC
+skinparam ClassBorderColor<<Service>> #C0392B
+skinparam ClassHeaderBackgroundColor<<Service>> #F5B7B1
+
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+' --- CORE ---
+package "Core" {
+
+  class GameHandler <<Principal>> {
+    + {static} Instance : GameHandler
+    - worldsDB : WorldsDB
+    - indexWorld : int
+    --
+    + StartNewGame(id : string)
+    + ContinueGame()
+    + LoadGame(id : string)
+    + NextWorld() : bool
+  }
+}
+
+' --- SERVICIOS ---
+package "Services" {
+
+  class SaveSystem <<Service>> {
+    + SetFolder(id : string)
+    + GetFolder() : string
+    + Save(data : GameData)
+    + Load() : GameData
+  }
+
+  class SceneLoader <<Service>> {
+    + {static} Instance : SceneLoader
+    + LoadScene(scene : string)
+  }
+}
+
+' --- DATOS ---
+package "Data" {
+
+  class GameData <<Data>> {
+    + worldIndex : int
+    + playedTime : float
+    + completedMissions : List<String>
+  }
+
+  class WorldsDB <<Data>> {
+    + worlds : World[]
+  }
+
+  class World <<Data>> {
+    + name : string
+    + scene : string
+    + missions : List<Mission>
+  }
+
+  class Mission <<Data>> {
+    + GetName() : string
+    + GetDialogue() : DialogueNode
+  }
+}
+
+' --- PROGRESO ---
+package "Progress" {
+
+  class PlayerProgress <<Service>> {
+    + {static} Instance : PlayerProgress
+    + CompleteMission(id : string) : bool
+    + IsWorldCompleted(world : World) : bool
+    + RegisterError(id : string)
+  }
+}
+
+' --- DIÁLOGO ---
+class DialogueNode
+
+' --- RELACIONES ---
+
+' Core
+GameHandler --> WorldsDB
+GameHandler --> GameData
+
+' Servicios
+GameHandler ..> SaveSystem
+GameHandler ..> SceneLoader
+
+' Progreso
+GameHandler ..> PlayerProgress
+
+' Datos
+WorldsDB "1" *-- "0..*" World
+World "1" *-- "0..*" Mission
+Mission --> DialogueNode
+
+' Persistencia
+SaveSystem --> GameData
+
+' Lógica
+PlayerProgress --> World
+
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 70
+
+' Colores
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+skinparam ClassBackgroundColor<<Component>> #E8F8F5
+skinparam ClassBorderColor<<Component>> #17A589
+skinparam ClassHeaderBackgroundColor<<Component>> #A3E4D7
+
+' --- UNITY ---
+package "UnityEngine" {
+    class MonoBehaviour
+}
+
+package "UnityEngine.Events" {
+    class UnityEvent
+}
+
+' --- CÁMARAS ---
+package "Cinemachine / Cameras" {
+    class VirtualCamera <<Component>>
+}
+
+' --- DIÁLOGO ---
+package "Dialogue System" {
+    class DialogueNode
+}
+
+' --- EVENTOS ---
+package "Event System" {
+
+    class DialogueNodeEvents <<Principal>> {
+        - eventsMap : Dictionary<DialogueNode, UnityEvent>
+        - entries : List<Entry>
+        --
+        - Awake() : void
+        + Invoke(node : DialogueNode) : void
+    }
+
+    class Entry <<Data>> {
+        + node : DialogueNode
+        + event : UnityEvent
+    }
+
+    ' Estructura interna
+    DialogueNodeEvents "1" *-- "0..*" Entry
+    Entry --> DialogueNode
+    Entry --> UnityEvent
+}
+
+' --- HERENCIA ---
+MonoBehaviour <|-- DialogueNodeEvents
+
+' --- RELACIONES PRINCIPALES ---
+
+' Uso de datos
+DialogueNodeEvents ..> DialogueNode
+DialogueNodeEvents ..> UnityEvent
+
+' Integración externa
+DialogueNodeEvents --> VirtualCamera
+
+@enduml

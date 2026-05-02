@@ -62,14 +62,13 @@ public class SceneLoader : MonoBehaviour
 
         while (!operation.isDone)
         {
-            // Unity carga la escena del 0 al 0.9. Mapeamos eso del 0 al 1 para el Slider.
+            // Unity loads scene from 0 to 0.9. Mapping that for the Slider.
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             if (loadingBar != null) loadingBar.value = progress;
 
-            // Cuando la carga llega al 90%, significa que está lista para mostrarse
+            // When the load reaches 90%, it means the scene is ready to be activated.
             if (operation.progress >= 0.9f)
             {
-                // Aquí podrías añadir un mensaje de "Pulsa cualquier tecla para continuar"
                 operation.allowSceneActivation = true;
             }
 

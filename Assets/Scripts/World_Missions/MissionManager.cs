@@ -67,7 +67,6 @@ public class MissionManager : MonoBehaviour
         DialogueManager.Instance.OnQuestionAnswered += ToErrorRegister;
         try
         {
-            // Activate dialogue system
             yield return DialogueManager.Instance.StartDialogue(currentMission.GetDialogueNode(), currentMission.GetMissionName());
         }
         finally

@@ -1,0 +1,109 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+
+' --- AJUSTES DE ESPACIADO (LOS AIRBAGS) ---
+skinparam nodesep 60 ' Espacio horizontal entre cajas
+skinparam ranksep 80 ' Espacio vertical entre filas de cajas
+
+' Estilos de colores
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+' --- ESTRUCTURAS ---
+package "Unity Engine" {
+    class MonoBehaviour
+    class Animator
+    class CapsuleCollider
+    class ScriptableObject
+    class Transform
+}
+
+package "NPC System - Animation" {
+    class EmotionController <<Principal>> {
+        - animator : Animator
+        - layerIndex : int
+        --
+        + SetExpression(emotionName : string) : void
+    }
+
+    class DialogueAnimator <<Principal>> {
+        --
+        + ApplyState(state : ActorState) : void
+        - PlayBodyAnimation(anim : string) : void
+    }
+
+    struct ActorState <<Data>> {
+        + bodyAnimation : string
+        + faceExpression : string
+    }
+}
+
+package "NPC System - Interaction" {
+    interface IMissionProvider {
+        + StartMission() : void
+    }
+
+    class NPCInteractable <<Principal>> {
+        --
+        + Interact(playerTransform : Transform) : void
+    }
+
+    class ChatBubble <<static>> {
+        --
+        + {static} Create(parent : Transform, ...) : void
+    }
+}
+
+package "Mission System" {
+    class NPCMission <<Principal>> {
+        - missionData : ScriptableObject
+        --
+        + StartMission() : void
+    }
+
+    class MissionManager {
+        --
+        + HandleMission(mission : ScriptableObject) : void
+    }
+}
+
+' --- RELACIONES ---
+
+' Herencia de Unity
+MonoBehaviour <|-- EmotionController
+MonoBehaviour <|-up- DialogueAnimator
+MonoBehaviour <|-- NPCInteractable
+MonoBehaviour <|-- NPCMission
+
+' Relaciones de Animación
+DialogueAnimator --> EmotionController : mediador
+DialogueAnimator ..> ActorState : usa
+
+' --- EL AJUSTE CLAVE AQUÍ ---
+' Usamos -up-> para que busque el paquete de arriba y triple guion para dar distancia
+EmotionController ---up-> Animator : controla
+
+' Relaciones de Interacción
+NPCInteractable ..> IMissionProvider : consulta
+NPCInteractable ..> ChatBubble : usa (fallback)
+NPCInteractable ..> Transform : requiere
+
+' Relaciones de Misión
+IMissionProvider <|.. NPCMission
+NPCMission --> ScriptableObject : referencia
+NPCMission ..> MissionManager : entrega misión
+
+@enduml

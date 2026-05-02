@@ -1,0 +1,59 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 80
+
+' Estilos de colores
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+' --- ESTRUCTURAS ---
+
+package "UnityEngine" {
+    class MonoBehaviour
+    class Animator
+}
+
+package "NPC Animation" {
+    class EmotionController <<Principal>> {
+        - animator : Animator
+        - layerIndex : int
+        --
+        - Start() : void
+        + SetExpression(emotionName : string) : void
+        - HasState(stateName: string) : bool
+    }
+}
+
+' --- RELACIONES ---
+
+' Herencia
+MonoBehaviour <|-- EmotionController
+
+' Dependencia técnica
+EmotionController "1" o-- "1" Animator
+
+' Notas técnicas para el TFG
+note right of EmotionController::layerIndex
+  Calculado en Start() para 
+  evitar búsquedas por string
+  en tiempo de ejecución.
+end note
+
+note bottom of EmotionController
+  Usa **Animator.StringToHash()** para
+  optimizar el acceso a los estados
+  y **CrossFadeInFixedTime()** para
+  el blending de expresiones.
+end note
+
+@enduml

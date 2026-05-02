@@ -1,0 +1,66 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 80
+
+' Estilos de colores
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+' --- ESTRUCTURAS ---
+
+package "UnityEngine" {
+    class MonoBehaviour
+    class Canvas
+}
+
+package "NPC System" {
+    class DialogueAnimator
+}
+
+package "Dialogue System" {
+    class DialogueNode
+    class QuestionNode
+    class DialogueNodeEvents <<(S,#F9E79F)>>
+}
+
+package "Dialogue Logic" {
+    class DialogueManager <<Principal>> {
+        - speakers : Dictionary<string, DialogueAnimator>
+        - events : DialogueNodeEvents
+        - dialogueCanvas : Canvas
+        --
+        - Awake() : void
+        + StartDialogue(start : DialogueNode) : void
+        - UpdateSpeakerState(node : DialogueNode) : void
+        - ShowDialogueLine(line : string) : void
+        - ShowQuestion(qNode : QuestionNode) : void
+    }
+}
+
+' --- RELACIONES ---
+
+' Herencia
+MonoBehaviour <|-- DialogueManager
+
+' Caching y Mediación
+DialogueManager "1" o-right-> "*" DialogueAnimator : caching O(1)
+DialogueManager *-- DialogueNodeEvents : ejecuta
+
+' Procesamiento de Nodos
+DialogueManager ..> DialogueNode : procesa \n narración
+DialogueManager ..> QuestionNode : gestiona \n evaluación
+
+' Interfaz
+DialogueManager --> Canvas : actualiza UI
+
+@enduml

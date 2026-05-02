@@ -1,0 +1,146 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 60
+skinparam ranksep 60
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+skinparam ClassBackgroundColor<<Service>> #FDEDEC
+skinparam ClassBorderColor<<Service>> #C0392B
+skinparam ClassHeaderBackgroundColor<<Service>> #F5B7B1
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+' --- UNITY ---
+package "UnityEngine" {
+    class MonoBehaviour
+    class Rigidbody
+    class GameObject
+    class Transform
+}
+
+' --- CINEMACHINE ---
+package "Cinemachine" {
+    class CinemachineCamera
+}
+
+' --- INTERFACES ---
+interface IInteractable
+
+' --- PLAYER CORE ---
+package "Player Control" {
+    class Player <<Principal>> {
+        - playerName : string
+        - playerMovement : PlayerMovement
+        - playerInteraction : PlayerInteraction
+        --
+        - Update() : void
+        - FixedUpdate() : void
+    }
+
+    class PlayerMovement {
+        - walkSpeed : float
+        - sprintSpeed : float
+        - rb : Rigidbody
+        - camera : CinemachineCamera
+        - orientation : Transform
+        --
+        + UpdateMovement() : void
+        + FixedMovement() : void
+        - MyInput() : void
+        - StateHandler() : void
+    }
+
+    class PlayerInteraction {
+        - interactDistance : float
+        - interactKey : KeyCode
+        - pauseKey : KeyCode
+        - menuKey : KeyCode
+        - interactiveMenu : InteractiveMenu
+        - uiManager : UIManager
+        --
+        + KeyInteract() : void
+        + GetInteractableObject() : IInteractable
+    }
+
+    Player *-- PlayerMovement
+    Player *-- PlayerInteraction
+}
+
+' --- INVENTARIO ---
+package "Player Inventory" {
+    class PlayerInventory <<Service>> {
+        + {static} Instance : PlayerInventory
+        - spyCoins : int
+        - gadgets : List<GameObject>
+        - collectibles : List<GameObject>
+        --
+        + AddSpyCoins(amount : int) : void
+        + GetSpyCoins() : int
+        - LoadInventoryData() : void
+        - SaveInventoryData() : void
+    }
+}
+
+' --- PROGRESO ---
+package "Player Progress" {
+    class PlayerProgress <<Service>> {
+        + {static} Instance : PlayerProgress
+        - completedMissionsSerialized : List<string>
+        - errorsByMissionSerialized : List<MissionErrorCounter>
+        - completedMissions : HashSet<string>
+        - errorsByMission : Dictionary<string, int>
+        --
+        + CompleteMission(missionId : string) : bool
+        + RegisterError(missionId : string) : void
+        + IsMissionCompleted(missionId : string) : bool
+        + IsWorldCompleted(world: World) : bool
+    }
+
+    class MissionErrorCounter <<Data>> {
+        + missionId : string
+        + errors : int
+    }
+
+    PlayerProgress *-- MissionErrorCounter
+}
+
+' --- UI ---
+package "Player UI" {
+    class PlayerInteractUI {
+        - container : GameObject
+        - playerInteraction : PlayerInteraction
+        - interactionTextMeshProGUI : TextMeshProUGUI
+        --
+        - Update() : void
+        - Show(interactable : IInteractable) : void
+        - Hide() : void
+    }
+}
+
+' --- HERENCIA ---
+MonoBehaviour <|-- Player
+MonoBehaviour <|-- PlayerMovement
+MonoBehaviour <|-- PlayerInteraction
+MonoBehaviour <|-- PlayerInventory
+MonoBehaviour <|-- PlayerProgress
+MonoBehaviour <|-- PlayerInteractUI
+
+' --- RELACIONES ---
+PlayerInteraction --> IInteractable
+PlayerInteractUI --> PlayerInteraction
+PlayerInteractUI ..> IInteractable
+
+PlayerMovement --> Rigidbody
+PlayerMovement --> CinemachineCamera
+
+PlayerProgress ..> PlayerInventory
+@enduml

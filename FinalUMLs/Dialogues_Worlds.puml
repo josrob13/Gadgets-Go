@@ -1,0 +1,87 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 60
+skinparam ranksep 70
+
+' Colores base
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+' --- UNITY ---
+package "UnityEngine" {
+    class ScriptableObject
+    class Animator
+}
+
+' --- DIÁLOGO ---
+package "Dialogue System" {
+
+    struct ActorState <<Data>> {
+        + bodyAnimation : string
+        + faceExpression : string
+    }
+
+    class DialogueNode <<Principal>> {
+        + text : string
+        + speakerAnimator : Animator
+        + state : ActorState
+        + nextNode : DialogueNode
+    }
+
+    class QuestionNode <<Principal>> {
+        + answers : List<string>
+        + correctIndex : int
+        + successNode : DialogueNode
+        + failNode : DialogueNode
+    }
+
+    ' Herencia interna
+    DialogueNode <|-- QuestionNode
+
+    ' Relaciones internas
+    DialogueNode --> ActorState
+    DialogueNode --> Animator
+    DialogueNode "1" --> "0..1" DialogueNode : next
+}
+
+' --- MUNDO ---
+package "World Management" {
+
+    class WorldsDB <<Principal>> {
+        + allWorlds : List<World>
+    }
+
+    class World <<Principal>> {
+        + worldName : string
+        + sceneName : string
+        + missions : List<Mission>
+    }
+
+    class Mission <<Principal>>
+
+    ' Composición
+    WorldsDB "1" *-- "0..*" World
+    World "1" *-- "0..*" Mission
+}
+
+' --- HERENCIA DESDE UNITY (alineada abajo para evitar cruces) ---
+ScriptableObject <|-- DialogueNode
+ScriptableObject <|-- QuestionNode
+ScriptableObject <|-- World
+ScriptableObject <|-- WorldsDB
+ScriptableObject <|-- Mission
+
+@enduml

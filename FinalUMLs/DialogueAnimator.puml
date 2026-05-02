@@ -1,0 +1,69 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 70
+
+' Colores
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+skinparam ClassBackgroundColor<<Service>> #FDEDEC
+skinparam ClassBorderColor<<Service>> #C0392B
+skinparam ClassHeaderBackgroundColor<<Service>> #F5B7B1
+
+' --- UNITY ---
+package "UnityEngine" {
+    class MonoBehaviour
+    class Animator
+}
+
+' --- ANIMACIÓN NPC ---
+package "NPC System - Animation" {
+
+    struct ActorState <<Data>> {
+        + bodyAnimation : string
+        + faceExpression : string
+    }
+
+    class EmotionController <<Service>> {
+        + SetExpression(name : string) : void
+    }
+
+    class DialogueAnimator <<Principal>> {
+        - animator : Animator
+        - emotion : EmotionController
+        --
+        + Apply(state : ActorState) : void
+        - PlayBody(animation : string) : void
+    }
+
+    ' Relaciones internas
+    DialogueAnimator *-- Animator
+    DialogueAnimator *-- EmotionController
+    DialogueAnimator ..> ActorState
+}
+
+' --- HERENCIA ---
+MonoBehaviour <|-- DialogueAnimator
+MonoBehaviour <|-- EmotionController
+
+' --- NOTAS ---
+note right of DialogueAnimator::PlayBody
+  Usa CrossFadeInFixedTime()
+  para transiciones suaves
+end note
+
+@enduml

@@ -1,0 +1,111 @@
+@startuml
+' --- CONFIGURACIÓN VISUAL ---
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam RoundCorner 8
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 70
+
+' Colores
+skinparam ClassBackgroundColor #FDFEFE
+skinparam ClassBorderColor #2E4053
+skinparam ClassHeaderBackgroundColor #E5E8E8
+
+skinparam ClassBackgroundColor<<Principal>> #EBF5FB
+skinparam ClassBorderColor<<Principal>> #2E86C1
+skinparam ClassHeaderBackgroundColor<<Principal>> #AED6F1
+
+skinparam ClassBackgroundColor<<Service>> #FDEDEC
+skinparam ClassBorderColor<<Service>> #C0392B
+skinparam ClassHeaderBackgroundColor<<Service>> #F5B7B1
+
+skinparam ClassBackgroundColor<<Data>> #FEF9E7
+skinparam ClassBorderColor<<Data>> #F1C40F
+skinparam ClassHeaderBackgroundColor<<Data>> #F9E79F
+
+' --- UNITY ---
+package "UnityEngine" {
+    class MonoBehaviour
+    class GameObject
+}
+
+' --- CINEMACHINE ---
+package "Cinemachine" {
+    class CinemachineCamera
+}
+
+' --- CORE SERVICES ---
+package "Core Systems" {
+    class DialogueManager <<Service>>
+    class UIManager <<Service>>
+    class CameraManager <<Service>>
+    class PlayerProgress <<Service>>
+    class AnalyticsManager <<Service>>
+    class GameHandler <<Service>>
+}
+
+' --- GAMEPLAY ---
+package "Gameplay" {
+    class Player
+}
+
+' --- DIÁLOGO ---
+package "Dialogue System" {
+    class QuestionNode
+    class DialogueNode
+}
+
+' --- DATOS ---
+package "Data" {
+    class Mission <<Data>>
+}
+
+' --- LÓGICA ---
+package "Mission Logic" {
+
+    class MissionManager <<Principal>> {
+        + {static} Instance : MissionManager
+        --
+        - currentMission : Mission
+        - vCamMission : CinemachineCamera
+        - player : Player
+        - normalUI : GameObject
+        --
+        - Awake() : void
+        + StartMission(mission : Mission) : void
+        - ToErrorRegister(isCorrect : bool, question : QuestionNode) : void
+        - RunMission() : IEnumerator
+    }
+}
+
+' --- HERENCIA ---
+MonoBehaviour <|-- MissionManager
+
+' --- RELACIONES ---
+
+' Datos
+MissionManager o-- Mission
+
+' Gameplay
+MissionManager --> Player
+MissionManager --> GameObject
+
+' Cámaras
+MissionManager --> CinemachineCamera
+MissionManager ..> CameraManager
+
+' UI
+MissionManager ..> UIManager
+
+' Diálogo
+MissionManager ..> DialogueManager
+MissionManager ..> QuestionNode
+MissionManager ..> DialogueNode
+
+' Progreso y analíticas
+MissionManager ..> PlayerProgress
+MissionManager ..> AnalyticsManager
+MissionManager ..> GameHandler
+
+@enduml

@@ -134,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
             SetCameraShake(amplitudeGain, frequencyGain);
     }
 
+    // [!!!] Should be in CameraManager
     private void SetCameraShake(float amplitude, float frequency)
     {
         currentAmplitude = Mathf.Lerp(currentAmplitude, amplitude, Time.deltaTime * 1.5f);

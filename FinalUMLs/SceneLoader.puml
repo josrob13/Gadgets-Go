@@ -1,0 +1,52 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+
+package UnityEngine {
+    class MonoBehaviour
+    class GameObject
+    class Canvas
+    class CanvasGroup
+    class AsyncOperation
+}
+
+package UnityEngine.UI {
+    class Slider
+}
+
+package UnityEngine.SceneManagement {
+    class SceneManager <<static>>
+}
+
+class SceneLoader {
+    + {static} Instance : SceneLoader
+    --
+    - loadingScreen : GameObject
+    - loadingBar : Slider
+    - skipIntroInEditor : bool
+    - fadeCanvasGroup : CanvasGroup
+    - mainCanvas : Canvas
+    - fadeDuration : float
+    --
+    - Awake() : void
+    + StartGame() : void
+    + LoadSceneAsync(sceneName : string) : void
+    - LoadSceneCoroutine(sceneName : string) : IEnumerator
+    - Fade(startAlpha : float, targetAlpha : float) : IEnumerator
+}
+
+' Relaciones de Herencia
+MonoBehaviour <|-- SceneLoader
+
+' Relaciones de Asociación/Uso
+SceneLoader --> GameObject : gestiona
+SceneLoader --> Slider : actualiza
+SceneLoader --> CanvasGroup : manipula alpha
+SceneLoader --> Canvas : oculta
+
+' Dependencia con el sistema de escenas
+SceneLoader ..> SceneManager : llama a LoadSceneAsync
+SceneLoader ..> AsyncOperation : monitoriza progreso
+
+@enduml
