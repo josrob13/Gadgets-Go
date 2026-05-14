@@ -61,13 +61,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartDialogue(DialogueNode start)
+    public IEnumerator StartDialogue(DialogueNode start, Vector3? canvasPosition = null, Quaternion? canvasRotation = null)
     {
-        Debug.Log("Starting dialogue...");
-        
-        // Activar controlador de Canvas para fijar su posición
         if (canvasController != null)
-            canvasController.OnDialogueStart();
+            canvasController.OnDialogueStart(canvasPosition, canvasRotation);
         
         DialogueNode node = start;
         while (node != null)

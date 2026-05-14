@@ -18,6 +18,8 @@ public class QuestionUI : MonoBehaviour
 
     public bool HasAnswered { get; private set; }
     public int SelectedIndex { get; private set; }
+    /// <summary>True cuando el panel de preguntas está visible (para que VRRayPointer sepa cuándo activarse).</summary>
+    public bool IsVisible => panel != null && panel.activeSelf;
 
     private OVRCameraRig ovrCameraRig;
     private Transform centerEyeAnchor;
@@ -32,6 +34,10 @@ public class QuestionUI : MonoBehaviour
             int idx = i;
             optionButtons[i].onClick.AddListener(() => OnOptionClicked(idx));
         }
+
+        // Añadir BoxCollider a cada botón para que el VRRayPointer pueda detectarlos
+        // con Physics.Raycast en el Canvas WorldSpace.
+        SetupButtonColliders();
 
         // Obtener referencias VR
         ovrCameraRig = FindObjectOfType<OVRCameraRig>();
@@ -49,6 +55,36 @@ public class QuestionUI : MonoBehaviour
         {
             graphicRaycaster = targetCanvas.GetComponent<GraphicRaycaster>();
         }
+    }
+
+    /// <summary>
+    /// Añade un BoxCollider a cada botón para que Physics.Raycast del VRRayPointer
+    /// pueda detectarlos. El collider se ajusta al tamaño del RectTransform del botón.
+    /// </summary>
+    private void SetupButtonColliders()
+    {
+        foreach (Button button in optionButtons)
+        {
+            if (button == null) continue;
+            RectTransform rt = button.GetComponent<RectTransform>();
+            if (rt == null) continue;
+
+            BoxCollider col = button.GetComponent<BoxCollider>();
+            if (col == null) col = button.gameObject.AddComponent<BoxCollider>();
+
+            // Ajustar el collider al tamaño del botón (plano en Z)
+            col.size   = new Vector3(rt.rect.width, rt.rect.height, 1f);
+            col.center = Vector3.zero;
+        }
+    }
+
+    /// <summary>
+    /// Permite al VRRayPointer seleccionar una opción por índice directamente.
+    /// </summary>
+    public void SelectOption(int index)
+    {
+        if (index >= 0 && index < optionButtons.Length && optionButtons[index].interactable)
+            OnOptionClicked(index);
     }
 
     public void ShowQuestion(string question, string[] options)

@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.XR;
 
 /// <summary>
-/// Controla la posición y rotación del Canvas de diálogo para que esté fijo
-/// en una posición relativa al jugador durante el diálogo, sin seguir la cámara.
+/// Controla la posición y rotación del Canvas de diálogo en World Space.
+/// Como hay un solo Canvas para todo el juego, este script se encarga de
+/// teletransportarlo a la zona de la misión activa cuando se le solicita.
 /// </summary>
 public class DialogueCanvasController : MonoBehaviour
 {
@@ -11,9 +12,6 @@ public class DialogueCanvasController : MonoBehaviour
     [SerializeField] private float distanceFromPlayer = 2.5f;
     [SerializeField] private float heightOffset = 0f;
     
-    private Vector3 fixedCanvasPosition;
-    private Quaternion fixedCanvasRotation;
-    private bool isDialogueActive = false;
     private Transform playerCameraTransform;
 
     private void Awake()
@@ -25,7 +23,6 @@ public class DialogueCanvasController : MonoBehaviour
     private void Start()
     {
         // Encontrar la cámara VR del jugador
-        // Primero intentamos obtenerla de OVRCameraRig
         OVRCameraRig ovrCameraRig = FindObjectOfType<OVRCameraRig>();
         if (ovrCameraRig != null)
         {
@@ -33,7 +30,6 @@ public class DialogueCanvasController : MonoBehaviour
         }
         else
         {
-            // Si no hay OVRCameraRig, intentamos con la cámara principal
             playerCameraTransform = Camera.main?.transform;
         }
 
@@ -45,69 +41,50 @@ public class DialogueCanvasController : MonoBehaviour
         // Asegurarse de que el Canvas está en WorldSpace
         if (canvas.renderMode != RenderMode.WorldSpace)
         {
-            Debug.LogWarning("[DialogueCanvasController] El Canvas no está en modo WorldSpace. Cambiando a WorldSpace.");
             canvas.renderMode = RenderMode.WorldSpace;
+        }
+
+        // Ocultar el Canvas por defecto
+        canvas.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Se llama una sola vez al iniciar el diálogo de una misión.
+    /// Reubica el Canvas estático en la zona donde ocurre la misión.
+    /// </summary>
+    public void OnDialogueStart(Vector3? worldPosition = null, Quaternion? worldRotation = null)
+    {
+        canvas.gameObject.SetActive(true);
+
+        if (worldPosition.HasValue && worldRotation.HasValue)
+        {
+            canvas.transform.position = worldPosition.Value;
+            canvas.transform.rotation = worldRotation.Value;
+        }
+        else if (playerCameraTransform != null)
+        {
+            Vector3 forwardDirection = playerCameraTransform.forward;
+            forwardDirection.y = 0;
+            forwardDirection.Normalize();
+
+            Vector3 newPosition = playerCameraTransform.position 
+                + forwardDirection * distanceFromPlayer 
+                + Vector3.up * heightOffset;
+
+            canvas.transform.position = newPosition;
+
+            Vector3 directionAwayFromPlayer = newPosition - playerCameraTransform.position;
+            directionAwayFromPlayer.y = 0;
+            canvas.transform.rotation = Quaternion.LookRotation(-directionAwayFromPlayer.normalized, Vector3.up);
         }
     }
 
     /// <summary>
-    /// Activa el control del Canvas cuando empieza un diálogo
-    /// </summary>
-    public void OnDialogueStart()
-    {
-        isDialogueActive = true;
-        
-        if (playerCameraTransform == null)
-            return;
-
-        // Calcular posición frente al jugador
-        Vector3 forwardDirection = playerCameraTransform.forward;
-        Vector3 upDirection = playerCameraTransform.up;
-        
-        fixedCanvasPosition = playerCameraTransform.position + forwardDirection * distanceFromPlayer + upDirection * heightOffset;
-        
-        // Hacer que el Canvas mire hacia el jugador (pero invertido, para que el jugador vea el contenido)
-        fixedCanvasRotation = Quaternion.LookRotation(playerCameraTransform.position - fixedCanvasPosition, Vector3.up);
-        
-        // Aplicar posición y rotación
-        canvas.transform.position = fixedCanvasPosition;
-        canvas.transform.rotation = fixedCanvasRotation;
-
-        Debug.Log("[DialogueCanvasController] Diálogo iniciado. Canvas fijado en posición.");
-    }
-
-    /// <summary>
-    /// Desactiva el control del Canvas cuando termina un diálogo
+    /// Desactiva el Canvas cuando termina un diálogo.
     /// </summary>
     public void OnDialogueEnd()
     {
-        isDialogueActive = false;
-        Debug.Log("[DialogueCanvasController] Diálogo terminado. Canvas liberado.");
-    }
-
-    private void LateUpdate()
-    {
-        // Si el diálogo está activo, asegurar que el Canvas permanezca en la posición fija
-        if (isDialogueActive && canvas != null)
-        {
-            canvas.transform.position = fixedCanvasPosition;
-            canvas.transform.rotation = fixedCanvasRotation;
-        }
-    }
-
-    /// <summary>
-    /// Permite ajustar la distancia del Canvas desde el jugador
-    /// </summary>
-    public void SetDistanceFromPlayer(float distance)
-    {
-        distanceFromPlayer = distance;
-    }
-
-    /// <summary>
-    /// Permite ajustar el offset de altura del Canvas
-    /// </summary>
-    public void SetHeightOffset(float offset)
-    {
-        heightOffset = offset;
+        canvas.gameObject.SetActive(false);
+        Debug.Log("[DialogueCanvasController] Diálogo terminado. Canvas oculto.");
     }
 }

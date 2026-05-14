@@ -8,10 +8,13 @@ public class DialogueUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI textComp;
     [HideInInspector] public bool NextPressed { get; set; } = false;
+    /// <summary>True cuando el panel de diálogo está visible.</summary>
+    public bool IsVisible => panel != null && panel.activeSelf;
 
     [Header("VR Settings")]
-    [SerializeField] private bool enableVRInteraction = true;
-    [SerializeField] private OVRInput.Button continueGestureButton = OVRInput.Button.PrimaryHandTrigger;
+    [Tooltip("Desactiva esto: VRRayPointer gestiona el input del mando.")]
+    [SerializeField] private bool enableVRInteraction = false;
+    [SerializeField] private OVRInput.Button continueGestureButton = OVRInput.Button.PrimaryIndexTrigger;
     [SerializeField] private OVRInput.Controller controller = OVRInput.Controller.RTouch;
 
     private OVRCameraRig ovrCameraRig;

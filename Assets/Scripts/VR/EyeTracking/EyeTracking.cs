@@ -19,7 +19,7 @@ public class EyeTracking : MonoBehaviour
             // 4. Lanzamos el Raycast. Recuerda añadir un LayerMask en el futuro para mayor optimización.
             if (Physics.Raycast(gazeRay, out RaycastHit hit))
             {
-                Debug.Log($"Estás mirando directamente a: {hit.collider.gameObject.name}");
+                // Debug.Log($"Estás mirando directamente a: {hit.collider.gameObject.name}");
                 
                 // Dibuja una línea verde en la vista de escena (Scene view) para facilitar el debugging
                 Debug.DrawRay(gazeRay.origin, gazeRay.direction * hit.distance, Color.green);

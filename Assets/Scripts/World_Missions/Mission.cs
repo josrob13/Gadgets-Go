@@ -24,6 +24,12 @@ public class Mission : ScriptableObject
     [SerializeField] private bool useGlobalCoordinates = true;
     [SerializeField] private bool lockPlayerDuringMission = true;
 
+    [Header("Dialogue Canvas Settings")]
+    [Tooltip("Altura extra sobre el punto medio de los NPCs donde se coloca el canvas de diálogo.")]
+    [SerializeField] private float canvasHeightOffset = 1.5f;
+    [Tooltip("Distancia que el canvas se desplaza desde el punto medio de los NPCs HACIA el jugador. Aumenta este valor si el canvas se mete dentro de los modelos.")]
+    [SerializeField] private float canvasForwardOffset = 1.0f;
+
     public string GetMissionName()
     {
         return missionName;
@@ -47,6 +53,16 @@ public class Mission : ScriptableObject
     public string GetCameraID()
     {
         return cameraID;
+    }
+
+    public float GetCanvasHeightOffset()
+    {
+        return canvasHeightOffset;
+    }
+
+    public float GetCanvasForwardOffset()
+    {
+        return canvasForwardOffset;
     }
 
     public Vector3 GetMissionStartPosition()
@@ -82,7 +98,6 @@ public class Mission : ScriptableObject
 
     public void DeactivateCameras()
     {
-        // Validate that we've got a name to search for
         if (string.IsNullOrEmpty(cameraContainerName))
         {
             Debug.LogWarning("Camera container name is null or empty.");
