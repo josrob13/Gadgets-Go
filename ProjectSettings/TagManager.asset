@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MainNPC
   - BasicNPC
+  - NPC
+  - DialoguePanel
   layers:
   - Default
   - TransparentFX

@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.XR;
 
 /// <summary>
-/// Controla la posición y rotación del Canvas de diálogo en World Space.
-/// Como hay un solo Canvas para todo el juego, este script se encarga de
-/// teletransportarlo a la zona de la misión activa cuando se le solicita.
+/// Controls the position and rotation of the dialogue Canvas in World Space.
+/// Since there is only one Canvas for the entire game, this script is responsible for
+/// teleporting it to the active mission area when requested.
 /// </summary>
 public class DialogueCanvasController : MonoBehaviour
 {
@@ -13,16 +13,22 @@ public class DialogueCanvasController : MonoBehaviour
     [SerializeField] private float heightOffset = 0f;
     
     private Transform playerCameraTransform;
+    private VRGrabbableCanvas grabbable;
 
     private void Awake()
     {
         if (canvas == null)
             canvas = GetComponent<Canvas>();
+
+        grabbable = GetComponent<VRGrabbableCanvas>();
+        if (grabbable == null) grabbable = GetComponentInParent<VRGrabbableCanvas>();
+        if (grabbable == null) grabbable = GetComponentInChildren<VRGrabbableCanvas>();
     }
+
+    public Canvas GetCanvas() => canvas;
 
     private void Start()
     {
-        // Encontrar la cámara VR del jugador
         OVRCameraRig ovrCameraRig = FindObjectOfType<OVRCameraRig>();
         if (ovrCameraRig != null)
         {
@@ -38,20 +44,14 @@ public class DialogueCanvasController : MonoBehaviour
             Debug.LogError("[DialogueCanvasController] No se pudo encontrar la cámara del jugador");
         }
 
-        // Asegurarse de que el Canvas está en WorldSpace
         if (canvas.renderMode != RenderMode.WorldSpace)
         {
             canvas.renderMode = RenderMode.WorldSpace;
         }
 
-        // Ocultar el Canvas por defecto
         canvas.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// Se llama una sola vez al iniciar el diálogo de una misión.
-    /// Reubica el Canvas estático en la zona donde ocurre la misión.
-    /// </summary>
     public void OnDialogueStart(Vector3? worldPosition = null, Quaternion? worldRotation = null)
     {
         canvas.gameObject.SetActive(true);
@@ -79,11 +79,10 @@ public class DialogueCanvasController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Desactiva el Canvas cuando termina un diálogo.
-    /// </summary>
     public void OnDialogueEnd()
     {
+        grabbable?.ForceRelease();
+
         canvas.gameObject.SetActive(false);
         Debug.Log("[DialogueCanvasController] Diálogo terminado. Canvas oculto.");
     }

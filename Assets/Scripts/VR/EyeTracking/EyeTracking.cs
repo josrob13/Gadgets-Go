@@ -1,29 +1,139 @@
 using UnityEngine;
+using TMPro;
 
 public class EyeTracking : MonoBehaviour
 {
-    [Tooltip("Asigna aquí el componente OVREyeGaze que pusiste en el CenterEyeAnchor")]
     public OVREyeGaze eyeGaze;
+
+    [Header("Attention objectives")]
+    public LayerMask focusLayerMask = Physics.DefaultRaycastLayers;
+    public string[] focusTags;
+    public GameObject[] focusObjects;
+
+    [Header("Tracking configuration")]
+    public float minConfidence = 0.5f;
+    public float distractionAlertTime = 5f;
+    public float maxRayDistance = 100f;
+
+    [Header("Optional feedback")]
+    public GameObject distractionWarningUI;
+    public TextMeshProUGUI distractionWarningText;
+    public DialogueUI dialogueUI;
+    public GameObject textBoxHighlightUI;
+
+    [TextArea]
+    public string warningMessage = "Por favor concéntrate en los personajes o el recuadro de texto.";
+
+    private float focusedTime;
+    private float distractedTime;
+    private float trackedTime;
+    private float currentDistractedDuration;
+    private bool warningActive;
+
+    public bool IsCurrentlyFocused { get; private set; }
+    public float FocusedTime => focusedTime;
+    public float DistractedTime => distractedTime;
+    public float TrackedTime => trackedTime;
+    public float DistractedPercentage => trackedTime <= 0f ? 0f : distractedTime / trackedTime * 100f;
 
     private void Update()
     {
-        // 1. Verificamos que el componente exista y el tracking esté activo en el hardware
         if (eyeGaze == null || !eyeGaze.EyeTrackingEnabled) return;
+        if (eyeGaze.Confidence < minConfidence) return;
 
-        // 2. La confianza (Confidence) va de 0 a 1. Solo procesamos la física si el sensor está seguro.
-        if (eyeGaze.Confidence > 0.5f)
+        Ray gazeRay = new Ray(eyeGaze.transform.position, eyeGaze.transform.forward);
+        bool hitFocus = false;
+        bool hasRaycast = Physics.Raycast(gazeRay, out RaycastHit hit, maxRayDistance, Physics.DefaultRaycastLayers);
+
+        if (hasRaycast)
         {
-            // 3. Creamos un rayo desde la posición del ojo hacia su vector 'forward' (hacia donde mira)
-            Ray gazeRay = new Ray(eyeGaze.transform.position, eyeGaze.transform.forward);
-            
-            // 4. Lanzamos el Raycast. Recuerda añadir un LayerMask en el futuro para mayor optimización.
-            if (Physics.Raycast(gazeRay, out RaycastHit hit))
-            {
-                // Debug.Log($"Estás mirando directamente a: {hit.collider.gameObject.name}");
-                
-                // Dibuja una línea verde en la vista de escena (Scene view) para facilitar el debugging
-                Debug.DrawRay(gazeRay.origin, gazeRay.direction * hit.distance, Color.green);
-            }
+            hitFocus = IsFocusTarget(hit.collider.gameObject);
+            Debug.DrawRay(gazeRay.origin, gazeRay.direction * hit.distance, hitFocus ? Color.green : Color.red);
         }
+        else
+        {
+            Debug.DrawRay(gazeRay.origin, gazeRay.direction * maxRayDistance, Color.red);
+        }
+
+        IsCurrentlyFocused = hitFocus;
+        trackedTime += Time.deltaTime;
+
+        if (hitFocus)
+        {
+            focusedTime += Time.deltaTime;
+            currentDistractedDuration = 0f;
+            SetWarning(false);
+        }
+        else
+        {
+            distractedTime += Time.deltaTime;
+            currentDistractedDuration += Time.deltaTime;
+
+            if (currentDistractedDuration >= distractionAlertTime)
+                SetWarning(true);
+        }
+    }
+
+    private bool IsFocusTarget(GameObject hitObject)
+    {
+        if (hitObject == null)
+            return false;
+
+        if (((1 << hitObject.layer) & focusLayerMask.value) != 0)
+            return true;
+
+        foreach (var tag in focusTags)
+        {
+            if (!string.IsNullOrEmpty(tag) && hitObject.CompareTag(tag))
+                return true;
+        }
+
+        var current = hitObject.transform;
+        while (current != null)
+        {
+            foreach (var focusObject in focusObjects)
+            {
+                if (focusObject == null) continue;
+                if (current.gameObject == focusObject)
+                    return true;
+            }
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
+    private void SetWarning(bool active)
+    {
+        if (warningActive == active) return;
+        warningActive = active;
+
+        if (distractionWarningUI != null)
+            distractionWarningUI.SetActive(active);
+
+        if (dialogueUI != null)
+            dialogueUI.SetHighlight(active);
+        else if (textBoxHighlightUI != null)
+            textBoxHighlightUI.SetActive(active);
+
+        if (distractionWarningText != null)
+            distractionWarningText.text = active ? warningMessage : string.Empty;
+    }
+
+    public void ResetTracking()
+    {
+        focusedTime = 0f;
+        distractedTime = 0f;
+        trackedTime = 0f;
+        currentDistractedDuration = 0f;
+        warningActive = false;
+        IsCurrentlyFocused = false;
+        SetWarning(false);
+    }
+
+    public float GetDistractedPercentage()
+    {
+        return DistractedPercentage;
     }
 }
