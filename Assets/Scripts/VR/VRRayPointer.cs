@@ -27,6 +27,7 @@ public class VRRayPointer : MonoBehaviour
     [Header("References")]
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private QuestionUI questionUI;
+    [SerializeField] private FaceTrackingUI faceTrackingUI;
     [SerializeField] private LayerMask raycastMask = Physics.DefaultRaycastLayers;
 
     private LineRenderer lineRenderer;
@@ -51,6 +52,8 @@ public class VRRayPointer : MonoBehaviour
             dialogueUI = FindFirstObjectByType<DialogueUI>();
         if (questionUI == null)
             questionUI = FindFirstObjectByType<QuestionUI>();
+        if (faceTrackingUI == null)
+            faceTrackingUI = FindFirstObjectByType<FaceTrackingUI>();
 
         if (dialogueUI == null && questionUI == null)
             Debug.LogError("[VRRayPointer] No se encontró DialogueUI ni QuestionUI. Asignálos en el Inspector.");
@@ -71,14 +74,14 @@ public class VRRayPointer : MonoBehaviour
         if (isGrabbing)
             return;
 
-        bool dialogueActive  = dialogueUI != null && dialogueUI.IsVisible;
-        bool questionActive  = questionUI != null && questionUI.IsVisible;
-        bool pointerActive   = dialogueActive || questionActive;
+        bool dialogueActive      = dialogueUI != null && dialogueUI.IsVisible;
+        bool questionActive      = questionUI != null && questionUI.IsVisible;
+        bool faceTrackingActive  = faceTrackingUI != null && faceTrackingUI.IsVisible;
+        bool pointerActive       = dialogueActive || questionActive || faceTrackingActive;
 
         SetPointerVisible(pointerActive);
         if (!pointerActive) return;
 
-        // Raycasting from controller position and direction
         Ray         ray = new Ray(transform.position, transform.forward);
         RaycastHit  hit;
         hoveredButton = null;
@@ -110,7 +113,7 @@ public class VRRayPointer : MonoBehaviour
             {
                 TrySelectHoveredButton();
             }
-            else if (dialogueActive)
+            else if (dialogueActive && !faceTrackingActive)
             {
                 Debug.Log("[VRRayPointer] Trigger pulsado → avanzando diálogo.");
                 dialogueUI.NextPressed = true;

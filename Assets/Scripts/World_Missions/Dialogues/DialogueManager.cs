@@ -20,6 +20,9 @@ public class DialogueManager : MonoBehaviour
     private DialogueAnimator currentSpeaker = null;
     private Dictionary<string, DialogueAnimator> speakers = new();
 
+    private bool _dialoguePaused = false;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,8 +30,7 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             CacheSpeakerAnimators();
-            
-            // Obtener referencia al controlador de Canvas si no está asignado
+
             if (canvasController == null)
                 canvasController = GetComponentInChildren<DialogueCanvasController>();
             if (canvasController == null)
@@ -38,6 +40,29 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        if (FaceTrackingManager.Instance != null)
+            FaceTrackingManager.Instance.OnDiscomfortStateChanged += OnDiscomfortStateChanged;
+        else
+            Debug.LogWarning("[DialogueManager] FaceTrackingManager no encontrado — la pausa por detección facial está desactivada.");
+    }
+
+    private void OnDestroy()
+    {
+        if (FaceTrackingManager.Instance != null)
+            FaceTrackingManager.Instance.OnDiscomfortStateChanged -= OnDiscomfortStateChanged;
+    }
+
+    /// <summary>
+    /// Pauses or resumes the dialogue in response to facial discomfort detection.
+    /// </summary>
+    private void OnDiscomfortStateChanged(bool isDiscomfort)
+    {
+        _dialoguePaused = isDiscomfort;
+        Debug.Log($"[DialogueManager] Di\u00e1logo {(isDiscomfort ? "pausado" : "reanudado")} por detecci\u00f3n facial.");
     }
 
     private void CacheSpeakerAnimators()
@@ -164,6 +189,9 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char c in line)
         {
+            yield return new WaitUntil(() => !_dialoguePaused);
+
+
             if (dialogueUI.NextPressed)
             {
                 dialogueUI.SetText(line);
@@ -175,10 +203,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueUI.SetText(line);
-        // Espera a que el usuario presione el botón "Siguiente"
         dialogueUI.NextPressed = false;
 
-        yield return new WaitUntil(() => dialogueUI.NextPressed);
+        yield return new WaitUntil(() => dialogueUI.NextPressed && !_dialoguePaused);
+
 
         dialogueUI.Hide();
     }
