@@ -1,11 +1,11 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
 /// Laser VR pointer visible during all mission interactions (dialogues and questions).
-///
-/// During dialogue: the laser is visible and pressing the index trigger advances the text.
-/// During questions: the laser detects buttons and clicks them when the trigger is pressed.
+/// Activates automatically when any IVRPointerTarget in the scene is active.
+/// To add support for a new panel, implement IVRPointerTarget — no changes needed here.
 /// </summary>
 public class VRRayPointer : MonoBehaviour
 {
@@ -18,25 +18,21 @@ public class VRRayPointer : MonoBehaviour
     [Header("Dot visual")]
     [SerializeField] private float dotSize = 0.015f;
     [SerializeField] private Color dotColorNormal = Color.white;
-    [SerializeField] private Color dotColorHovered = new Color(0.3f, 1f, 0.4f); 
+    [SerializeField] private Color dotColorHovered = new Color(0.3f, 1f, 0.4f);
 
     [Header("Controller input")]
     [SerializeField] private OVRInput.Controller controller = OVRInput.Controller.RTouch;
     [SerializeField] private OVRInput.Button selectButton = OVRInput.Button.PrimaryIndexTrigger;
 
     [Header("References")]
-    [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private QuestionUI questionUI;
-    [SerializeField] private FaceTrackingUI faceTrackingUI;
     [SerializeField] private LayerMask raycastMask = Physics.DefaultRaycastLayers;
 
     private LineRenderer lineRenderer;
-    private GameObject   dot;
-    private Renderer     dotRenderer;
-
+    private GameObject dot;
+    private Renderer dotRenderer;
     private Button hoveredButton = null;
-    private bool previousSelectState = false;
     private bool isGrabbing = false;
+    private IVRPointerTarget[] _targets;
 
     public bool IsGrabbing => isGrabbing;
 
@@ -48,15 +44,12 @@ public class VRRayPointer : MonoBehaviour
 
     private void Start()
     {
-        if (dialogueUI == null)
-            dialogueUI = FindFirstObjectByType<DialogueUI>();
-        if (questionUI == null)
-            questionUI = FindFirstObjectByType<QuestionUI>();
-        if (faceTrackingUI == null)
-            faceTrackingUI = FindFirstObjectByType<FaceTrackingUI>();
+        _targets = FindObjectsOfType<MonoBehaviour>().OfType<IVRPointerTarget>().ToArray();
 
-        if (dialogueUI == null && questionUI == null)
-            Debug.LogError("[VRRayPointer] No se encontró DialogueUI ni QuestionUI. Asignálos en el Inspector.");
+        if (_targets.Length == 0)
+            Debug.LogWarning("[VRRayPointer] No se encontró ningún IVRPointerTarget en la escena.");
+        else
+            Debug.Log($"[VRRayPointer] {_targets.Length} target(s) registrados.");
 
         SetPointerVisible(false);
     }
@@ -70,26 +63,29 @@ public class VRRayPointer : MonoBehaviour
 
     private void Update()
     {
-        // Pointer deactivates when the player is moving the canvas
-        if (isGrabbing)
-            return;
+        if (isGrabbing) return;
 
-        bool dialogueActive      = dialogueUI != null && dialogueUI.IsVisible;
-        bool questionActive      = questionUI != null && questionUI.IsVisible;
-        bool faceTrackingActive  = faceTrackingUI != null && faceTrackingUI.IsVisible;
-        bool pointerActive       = dialogueActive || questionActive || faceTrackingActive;
+        bool pointerActive = false;
+        bool anyBlocking   = false;
+
+        foreach (var target in _targets)
+        {
+            if (!target.IsPointerActive) continue;
+            pointerActive = true;
+            if (target.BlocksTriggerFallback)
+                anyBlocking = true;
+        }
 
         SetPointerVisible(pointerActive);
         if (!pointerActive) return;
 
-        Ray         ray = new Ray(transform.position, transform.forward);
-        RaycastHit  hit;
+        Ray        ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
         hoveredButton = null;
 
         if (Physics.Raycast(ray, out hit, maxRayDistance, raycastMask))
         {
             UpdateLine(transform.position, hit.point);
-
             dot.transform.position = hit.point;
             dot.transform.LookAt(transform.position);
             dot.SetActive(true);
@@ -106,20 +102,21 @@ public class VRRayPointer : MonoBehaviour
             dot.SetActive(false);
         }
 
-        bool currentSelectState = OVRInput.GetDown(selectButton, controller);
-        if (currentSelectState)
+        if (OVRInput.GetDown(selectButton, controller))
         {
             if (hoveredButton != null && hoveredButton.interactable)
             {
                 TrySelectHoveredButton();
             }
-            else if (dialogueActive && !faceTrackingActive)
+            else if (!anyBlocking)
             {
-                Debug.Log("[VRRayPointer] Trigger pulsado → avanzando diálogo.");
-                dialogueUI.NextPressed = true;
+                foreach (var target in _targets)
+                {
+                    if (target.IsPointerActive)
+                        target.OnPointerTriggerFallback();
+                }
             }
         }
-        previousSelectState = currentSelectState;
     }
 
     private void TrySelectHoveredButton()
@@ -137,7 +134,7 @@ public class VRRayPointer : MonoBehaviour
     private void SetPointerVisible(bool visible)
     {
         if (lineRenderer != null) lineRenderer.enabled = visible;
-        if (dot != null && !visible)         dot.SetActive(false);
+        if (dot != null && !visible) dot.SetActive(false);
     }
 
     private void CreateLineRenderer()
@@ -150,15 +147,13 @@ public class VRRayPointer : MonoBehaviour
         lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         lineRenderer.receiveShadows    = false;
 
-        // Unlit material so it's not affected by scene lighting
         Material mat = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.material = mat;
 
-        // Gradient color along the ray
         Gradient gradient = new Gradient();
         gradient.SetKeys(
-            new GradientColorKey[]  { new GradientColorKey(rayColorStart, 0f), new GradientColorKey(rayColorEnd, 1f) },
-            new GradientAlphaKey[]  { new GradientAlphaKey(rayColorStart.a, 0f), new GradientAlphaKey(rayColorEnd.a, 1f) }
+            new GradientColorKey[] { new GradientColorKey(rayColorStart, 0f), new GradientColorKey(rayColorEnd, 1f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(rayColorStart.a, 0f), new GradientAlphaKey(rayColorEnd.a, 1f) }
         );
         lineRenderer.colorGradient = gradient;
     }

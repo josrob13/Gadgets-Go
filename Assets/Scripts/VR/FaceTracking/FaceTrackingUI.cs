@@ -8,7 +8,7 @@ using TMPro;
 /// Positions itself in World Space in front of the player's eyes and fades in/out smoothly.
 /// Listens to FaceTrackingManager events and exposes a "ready to continue" button callback.
 /// </summary>
-public class FaceTrackingUI : MonoBehaviour
+public class FaceTrackingUI : MonoBehaviour, IVRPointerTarget
 {
     [Header("Panel References")]
     [SerializeField] private CanvasGroup panelCanvasGroup;
@@ -16,6 +16,7 @@ public class FaceTrackingUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bodyText;
     [SerializeField] private Button readyButton;
     [SerializeField] private TextMeshProUGUI readyButtonText;
+    [SerializeField] private VRGrabbableCanvas grabbableCanvas;
 
     [Header("World Space Positioning")]
     [SerializeField] private float distanceFromPlayer = 1.5f;
@@ -37,6 +38,10 @@ public class FaceTrackingUI : MonoBehaviour
     private bool _isVisible;
 
     public bool IsVisible => _isVisible;
+
+    public bool IsPointerActive => IsVisible;
+    public bool BlocksTriggerFallback => true;
+    public void OnPointerTriggerFallback() { }
 
     private void Awake()
     {
@@ -82,7 +87,16 @@ public class FaceTrackingUI : MonoBehaviour
         _isVisible = show;
 
         if (show)
+        {
             PositionInFrontOfPlayer();
+            Time.timeScale = 0f;
+            grabbableCanvas?.SetGrabbingEnabled(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            grabbableCanvas?.SetGrabbingEnabled(false);
+        }
 
         if (_fadeCoroutine != null)
             StopCoroutine(_fadeCoroutine);
@@ -134,7 +148,7 @@ public class FaceTrackingUI : MonoBehaviour
 
         while (elapsed < fadeDuration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             panelCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
             yield return null;
         }

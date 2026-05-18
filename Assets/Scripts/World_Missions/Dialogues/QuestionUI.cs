@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
-public class QuestionUI : MonoBehaviour
+public class QuestionUI : MonoBehaviour, IVRPointerTarget
 {
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI questionComp;
@@ -20,6 +20,10 @@ public class QuestionUI : MonoBehaviour
     public int SelectedIndex { get; private set; }
     /// <summary>True cuando el panel de preguntas está visible (para que VRRayPointer sepa cuándo activarse).</summary>
     public bool IsVisible => panel != null && panel.activeSelf;
+
+    public bool IsPointerActive => IsVisible;
+    public bool BlocksTriggerFallback => true;
+    public void OnPointerTriggerFallback() { }
 
     private OVRCameraRig ovrCameraRig;
     private Transform centerEyeAnchor;

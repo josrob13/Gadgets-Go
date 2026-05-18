@@ -26,6 +26,7 @@ public class VRGrabbableCanvas : MonoBehaviour
     [SerializeField] private float grabbedScale = 1.05f;
 
     private bool isGrabbing = false;
+    private bool _grabbingEnabled = true;
     private Vector3 localOffsetPosition;
     private Quaternion localOffsetRotation;
     private Vector3 originalScale;
@@ -57,8 +58,7 @@ public class VRGrabbableCanvas : MonoBehaviour
 
     private void Update()
     {
-        // Only act if the canvas is active
-        if (targetCanvas == null || !targetCanvas.gameObject.activeSelf || rightHandAnchor == null)
+        if (!_grabbingEnabled || targetCanvas == null || !targetCanvas.gameObject.activeSelf || rightHandAnchor == null)
             return;
 
         bool gripPressed = OVRInput.Get(grabButton, controller);
@@ -109,6 +109,13 @@ public class VRGrabbableCanvas : MonoBehaviour
     }
 
     public bool IsGrabbing => isGrabbing;
+
+    public void SetGrabbingEnabled(bool enabled)
+    {
+        _grabbingEnabled = enabled;
+        if (!enabled && isGrabbing)
+            EndGrab();
+    }
 
     public void ForceRelease()
     {

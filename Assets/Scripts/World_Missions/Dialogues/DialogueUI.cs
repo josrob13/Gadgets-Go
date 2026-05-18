@@ -3,13 +3,17 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DialogueUI : MonoBehaviour, IPointerClickHandler
+public class DialogueUI : MonoBehaviour, IPointerClickHandler, IVRPointerTarget
 {
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI textComp;
     [SerializeField] private GameObject highlightFrame;
     [HideInInspector] public bool NextPressed { get; set; } = false;
     public bool IsVisible => panel != null && panel.activeSelf;
+
+    public bool IsPointerActive => IsVisible;
+    public bool BlocksTriggerFallback => false;
+    public void OnPointerTriggerFallback() => NextPressed = true;
 
     [Header("VR Settings")]
     [SerializeField] private bool enableVRInteraction = false;
