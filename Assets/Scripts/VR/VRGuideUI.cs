@@ -150,17 +150,21 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
         if (missionListPanel != null) missionListPanel.SetActive(missions);
         if (hintPanel != null)        hintPanel.SetActive(hint);
 
-        // Rebuild layout only for the panel that just became active so its back-button
-        // RectTransform has real dimensions before we size its collider.
-        // ForceRebuildLayoutImmediate is scoped to one panel — cheaper than ForceUpdateCanvases.
-        if (missions && missionListPanel != null)
+        // Force ALL canvases to recalculate layout so RectTransform.rect values
+        // are valid before we size the BoxColliders used by Physics.Raycast.
+        Canvas.ForceUpdateCanvases();
+
+        if (main && mainMenuPanel != null)
         {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(missionListPanel.GetComponent<RectTransform>());
+            AddCollider(missionsButton);
+            AddCollider(hintButton);
+        }
+        else if (missions && missionListPanel != null)
+        {
             AddCollider(missionListBackButton);
         }
         else if (hint && hintPanel != null)
         {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(hintPanel.GetComponent<RectTransform>());
             AddCollider(hintBackButton);
         }
     }
@@ -243,12 +247,13 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     /// </summary>
     private static void AddCollider(Button btn)
     {
-        if (btn == null) return;
+        if (btn == null) { Debug.LogWarning("[VRGuideUI] AddCollider: btn is null"); return; }
         RectTransform rt = btn.GetComponent<RectTransform>();
         if (rt == null) return;
 
         var col = btn.GetComponent<BoxCollider>() ?? btn.gameObject.AddComponent<BoxCollider>();
-        col.size   = new Vector3(rt.rect.width, rt.rect.height, 1f);
+        col.size   = new Vector3(rt.rect.width, rt.rect.height, 20f);
         col.center = Vector3.zero;
+        Debug.Log($"[VRGuideUI] Collider '{btn.name}': size={col.size}, active={btn.gameObject.activeInHierarchy}, interactable={btn.interactable}");
     }
 }

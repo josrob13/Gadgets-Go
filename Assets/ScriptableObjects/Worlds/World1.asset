@@ -15,6 +15,6 @@ MonoBehaviour:
   worldName: Colegio
   sceneName: Sketch
   missions:
-  - {fileID: 11400000, guid: c28eea46214e45d4bbad5c07f5306ffe, type: 2}
-  - {fileID: 11400000, guid: 6daea3b8f4c7c254f92f1d0ce0f23967, type: 2}
-  - {fileID: 11400000, guid: 63e51330b377af1468f5bb1c09413431, type: 2}
+  - {fileID: 11400000, guid: 734901446143fc9498e98e5720b1d517, type: 2}
+  - {fileID: 11400000, guid: 904286f8e3763984d98390666663b766, type: 2}
+  - {fileID: 11400000, guid: 8a31322417e81864d865ca107446dbad, type: 2}

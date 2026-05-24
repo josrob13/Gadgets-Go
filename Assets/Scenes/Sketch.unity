@@ -77132,7 +77132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4996d1269af5821499d14604436ca0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionSpeed: 3
+  positionSpeed: 2
   rotationSpeed: 3
   idleOffset: {x: 1.67, y: 0, z: 0.75}
   activeOffset: {x: 0, y: -0.05, z: 3}
@@ -138730,6 +138730,7 @@ GameObject:
   - component: {fileID: 653257564}
   - component: {fileID: 653257563}
   - component: {fileID: 653257562}
+  - component: {fileID: 653257565}
   m_Layer: 0
   m_Name: BackButton
   m_TagString: Untagged
@@ -138839,6 +138840,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653257560}
   m_CullTransparentMesh: 1
+--- !u!65 &653257565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653257560}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 80, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &653267657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172039,6 +172061,7 @@ GameObject:
   - component: {fileID: 780387954}
   - component: {fileID: 780387953}
   - component: {fileID: 780387955}
+  - component: {fileID: 780387956}
   m_Layer: 0
   m_Name: HintButton
   m_TagString: Untagged
@@ -172148,6 +172171,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &780387956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780387951}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 80, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &780756101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1658392728705412994, guid: fc2ea8e39e268aa49ab528f4d510af2b, type: 3}
@@ -244542,6 +244586,7 @@ GameObject:
   - component: {fileID: 1152185227}
   - component: {fileID: 1152185226}
   - component: {fileID: 1152185225}
+  - component: {fileID: 1152185228}
   m_Layer: 0
   m_Name: BackButton
   m_TagString: Untagged
@@ -244651,6 +244696,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152185223}
   m_CullTransparentMesh: 1
+--- !u!65 &1152185228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152185223}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 80, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1152410321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259964,6 +260030,7 @@ GameObject:
   - component: {fileID: 1232265093}
   - component: {fileID: 1232265092}
   - component: {fileID: 1232265094}
+  - component: {fileID: 1232265095}
   m_Layer: 0
   m_Name: MissionsButton
   m_TagString: Untagged
@@ -260073,6 +260140,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1232265095
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232265090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 80, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1232568298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8707745207735538907, guid: 7bdac85d46696c448acbc25035f75d15, type: 3}

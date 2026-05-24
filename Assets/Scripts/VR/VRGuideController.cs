@@ -106,13 +106,16 @@ public class VRGuideController : MonoBehaviour
     /// <summary>Called by the Missions button in the main menu panel.</summary>
     public void OnRequestMissions()
     {
+        Debug.Log("[VRGuideController] OnRequestMissions called");
         World world = GetCurrentWorld();
+        Debug.Log($"[VRGuideController] world: {(world != null ? world.name : "null (worldsDB not assigned?)")}");
         _guideUI?.ShowMissionList(world);
     }
 
     /// <summary>Called by the Hint button in the main menu panel.</summary>
     public void OnRequestHint()
     {
+        Debug.Log("[VRGuideController] OnRequestHint called");
         QuestionNode q = DialogueManager.Instance?.ActiveQuestion;
         string text = (q != null && !string.IsNullOrEmpty(q.hint))
             ? q.hint

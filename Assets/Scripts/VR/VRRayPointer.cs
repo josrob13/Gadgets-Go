@@ -33,6 +33,7 @@ public class VRRayPointer : MonoBehaviour
     private Button hoveredButton = null;
     private bool isGrabbing = false;
     private IVRPointerTarget[] _targets;
+    private string _lastHitName = "";
 
     public bool IsGrabbing => isGrabbing;
 
@@ -94,17 +95,30 @@ public class VRRayPointer : MonoBehaviour
             hoveredButton = hit.collider.GetComponent<Button>()
                          ?? hit.collider.GetComponentInParent<Button>();
 
+            string hitName = hit.collider.gameObject.name;
+            if (hitName != _lastHitName)
+            {
+                Debug.Log($"[VRRayPointer] Now hitting '{hitName}' — button: {(hoveredButton != null ? hoveredButton.name : "none")}, interactable: {hoveredButton?.interactable}");
+                _lastHitName = hitName;
+            }
+
             bool isInteractable = hoveredButton != null && hoveredButton.interactable;
             dotRenderer.material.color = isInteractable ? dotColorHovered : dotColorNormal;
         }
         else
         {
+            if (_lastHitName != "")
+            {
+                Debug.Log("[VRRayPointer] Ray not hitting anything.");
+                _lastHitName = "";
+            }
             UpdateLine(transform.position, transform.position + transform.forward * maxRayDistance);
             dot.SetActive(false);
         }
 
         if (OVRInput.GetDown(selectButton, controller))
         {
+            Debug.Log($"[VRRayPointer] Trigger pressed — hoveredButton: {(hoveredButton != null ? hoveredButton.name : "null")}, interactable: {hoveredButton?.interactable}");
             if (hoveredButton != null && hoveredButton.interactable)
             {
                 TrySelectHoveredButton();
