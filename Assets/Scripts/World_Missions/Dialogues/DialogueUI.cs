@@ -30,6 +30,7 @@ public class DialogueUI : MonoBehaviour, IPointerClickHandler, IVRPointerTarget
         if (ovrCameraRig != null)
         {
             centerEyeAnchor = ovrCameraRig.centerEyeAnchor;
+            enableVRInteraction = true;
         }
     }
 

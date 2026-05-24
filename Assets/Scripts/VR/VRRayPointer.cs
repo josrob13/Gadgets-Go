@@ -44,7 +44,8 @@ public class VRRayPointer : MonoBehaviour
 
     private void Start()
     {
-        _targets = FindObjectsOfType<MonoBehaviour>().OfType<IVRPointerTarget>().ToArray();
+        // true = include inactive GameObjects so panels that start hidden are still found.
+        _targets = FindObjectsOfType<MonoBehaviour>(true).OfType<IVRPointerTarget>().ToArray();
 
         if (_targets.Length == 0)
             Debug.LogWarning("[VRRayPointer] No se encontró ningún IVRPointerTarget en la escena.");

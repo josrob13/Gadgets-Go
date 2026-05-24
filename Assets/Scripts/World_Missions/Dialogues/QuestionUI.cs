@@ -39,9 +39,8 @@ public class QuestionUI : MonoBehaviour, IVRPointerTarget
             optionButtons[i].onClick.AddListener(() => OnOptionClicked(idx));
         }
 
-        // Añadir BoxCollider a cada botón para que el VRRayPointer pueda detectarlos
-        // con Physics.Raycast en el Canvas WorldSpace.
-        SetupButtonColliders();
+        // Colliders are sized in ShowQuestion() after the panel activates and layout runs.
+        // Calling here would give (0,0) rect sizes because the Canvas hasn't laid out yet.
 
         // Obtener referencias VR
         ovrCameraRig = FindObjectOfType<OVRCameraRig>();
@@ -104,6 +103,11 @@ public class QuestionUI : MonoBehaviour, IVRPointerTarget
                 optionButtons[i].transform.Find("DialogueText").GetComponent<TextMeshProUGUI>().text = options[i];
             }
         }
+
+        // Size colliders now — RectTransform.rect is valid only after the panel is active
+        // and layout has been rebuilt. Awake() would give (0,0) sizes.
+        LayoutRebuilder.ForceRebuildLayoutImmediate(panel.GetComponent<RectTransform>());
+        SetupButtonColliders();
     }
 
     private void OnOptionClicked(int idx)
