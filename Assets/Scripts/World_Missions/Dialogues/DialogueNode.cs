@@ -29,6 +29,10 @@ public class DialogueNode : ScriptableObject
     [Header("Visuals")]
     public ActorState actorState;
 
+    [Header("Audio")]
+    [Tooltip("Voice clip that plays when this dialogue line is shown. Leave empty for no voice.")]
+    public AudioClip voiceClip;
+
     public string GetText()
     {
         return text;

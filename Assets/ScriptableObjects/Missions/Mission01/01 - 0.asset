@@ -19,3 +19,4 @@ MonoBehaviour:
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 8300000, guid: fc42fe7cf7da03a4aab036a2f521f9e7, type: 3}

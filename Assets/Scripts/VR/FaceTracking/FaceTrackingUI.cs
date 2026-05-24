@@ -32,6 +32,10 @@ public class FaceTrackingUI : MonoBehaviour, IVRPointerTarget
         "Hemos notado que podrías estar sintiéndote estresado/a.\nTómate un momento para respirar.\n\nCuando estés listo/a, pulsa el botón de abajo.";
     [SerializeField] private string buttonLabel = "Estoy listo/a para continuar";
 
+    [Header("VR Input")]
+    [SerializeField] private OVRInput.Button confirmButton = OVRInput.Button.PrimaryIndexTrigger;
+    [SerializeField] private OVRInput.Controller confirmController = OVRInput.Controller.RTouch;
+
     private OVRCameraRig _ovrRig;
     private Transform _eyeAnchor;
     private Coroutine _fadeCoroutine;
@@ -62,7 +66,7 @@ public class FaceTrackingUI : MonoBehaviour, IVRPointerTarget
 
     private void Start()
     {
-        _ovrRig = FindObjectOfType<OVRCameraRig>();
+        _ovrRig = FindFirstObjectByType<OVRCameraRig>();
         if (_ovrRig != null)
             _eyeAnchor = _ovrRig.centerEyeAnchor;
 
@@ -81,7 +85,13 @@ public class FaceTrackingUI : MonoBehaviour, IVRPointerTarget
             readyButton.onClick.RemoveListener(OnReadyButtonClicked);
     }
 
-    /// <summary>Shows or hides the break suggestion panel with a fade.</summary>
+    private void Update()
+    {
+        if (!_isVisible) return;
+        if (OVRInput.GetDown(confirmButton, confirmController))
+            OnReadyButtonClicked();
+    }
+
     public void ShowBreakSuggestion(bool show)
     {
         _isVisible = show;
@@ -109,7 +119,6 @@ public class FaceTrackingUI : MonoBehaviour, IVRPointerTarget
         ShowBreakSuggestion(isDiscomfort);
     }
 
-    /// <summary>Called when the user presses "I'm ready to continue".</summary>
     private void OnReadyButtonClicked()
     {
         Debug.Log("[FaceTrackingUI] El usuario ha confirmado que está listo para continuar.");
@@ -120,7 +129,6 @@ public class FaceTrackingUI : MonoBehaviour, IVRPointerTarget
             ShowBreakSuggestion(false);
     }
 
-    /// <summary>Positions this canvas in World Space in front of the player's eyes.</summary>
     private void PositionInFrontOfPlayer()
     {
         if (_eyeAnchor == null) return;

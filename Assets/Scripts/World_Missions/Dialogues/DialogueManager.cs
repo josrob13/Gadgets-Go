@@ -20,7 +20,14 @@ public class DialogueManager : MonoBehaviour
     private DialogueAnimator currentSpeaker = null;
     private Dictionary<string, DialogueAnimator> speakers = new();
 
-    private bool _dialoguePaused = false;
+    // Two independent pause sources — dialogue only runs when neither is active.
+    private bool _faceTrackingPaused = false;
+    private bool _guidePaused = false;
+    private bool IsPaused => _faceTrackingPaused || _guidePaused;
+
+    private bool _lastAnswerWasCorrect = false;
+
+    public QuestionNode ActiveQuestion { get; private set; }
 
 
     private void Awake()
@@ -34,7 +41,7 @@ public class DialogueManager : MonoBehaviour
             if (canvasController == null)
                 canvasController = GetComponentInChildren<DialogueCanvasController>();
             if (canvasController == null)
-                canvasController = FindObjectOfType<DialogueCanvasController>();
+                canvasController = FindFirstObjectByType<DialogueCanvasController>();
         }
         else
         {
@@ -61,8 +68,26 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     private void OnDiscomfortStateChanged(bool isDiscomfort)
     {
-        _dialoguePaused = isDiscomfort;
+        _faceTrackingPaused = isDiscomfort;
+        if (isDiscomfort)
+            DialogueAudioManager.Instance?.PauseVoice();
+        else if (!_guidePaused)
+            DialogueAudioManager.Instance?.ResumeVoice();
         Debug.Log($"[DialogueManager] Di\u00e1logo {(isDiscomfort ? "pausado" : "reanudado")} por detecci\u00f3n facial.");
+    }
+
+    /// <summary>
+    /// Called by VRGuideController when the guide panel opens or closes.
+    /// Pauses typing and audio so the player can read without missing text.
+    /// </summary>
+    public void SetGuidePause(bool paused)
+    {
+        Debug.Log($"[DialogueManager] SetGuidePause({paused}) — _faceTrackingPaused={_faceTrackingPaused}, IsPaused will be={paused || _faceTrackingPaused}");
+        _guidePaused = paused;
+        if (paused)
+            DialogueAudioManager.Instance?.PauseVoice();
+        else if (!_faceTrackingPaused)
+            DialogueAudioManager.Instance?.ResumeVoice();
     }
 
     private void CacheSpeakerAnimators()
@@ -105,10 +130,20 @@ public class DialogueManager : MonoBehaviour
             // NUEVA VERSION:
             UpdateSpeakerState(node);
 
+            Transform speakerTransform = currentSpeaker != null ? currentSpeaker.transform : null;
+
             if (node is QuestionNode questionNode)
             {
+                // Read the question aloud while choices are displayed
+                DialogueAudioManager.Instance?.PlayVoice(questionNode.voiceClip, speakerTransform);
+
                 yield return ShowQuestion(questionNode);
+
+                // Stop question voice once the player has answered
+                DialogueAudioManager.Instance?.StopVoice(fade: true);
+
                 bool isCorrect = questionUI.SelectedIndex == questionNode.correctOptionIndex;
+                _lastAnswerWasCorrect = isCorrect;
 
                 // Call to the event, in which the errors will be registered
                 OnQuestionAnswered?.Invoke(isCorrect);
@@ -120,12 +155,22 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
+                // PostAnswerNode uses its own correct/bad clips; all others use voiceClip
+                AudioClip clipToPlay = node.voiceClip;
+                if (node is PostAnswerNode pan)
+                    clipToPlay = _lastAnswerWasCorrect ? pan.correctVoiceClip : pan.badVoiceClip;
+
+                // PlayVoice stops any currently playing clip before starting the new one,
+                // making overlapping voices architecturally impossible.
+                DialogueAudioManager.Instance?.PlayVoice(clipToPlay, speakerTransform);
+
                 yield return ShowDialogueLine(node.text);
                 node = node.nextNode;
             }
         }
-        
-        // Desactivar controlador de Canvas cuando termina el diálogo
+
+        // Fade out any remaining audio and deactivate the canvas
+        DialogueAudioManager.Instance?.StopVoice(fade: true);
         if (canvasController != null)
             canvasController.OnDialogueEnd();
     }
@@ -189,8 +234,7 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char c in line)
         {
-            yield return new WaitUntil(() => !_dialoguePaused);
-
+            yield return new WaitUntil(() => !IsPaused);
 
             if (dialogueUI.NextPressed)
             {
@@ -205,7 +249,7 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetText(line);
         dialogueUI.NextPressed = false;
 
-        yield return new WaitUntil(() => dialogueUI.NextPressed && !_dialoguePaused);
+        yield return new WaitUntil(() => dialogueUI.NextPressed && !IsPaused);
 
 
         dialogueUI.Hide();
@@ -213,11 +257,13 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ShowQuestion(QuestionNode questionNode)
     {
+        ActiveQuestion = questionNode;
         questionUI.ShowQuestion(questionNode.questionText, questionNode.options);
         yield return new WaitUntil(() => questionUI.HasAnswered);
+        ActiveQuestion = null;
 
         int selectedIndex = questionUI.SelectedIndex;
-        Debug.Log($"Respuesta seleccionada: {selectedIndex} – “{questionNode.options[selectedIndex]}”");
+        Debug.Log($"Respuesta seleccionada: {selectedIndex} – '{questionNode.options[selectedIndex]}'");
 
         questionUI.Hide();
     }

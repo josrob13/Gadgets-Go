@@ -19,6 +19,7 @@ MonoBehaviour:
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFC\xF3mo se siente Dani?"
   options:
   - "Est\xE1 asustado porque parece sangre"
@@ -28,3 +29,4 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: Pereira7

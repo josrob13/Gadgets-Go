@@ -12,4 +12,9 @@ public class QuestionNode : DialogueNode
     public DialogueNode onCorrect;
     public DialogueNode onIncorrect;
     public int correctOptionIndex;
+
+    [Header("Guide Hint")]
+    [TextArea(2, 5)]
+    [Tooltip("Explanation shown in the VR Guide when the player asks for a hint during this question. Leave empty to show a generic 'no hint' message.")]
+    public string hint;
 }

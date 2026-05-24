@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Monitors facial blendshapes via OVRFaceExpressions to detect user discomfort
-/// (stress, frustration, overstimulation) during gameplay.
+/// Monitors facial blendshapes via OVRFaceExpressions to detect user discomfort during gameplay.
 /// Fires OnDiscomfortStateChanged when sustained discomfort is detected or resolved.
 /// Fully modular — independent from the dialogue system.
 /// </summary>
@@ -24,16 +23,12 @@ public class FaceTrackingManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float eyeWideWeight = 0.8f;
     [SerializeField, Range(0f, 1f)] private float lipStretchWeight = 0.6f;
 
-    /// <summary>Fired when discomfort state changes. true = discomfort onset, false = resolved.</summary>
     public event Action<bool> OnDiscomfortStateChanged;
 
-    /// <summary>Whether discomfort is currently active.</summary>
     public bool IsDiscomfortActive { get; private set; }
 
-    /// <summary>Current weighted discomfort score, range 0-1.</summary>
     public float DiscomfortScore { get; private set; }
 
-    /// <summary>Seconds of continuous discomfort accumulated so far.</summary>
     public float DiscomfortTimer { get; private set; }
 
     [Header("Debug")]
@@ -42,6 +37,7 @@ public class FaceTrackingManager : MonoBehaviour
 
     private bool _trackingAvailable;
     private bool _inCooldown;
+    private bool _guidePaused;
     private float _cooldownTimer;
     private float _debugTimer;
 
@@ -57,7 +53,7 @@ public class FaceTrackingManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if (faceExpressions == null)
-            faceExpressions = FindObjectOfType<OVRFaceExpressions>();
+            faceExpressions = FindFirstObjectByType<OVRFaceExpressions>();
 
         _trackingAvailable = faceExpressions != null;
 
@@ -67,9 +63,28 @@ public class FaceTrackingManager : MonoBehaviour
             Debug.Log("[FaceTrackingManager] Inicializado correctamente.");
     }
 
+    /// <summary>
+    /// Suspends discomfort detection while the guide is open.
+    /// Resets the accumulated discomfort timer so natural reading expressions
+    /// (frowning, concentrating) don't count toward the threshold.
+    /// </summary>
+    public void SetGuidePause(bool paused)
+    {
+        _guidePaused = paused;
+        if (paused)
+        {
+            DiscomfortTimer = 0f;
+            Debug.Log("[FaceTrackingManager] Detección pausada por la guía.");
+        }
+        else
+        {
+            Debug.Log("[FaceTrackingManager] Detección reanudada tras cerrar la guía.");
+        }
+    }
+
     private void Update()
     {
-        if (!_trackingAvailable) return;
+        if (!_trackingAvailable || _guidePaused) return;
 
         if (_inCooldown)
         {
@@ -133,10 +148,6 @@ public class FaceTrackingManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when the user confirms they are ready to continue after a break.
-    /// Resets discomfort state and starts a cooldown to avoid immediate re-triggering.
-    /// </summary>
     public void OnUserResumed()
     {
         TryClearDiscomfort();
@@ -145,7 +156,6 @@ public class FaceTrackingManager : MonoBehaviour
         Debug.Log($"[FaceTrackingManager] El usuario ha reanudado. Cooldown iniciado ({resumeCooldown}s).");
     }
 
-    /// <summary>Computes a weighted discomfort score [0-1] from the monitored blendshapes.</summary>
     private float ComputeDiscomfortScore()
     {
         float totalWeight = 0f;
@@ -175,7 +185,6 @@ public class FaceTrackingManager : MonoBehaviour
         return totalWeight > 0f ? weightedSum / totalWeight : 0f;
     }
 
-    /// <summary>Safely reads a single blendshape value from OVRFaceExpressions.</summary>
     private bool TryGetBlend(OVRFaceExpressions.FaceExpression expression, out float value)
     {
         value = 0f;
@@ -191,7 +200,6 @@ public class FaceTrackingManager : MonoBehaviour
         }
     }
 
-    /// <summary>Clears active discomfort and fires the resolved event if needed.</summary>
     private void TryClearDiscomfort()
     {
         if (IsDiscomfortActive)

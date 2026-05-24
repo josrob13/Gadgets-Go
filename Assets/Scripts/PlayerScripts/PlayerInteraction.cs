@@ -37,7 +37,8 @@ public class PlayerInteraction : MonoBehaviour
                 interactable.Interact(centerEyeAnchor); // <-- usa centerEyeAnchor en vez de transform
         }
 
-        if (OVRInput.GetDown(pauseKey))
+        // VRGuideController owns the Start button in VR — skip the legacy pause menu.
+        if (OVRInput.GetDown(pauseKey) && VRGuideController.Instance == null)
             uiManager.GamePause();
     }
 
