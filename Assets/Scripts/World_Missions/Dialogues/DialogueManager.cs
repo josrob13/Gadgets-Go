@@ -291,7 +291,11 @@ public class DialogueManager : MonoBehaviour
     {
         ActiveQuestion = questionNode;
         questionUI.ShowQuestion(questionNode.questionText, questionNode.options);
+
+        float questionStartTime = Time.time;
         yield return new WaitUntil(() => questionUI.HasAnswered);
+        AnalyticsManager.Instance?.RegisterQuestionAnswerTime(AnalyticsManager.Instance.currentDialogueId, Time.time - questionStartTime);
+
         ActiveQuestion = null;
 
         int selectedIndex = questionUI.SelectedIndex;

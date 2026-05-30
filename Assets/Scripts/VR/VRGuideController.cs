@@ -112,11 +112,30 @@ public class VRGuideController : MonoBehaviour
         _guideUI?.ShowMissionList(world);
     }
 
+    /// <summary>Called by the Quit button — shows confirmation panel.</summary>
+    public void OnRequestQuit()
+    {
+        Debug.Log("[VRGuideController] OnRequestQuit called");
+        _guideUI?.ShowConfirmQuit();
+    }
+
+    /// <summary>Called by the Yes button in the confirm quit panel.</summary>
+    public void OnConfirmQuit()
+    {
+        Debug.Log("[VRGuideController] OnConfirmQuit — saving and quitting.");
+        Close();
+        UIManager.Instance?.GameQuit();
+    }
+
     /// <summary>Called by the Hint button in the main menu panel.</summary>
     public void OnRequestHint()
     {
         Debug.Log("[VRGuideController] OnRequestHint called");
         QuestionNode q = DialogueManager.Instance?.ActiveQuestion;
+
+        if (q != null)
+            AnalyticsManager.Instance?.RegisterHintUsed(MissionManager.Instance?.GetCurrentMissionId());
+
         string text = (q != null && !string.IsNullOrEmpty(q.hint))
             ? q.hint
             : "No hay pista disponible para esta pregunta.";

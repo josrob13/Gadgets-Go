@@ -6,7 +6,6 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private float interactDistance = 2.0f;
     [SerializeField] private OVRInput.Button interactKey = OVRInput.Button.One;
-    [SerializeField] private OVRInput.Button pauseKey = OVRInput.Button.Start;
     [SerializeField] private OVRInput.Button menuKey = OVRInput.Button.Three;
     [SerializeField] private InteractiveMenu interactiveMenu;
     [SerializeField] private Transform centerEyeAnchor; // <-- AÑADIR ESTO
@@ -36,10 +35,6 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable != null)
                 interactable.Interact(centerEyeAnchor); // <-- usa centerEyeAnchor en vez de transform
         }
-
-        // VRGuideController owns the Start button in VR — skip the legacy pause menu.
-        if (OVRInput.GetDown(pauseKey) && VRGuideController.Instance == null)
-            uiManager.GamePause();
     }
 
     public IInteractable GetInteractableObject()

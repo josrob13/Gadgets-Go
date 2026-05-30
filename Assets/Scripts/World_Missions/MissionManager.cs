@@ -54,6 +54,9 @@ public class MissionManager : MonoBehaviour
     {
         // ─── Get VR locomotion references ───
         smoothTeleport = smoothTeleport ?? FindObjectOfType<SmoothTeleport>();
+        EyeTracking eyeTracker = FindObjectOfType<EyeTracking>();
+        eyeTracker?.ResetTracking();
+        Debug.Log($"[Analytics] EyeTracking found: {eyeTracker != null}");
         OVRCameraRig ovrRig = FindObjectOfType<OVRCameraRig>();
         bool isVR = ovrRig != null;
 
@@ -172,6 +175,12 @@ public class MissionManager : MonoBehaviour
         {
             DialogueManager.Instance.OnQuestionAnswered -= ToErrorRegister;
         }
+
+        if (eyeTracker != null)
+            Debug.Log($"[Analytics] Eye end — Focused: {eyeTracker.FocusedTime:F1}s | Distracted: {eyeTracker.DistractedTime:F1}s | Events: {eyeTracker.DistractionCount}");
+        else
+            Debug.LogWarning("[Analytics] EyeTracking is null — no eye data registered.");
+        AnalyticsManager.Instance?.RegisterMissionEyeData(currentMission.GetMissionName(), eyeTracker);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

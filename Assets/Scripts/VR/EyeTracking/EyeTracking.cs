@@ -29,11 +29,13 @@ public class EyeTracking : MonoBehaviour
     private float trackedTime;
     private float currentDistractedDuration;
     private bool warningActive;
+    private int _distractionCount;
 
     public bool IsCurrentlyFocused { get; private set; }
     public float FocusedTime => focusedTime;
     public float DistractedTime => distractedTime;
     public float TrackedTime => trackedTime;
+    public int DistractionCount => _distractionCount;
     public float DistractedPercentage => trackedTime <= 0f ? 0f : distractedTime / trackedTime * 100f;
 
     private void Update()
@@ -54,6 +56,9 @@ public class EyeTracking : MonoBehaviour
         {
             Debug.DrawRay(gazeRay.origin, gazeRay.direction * maxRayDistance, Color.red);
         }
+
+        if (!hitFocus && IsCurrentlyFocused)
+            _distractionCount++;
 
         IsCurrentlyFocused = hitFocus;
         trackedTime += Time.deltaTime;
@@ -127,6 +132,7 @@ public class EyeTracking : MonoBehaviour
         distractedTime = 0f;
         trackedTime = 0f;
         currentDistractedDuration = 0f;
+        _distractionCount = 0;
         warningActive = false;
         IsCurrentlyFocused = false;
         SetWarning(false);

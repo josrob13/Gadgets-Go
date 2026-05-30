@@ -13,8 +13,29 @@ public enum SocialInferenceCategory
 public class DialogueAnalyticsEntry
 {
     public string dialogueId;
+    public int sessionsPlayed;
+
+    // Existing
     public float timeSpent;
     public int wrongAnswers;
+
+    // Hint usage
+    public int hintsRequested;
+
+    // Eye tracking (per mission)
+    public float eyeFocusedSeconds;
+    public float eyeDistractedSeconds;
+    public int eyeDistractionEvents;
+
+    // Face tracking (per mission)
+    public int faceDiscomfortEvents;
+    public float faceDiscomfortSeconds;
+    public float faceDiscomfortPeakScore;
+
+    // Question response time
+    public float totalAnswerTimeSeconds;
+    public int questionsAnswered;
+    public float AvgAnswerTimeSeconds => questionsAnswered > 0 ? totalAnswerTimeSeconds / questionsAnswered : 0f;
 }
 
 [System.Serializable]
@@ -47,6 +68,10 @@ public class GameData
     public List<string> completedMissions;
     public List<DialogueAnalyticsEntry> dialogueAnalyticsSessions;
     public List<InferenceCategoryErrorCounter> inferenceCategoryErrors;
+
+    // Global face tracking totals
+    public int totalFaceDiscomfortEvents;
+    public float totalFaceDiscomfortSeconds;
 
     public GameData()
     {

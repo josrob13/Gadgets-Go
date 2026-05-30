@@ -5,7 +5,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject normalUI;
     [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private float defaultFadeDuration = 1.5f;
@@ -40,31 +39,10 @@ public class UIManager : MonoBehaviour
             Debug.Log("[UIManager] OVRScreenFade no encontrado: se usará CanvasGroup (modo desktop).");
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Menú / Pausa  (sin cambios respecto al original)
-    // ─────────────────────────────────────────────────────────────────────────
-
-    public void GamePause()
-    {
-        pauseMenuUI.SetActive(true);
-        normalUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Time.timeScale = 0f;
-    }
-
-    public void GameResume()
-    {
-        pauseMenuUI.SetActive(false);
-        normalUI.SetActive(true);
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     public void GameQuit()
     {
-        Debug.Log("Game is quitting...");
+        Debug.Log("Game is quitting — saving analytics...");
+        AnalyticsManager.Instance?.SaveAnalytics();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

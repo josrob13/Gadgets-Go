@@ -16,8 +16,13 @@ public class AnalyticsManager : MonoBehaviour
     public List<DialogueAnalyticsEntry> dialogueAnalyticsSessions = new();
     public List<InferenceCategoryErrorCounter> inferenceCategoryErrors = new();
 
+    [Header("Face tracking (global)")]
+    public int totalFaceDiscomfortEvents;
+    public float totalFaceDiscomfortSeconds;
+
     private Dictionary<string, DialogueAnalyticsEntry> dialogueAnalyticsMap;
     private Dictionary<SocialInferenceCategory, InferenceCategoryErrorCounter> inferenceErrorMap;
+    private float _discomfortStartTime;
 
     private void Awake()
     {
@@ -32,6 +37,25 @@ public class AnalyticsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        if (FaceTrackingManager.Instance != null)
+        {
+            FaceTrackingManager.Instance.OnDiscomfortStateChanged += OnFaceDiscomfortChanged;
+            Debug.Log("[AnalyticsManager] Subscribed to FaceTrackingManager.");
+        }
+        else
+        {
+            Debug.LogWarning("[AnalyticsManager] FaceTrackingManager not found — face analytics disabled.");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (FaceTrackingManager.Instance != null)
+            FaceTrackingManager.Instance.OnDiscomfortStateChanged -= OnFaceDiscomfortChanged;
     }
 
     private void InitializeMaps()
@@ -75,7 +99,7 @@ public class AnalyticsManager : MonoBehaviour
 
         currentDialogueId = dialogueId;
         currentDialogueElapsed = 0f;
-        GetOrCreateDialogueEntry(dialogueId);
+        GetOrCreateDialogueEntry(dialogueId).sessionsPlayed++;
     }
 
     public void EndDialogue()
@@ -106,8 +130,58 @@ public class AnalyticsManager : MonoBehaviour
         if (string.IsNullOrEmpty(currentDialogueId))
             return;
 
-        DialogueAnalyticsEntry session = GetOrCreateDialogueEntry(currentDialogueId);
-        session.wrongAnswers++;
+        GetOrCreateDialogueEntry(currentDialogueId).wrongAnswers++;
+    }
+
+    public void RegisterMissionEyeData(string missionId, EyeTracking eyeTracker)
+    {
+        if (eyeTracker == null || string.IsNullOrEmpty(missionId)) return;
+        var entry = GetOrCreateDialogueEntry(missionId);
+        entry.eyeFocusedSeconds += eyeTracker.FocusedTime;
+        entry.eyeDistractedSeconds += eyeTracker.DistractedTime;
+        entry.eyeDistractionEvents += eyeTracker.DistractionCount;
+        Debug.Log($"[Analytics] Eye data written to entry '{missionId}': focused={entry.eyeFocusedSeconds:F1}s, distracted={entry.eyeDistractedSeconds:F1}s, events={entry.eyeDistractionEvents}");
+    }
+
+    public void RegisterHintUsed(string missionId)
+    {
+        if (string.IsNullOrEmpty(missionId)) return;
+        GetOrCreateDialogueEntry(missionId).hintsRequested++;
+    }
+
+    public void RegisterQuestionAnswerTime(string missionId, float seconds)
+    {
+        if (string.IsNullOrEmpty(missionId)) return;
+        var entry = GetOrCreateDialogueEntry(missionId);
+        entry.totalAnswerTimeSeconds += seconds;
+        entry.questionsAnswered++;
+    }
+
+    private void OnFaceDiscomfortChanged(bool isDiscomfort)
+    {
+        Debug.Log($"[Analytics] FaceDiscomfort changed: {isDiscomfort}");
+        string missionId = MissionManager.Instance?.GetCurrentMissionId();
+        bool inMission = !string.IsNullOrEmpty(missionId) && missionId != "Unkown Mission";
+
+        if (isDiscomfort)
+        {
+            _discomfortStartTime = Time.unscaledTime;
+            totalFaceDiscomfortEvents++;
+
+            if (inMission)
+            {
+                var entry = GetOrCreateDialogueEntry(missionId);
+                entry.faceDiscomfortEvents++;
+                entry.faceDiscomfortPeakScore = Mathf.Max(entry.faceDiscomfortPeakScore, FaceTrackingManager.Instance?.DiscomfortScore ?? 0f);
+            }
+        }
+        else
+        {
+            float duration = Time.unscaledTime - _discomfortStartTime;
+            totalFaceDiscomfortSeconds += duration;
+            if (inMission)
+                GetOrCreateDialogueEntry(missionId).faceDiscomfortSeconds += duration;
+        }
     }
     
     public string ExportTherapistCsv()
@@ -123,25 +197,30 @@ public class AnalyticsManager : MonoBehaviour
             }
         }
         string reportPath = Path.Combine(basePath, "gamedata_report.csv");
+        foreach (var s in dialogueAnalyticsSessions)
+            Debug.Log($"[Analytics] CSV dump — '{s.dialogueId}': focused={s.eyeFocusedSeconds:F1}s, distracted={s.eyeDistractedSeconds:F1}s, events={s.eyeDistractionEvents}");
         var lines = new List<string>
         {
             "Tipo;Valor",
             $"Tiempo total de juego (s);{totalPlayedTime:F1}",
             "",
-            "dialogueId;timeSpentSeconds;wrongAnswers"
+            $"Eventos de incomodidad facial (total);{totalFaceDiscomfortEvents}",
+            $"Tiempo de incomodidad facial (s, total);{totalFaceDiscomfortSeconds:F1}",
+            "",
+            "dialogueId;sesiones;tiempoSegundos;respuestasErroneas;pistasUsadas;avgTiempoRespuestaS;ojosEnfocadosS;ojosDistrayendoseS;eventosDistraccion;eventosIncomodidadFacial;tiempoIncomodidadFacialS;peakScoreIncomodidad"
         };
 
         if (dialogueAnalyticsSessions != null && dialogueAnalyticsSessions.Count > 0)
         {
-            foreach (var session in dialogueAnalyticsSessions)
+            foreach (var s in dialogueAnalyticsSessions)
             {
-                string dialogueId = EscapeCsvField(session.dialogueId);
-                lines.Add($"{dialogueId};{session.timeSpent:F1};{session.wrongAnswers}");
+                string id = EscapeCsvField(s.dialogueId);
+                lines.Add($"{id};{s.sessionsPlayed};{s.timeSpent:F1};{s.wrongAnswers};{s.hintsRequested};{s.AvgAnswerTimeSeconds:F1};{s.eyeFocusedSeconds:F1};{s.eyeDistractedSeconds:F1};{s.eyeDistractionEvents};{s.faceDiscomfortEvents};{s.faceDiscomfortSeconds:F1};{s.faceDiscomfortPeakScore:F2}");
             }
         }
         else
         {
-            lines.Add("No hay datos de diálogo disponibles;;");
+            lines.Add("No hay datos de diálogo disponibles;;;;;;;;;;;;");
         }
 
         lines.Add("");
@@ -159,8 +238,20 @@ public class AnalyticsManager : MonoBehaviour
             lines.Add("No hay errores de inferencia registrados;");
         }
 
-        File.WriteAllLines(reportPath, lines, Encoding.UTF8);
-        Debug.Log($"[AnalyticsManager] Reporte CSV exportado a: {reportPath}");
+        try
+        {
+            File.WriteAllLines(reportPath, lines, Encoding.UTF8);
+            Debug.Log($"[AnalyticsManager] Reporte CSV exportado a: {reportPath}");
+        }
+        catch (IOException)
+        {
+            // File is open in another program — write to a timestamped backup instead
+            string timestamp = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            reportPath = reportPath.Replace(".csv", $"_{timestamp}.csv");
+            File.WriteAllLines(reportPath, lines, Encoding.UTF8);
+            Debug.LogWarning($"[AnalyticsManager] CSV en uso — backup exportado a: {reportPath}");
+        }
+
         return reportPath;
     }
 
@@ -197,15 +288,23 @@ public class AnalyticsManager : MonoBehaviour
         totalPlayedTime = savedData.totalPlayedTime;
         dialogueAnalyticsSessions = savedData.dialogueAnalyticsSessions ?? new List<DialogueAnalyticsEntry>();
         inferenceCategoryErrors = savedData.inferenceCategoryErrors ?? new List<InferenceCategoryErrorCounter>();
+        totalFaceDiscomfortEvents = savedData.totalFaceDiscomfortEvents;
+        totalFaceDiscomfortSeconds = savedData.totalFaceDiscomfortSeconds;
         InitializeMaps();
     }
 
     public void SaveAnalytics()
     {
+        // Close any discomfort episode still open at save time
+        if (FaceTrackingManager.Instance != null && FaceTrackingManager.Instance.IsDiscomfortActive)
+            OnFaceDiscomfortChanged(false);
+
         GameData data = SaveSystem.Load() ?? new GameData();
         data.totalPlayedTime = totalPlayedTime;
         data.dialogueAnalyticsSessions = dialogueAnalyticsSessions ?? new List<DialogueAnalyticsEntry>();
         data.inferenceCategoryErrors = inferenceCategoryErrors ?? new List<InferenceCategoryErrorCounter>();
+        data.totalFaceDiscomfortEvents = totalFaceDiscomfortEvents;
+        data.totalFaceDiscomfortSeconds = totalFaceDiscomfortSeconds;
         SaveSystem.Save(data);
     }
 

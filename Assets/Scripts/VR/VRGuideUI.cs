@@ -44,6 +44,12 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     [SerializeField] private Button missionsButton;
     [SerializeField] private Button hintButton;
     [SerializeField] private TextMeshProUGUI hintButtonLabel;
+    [SerializeField] private Button quitButton;
+
+    [Header("Confirm Quit Panel")]
+    [SerializeField] private GameObject confirmQuitPanel;
+    [SerializeField] private Button confirmYesButton;
+    [SerializeField] private Button confirmNoButton;
 
     [Header("Mission List Panel")]
     [SerializeField] private GameObject missionListPanel;
@@ -75,6 +81,9 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     {
         missionsButton?.onClick.AddListener(() => VRGuideController.Instance?.OnRequestMissions());
         hintButton?.onClick.AddListener(() => VRGuideController.Instance?.OnRequestHint());
+        quitButton?.onClick.AddListener(() => VRGuideController.Instance?.OnRequestQuit());
+        confirmYesButton?.onClick.AddListener(() => VRGuideController.Instance?.OnConfirmQuit());
+        confirmNoButton?.onClick.AddListener(BackToMainMenu);
         missionListBackButton?.onClick.AddListener(BackToMainMenu);
         hintBackButton?.onClick.AddListener(BackToMainMenu);
     }
@@ -86,6 +95,7 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
         Canvas.ForceUpdateCanvases();
         AddCollider(missionsButton);
         AddCollider(hintButton);
+        AddCollider(quitButton);
         // Back-buttons live on panels that start inactive; their colliders are sized
         // the first time SetPanels activates their panel (see SetPanels below).
     }
@@ -126,6 +136,14 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     }
 
     /// <summary>
+    /// Shows the confirm quit panel.
+    /// </summary>
+    public void ShowConfirmQuit()
+    {
+        SetPanels(main: false, missions: false, hint: false, confirmQuit: true);
+    }
+
+    /// <summary>
     /// Hides the entire guide (root panel off). Called by VRGuideController on close.
     /// The component itself stays active so VRRayPointer can always find it.
     /// </summary>
@@ -143,29 +161,34 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
         ShowMainMenu(hintAvailable);
     }
 
-    private void SetPanels(bool main, bool missions, bool hint)
+    private void SetPanels(bool main, bool missions, bool hint, bool confirmQuit = false)
     {
-        if (guideRootPanel != null)   guideRootPanel.SetActive(true);
-        if (mainMenuPanel != null)    mainMenuPanel.SetActive(main);
-        if (missionListPanel != null) missionListPanel.SetActive(missions);
-        if (hintPanel != null)        hintPanel.SetActive(hint);
+        if (guideRootPanel != null)    guideRootPanel.SetActive(true);
+        if (mainMenuPanel != null)     mainMenuPanel.SetActive(main);
+        if (missionListPanel != null)  missionListPanel.SetActive(missions);
+        if (hintPanel != null)         hintPanel.SetActive(hint);
+        if (confirmQuitPanel != null)  confirmQuitPanel.SetActive(confirmQuit);
 
-        // Force ALL canvases to recalculate layout so RectTransform.rect values
-        // are valid before we size the BoxColliders used by Physics.Raycast.
         Canvas.ForceUpdateCanvases();
 
-        if (main && mainMenuPanel != null)
+        if (main)
         {
             AddCollider(missionsButton);
             AddCollider(hintButton);
+            AddCollider(quitButton);
         }
-        else if (missions && missionListPanel != null)
+        else if (missions)
         {
             AddCollider(missionListBackButton);
         }
-        else if (hint && hintPanel != null)
+        else if (hint)
         {
             AddCollider(hintBackButton);
+        }
+        else if (confirmQuit)
+        {
+            AddCollider(confirmYesButton);
+            AddCollider(confirmNoButton);
         }
     }
 
