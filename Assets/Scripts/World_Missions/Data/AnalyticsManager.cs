@@ -22,7 +22,8 @@ public class AnalyticsManager : MonoBehaviour
 
     private Dictionary<string, DialogueAnalyticsEntry> dialogueAnalyticsMap;
     private Dictionary<SocialInferenceCategory, InferenceCategoryErrorCounter> inferenceErrorMap;
-    private float _discomfortStartTime;
+    private bool _isTrackingDiscomfort;
+    private string _discomfortMissionId;
 
     private void Awake()
     {
@@ -87,8 +88,14 @@ public class AnalyticsManager : MonoBehaviour
         totalPlayedTime += Time.deltaTime;
 
         if (!string.IsNullOrEmpty(currentDialogueId))
-        {
             currentDialogueElapsed += Time.deltaTime;
+
+        if (_isTrackingDiscomfort)
+        {
+            float dt = Time.unscaledDeltaTime;
+            totalFaceDiscomfortSeconds += dt;
+            if (!string.IsNullOrEmpty(_discomfortMissionId))
+                GetOrCreateDialogueEntry(_discomfortMissionId).faceDiscomfortSeconds += dt;
         }
     }
 
@@ -165,7 +172,8 @@ public class AnalyticsManager : MonoBehaviour
 
         if (isDiscomfort)
         {
-            _discomfortStartTime = Time.unscaledTime;
+            _isTrackingDiscomfort = true;
+            _discomfortMissionId = inMission ? missionId : null;
             totalFaceDiscomfortEvents++;
 
             if (inMission)
@@ -177,10 +185,8 @@ public class AnalyticsManager : MonoBehaviour
         }
         else
         {
-            float duration = Time.unscaledTime - _discomfortStartTime;
-            totalFaceDiscomfortSeconds += duration;
-            if (inMission)
-                GetOrCreateDialogueEntry(missionId).faceDiscomfortSeconds += duration;
+            _isTrackingDiscomfort = false;
+            _discomfortMissionId = null;
         }
     }
     
@@ -295,9 +301,8 @@ public class AnalyticsManager : MonoBehaviour
 
     public void SaveAnalytics()
     {
-        // Close any discomfort episode still open at save time
-        if (FaceTrackingManager.Instance != null && FaceTrackingManager.Instance.IsDiscomfortActive)
-            OnFaceDiscomfortChanged(false);
+        // Freeze any in-flight discomfort accumulation so Update() doesn't add more after this point
+        _isTrackingDiscomfort = false;
 
         GameData data = SaveSystem.Load() ?? new GameData();
         data.totalPlayedTime = totalPlayedTime;
