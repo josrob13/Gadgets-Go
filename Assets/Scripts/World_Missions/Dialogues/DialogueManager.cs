@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private QuestionUI questionUI;
+    [SerializeField] private NameInputUI nameInputUI;
     [SerializeField] private DialogueCanvasController canvasController;
     [SerializeField] private float textSpeed = 0.035f;
 
@@ -138,7 +139,12 @@ public class DialogueManager : MonoBehaviour
 
             Transform speakerTransform = currentSpeaker != null ? currentSpeaker.transform : null;
 
-            if (node is QuestionNode questionNode)
+            if (node is InputNode inputNode)
+            {
+                yield return ShowNameInput(inputNode);
+                node = inputNode.nextNode;
+            }
+            else if (node is QuestionNode questionNode)
             {
                 // Initialize attempts if not present
                 if (!questionAttempts.ContainsKey(questionNode))
@@ -257,6 +263,25 @@ public class DialogueManager : MonoBehaviour
         }
     }
     */
+
+    private IEnumerator ShowNameInput(InputNode node)
+    {
+        if (nameInputUI == null)
+        {
+            Debug.LogWarning("[DialogueManager] NameInputUI not assigned; skipping name input step.");
+            yield break;
+        }
+
+        nameInputUI.Show(node.inputPrompt, node.placeholder, node.maxCharacters);
+        yield return new WaitUntil(() => nameInputUI.HasConfirmed);
+
+        string enteredName = nameInputUI.EnteredName;
+        if (GameHandler.Instance != null)
+            GameHandler.Instance.PlayerName = enteredName;
+
+        nameInputUI.Hide();
+        Debug.Log($"[DialogueManager] Player name set: {enteredName}");
+    }
 
     public IEnumerator ShowDialogueLine(string line)
     {

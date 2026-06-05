@@ -6,6 +6,7 @@ public class GameHandler : MonoBehaviour
     public static GameHandler Instance;
     private WorldsDB worldsDB;
     private int indexWorld = 0;
+    public string PlayerName { get; set; } = "Jugador";
 
     private void Awake()
     {
@@ -43,7 +44,8 @@ public class GameHandler : MonoBehaviour
 
         // 3. Creamos datos limpios por defecto
         GameData newGameData = new GameData();
-        
+        newGameData.playerName = PlayerName;
+
         // 4. Sobrescribimos el archivo viejo en el disco duro
         SaveSystem.Save(newGameData);
 

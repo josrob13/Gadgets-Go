@@ -61,6 +61,7 @@ public class InventoryData
 [System.Serializable]
 public class GameData
 {
+    public string playerName;
     public int savedWorldIndex;
     public float totalPlayedTime;
     public PlayerStatsData playerStats;
