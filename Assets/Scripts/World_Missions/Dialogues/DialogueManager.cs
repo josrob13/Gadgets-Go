@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System;
-using UnityEditor.Animations;
 using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour

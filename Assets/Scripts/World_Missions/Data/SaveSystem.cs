@@ -37,9 +37,15 @@ public static class SaveSystem
         string json = JsonUtility.ToJson(data, true);
         string filePath = GetSaveFilePath();
         File.WriteAllText(filePath, json);
-        string reportPath = AnalyticsManager.Instance.ExportTherapistCsv();
-        Debug.Log($"[SaveSystem] Partida guardada exitosamente en: {filePath}");
-        Debug.Log($"[SaveSystem] Reporte CSV exportado a: {reportPath}");
+
+        string folderPath = Path.GetDirectoryName(filePath);
+        string csvPath    = AnalyticsManager.Instance.ExportTherapistCsv();
+        string htmlPath   = ReportGenerator.GenerateHTMLReport(data, folderPath);
+
+        Debug.Log($"[SaveSystem] Partida guardada en: {filePath}");
+        Debug.Log($"[SaveSystem] CSV exportado a: {csvPath}");
+        if (!string.IsNullOrEmpty(htmlPath))
+            Debug.Log($"[SaveSystem] Informe HTML generado en: {htmlPath}");
     }
 
     public static GameData Load()

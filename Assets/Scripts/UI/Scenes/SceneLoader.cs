@@ -19,7 +19,11 @@ public class SceneLoader : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
 
@@ -55,7 +59,7 @@ public class SceneLoader : MonoBehaviour
         }
 
         if (mainCanvas != null) mainCanvas.gameObject.SetActive(false);
-        fadeCanvasGroup.alpha = 0f;
+        if (fadeCanvasGroup != null) fadeCanvasGroup.alpha = 0f;
         if (loadingScreen != null) loadingScreen.SetActive(true);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = false; 
