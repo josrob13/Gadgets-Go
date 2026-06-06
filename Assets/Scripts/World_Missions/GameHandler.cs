@@ -4,9 +4,10 @@ using UnityEngine;
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
-    private WorldsDB worldsDB;
+    [SerializeField] private WorldsDB worldsDB;
     private int indexWorld = 0;
     public string PlayerName { get; set; } = "Jugador";
+    public int CurrentWorldIndex => indexWorld;
 
     private void Awake()
     {
@@ -114,11 +115,11 @@ public class GameHandler : MonoBehaviour
     
     public bool NextWorld()
     {
-        Debug.Log($"[Progress] Intentando avanzar de mundo desde {indexWorld}");
+        Debug.Log($"[GameHandler] Intentando avanzar de mundo desde {indexWorld}");
 
         if (worldsDB?.worlds == null || worldsDB.worlds.Length == 0)
         {
-            Debug.LogWarning("WorldsDB is not set or empty.");
+            Debug.LogWarning("[GameHandler] WorldsDB no asignado en el Inspector — no se puede avanzar de mundo.");
             return false;
         }
 
@@ -127,17 +128,24 @@ public class GameHandler : MonoBehaviour
         if (!PlayerProgress.Instance.IsWorldCompleted(current)) return false;
 
         indexWorld = idx + 1;
+
+        // Persist the new world index to disk immediately.
+        AnalyticsManager.Instance?.SaveAnalytics();
+
         if (indexWorld >= worldsDB.worlds.Length)
         {
-            Debug.LogWarning("No more worlds to advance to. JUEGO FINALIZADO!");
-        }
-        else
-        {
-            var next = worldsDB.worlds[indexWorld];
-            Debug.Log($"[Progress] Avanzando a mundo {indexWorld}: {next?.name}");
+            Debug.Log("[GameHandler] ¡Todos los mundos completados! Juego finalizado.");
+            return true;
         }
 
-        // Aquí no cargo escena para no acoplar. Hazlo en tu MissionManager/SceneController.
+        World nextWorld = worldsDB.worlds[indexWorld];
+        Debug.Log($"[GameHandler] Avanzando al mundo {indexWorld}: '{nextWorld.WorldName}' — cargando escena '{nextWorld.SceneName}'");
+
+        if (SceneLoader.Instance != null)
+            SceneLoader.Instance.LoadSceneAsync(nextWorld.SceneName);
+        else
+            Debug.LogError("[GameHandler] SceneLoader.Instance es null — no se puede cargar la escena del mundo siguiente.");
+
         return true;
     }
 }

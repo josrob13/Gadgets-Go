@@ -5,7 +5,6 @@ using TMPro;
 
 public class NameInputUI : MonoBehaviour, IVRPointerTarget
 {
-    // IVRPointerTarget — keeps the VRRayPointer laser active while this panel is open.
     public bool IsPointerActive => panel != null && panel.activeSelf;
     public bool BlocksTriggerFallback => false;
     public void OnPointerTriggerFallback() => FocusInputField();
@@ -28,21 +27,15 @@ public class NameInputUI : MonoBehaviour, IVRPointerTarget
     private void Start()
     {
         _vrAvailable = FindObjectOfType<OVRCameraRig>() != null;
-        Debug.Log($"[NameInputUI] Start — _vrAvailable={_vrAvailable}, inputField={inputField != null}, confirmButton={confirmButton != null}");
 
         confirmButton?.onClick.AddListener(OnConfirmButton);
 
         if (inputField != null)
-            inputField.onSelect.AddListener(_ =>
-            {
-                Debug.Log("[NameInputUI] onSelect fired — opening keyboard");
-                OpenKeyboard();
-            });
+            inputField.onSelect.AddListener(_ => OpenKeyboard());
     }
 
     public void Show(string prompt, string placeholder, int maxChars)
     {
-        Debug.Log($"[NameInputUI] Show — prompt='{prompt}'");
         HasConfirmed = false;
 
         if (promptLabel != null) promptLabel.text = prompt;
@@ -59,25 +52,18 @@ public class NameInputUI : MonoBehaviour, IVRPointerTarget
         if (panel != null) panel.SetActive(true);
 
         SetupConfirmButtonCollider();
-
         StartCoroutine(ActivateNextFrame());
     }
 
     private IEnumerator ActivateNextFrame()
     {
-        Debug.Log("[NameInputUI] ActivateNextFrame — waiting one frame then focusing");
         yield return null;
         FocusInputField();
     }
 
     private void FocusInputField()
     {
-        if (inputField == null)
-        {
-            Debug.LogError("[NameInputUI] FocusInputField — inputField is null!");
-            return;
-        }
-        Debug.Log("[NameInputUI] FocusInputField — calling ActivateInputField + Select");
+        if (inputField == null) return;
         inputField.ActivateInputField();
         inputField.Select();
         OpenKeyboard();
@@ -97,9 +83,6 @@ public class NameInputUI : MonoBehaviour, IVRPointerTarget
             alert: false,
             textPlaceholder: placeholderText
         );
-        Debug.Log($"[NameInputUI] OpenKeyboard — keyboard status={inputField.touchScreenKeyboard?.status}");
-#else
-        Debug.Log("[NameInputUI] OpenKeyboard — skipped (Editor/Link, use PC keyboard to type)");
 #endif
     }
 

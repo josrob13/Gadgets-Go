@@ -310,6 +310,7 @@ public class AnalyticsManager : MonoBehaviour
         data.inferenceCategoryErrors = inferenceCategoryErrors ?? new List<InferenceCategoryErrorCounter>();
         data.totalFaceDiscomfortEvents = totalFaceDiscomfortEvents;
         data.totalFaceDiscomfortSeconds = totalFaceDiscomfortSeconds;
+        data.savedWorldIndex = GameHandler.Instance?.CurrentWorldIndex ?? data.savedWorldIndex;
         SaveSystem.Save(data);
     }
 
