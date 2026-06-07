@@ -211,11 +211,11 @@ namespace SlimUI.ModernMenu{
 
 		public void Position2(){
 			DisablePlayCampaign();
-			CameraObject.SetFloat("Animate",1);
+			if (CameraObject != null) CameraObject.SetFloat("Animate",1);
 		}
 
 		public void Position1(){
-			CameraObject.SetFloat("Animate",0);
+			if (CameraObject != null) CameraObject.SetFloat("Animate",0);
 		}
 
 		void DisablePanels(){
