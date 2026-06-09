@@ -20,6 +20,14 @@ public class PlayerProgress : MonoBehaviour
     [SerializeField] private int totalErrors = 0;
     [SerializeField] private List<MissionErrorCounter> errorsByMissionSerialized = new();
 
+    [Header("Sistema de Recompensa (SpyCoins)")]
+    [Tooltip("Monedas otorgadas al completar una misión sin ningún error.")]
+    [SerializeField] private int maxCoinsPerMission = 20;
+    [Tooltip("Monedas mínimas garantizadas al completar cualquier misión, independientemente de los errores.")]
+    [SerializeField] private int minCoinsPerMission = 5;
+    [Tooltip("Monedas descontadas por cada respuesta incorrecta durante la misión.")]
+    [SerializeField] private int coinDeductionPerError = 3;
+
     // ---------------- Runtime ----------------
     private HashSet<string> completedMissions;
     private Dictionary<string, int> errorsByMission;
@@ -47,15 +55,22 @@ public class PlayerProgress : MonoBehaviour
         if (!completedMissions.Contains(missionId))
         {
             completedMissions.Add(missionId);
-            Debug.Log($"Mission '{missionId}' completed!");
 
-            // Little reward for player
-            PlayerInventory.Instance?.AddSpyCoins(25);
+            // Recompensa variable según errores cometidos durante la misión.
+            // Los errores ya están registrados en errorsByMission antes de llegar aquí.
+            int errors = GetErrors(missionId);
+            int reward = Mathf.Max(minCoinsPerMission, maxCoinsPerMission - errors * coinDeductionPerError);
+
+            PlayerInventory.Instance?.AddSpyCoins(reward);
+
+            Debug.Log($"[PlayerProgress] Misión '{missionId}' completada — " +
+                      $"errores: {errors} | monedas ganadas: {reward} " +
+                      $"(máx {maxCoinsPerMission} − {errors}×{coinDeductionPerError}, mín {minCoinsPerMission})");
             return true;
         }
         else
         {
-            Debug.LogWarning($"Mission '{missionId}' was already completed.");
+            Debug.LogWarning($"[PlayerProgress] La misión '{missionId}' ya estaba completada.");
             return false;
         }
     }

@@ -53,11 +53,11 @@ public class GameHandler : MonoBehaviour
         // 5. Reiniciamos las variables internas del GameHandler por si acaso
         this.indexWorld = newGameData.savedWorldIndex;
 
-        // 6. Llamamos al SceneLoader para ir al juego
-        // Asegúrate de que "RealGame" esté en File -> Build Settings
+        // 6. Llamamos al SceneLoader para ir a la intro (que a su vez cargará "RealGame")
+        // Asegúrate de que "Intro" y "RealGame" estén en File -> Build Settings
         if (SceneLoader.Instance != null)
         {
-            SceneLoader.Instance.LoadSceneAsync("RealGame");
+            SceneLoader.Instance.LoadSceneAsync("Intro");
         }
         else
         {
