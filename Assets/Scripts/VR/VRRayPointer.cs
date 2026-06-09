@@ -29,14 +29,17 @@ public class VRRayPointer : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private LayerMask raycastMask = Physics.DefaultRaycastLayers;
+    [SerializeField] private Camera vrCamera;
 
     private LineRenderer lineRenderer;
     private GameObject dot;
     private Renderer dotRenderer;
     private Button hoveredButton = null;
     private TMP_InputField hoveredInputField = null;
-    private TouchScreenKeyboard vrKeyboard = null;
     private bool isGrabbing = false;
+    private TouchScreenKeyboard _vrKeyboard;
+    private TMP_InputField _activeInputField;
+    private Coroutine _keyboardCoroutine;
     private IVRPointerTarget[] _targets;
     private GraphicRaycaster[] _canvasRaycasters;
     private string _lastHitName = "";
@@ -88,17 +91,6 @@ public class VRRayPointer : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         hoveredButton     = null;
         hoveredInputField = null;
-
-        // Poll virtual keyboard result
-        if (vrKeyboard != null && vrKeyboard.status == TouchScreenKeyboard.Status.Done)
-        {
-            if (vrKeyboard.text != null)
-            {
-                var activeField = EventSystem.current?.currentSelectedGameObject?.GetComponent<TMP_InputField>();
-                if (activeField != null) activeField.text = vrKeyboard.text;
-            }
-            vrKeyboard = null;
-        }
 
         // --- Physics raycast (3D world elements with colliders) ---
         Vector3 dotWorldPos = transform.position + transform.forward * maxRayDistance;
@@ -160,9 +152,7 @@ public class VRRayPointer : MonoBehaviour
             }
             else if (hoveredInputField != null)
             {
-                hoveredInputField.Select();
-                hoveredInputField.ActivateInputField();
-                vrKeyboard = TouchScreenKeyboard.Open(hoveredInputField.text, TouchScreenKeyboardType.Default, false, false, false, false);
+                OpenVRKeyboard(hoveredInputField);
                 Debug.Log($"[VRRayPointer] Opened keyboard for '{hoveredInputField.name}'");
             }
             else if (!anyBlocking)
@@ -181,36 +171,40 @@ public class VRRayPointer : MonoBehaviour
         {
             if (gr == null) continue;
             var canvas = gr.GetComponent<Canvas>();
-            if (canvas == null || canvas.renderMode != RenderMode.WorldSpace) continue;
+            if (canvas == null || !canvas.gameObject.activeInHierarchy) continue;
+            if (canvas.renderMode != RenderMode.WorldSpace) continue;
 
-            Camera cam = canvas.worldCamera != null ? canvas.worldCamera : Camera.main;
-            if (cam == null) continue;
-
-            // Ray-plane intersection with the canvas plane
             var plane = new Plane(-canvas.transform.forward, canvas.transform.position);
             float distance;
-            if (!plane.Raycast(ray, out distance)) continue;
-            if (distance > maxRayDistance) continue;
+            if (!plane.Raycast(ray, out distance) || distance > maxRayDistance) continue;
 
             worldHit = ray.GetPoint(distance);
-            Vector2 screenPos = cam.WorldToScreenPoint(worldHit);
 
-            var pData = new PointerEventData(EventSystem.current) { position = screenPos };
+            Vector3 localHit = canvas.transform.InverseTransformPoint(worldHit);
+            RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+            float w = canvasRect.rect.width;
+            float h = canvasRect.rect.height;
+
+            float normalizedX = (localHit.x / w) + 0.5f;
+            float normalizedY = (localHit.y / h) + 0.5f;
+
+            if (normalizedX < 0 || normalizedX > 1 || normalizedY < 0 || normalizedY > 1)
+                continue;
+
+            Vector2 screenPos = new Vector2(normalizedX * Screen.width, normalizedY * Screen.height);
+
+            var pData   = new PointerEventData(EventSystem.current) { position = screenPos };
             var results = new List<RaycastResult>();
             gr.Raycast(pData, results);
 
             foreach (var result in results)
             {
                 Button btn = result.gameObject.GetComponent<Button>()
-                          ?? result.gameObject.GetComponentInParent<Button>();
+                        ?? result.gameObject.GetComponentInParent<Button>();
                 if (btn != null && btn.interactable)
                 {
                     hoveredButton = btn;
-                    if (result.gameObject.name != _lastHitName)
-                    {
-                        Debug.Log($"[VRRayPointer] UI hit button '{btn.name}'");
-                        _lastHitName = result.gameObject.name;
-                    }
+                    _lastHitName  = result.gameObject.name;
                     return true;
                 }
 
@@ -223,7 +217,6 @@ public class VRRayPointer : MonoBehaviour
                 }
             }
         }
-
         return false;
     }
 
@@ -277,8 +270,103 @@ public class VRRayPointer : MonoBehaviour
         dot.SetActive(false);
     }
 
+    // ---------------------------------------------------------------
+    // VR Keyboard helpers
+    // ---------------------------------------------------------------
+
+    /// <summary>
+    /// Opens the Quest system keyboard for <paramref name="field"/> without
+    /// ever blocking Update(). Text is synced inside a Coroutine so that
+    /// any native exception (e.g. status / text not supported) stays isolated.
+    /// onEndEdit provides a guaranteed exit path regardless of native support.
+    /// </summary>
+    private void OpenVRKeyboard(TMP_InputField field)
+    {
+        // Stop any previous keyboard session
+        if (_keyboardCoroutine != null) StopCoroutine(_keyboardCoroutine);
+        if (_activeInputField != null)
+            _activeInputField.onEndEdit.RemoveListener(OnInputFieldEndEdit);
+
+        _activeInputField = field;
+        field.onEndEdit.AddListener(OnInputFieldEndEdit);
+        field.Select();
+        field.ActivateInputField();
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        _vrKeyboard = TouchScreenKeyboard.Open(
+            field.text,
+            TouchScreenKeyboardType.Default,
+            autocorrection: false,
+            multiline: false,
+            secure: false,
+            alert: false);
+        _keyboardCoroutine = StartCoroutine(SyncKeyboardText());
+#endif
+    }
+
+    /// <summary>
+    /// Coroutine that safely bridges TouchScreenKeyboard → TMP_InputField.
+    /// Each native property is guarded independently: if .status throws we
+    /// stop polling it, if .text throws we skip the sync frame — neither
+    /// crash bleeds into Update().
+    /// </summary>
+    private System.Collections.IEnumerator SyncKeyboardText()
+    {
+        bool pollStatus = true;
+
+        while (_vrKeyboard != null && _activeInputField != null)
+        {
+            // Sync typed text into the field
+            try
+            {
+                string t = _vrKeyboard.text;
+                if (t != null) _activeInputField.text = t;
+            }
+            catch { /* native text property unavailable; TMP handles input natively */ }
+
+            // Check whether the keyboard was dismissed
+            if (pollStatus)
+            {
+                bool done = false;
+                try
+                {
+                    var s = _vrKeyboard.status;
+                    done = s == TouchScreenKeyboard.Status.Done ||
+                           s == TouchScreenKeyboard.Status.Canceled;
+                }
+                catch
+                {
+                    // .status not supported on this platform/config — stop polling it;
+                    // onEndEdit will fire the exit path when the user confirms.
+                    pollStatus = false;
+                }
+                if (done) break;
+            }
+
+            yield return null;
+        }
+
+        CloseVRKeyboard();
+    }
+
+    private void OnInputFieldEndEdit(string _)
+    {
+        if (_keyboardCoroutine != null) StopCoroutine(_keyboardCoroutine);
+        CloseVRKeyboard();
+    }
+
+    private void CloseVRKeyboard()
+    {
+        if (_activeInputField != null)
+            _activeInputField.onEndEdit.RemoveListener(OnInputFieldEndEdit);
+        _vrKeyboard       = null;
+        _activeInputField = null;
+        _keyboardCoroutine = null;
+    }
+
     private void OnDestroy()
     {
         if (dot != null) Destroy(dot);
+        CloseVRKeyboard();
     }
 }

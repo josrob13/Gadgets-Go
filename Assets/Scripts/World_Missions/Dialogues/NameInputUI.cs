@@ -71,10 +71,18 @@ public class NameInputUI : MonoBehaviour, IVRPointerTarget
 
     private void OpenKeyboard()
     {
+        // In VR the keyboard is managed by VRRayPointer (which syncs text via
+        // a Coroutine and never touches inputField.touchScreenKeyboard).
+        // Assigning inputField.touchScreenKeyboard here would make TMP_InputField
+        // poll .status every frame, causing NullReferenceException on Quest.
+        if (_vrAvailable) return;
+
 #if UNITY_ANDROID && !UNITY_EDITOR
         if (inputField == null) return;
         string placeholderText = inputField.placeholder is TextMeshProUGUI ph ? ph.text : "";
-        inputField.touchScreenKeyboard = TouchScreenKeyboard.Open(
+        // Fire-and-forget: do NOT assign to inputField.touchScreenKeyboard so
+        // TMP_InputField never polls .status (which crashes on Quest/OpenXR).
+        TouchScreenKeyboard.Open(
             inputField.text,
             TouchScreenKeyboardType.Default,
             autocorrection: false,
