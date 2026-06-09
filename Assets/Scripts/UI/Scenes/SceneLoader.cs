@@ -10,12 +10,15 @@ public class SceneLoader : MonoBehaviour
     [Header("UI de Carga")]
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider loadingBar;
-    [SerializeField] private bool skipIntroInEditor = true; // Tu bypass para pruebas
+    [SerializeField] private bool skipIntroInEditor = true;
 
-    [Header("Canvas, Fade")]
+    [Header("Canvas / Fade (fallback escritorio)")]
     [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] private float fadeDuration = 1.5f;
+
+    // Fade nativo VR — se busca al inicio y tras cada carga de escena.
+    private OVRScreenFade _ovrFade;
 
     private void Awake()
     {
@@ -24,16 +27,26 @@ public class SceneLoader : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Llama a este método desde el evento OnClick() del botón "Jugar"
+    private void Start()
+    {
+        RefreshOVRFade();
+    }
+
+    // ── Punto de entrada desde el botón "Jugar" del MainMenu ─────────────────
     public void StartGame()
     {
 #if UNITY_EDITOR
         if (skipIntroInEditor)
         {
-            LoadSceneAsync("GameWorld");
+            // En el editor saltamos la intro para iterar rápido.
+            // Cambia "MainMenu" por la escena que prefieras para pruebas.
+            LoadSceneAsync("MainMenu");
             return;
         }
 #endif
@@ -47,48 +60,84 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(string sceneName)
     {
-        if (fadeCanvasGroup != null)
-        {
-            Debug.Log("[SceneLoader] Iniciando transición de escena con fade out...");
-            fadeCanvasGroup.blocksRaycasts = true;
-            yield return StartCoroutine(Fade(0f, 1f));
-        }
-        else
-        {
-            Debug.LogWarning("[SceneLoader] No se ha asignado un CanvasGroup para el fade. La transición será instantánea.");
-        }
+        // ── 1. FADE OUT ──────────────────────────────────────────────────────
+        yield return StartCoroutine(DoFadeOut());
 
-        if (mainCanvas != null) mainCanvas.gameObject.SetActive(false);
+        // ── 2. CARGA ASÍNCRONA ──────────────────────────────────────────────
+        if (mainCanvas != null)    mainCanvas.gameObject.SetActive(false);
         if (fadeCanvasGroup != null) fadeCanvasGroup.alpha = 0f;
         if (loadingScreen != null) loadingScreen.SetActive(true);
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
-        operation.allowSceneActivation = false; 
+        operation.allowSceneActivation = false;
 
         while (!operation.isDone)
         {
-            // Unity carga la escena del 0 al 0.9. Mapeamos eso del 0 al 1 para el Slider.
+            // Unity reporta progreso de 0 a 0.9; lo mapeamos a 0–1 para el slider.
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             if (loadingBar != null) loadingBar.value = progress;
 
-            // Cuando la carga llega al 90%, significa que está lista para mostrarse
             if (operation.progress >= 0.9f)
-            {
-                // Aquí podrías añadir un mensaje de "Pulsa cualquier tecla para continuar"
                 operation.allowSceneActivation = true;
-            }
 
             yield return null;
         }
 
         if (loadingScreen != null) loadingScreen.SetActive(false);
-        if (fadeCanvasGroup != null)
+
+        // Re-buscar OVRScreenFade en la nueva escena.
+        // • Si OVRCameraRig es DontDestroyOnLoad → encuentra el mismo componente
+        //   (ya en negro por el FadeOut anterior) → FadeIn funciona directamente.
+        // • Si OVRCameraRig se recrea por escena → encuentra el nuevo componente
+        //   (empieza en claro) → lo ponemos a negro instantáneamente antes del FadeIn.
+        RefreshOVRFade();
+
+        // ── 3. FADE IN ───────────────────────────────────────────────────────
+        yield return StartCoroutine(DoFadeIn());
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Helpers de fade
+    // ─────────────────────────────────────────────────────────────────────────
+
+    private IEnumerator DoFadeOut()
+    {
+        if (_ovrFade != null)
         {
-            yield return StartCoroutine(Fade(1f, 0f));
+            _ovrFade.FadeOut();
+            yield return new WaitForSeconds(fadeDuration);
+        }
+        else if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.blocksRaycasts = true;
+            yield return StartCoroutine(FadeCanvas(0f, 1f));
+        }
+    }
+
+    private IEnumerator DoFadeIn()
+    {
+        if (_ovrFade != null)
+        {
+            // Si el OVRCameraRig es per-escena, el nuevo OVRScreenFade empieza
+            // con alpha = 0 (claro). Lo ponemos a negro en cero segundos y luego
+            // hacemos el fade-in normal, para que la transición sea siempre suave.
+            float savedFadeTime = _ovrFade.fadeTime;
+            _ovrFade.fadeTime = 0f;
+            _ovrFade.FadeOut();              // se aplica en el mismo frame (duration 0)
+            yield return null;               // un frame para que renderice en negro
+            _ovrFade.fadeTime = savedFadeTime;
+
+            _ovrFade.FadeIn();
+            yield return new WaitForSeconds(fadeDuration);
+        }
+        else if (fadeCanvasGroup != null)
+        {
+            yield return StartCoroutine(FadeCanvas(1f, 0f));
             fadeCanvasGroup.blocksRaycasts = false;
         }
     }
 
-    private IEnumerator Fade(float startAlpha, float targetAlpha)
+    private IEnumerator FadeCanvas(float startAlpha, float targetAlpha)
     {
         float time = 0f;
         fadeCanvasGroup.alpha = startAlpha;
@@ -101,5 +150,19 @@ public class SceneLoader : MonoBehaviour
         }
 
         fadeCanvasGroup.alpha = targetAlpha;
+    }
+
+    /// <summary>
+    /// Busca OVRScreenFade en la escena activa. Se llama al inicio y tras
+    /// cada cambio de escena para mantener la referencia actualizada.
+    /// </summary>
+    private void RefreshOVRFade()
+    {
+        _ovrFade = FindObjectOfType<OVRScreenFade>();
+
+        if (_ovrFade != null)
+            Debug.Log("[SceneLoader] OVRScreenFade detectado — fade VR nativo activo.");
+        else
+            Debug.Log("[SceneLoader] OVRScreenFade no encontrado — usando CanvasGroup (modo desktop).");
     }
 }
