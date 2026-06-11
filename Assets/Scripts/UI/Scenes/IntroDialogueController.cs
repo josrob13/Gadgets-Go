@@ -5,8 +5,6 @@ public class IntroDialogueController : MonoBehaviour
 {
     [SerializeField] private DialogueNode introDialogue;
     [SerializeField] private string dialogueId = "intro";
-    [SerializeField] private string nextScene = "RealGame";
-
     [Tooltip("Assign the dialogue Canvas transform here to lock its scene position/rotation " +
              "instead of letting DialogueCanvasController auto-calculate it at runtime.")]
     [SerializeField] private Transform canvasOverrideTransform;
@@ -25,7 +23,6 @@ public class IntroDialogueController : MonoBehaviour
 
         yield return DialogueManager.Instance.StartDialogue(introDialogue, dialogueId, pos, rot);
 
-        if (!string.IsNullOrEmpty(nextScene))
-            SceneLoader.Instance?.LoadSceneAsync(nextScene);
+        GameHandler.Instance?.LoadCurrentWorld();
     }
 }

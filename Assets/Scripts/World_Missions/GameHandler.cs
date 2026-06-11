@@ -53,8 +53,8 @@ public class GameHandler : MonoBehaviour
         // 5. Reiniciamos las variables internas del GameHandler por si acaso
         this.indexWorld = newGameData.savedWorldIndex;
 
-        // 6. Llamamos al SceneLoader para ir a la intro (que a su vez cargará "RealGame")
-        // Asegúrate de que "Intro" y "RealGame" estén en File -> Build Settings
+        // 6. Llamamos al SceneLoader para ir a la intro (que a su vez cargará el primer mundo)
+        // Asegúrate de que "Intro" y "World1-PolyGym" estén en File -> Build Settings
         if (SceneLoader.Instance != null)
         {
             SceneLoader.Instance.LoadSceneAsync("Intro");
@@ -65,6 +65,24 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    public void LoadCurrentWorld()
+    {
+        if (worldsDB?.worlds == null || worldsDB.worlds.Length == 0)
+        {
+            Debug.LogError("[GameHandler] WorldsDB no asignado o vacío — no se puede cargar el mundo actual.");
+            return;
+        }
+
+        int idx = Mathf.Clamp(indexWorld, 0, worldsDB.worlds.Length - 1);
+        string sceneName = worldsDB.worlds[idx].SceneName;
+        Debug.Log($"[GameHandler] Cargando mundo {idx}: '{worldsDB.worlds[idx].WorldName}' → escena '{sceneName}'");
+
+        if (SceneLoader.Instance != null)
+            SceneLoader.Instance.LoadSceneAsync(sceneName);
+        else
+            Debug.LogError("[GameHandler] SceneLoader.Instance es null — no se puede cargar la escena del mundo actual.");
+    }
+
     public void ContinueGame()
     {
         string mostRecentFolder = SaveSystem.GetMostRecentTherapistFolder();
@@ -72,20 +90,11 @@ public class GameHandler : MonoBehaviour
         {
             SaveSystem.SetTherapistFolder(mostRecentFolder);
             GameData loadedData = SaveSystem.Load();
-            // Restaurar estado del juego
             this.indexWorld = loadedData.savedWorldIndex;
             AnalyticsManager.Instance?.LoadAnalyticsFromSave();
 
             Debug.Log($"[GameHandler] Continuando partida en carpeta: {mostRecentFolder}");
-
-            if (SceneLoader.Instance != null)
-            {
-                SceneLoader.Instance.LoadSceneAsync("RealGame");
-            }
-            else
-            {
-                Debug.LogError("¡No se encontró el SceneLoader en la escena!");
-            }
+            LoadCurrentWorld();
         }
         else
         {
@@ -97,20 +106,11 @@ public class GameHandler : MonoBehaviour
     {
         SaveSystem.SetTherapistFolder(therapistId);
         GameData loadedData = SaveSystem.Load();
-        // Restaurar estado del juego
         this.indexWorld = loadedData.savedWorldIndex;
         AnalyticsManager.Instance?.LoadAnalyticsFromSave();
 
         Debug.Log($"[GameHandler] Cargando partida desde carpeta: {therapistId}");
-
-        if (SceneLoader.Instance != null)
-        {
-            SceneLoader.Instance.LoadSceneAsync("RealGame");
-        }
-        else
-        {
-            Debug.LogError("¡No se encontró el SceneLoader en la escena!");
-        }
+        LoadCurrentWorld();
     }
     
     public bool NextWorld()

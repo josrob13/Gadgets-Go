@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9906f4baf17eaab44823a659bef97796, type: 3}
   m_Name: World1
   m_EditorClassIdentifier: 
-  worldName: Colegio
-  sceneName: Sketch
+  worldName: Gimnasio
+  sceneName: World1-PolyGym
   missions:
   - {fileID: 11400000, guid: 734901446143fc9498e98e5720b1d517, type: 2}
   - {fileID: 11400000, guid: 904286f8e3763984d98390666663b766, type: 2}

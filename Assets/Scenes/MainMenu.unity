@@ -17915,7 +17915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5c55de700b17c47a5ecbeacd3a7639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldsDB: {fileID: 0}
+  worldsDB: {fileID: 11400000, guid: e39f23e473e3d63479e90cc295e53741, type: 2}
 --- !u!1 &733838325
 GameObject:
   m_ObjectHideFlags: 0
