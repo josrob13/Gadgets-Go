@@ -80,4 +80,6 @@ crashlytics-build.properties
 # Large size assets
 Assets/Synty/
 Assets/TirgamesAssets/
+Assets/TirgamesAssets.meta
 Assets/UltimateCleanGUIPack/
+Assets/UltimateCleanGUIPack.meta
