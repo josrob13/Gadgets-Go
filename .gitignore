@@ -76,3 +76,8 @@ crashlytics-build.properties
 # .md files
 *.md
 !README.md
+
+# Large size assets
+Assets/Synty/
+Assets/TirgamesAssets/
+Assets/UltimateCleanGUIPack/
