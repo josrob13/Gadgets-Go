@@ -35,7 +35,11 @@ public class MissionManager : MonoBehaviour
     public void StartMission(Mission mission)
     {
         currentMission = mission;
-        vCamMission = CameraManager.Instance.GetCamera(currentMission.GetCameraID());
+        // En VR no se usa Cinemachine (vCamMission solo se aplica en la rama desktop de RunMission),
+        // así que protegemos contra CameraManager ausente para no lanzar NPE y abortar la misión.
+        vCamMission = CameraManager.Instance != null
+            ? CameraManager.Instance.GetCamera(currentMission.GetCameraID())
+            : null;
         Debug.Log($"Starting mission: {currentMission.GetMissionName()}");
         StartCoroutine(RunMission());
     }
@@ -71,8 +75,11 @@ public class MissionManager : MonoBehaviour
         Quaternion playerStartRotation = playerRoot.rotation;
 
         // ─── Disable locomotion (but NOT head tracking) ───
-        player.enabled = false;
-        if (smoothTeleport != null) 
+        // En VR no existe el componente Player (se usa PlayerVR); el movimiento se bloquea
+        // vía smoothTeleport / fpLocomotor. Protegemos player para no lanzar NPE.
+        if (player != null)
+            player.enabled = false;
+        if (smoothTeleport != null)
             smoothTeleport.enabled = false;
         if (fpLocomotor != null)
             fpLocomotor.enabled = false;
@@ -148,8 +155,9 @@ public class MissionManager : MonoBehaviour
         // Only use Cinemachine if is NOT VR (desktop)
         if (!isVR && vCamMission != null)
             vCamMission.Priority++;
-        
-        normalUI.SetActive(false);
+
+        if (normalUI != null)
+            normalUI.SetActive(false);
 
         yield return new WaitForSeconds(2f);
 
@@ -188,13 +196,15 @@ public class MissionManager : MonoBehaviour
         // ─── Fade out and clean up ───
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
         currentMission.DeactivateCameras();
-        normalUI.SetActive(true);
+        if (normalUI != null)
+            normalUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
 
         // ─── Reactivate locomotion and return player to its previous position ───
-        player.enabled = true;
-        if (smoothTeleport != null) 
+        if (player != null)
+            player.enabled = true;
+        if (smoothTeleport != null)
             smoothTeleport.enabled = true;
         if (fpLocomotor != null)
             fpLocomotor.enabled = true;

@@ -8208,7 +8208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &844809361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8919,7 +8919,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introDialogue: {fileID: 11400000, guid: 752ff4d2dc1f3224982fe29a97caf714, type: 2}
   dialogueId: intro
-  nextScene: RealGame
   canvasOverrideTransform: {fileID: 405267136}
 --- !u!1 &932691722
 GameObject:
@@ -14875,6 +14874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monoscopic: 0
   _sharpenType: 0
+  _disableRecording: 0
   _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
@@ -14946,6 +14946,10 @@ MonoBehaviour:
   SimultaneousHandsAndControllersEnabled: 0
   _readOnlyWideMotionModeHandPosesEnabled: 0
   wideMotionModeHandPosesEnabled: 0
+  _readOnlyFastMotionModeHandPosesEnabled: 0
+  fastMotionModeHandPosesEnabled: 0
+  _readOnlyWideMotionMode2HandPosesEnabled: 0
+  wideMotionMode2HandPosesEnabled: 0
   dynamicResolutionVersion: 1
 --- !u!114 &1470188539
 MonoBehaviour:
@@ -17700,6 +17704,7 @@ MonoBehaviour:
   raycastMask:
     serializedVersion: 2
     m_Bits: 571
+  vrCamera: {fileID: 0}
 --- !u!1 &1806202737
 GameObject:
   m_ObjectHideFlags: 0
