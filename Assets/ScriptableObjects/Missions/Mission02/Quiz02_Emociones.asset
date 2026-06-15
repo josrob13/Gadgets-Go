@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFC\xF3mo se siente \xC1ngel ante el Guarda?"
-  nextNode: {fileID: 11400000, guid: 4b138a1eaae9b8545906187614e07e33, type: 2}
+  nextNode: {fileID: 11400000, guid: 270c087ecdc87c849b0bee7bf4239cf2, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFC\xF3mo se siente \xC1ngel ante el Guarda?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFC\xF3mo se siente \xC1ngel ante el Manager?"
   options:
   - Valiente
   - Siente miedo
@@ -28,3 +29,9 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda el rostro de \xC1ngel y el contexto: \xE9l no deb\xEDa estar en
+    esa sala."
+  correctText: "\xA1Claro, eso es!"
+  inferenceCategory: 0
+  wrongText: No es exactamente eso, prueba otra vez.
+  revealText: "Resulta que \xC1ngel sent\xEDa miedo."

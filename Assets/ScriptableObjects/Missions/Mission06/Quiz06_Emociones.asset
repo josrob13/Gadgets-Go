@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: aec9e816a8e859544822f17837ab3c48, type: 2}
+  nextNode: {fileID: 11400000, guid: c3689cbbdd541b942ab0632eeb0baf0a, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 emoci\xF3n transmite Paco?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 emoci\xF3n transmite Fran?"
   options:
   - Asco
   - Tristeza
@@ -28,3 +29,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 0
+  hint: "Recuerda: \xBFel olor era agradable o desagradable?"
+  correctText: "\xA1Muy bien, s\xED!"
+  inferenceCategory: 0
+  wrongText: Creo que no es eso exactamente.
+  revealText: Fran estaba transmitiendo asco.

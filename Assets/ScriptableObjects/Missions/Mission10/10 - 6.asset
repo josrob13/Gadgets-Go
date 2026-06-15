@@ -16,7 +16,8 @@ MonoBehaviour:
   text: Lo siento. Es que estoy hasta las narices de estas cajas. Mejor lo dejamos
     por hoy.
   nextNode: {fileID: 11400000, guid: b79050ba66f17a74d821e5263b5d27f4, type: 2}
-  speakerAnimator: Marcos
+  speakerAnimator: Leo
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

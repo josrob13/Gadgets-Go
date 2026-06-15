@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 10 - 4
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "Laura, por favor, no eches le\xF1a al fuego. Si la fuerzas se va a romper."
+  text: "Sofia, por favor, no eches le\xF1a al fuego. Si la fuerzas se va a romper."
   nextNode: {fileID: 11400000, guid: 9c9b5f5a81063fb4c80251f4f9d2b28d, type: 2}
-  speakerAnimator: Marcos
+  speakerAnimator: Leo
   actorState:
     BodyAnimation: Talk
     FaceExpression: Distraught
+  voiceClip: {fileID: 0}

@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: Asco_Conversacion
   description: Paco y Pablo
+  userGuide: Busca por la zona de las bandejas.
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 851d87da7fde5414395640b73026dfa6, type: 2}
   cameraID: cameraMission06
   cameraContainerName: Mission06
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
+  missionStartTransform: {fileID: 0}
+  useGlobalCoordinates: 1
+  canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

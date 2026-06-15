@@ -16,7 +16,8 @@ MonoBehaviour:
   text: "No lo entiendo. El vendedor dijo que montar esta mesa estaba chupado, pero
     aqu\xED no encaja nada."
   nextNode: {fileID: 11400000, guid: ec481431a4f00954e999a80ee8fc5a68, type: 2}
-  speakerAnimator: Marcos
+  speakerAnimator: Leo
   actorState:
     BodyAnimation: Talk
     FaceExpression: Angry
+  voiceClip: {fileID: 0}

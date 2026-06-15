@@ -14,17 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 est\xE1 pasando en esta escena?"
-  nextNode: {fileID: 11400000, guid: 084a2846694ae924da0be0da3a9bff87, type: 2}
+  nextNode: {fileID: 11400000, guid: 59f1a92c273aa71458b86df29aea47ed, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 est\xE1 pasando en esta escena?"
   options:
-  - "\xC1ngel est\xE1 robando en el parque"
-  - "Un guarda pilla a \xC1ngel cruzando por donde no debe"
-  - "Dos amigos est\xE1n jugando al escondite"
-  - "\xC1ngel est\xE1 buscando a su madre"
+  - "\xC1ngel est\xE1 robando en la oficina."
+  - "Un manager encuentra a \xC1ngel por donde no debe."
+  - "Dos amigos est\xE1n jugando al escondite."
+  - "\xC1ngel est\xE1 buscando a su jefe."
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda: \xBF\xC1ngel tenia permiso para estar en la sala?"
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "Vaya, prueba otra vez...\t"
+  revealText: "Resulta que un manager ha encontrado a \xC1ngel por donde no deb\xEDa."

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFC\xF3mo se sienten los dos en este momento?"
-  nextNode: {fileID: 11400000, guid: 3eb7ba690c94f784383769fe77fa2c3f, type: 2}
+  nextNode: {fileID: 11400000, guid: 905a9ce804249be4f9658210d2f0d3ad, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFC\xF3mo se sienten los dos en este momento?"
   options:
   - "Sof\xEDa est\xE1 aliviada y feliz, y Leo comparte su alegr\xEDa"
@@ -28,3 +29,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 0
+  hint: "F\xEDjate en las expresiones faciales de los dos."
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que Sof\xEDa est\xE1 aliviada y feliz, y Leo comparte su energ\xEDa."

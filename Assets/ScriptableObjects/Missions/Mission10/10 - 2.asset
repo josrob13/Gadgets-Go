@@ -16,7 +16,8 @@ MonoBehaviour:
   text: "Les llam\xE9 y me tuvieron media hora en espera con una 'musiquita'. Me
     est\xE1n tomando el pelo."
   nextNode: {fileID: 11400000, guid: 7cb0ef082d75aa847a50800af26c9481, type: 2}
-  speakerAnimator: Marcos
+  speakerAnimator: Leo
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

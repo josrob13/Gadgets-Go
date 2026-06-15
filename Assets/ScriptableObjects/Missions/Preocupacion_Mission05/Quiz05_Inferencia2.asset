@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz05_Inferencia2
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFQu\xE9 relaci\xF3n tienen?"
+  nextNode: {fileID: 0}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 relaci\xF3n tienen Pepe y Miguel?"
+  options:
+  - Son desconocidos
+  - Son conocidos, no tan cercanos
+  - Son muy amigos
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 1
+  hint: "Piensa: si hac\xEDa mucho tiempo que no se ve\xEDan, realmente no son tan
+    amigos."
+  correctText: "\xA1Claro!"
+  inferenceCategory: 0
+  wrongText: Prueba de nuevo
+  revealText: Resulta que son conocidos, no muy cercanos.

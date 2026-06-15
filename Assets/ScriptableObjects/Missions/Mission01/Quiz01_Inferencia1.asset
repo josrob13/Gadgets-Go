@@ -19,15 +19,19 @@ MonoBehaviour:
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 pasar\xE1 ahora?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 crees que pasar\xE1 a continuaci\xF3n?"
   options:
-  - "Dani abrazar\xE1 a Bea e ir\xE1n a la tintorer\xEDa"
-  - "Dani se ir\xE1 enfadado dejando a Bea sola"
-  - "Dani se echar\xE1 a re\xEDr (era broma)"
-  - "Bea invitar\xE1 a Dani a otra pizza"
+  - "Dani abrazar\xE1 a Bea e ir\xE1n a la tintorer\xEDa."
+  - "Dani se ir\xE1 enfadado dejando a Bea sola."
+  - "Dani se echar\xE1 a re\xEDr (era broma)."
+  - "Bea invitar\xE1 a Dani a otra pizza."
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
-  correctText: Bien!
-  wrongText: "Int\xE9ntalo de nuevo."
+  hint: "Recuerda: \xBFc\xF3mo ha terminado la conversaci\xF3n? -no ha terminado
+    muy bien..."
+  correctText: "\xA1Bien!"
+  inferenceCategory: 0
+  wrongText: Prueba otra vez...
   revealText: "Con lo que sabemos, lo m\xE1s probable es que Dani se vaya enfadada."

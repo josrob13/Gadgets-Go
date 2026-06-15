@@ -19,6 +19,7 @@ MonoBehaviour:
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 ha pasado en esta escena?"
   options:
   - Dani le ha regalado una cazadora vieja a Bea
@@ -28,6 +29,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
-  correctText: "Guau!\t"
-  wrongText: "Int\xE9ntalo de nuevo."
-  revealText: Parece que Bea ha devuelto la chaqueta de Dani sucia
+  hint: "Recuerda: \xBFqu\xE9 le ha contado Bea a Daniela?"
+  correctText: "\xA1Muy bien!\t"
+  inferenceCategory: 0
+  wrongText: "Vaya, int\xE9ntalo de nuevo..."
+  revealText: Bea ha devuelto la chaqueta de Dani sucia.

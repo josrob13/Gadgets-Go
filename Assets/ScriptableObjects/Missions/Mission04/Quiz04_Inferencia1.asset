@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 25b282af178e8524ebfe948be42c64de, type: 2}
+  nextNode: {fileID: 11400000, guid: b539e1459a8882145b8f59d61ca6d7b0, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 crees que va a pasar ahora?"
   options:
   - "Volver\xE1n a casa"
@@ -28,3 +29,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Ten en cuenta: la noticia ha impactado, como para tener una conversaci\xF3n
+    larga y tendida..."
+  correctText: "\xA1Claro!"
+  inferenceCategory: 0
+  wrongText: Vaya, puede que no sea exactamente eso...
+  revealText: Probablemente sigan hablando del cantante, ya que la noticia ha causado
+    sorpresa en ambos.

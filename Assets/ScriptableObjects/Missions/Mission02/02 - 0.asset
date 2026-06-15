@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 02 - 0
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "Mam\xE1 me va a matar si llego tarde... Ojal\xE1 no estuviera tan oscuro."
+  text: Tengo que encontrar las llaves antes de que me encuentre el jefe...
   nextNode: {fileID: 11400000, guid: 49dfb7d496f66cf43b1738d22ab8bfa0, type: 2}
   speakerAnimator: Angel
   actorState:
     BodyAnimation: Talk
     FaceExpression: Scared
+  voiceClip: {fileID: 0}

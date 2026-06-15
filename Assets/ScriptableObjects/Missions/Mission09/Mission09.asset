@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: LenguajeFigurado
   description: 'Leo y Sofia: Lenguaje Figurado'
+  userGuide: Busca en las butacas.
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 58cf1858732317f4588bef173163aaa7, type: 2}
   cameraID: cameraMission09
   cameraContainerName: Mission09
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
+  missionStartTransform: {fileID: 0}
+  useGlobalCoordinates: 1
+  canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

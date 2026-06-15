@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Quiz10_Emociones
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xBFCu\xE1l es la emoci\xF3n principal de Marcos?"
-  nextNode: {fileID: 11400000, guid: 7b7f2d60ee1ec154195f237383cd2cb8, type: 2}
+  text: "\xBFCu\xE1l es la emoci\xF3n principal de Leo?"
+  nextNode: {fileID: 11400000, guid: f6ccf08b870ada2409d60e8b738b2b4a, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "Fij\xE1ndote en el rostro de Marcos, \xBFCu\xE1l es su emoci\xF3n
     principal?"
   options:
@@ -29,3 +30,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "F\xEDjate en su rostro y piensa c\xF3mo se siente Leo, adem\xE1s de la conversaci\xF3n
+    que han tenido."
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 1
+  wrongText: "Vaya, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que Leo est\xE1 frustrado, agobiado y un poco enfadado por
+    la situaci\xF3n."

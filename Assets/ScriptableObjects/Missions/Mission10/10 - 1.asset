@@ -16,7 +16,8 @@ MonoBehaviour:
   text: Ya... La mesita nos ha costado un ojo de la cara, y encima viene sin todos
     los tornillos.
   nextNode: {fileID: 11400000, guid: 62e28f644637761409b87513602e2966, type: 2}
-  speakerAnimator: Laura
+  speakerAnimator: Sofia
   actorState:
     BodyAnimation: Talk
     FaceExpression: Worried
+  voiceClip: {fileID: 0}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cfcddb456e83f4c8b619c855d0b5c8, type: 3}
+  m_Name: Mission08
+  m_EditorClassIdentifier: 
+  missionName: El perro Toby
+  description: "Manu se encuentra a Mar\xEDa, preocupada por el reciente estado de
+    su mascota."
+  userGuide: "Busca cerca del futbol\xEDn"
+  fadeDuration: 1.5
+  dialogueNode: {fileID: 11400000, guid: 50740d300493ef74ca34d96aa12f790e, type: 2}
+  cameraID: cameraMission08
+  cameraContainerName: Mission08
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
+  missionStartTransform: {fileID: 0}
+  useGlobalCoordinates: 1
+  canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

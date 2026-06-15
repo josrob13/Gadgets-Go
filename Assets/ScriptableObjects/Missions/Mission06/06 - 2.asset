@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 06 - 2
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: Te lo juro, no puedo respirar. Siento que ahora mismo no tengo nariz.
   nextNode: {fileID: 11400000, guid: b5733cc3945bfb54ba78218dba115b96, type: 2}
-  speakerAnimator: Paco
+  speakerAnimator: Fran
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

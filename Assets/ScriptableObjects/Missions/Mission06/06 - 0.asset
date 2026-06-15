@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 06 - 0
   m_EditorClassIdentifier: 
-  text: Uff, Pablo... no se puede estar en la calle. Menudo pestazo...
+  relatedMission: {fileID: 0}
+  text: "Uff, Pablo... no se puede estar en la cafeter\xEDa. Menudo pestazo..."
   nextNode: {fileID: 11400000, guid: 5133b1106484bb44f957f6697568ceb2, type: 2}
-  speakerAnimator: Paco
+  speakerAnimator: Fran
   actorState:
     BodyAnimation: Talk
     FaceExpression: Disgusted
+  voiceClip: {fileID: 0}

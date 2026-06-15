@@ -15,6 +15,5 @@ MonoBehaviour:
   worldName: Gimnasio
   sceneName: World1-PolyGym
   missions:
-  - {fileID: 11400000, guid: 734901446143fc9498e98e5720b1d517, type: 2}
-  - {fileID: 11400000, guid: 904286f8e3763984d98390666663b766, type: 2}
-  - {fileID: 11400000, guid: 8a31322417e81864d865ca107446dbad, type: 2}
+  - {fileID: 11400000, guid: b252d8cf6dfd21841a2d7512ef0aeed1, type: 2}
+  - {fileID: 11400000, guid: 6d427ce90b567d44b82a1de240fd1bf2, type: 2}

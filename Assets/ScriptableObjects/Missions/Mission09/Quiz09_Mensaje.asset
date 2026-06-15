@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 2de7727b6355c534ba69964147c98df5, type: 2}
+  nextNode: {fileID: 11400000, guid: b7bec792b015ca84da4f6f4d47d10b22, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 quiere decir Sof\xEDa cuando dice 'estoy en las nubes'?"
   options:
   - "Que va a viajar pronto en avi\xF3n"
@@ -28,3 +29,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: estar en las nubes suele significar estar euf\xF3rico/a, emocionado/a
+    o feliz."
+  correctText: "\xA1Claro, muy bien!"
+  inferenceCategory: 0
+  wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que Sof\xEDa, al decir 'estoy en las nubes', quiere decir
+    que est\xE1 extrememadamente feliz e ilusionada."

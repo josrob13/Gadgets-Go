@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 quiso decir Sof\xEDa con la frase 'al final todo fue sobre ruedas'?"
-  nextNode: {fileID: 11400000, guid: 37c9e5e05f8660541aef8247af41e5be, type: 2}
+  nextNode: {fileID: 11400000, guid: 43ba5ce9cd8741144adc320933ad8727, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 quiso decir Sof\xEDa con 'al final todo fue sobre ruedas'?"
   options:
   - Que tuvo que usar una bicicleta o un coche
@@ -28,3 +29,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda: la expresi\xF3n suele significar que algo avanz\xF3 f\xE1cilmente."
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que el proyecto avanz\xF3 de forma muy fluida y f\xE1cil."

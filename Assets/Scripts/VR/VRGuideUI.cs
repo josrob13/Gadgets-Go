@@ -200,6 +200,18 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
 
         if (world == null || missionListContainer == null) return;
 
+        // El contenedor debe controlar el ANCHO de cada fila para que el texto se ajuste
+        // al panel y no se salga. Con childControlHeight + !forceExpandHeight cada fila
+        // crece en alto según el texto envuelto.
+        var vlg = missionListContainer.GetComponent<VerticalLayoutGroup>();
+        if (vlg != null)
+        {
+            vlg.childControlWidth = true;
+            vlg.childForceExpandWidth = true;
+            vlg.childControlHeight = true;
+            vlg.childForceExpandHeight = false;
+        }
+
         foreach (Mission mission in world.Missions)
         {
             if (mission == null) continue;
@@ -207,7 +219,7 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
             bool done = PlayerProgress.Instance != null
                 && PlayerProgress.Instance.IsMissionCompleted(mission.GetMissionName());
 
-            var entry = BuildMissionEntry(mission.GetMissionName(), done);
+            var entry = BuildMissionEntry(mission.GetUserGuide(), done);
             entry.transform.SetParent(missionListContainer, false);
             _missionEntries.Add(entry);
         }
@@ -221,12 +233,15 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     private static GameObject BuildMissionEntry(string missionName, bool completed)
     {
         // ── Row ──────────────────────────────────────────────────────────────
+        // Sin ancho fijo: el VerticalLayoutGroup del contenedor controla el ancho
+        // (ver RebuildMissionList) y el alto crece según el texto envuelto.
         var row = new GameObject(missionName, typeof(RectTransform));
-        row.GetComponent<RectTransform>().sizeDelta = new Vector2(340f, 44f);
 
         var rowLayout = row.AddComponent<HorizontalLayoutGroup>();
         rowLayout.spacing = 10f;
-        rowLayout.childAlignment = TextAnchor.MiddleLeft;
+        rowLayout.childAlignment = TextAnchor.UpperLeft;
+        rowLayout.childControlWidth = true;
+        rowLayout.childControlHeight = true;
         rowLayout.childForceExpandWidth = false;
         rowLayout.childForceExpandHeight = false;
         rowLayout.padding = new RectOffset(6, 6, 4, 4);
@@ -234,7 +249,6 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
         // ── Status dot ───────────────────────────────────────────────────────
         var dot = new GameObject("Dot", typeof(RectTransform));
         dot.transform.SetParent(row.transform, false);
-        dot.GetComponent<RectTransform>().sizeDelta = new Vector2(16f, 16f);
 
         var dotImg = dot.AddComponent<Image>();
         dotImg.color = completed
@@ -245,21 +259,23 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
         dotLayout.minWidth = 16f;
         dotLayout.minHeight = 16f;
         dotLayout.preferredWidth = 16f;
+        dotLayout.preferredHeight = 16f;
+        dotLayout.flexibleWidth = 0f;
 
         // ── Mission name label ────────────────────────────────────────────────
         var labelGO = new GameObject("Label", typeof(RectTransform));
         labelGO.transform.SetParent(row.transform, false);
 
         var labelLayout = labelGO.AddComponent<LayoutElement>();
-        labelLayout.flexibleWidth = 1f;
+        labelLayout.flexibleWidth = 1f;   // ocupa el ancho restante de la fila
 
         var label = labelGO.AddComponent<TextMeshProUGUI>();
         label.text = missionName;
         label.fontSize = 13f;
         label.color = completed ? ColorDimmed : ColorPending;
         label.fontStyle = completed ? FontStyles.Strikethrough : FontStyles.Normal;
-        label.enableWordWrapping = false;
-        label.overflowMode = TextOverflowModes.Ellipsis;
+        label.enableWordWrapping = true;            // texto largo baja de línea en vez de salirse
+        label.overflowMode = TextOverflowModes.Overflow; // la fila crece en alto, no hace falta cortar
 
         return row;
     }

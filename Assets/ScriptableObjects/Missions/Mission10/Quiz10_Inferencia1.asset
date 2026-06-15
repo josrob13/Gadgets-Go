@@ -15,12 +15,13 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 quiere decir Laura con la expresi\xF3n 'nos ha costado un ojo
     de la cara'?"
-  nextNode: {fileID: 11400000, guid: 8918af5ced44f634fac01d011953d2b7, type: 2}
+  nextNode: {fileID: 11400000, guid: db0574ececc091847bd152d60105c7f6, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 quiere decir Laura con la expresi\xF3n 'nos ha costado
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 quiere decir Sof\xEDa con la expresi\xF3n 'nos ha costado
     un ojo de la cara'?"
   options:
   - Que han tenido que esforzarse visualmente para encontrar el mueble.
@@ -32,3 +33,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: 'Recuerda: costar un ojo de la cara suele significar que algo ha sido muy
+    caro.'
+  correctText: "\xA1S\xED!"
+  inferenceCategory: 0
+  wrongText: No, no es eso exactamente...
+  revealText: Resulta que la mesa era extremadamente cara y pagaron mucho dinero
+    por ella.

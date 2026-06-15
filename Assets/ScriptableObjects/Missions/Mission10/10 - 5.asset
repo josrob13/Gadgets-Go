@@ -15,7 +15,8 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: Vale, vale, me aparto.
   nextNode: {fileID: 11400000, guid: f92360fee586de446809a03f9b52fe63, type: 2}
-  speakerAnimator: Laura
+  speakerAnimator: Sofia
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

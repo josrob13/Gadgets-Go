@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: d30d7099de5ebd644918f5c7175b8932, type: 2}
+  nextNode: {fileID: 11400000, guid: b29a5127334ddb640a7bfea7e399d764, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 emoci\xF3n expresan ambos?"
   options:
   - Miedo
@@ -28,3 +29,9 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda: han descubierto algo no muy com\xFAn."
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: Vaya, puede que no sea exactamente eso...
+  revealText: "Expresaban sorpresa, porque no se esperaban que Ed Sheeran se ti\xF1ese
+    de nuevo el pelo."

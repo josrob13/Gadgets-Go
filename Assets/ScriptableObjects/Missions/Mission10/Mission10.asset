@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: LenguajeFig2_Muebles
   description: 'Lenguaje figurado: frustracion con muebles'
+  userGuide: "Avanza por detr\xE1s del escenario del teatro, y busca un camerino
+    abierto."
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: e7523a48ea96b7349b444b4b7842b5af, type: 2}
   cameraID: cameraMission10
   cameraContainerName: Mission10
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
+  missionStartTransform: {fileID: 0}
+  useGlobalCoordinates: 1
+  canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

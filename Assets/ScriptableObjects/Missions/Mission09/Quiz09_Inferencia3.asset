@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 quiso decir Leo al decirle a Sof\xEDa 'eres una m\xE1quina'?"
-  nextNode: {fileID: 11400000, guid: aebb469d8eb92904188e1c74970f5dc6, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 quiso decir Leo a Sof\xEDa con 'eres una m\xE1quina'?"
   options:
   - "Que Sof\xEDa no tiene sentimientos y se comporta como un robot"
@@ -28,3 +29,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 3
+  hint: "Recuerda: esa expresi\xF3n suele significar que alguien es muy bueno en
+    lo que hace."
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que Sof\xEDa es muy eficiente, trabajadora y ha logrado algo
+    excepcional."

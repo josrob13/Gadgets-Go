@@ -15,11 +15,12 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 quer\xEDa decir el vendedor al afirmar que montar la mesa 'estaba
     chupado'?"
-  nextNode: {fileID: 11400000, guid: 4c6a7bf7f9a62bf499246e95bf44b0b8, type: 2}
+  nextNode: {fileID: 11400000, guid: c1779bc96bafc6844b1a031dc8eebc80, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 quer\xEDa decir el vendedor al afirmar que montar la
     mesa 'estaba chupado'?"
   options:
@@ -30,3 +31,9 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "'Estar chupado' suele significar que algo es muy f\xE1cil."
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "No es eso exactamente, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que el vendedor quer\xEDa decir que montar el mueble es algo
+    muy sencillo."

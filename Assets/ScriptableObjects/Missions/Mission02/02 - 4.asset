@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: 02 - 4
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xA1Perd\xF3n! \xA1Me he perdido! \xA1No llame a la polic\xEDa, por favor!"
+  text: "\xA1Perd\xF3n! \xA1Es que estaba buscando algo! \xA1No llames a mi jefe,
+    por favor!"
   nextNode: {fileID: 11400000, guid: ee9007ae9846c0440976569f95ce3e29, type: 2}
   speakerAnimator: Angel
   actorState:
     BodyAnimation: Talk
     FaceExpression: Scared
+  voiceClip: {fileID: 0}

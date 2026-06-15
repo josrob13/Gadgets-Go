@@ -15,7 +15,8 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: "\xA1\xBFC\xD3MO?! \xA1Pero si se lo cambi\xF3 la semana pasada!"
   nextNode: {fileID: 11400000, guid: f070d2b4af91d974dba3714b6f10ee86, type: 2}
-  speakerAnimator: Kanye
+  speakerAnimator: Mario
   actorState:
     BodyAnimation: Talk
     FaceExpression: Surprised
+  voiceClip: {fileID: 0}

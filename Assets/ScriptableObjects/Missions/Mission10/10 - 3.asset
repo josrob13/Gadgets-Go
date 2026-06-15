@@ -16,7 +16,8 @@ MonoBehaviour:
   text: "A lo mejor si empujas esta tabla con m\xE1s fuerza entra en el hueco...
     a ver, d\xE9jame intentar."
   nextNode: {fileID: 11400000, guid: 360839cbb386bae44bb15484ff6ff70f, type: 2}
-  speakerAnimator: Laura
+  speakerAnimator: Sofia
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

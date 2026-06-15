@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Quiz04_Mensaje
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xBFCu\xE1l ha sido el mensaje general?"
-  nextNode: {fileID: 11400000, guid: 3ef72c8c444e1bf4da61710a018a57e3, type: 2}
+  text: "\xBFQu\xE9 ha pasado en la conversaci\xF3n?"
+  nextNode: {fileID: 11400000, guid: 1654fc238701c9944b120fa3920c9963, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 ha pasado entre Kanye y Angela?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 ha pasado en la conversaci\xF3n?"
   options:
   - "Ed Sheeran sacar\xE1 nuevo \xE1lbum"
   - "A \xC1ngela le encantar\xEDa conocer a Ed Sheeran"
@@ -28,3 +29,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 3
+  hint: 'Recuerda: alguien famoso hizo algo destacable...'
+  correctText: Muy bien!
+  inferenceCategory: 0
+  wrongText: No estoy seguro de tu respuesta...
+  revealText: "\xC1ngela ha descubierto que Ed sheeran se ha te\xF1ido el pelo recientemente."

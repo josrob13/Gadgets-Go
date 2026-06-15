@@ -19,6 +19,7 @@ MonoBehaviour:
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "Por la forma de hablarse, \xBFcu\xE1nto se conocen?"
   options:
   - Son desconocidos
@@ -27,6 +28,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
-  correctText: Muy bien!
-  wrongText: "Fallaste, int\xE9ntalo de nuevo!"
+  hint: "Piensa: \xBFle dejar\xEDas tu chaqueta a alguien con el que no tengas confianza?"
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "Fallaste, int\xE9ntalo de nuevo."
   revealText: A primera vista, son amigas o conocidas con confianza

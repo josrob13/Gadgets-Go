@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 le pide Marcos a Laura cuando le dice 'no eches le\xF1a al fuego'?"
-  nextNode: {fileID: 11400000, guid: 77443849bba797c4bb398743c3116df8, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 le pide Marcos a Laura cuando le dice 'no eches le\xF1a
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 le pide Leo a Sof\xEDa cuando le dice 'no eches le\xF1a
     al fuego'?"
   options:
   - "Que no aplique tanta fuerza bruta sobre la madera porque podr\xEDa astillar
@@ -31,3 +32,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: echar le\xF1a al fuego suele significar avivar un motivo de enfado,
+    o dar motivos para que alguien est\xE9 molesto."
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: No es eso, prueba otra vez...
+  revealText: "Leo, al decirle a Sof\xEDa 'no eches le\xF1a al fuego', le est\xE1
+    pidiendo que no empeore la situaci\xF3n haciendo algo que pueda romper el mueble."

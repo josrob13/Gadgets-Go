@@ -14,17 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 492db644f64b5af4c8ffd1e7f74d76ac, type: 2}
+  nextNode: {fileID: 11400000, guid: ce75bc3b8fbb2094fab2a651a6d84b90, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 ha pasado entre Pablo y Paco?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 ha pasado entre Pablo y Fran?"
   options:
   - Tienen prisa porque van al trabajo
   - Tienen mucha hambre
-  - La calle huele bien
-  - "Paco ha exagerado, pero la calle s\xED huele mal"
+  - "La cafeter\xEDa huele bien"
+  - "Fran ha exagerado, pero la cafeter\xEDa s\xED huele mal"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 3
+  hint: "Recuerda: \xBFqu\xE9 estaba detectando Fran con la nariz?"
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: Vaya, prueba otra vez...
+  revealText: "Resulta que a Fran le parec\xEDa que la cafeter\xEDa ol\xEDa muy mal."

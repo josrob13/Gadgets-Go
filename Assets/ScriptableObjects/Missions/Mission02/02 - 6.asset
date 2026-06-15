@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 02 - 6
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xA1NO! \xA1Por favor!"
+  text: "\xA1Por favor!"
   nextNode: {fileID: 11400000, guid: 799ceaeab7d4aed4b9aa2d4638beaa7a, type: 2}
   speakerAnimator: Angel
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
+  m_Name: 03 - 3
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: Papeles... Ya. Los papeles no hacen ese ruido de trozos de cristal.
+  nextNode: {fileID: 11400000, guid: ecd7d2e31b217b04a9e787e343ddbddd, type: 2}
+  speakerAnimator: Carla
+  actorState:
+    BodyAnimation: Talk
+    FaceExpression: 
+  voiceClip: {fileID: 0}

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: f67994aea74c3e34da15b35d33a26a67, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFCu\xE1nto crees que se conocen Kanye y \xC1ngela?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFCu\xE1nto crees que se conocen Mario y \xC1ngela?"
   options:
   - "No se conoc\xEDan, se acaban de conocer"
   - Son conocidos, pero no tienen mucha confianza
@@ -27,3 +28,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: \xBFle dir\xEDas a un extra\xF1o una noticia que acabas de conocer?"
+  correctText: "\xA1S\xED, muy bien!"
+  inferenceCategory: 0
+  wrongText: Creo que no es eso exactamente...
+  revealText: "Resulta que Mario y \xC1ngela son amigos."

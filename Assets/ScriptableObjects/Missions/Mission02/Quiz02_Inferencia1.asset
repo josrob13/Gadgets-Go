@@ -13,18 +13,25 @@ MonoBehaviour:
   m_Name: Quiz02_Inferencia1
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xBFQu\xE9 quer\xEDa el Guarda realmente?"
-  nextNode: {fileID: 11400000, guid: a46f2cacc1ddce24faf1155c3d5ebc3f, type: 2}
+  text: 
+  nextNode: {fileID: 11400000, guid: f7b9e45bf87ed6c4888d449a301e6115, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 quer\xEDa el Guarda realmente?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 quer\xEDa el Manager realmente?"
   options:
   - "Probablemente solo quer\xEDa echarle la bronca o sacarle de all\xED"
   - "Quer\xEDa secuestrarle"
-  - "Quer\xEDa saber qu\xE9 hac\xEDa ah\xED"
+  - "Quer\xEDa saber qu\xE9 trabajo tiene para hoy"
   - "Quer\xEDa preguntarle la hora"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 0
+  hint: "Recuerda de nuevo el contexto y el hecho de que \xC1ngel no pod\xEDa estar
+    ah\xED."
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: "Vaya, int\xE9ntalo otra vez."
+  revealText: "El Manager solo quer\xEDa echarle la bronca y sacarle de ah\xED"

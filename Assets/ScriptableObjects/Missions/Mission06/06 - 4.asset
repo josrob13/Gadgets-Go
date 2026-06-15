@@ -15,7 +15,8 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: Necesito coger un respiro...
   nextNode: {fileID: 11400000, guid: ca5fbc7355585d5458c22e14dfdb4ff4, type: 2}
-  speakerAnimator: Paco
+  speakerAnimator: Fran
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

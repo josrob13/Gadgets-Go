@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 02 - 3
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xBFNo sabes leer? El cartel dice 'Prohibido el paso'."
+  text: "\xBFNo sabes leer? El cartel dice 'Solo Managers'."
   nextNode: {fileID: 11400000, guid: d139fef1b438df94280a5d19d2933654, type: 2}
   speakerAnimator: Guard
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

@@ -15,11 +15,12 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 quiso decir Leo con la frase 'te has quitado un peso enorme de
     encima'?"
-  nextNode: {fileID: 11400000, guid: 1c40ed1ef3e61c4478f53d0bf4622f8c, type: 2}
+  nextNode: {fileID: 11400000, guid: e14c30ac353d92b4994c80f954d8c6bf, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 significa 'te has quitado un peso enorme de encima'?"
   options:
   - "Que Sof\xEDa llevaba una mochila pesada y por fin la dej\xF3 en el suelo"
@@ -29,3 +30,9 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda: esa expresi\xF3n suele significar que alguien se ha aliviado de
+    un problema grande que ten\xEDa."
+  correctText: "\xA1Muy bien!"
+  inferenceCategory: 0
+  wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
+  revealText: "Resulta que Sof\xEDa siente un gran alivio y tranquilidad."

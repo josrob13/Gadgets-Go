@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "\xBFSe conocen \xC1ngel y el Guarda?"
-  nextNode: {fileID: 11400000, guid: 8b89a7923b6c6d147be388eb4e77ce0e, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFSe conocen \xC1ngel y el Guarda?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFSe conocen \xC1ngel y el Manager?"
   options:
   - "S\xED, son conocidos"
   - No, no se conocen de nada (desconocidos)
@@ -27,3 +28,10 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda: por la reacci\xF3n de \xC1ngel, parece que ni si quiera se han
+    visto por la oficina. Si se conociesen, se habr\xEDan reconocido y llamado por
+    sus nombres."
+  correctText: "\xA1Qu\xE9 bien, s\xED!"
+  inferenceCategory: 0
+  wrongText: Creo que no es eso exactamente, prueba de nuevo.
+  revealText: "Resulta que \xC1ngel y el Manager no se conoc\xEDan de nada"

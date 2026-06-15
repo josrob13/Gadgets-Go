@@ -84,73 +84,111 @@ public class MissionManager : MonoBehaviour
         if (fpLocomotor != null)
             fpLocomotor.enabled = false;
 
-        // ─── Teleport player to mission position ───
-        Vector3 missionStartPosition = currentMission.GetMissionStartPosition();
-        Vector3 missionStartRotation = currentMission.GetMissionStartRotation();
-
-        if (missionStartPosition != Vector3.zero)
-        {
-            playerRoot.position = missionStartPosition;
-            playerRoot.rotation = Quaternion.Euler(missionStartRotation);
-            Debug.Log($"[MissionManager] Jugador teleportado a posición de misión: {missionStartPosition}");
-        }
-        else
-        {
-            Debug.LogWarning("[MissionManager] No se pudo calcular posición de misión. El jugador permanece en su posición actual.");
-        }
-
-        // ─── Calculate dialogue canvas position (midpoint between mission NPCs) ───
-        Vector3? canvasPosition = null;
-        Quaternion? canvasRotation = null;
-
-        // Find all NPCMission in the scene that have this mission assigned
+        // ─── Find the NPCs that belong to this mission (used for player & canvas placement) ───
         NPCMission[] allNPCMissions = FindObjectsOfType<NPCMission>();
         Vector3 npcMidpoint = Vector3.zero;
         int npcCount = 0;
+        Vector3 firstNpc = Vector3.zero;
+        Vector3 secondNpc = Vector3.zero;
 
         foreach (NPCMission npcMission in allNPCMissions)
         {
             if (npcMission.GetMission() == currentMission)
             {
-                npcMidpoint += npcMission.transform.position;
+                Vector3 npcPos = npcMission.transform.position;
+                npcMidpoint += npcPos;
+                if (npcCount == 0) firstNpc = npcPos;
+                else if (npcCount == 1) secondNpc = npcPos;
                 npcCount++;
-                Debug.Log($"[MissionManager] NPC encontrado para misión: {npcMission.gameObject.name} en {npcMission.transform.position}");
+                Debug.Log($"[MissionManager] NPC encontrado para misión: {npcMission.gameObject.name} en {npcPos}");
             }
         }
+
+        Transform eyeTransform = isVR ? ovrRig.centerEyeAnchor : playerRoot;
+
+        // ─── Position the player in front of the NPCs at a readable distance ───
+        // Mission es un ScriptableObject y no puede guardar un Transform de escena, así que la
+        // posición se calcula desde el punto medio de los NPCs: el jugador mantiene el lado por el
+        // que se acercó y se normaliza la distancia para que vea bien a los personajes y el texto.
+        Vector3? canvasPosition = null;
+        Quaternion? canvasRotation = null;
+        Vector3? missionPlayerPos = null;
+        Quaternion? missionPlayerRot = null;
 
         if (npcCount > 0)
         {
             npcMidpoint /= npcCount;
 
-            // Calculate the horizontal direction from the NPCs to the player
-            Transform eyeTransform = isVR ? ovrRig.centerEyeAnchor : playerRoot;
+            // Dirección horizontal desde los NPCs hacia donde está el jugador ahora (lado de aproximación).
             Vector3 directionToPlayer = eyeTransform.position - npcMidpoint;
-            directionToPlayer.y = 0; // Only horizontal direction
+            directionToPlayer.y = 0f;
+            if (directionToPlayer.sqrMagnitude < 0.0001f)
+                directionToPlayer = Vector3.back; // fallback: jugador justo sobre el punto medio
             directionToPlayer.Normalize();
 
-            // Move the canvas from the midpoint of the NPCs TOWARDS the player
-            // This prevents the canvas from appearing inside the 3D models of the NPCs.
-            // Adjust "Canvas Forward Offset" in the Mission ScriptableObject.
-            Vector3 finalCanvasPosition = npcMidpoint 
-                + directionToPlayer * currentMission.GetCanvasForwardOffset()
-                + Vector3.up * currentMission.GetCanvasHeightOffset();
-
-            canvasPosition = finalCanvasPosition;
-
-            // The canvas looks back towards the NPCs (+Z points to NPCs, -Z to player).
-            // The front face of the Canvas WorldSpace (visible side) is the local -Z face,
-            if (directionToPlayer.sqrMagnitude > 0.001f)
+            // Dirección sobre la que se coloca al jugador.
+            // Con 2 NPCs: la PERPENDICULAR a la línea que los une → el jugador queda centrado
+            // (bisectriz, equidistante de ambos), no ladeado. Elegimos el lado por el que se acercó.
+            // Con 1 o >2 NPCs: usamos la dirección de aproximación.
+            Vector3 standDir = directionToPlayer;
+            if (npcCount == 2)
             {
-                canvasRotation = Quaternion.LookRotation(-directionToPlayer, Vector3.up);
+                Vector3 axis = secondNpc - firstNpc;
+                axis.y = 0f;
+                Vector3 perp = new Vector3(axis.z, 0f, -axis.x); // perpendicular horizontal a la línea NPC-NPC
+                if (perp.sqrMagnitude > 0.0001f)
+                {
+                    perp.Normalize();
+                    // Quedarse en el lado donde está el jugador (no teleportarlo detrás de los NPCs).
+                    if (Vector3.Dot(perp, directionToPlayer) < 0f)
+                        perp = -perp;
+                    standDir = perp;
+                }
             }
+
+            // Punto deseado para la CABEZA: a 'standDistance' del punto medio, centrado frente a los NPCs.
+            float standDistance = currentMission.GetPlayerStandDistance();
+            Vector3 desiredHeadXZ = npcMidpoint + standDir * standDistance;
+
+            // La cabeza (centerEyeAnchor) está desplazada respecto a la raíz del rig por el tracking
+            // físico; compensamos ese offset XZ para que la cabeza acabe exactamente a la distancia deseada.
+            Vector3 headOffset = eyeTransform.position - playerRoot.position;
+            headOffset.y = 0f;
+            Vector3 targetRootPos = desiredHeadXZ - headOffset;
+            targetRootPos.y = npcMidpoint.y; // nivel de suelo de los NPCs (pivote en los pies)
+
+            // Guardamos la posición/rotación objetivo y la aplicamos DESPUÉS del fundido a negro,
+            // para que el jugador no vea el salto (confort VR / sensibilidad sensorial TEA).
+            missionPlayerPos = targetRootPos;
+
+            // En desktop rotamos el rig para mirar a los NPCs. En VR NO forzamos la rotación
+            // (marea y es imposible sobreescribir la orientación física de la cabeza); el usuario
+            // ya está mirando al NPC en el momento de interactuar.
+            if (!isVR)
+                missionPlayerRot = Quaternion.LookRotation(-standDir, Vector3.up);
+
+            Debug.Log($"[MissionManager] Posición de misión calculada: {standDistance}m frente a los NPCs (raíz={targetRootPos}).");
+
+            // ─── Canvas de diálogo: entre los NPCs y el jugador (mirando hacia el jugador) ───
+            // Alineado con 'standDir' (donde queda el jugador), así el canvas queda centrado frente a él.
+            canvasPosition = npcMidpoint
+                + standDir * currentMission.GetCanvasForwardOffset()
+                + Vector3.up * currentMission.GetCanvasHeightOffset();
+            canvasRotation = Quaternion.LookRotation(-standDir, Vector3.up);
         }
         else
         {
-            Debug.LogWarning("[MissionManager] No se encontraron NPCs con esta misión asignada. El canvas usará fallback.");
+            Debug.LogWarning("[MissionManager] No se encontraron NPCs con esta misión asignada. El jugador no se reposiciona y el canvas usará fallback.");
         }
 
         // ─── Fade out and preparation ───
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
+
+        // Reposicionar al jugador AHORA que la pantalla está en negro (sin salto visible).
+        if (missionPlayerPos.HasValue)
+            playerRoot.position = missionPlayerPos.Value;
+        if (missionPlayerRot.HasValue)
+            playerRoot.rotation = missionPlayerRot.Value;
 
         // Only use Cinemachine if is NOT VR (desktop)
         if (!isVR && vCamMission != null)
@@ -198,19 +236,22 @@ public class MissionManager : MonoBehaviour
         currentMission.DeactivateCameras();
         if (normalUI != null)
             normalUI.SetActive(true);
+
+        // Devolver al jugador a su posición previa AHORA que la pantalla está en negro (sin salto visible).
+        playerRoot.position = playerStartPosition;
+        playerRoot.rotation = playerStartRotation;
+
         yield return new WaitForSeconds(2f);
         yield return UIManager.Instance.FadeIn(currentMission.GetFadeDuration());
 
-        // ─── Reactivate locomotion and return player to its previous position ───
+        // ─── Reactivate locomotion (ya con la pantalla visible) ───
         if (player != null)
             player.enabled = true;
         if (smoothTeleport != null)
             smoothTeleport.enabled = true;
         if (fpLocomotor != null)
             fpLocomotor.enabled = true;
-        
-        playerRoot.position = playerStartPosition;
-        playerRoot.rotation = playerStartRotation;
+
         Debug.Log($"[MissionManager] Jugador liberado. Movimiento reactivado en posición anterior.");
 
         // ─── Complete the mission ───

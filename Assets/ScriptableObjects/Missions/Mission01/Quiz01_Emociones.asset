@@ -13,21 +13,24 @@ MonoBehaviour:
   m_Name: Quiz01_Emociones
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "F\xEDjate en los pu\xF1os y el tono de Dani. \xBFC\xF3mo se siente?"
+  text: "F\xEDjate en el rostro y el tono de Dani. \xBFC\xF3mo se siente?"
   nextNode: {fileID: 11400000, guid: db4a5c63998a6ea42a8849ad2d2212ef, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFC\xF3mo se siente Dani?"
   options:
-  - "Est\xE1 asustado porque parece sangre"
-  - "Est\xE1 triste y decepcionado"
-  - "Est\xE1 furioso e indignado"
+  - "Est\xE1 asustada porque parece sangre"
+  - "Est\xE1 triste y decepcionada"
+  - "Est\xE1 furiosa e indignada"
   - "Est\xE1 bromeando"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
-  correctText: Eso es!
-  wrongText: Vaya...
-  revealText: "Creo que m\xE1s bien, Dani se siente furiosa e indignada"
+  hint: "Recuerda: \xBFc\xF3mo se ha tomado Dani lo que Bea le ha contado?"
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: "Vaya, int\xE9ntalo de nuevo..."
+  revealText: Resulta que dani se siente furiosa e indignada

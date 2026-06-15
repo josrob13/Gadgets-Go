@@ -18,3 +18,9 @@ MonoBehaviour:
   dialogueNode: {fileID: 11400000, guid: 1fb934496527f284aa7cab88ecdb2de4, type: 2}
   cameraID: cameraMission04
   cameraContainerName: Mission04
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
+  missionStartTransform: {fileID: 0}
+  useGlobalCoordinates: 1
+  canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97de5e7dbf8fabc4f83d29f2e01972fb, type: 3}
   m_Name: 04 - 0
   m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
   text: "Vaya d\xEDa hace, \xBFverdad? Perfecto para estar aqu\xED."
   nextNode: {fileID: 11400000, guid: 38a1c9abf358f924bbf61030068f61f5, type: 2}
-  speakerAnimator: Kanye
+  speakerAnimator: Mario
   actorState:
     BodyAnimation: Talk
     FaceExpression: 
+  voiceClip: {fileID: 0}

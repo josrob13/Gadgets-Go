@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5804106252c78e4ba65ec816dcd2787, type: 3}
+  m_Name: Quiz03_Mensaje
+  m_EditorClassIdentifier: 
+  relatedMission: {fileID: 0}
+  text: "\xBFQu\xE9 est\xE1 ocurriendo realmente?"
+  nextNode: {fileID: 11400000, guid: 955c731c16951224b8a75bfdd465f696, type: 2}
+  speakerAnimator: 
+  actorState:
+    BodyAnimation: 
+    FaceExpression: 
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 est\xE1 ocurriendo realmente en la escena?"
+  options:
+  - Rafa trae un regalo sorpresa
+  - Rafa intenta ocultar algo y Carla no le cree
+  - "Carla est\xE1 ayudando a Rafa por si ha roto algo"
+  - "Est\xE1n jugando a las adivinanzas"
+  onCorrect: {fileID: 0}
+  onIncorrect: {fileID: 0}
+  correctOptionIndex: 1
+  hint: "C\xE9ntrate y recuerda la expresi\xF3n de Rafa. Parece que no est\xE1 diciendo
+    la verdad..."
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: Prueba de nuevo.
+  revealText: "Resulta que Rafa est\xE1 intentando ocultar algo, y Carla no le est\xE1
+    creyendo."

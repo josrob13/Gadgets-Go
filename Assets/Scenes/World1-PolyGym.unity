@@ -10036,7 +10036,7 @@ PrefabInstance:
     - target: {fileID: 8721123362827247317, guid: b377667a4253c6542b3611fd67b9ac52, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b178d123d3fea4a4faaa295e7df2f656, type: 2}
+      objectReference: {fileID: 9100000, guid: d613036db5eed5843b427ea157fead8d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15820,7 +15820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 622296317}
   m_Layer: 0
-  m_Name: Char_Mission01_Happiness
+  m_Name: Char_Mission01_Surprise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29293,7 +29293,7 @@ PrefabInstance:
     - target: {fileID: 5936526956504670815, guid: 4d0d535fe9ee684489413c38ad12b41b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b178d123d3fea4a4faaa295e7df2f656, type: 2}
+      objectReference: {fileID: 9100000, guid: d613036db5eed5843b427ea157fead8d, type: 2}
     - target: {fileID: 5936526956504670815, guid: 4d0d535fe9ee684489413c38ad12b41b, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -29940,7 +29940,7 @@ PrefabInstance:
     - target: {fileID: 8071958417830693288, guid: 8235acb2f9e54e24095742dbb119d54e, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b178d123d3fea4a4faaa295e7df2f656, type: 2}
+      objectReference: {fileID: 9100000, guid: d613036db5eed5843b427ea157fead8d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30823,7 +30823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208224121}
   m_Layer: 0
-  m_Name: Char_Mission02_Surprise
+  m_Name: Char_Mission02_Happiness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43630,7 +43630,7 @@ PrefabInstance:
     - target: {fileID: 8750355500088587753, guid: 4032b47465b670a418606c2a5899d5f7, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b178d123d3fea4a4faaa295e7df2f656, type: 2}
+      objectReference: {fileID: 9100000, guid: d613036db5eed5843b427ea157fead8d, type: 2}
     - target: {fileID: 8750355500088587753, guid: 4032b47465b670a418606c2a5899d5f7, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -44990,6 +44990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDistance: 2
   interactKey: 2
+  interactController: 2
   menuKey: 4
   interactiveMenu: {fileID: 1483720777}
   centerEyeAnchor: {fileID: 1764945193}

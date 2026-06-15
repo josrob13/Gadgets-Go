@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 0aa6c347e12530049b3b96dde91e0819, type: 2}
+  nextNode: {fileID: 11400000, guid: 1568a3b0d890fed4c825cdcf98f95be5, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
+  voiceClip: {fileID: 0}
   questionText: "\xBFQu\xE9 crees que va a pasar ahora?"
   options:
   - Se van a alejar del mal olor
@@ -28,3 +29,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: \xBFqu\xE9 ha propuesto Pablo al final de la conversaci\xF3n?"
+  correctText: "\xA1Claro!"
+  inferenceCategory: 0
+  wrongText: Vaya, no es eso exactamente...
+  revealText: Seguramente se alejen del mal olor.

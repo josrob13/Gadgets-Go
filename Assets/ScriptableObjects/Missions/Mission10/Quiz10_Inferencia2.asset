@@ -15,12 +15,13 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: "\xBFQu\xE9 siente Marcos cuando dice que en atenci\xF3n al cliente le est\xE1n
     'tomando el pelo'?"
-  nextNode: {fileID: 11400000, guid: 7e1aac2a09021974092b297e234f65e2, type: 2}
+  nextNode: {fileID: 11400000, guid: 1365a49bebb6f2748a650229a1c726db, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFQu\xE9 siente Marcos cuando dice que en atenci\xF3n al cliente
+  voiceClip: {fileID: 0}
+  questionText: "\xBFQu\xE9 siente Leo cuando dice que en atenci\xF3n al cliente
     le est\xE1n 'tomando el pelo'?"
   options:
   - "Que siente que le est\xE1n enga\xF1ando o burl\xE1ndose de \xE9l al no atenderle"
@@ -31,3 +32,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 0
+  hint: 'Recuerda: tomar el pelo suele significar vacilar, burlarse de una persona...'
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: Vaya, no es exactamente eso, prueba otra vez...
+  revealText: "Leo siente que le est\xE1n enga\xF1ando o burl\xE1ndose de \xE9l."

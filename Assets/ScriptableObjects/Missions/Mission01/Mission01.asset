@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: Cazadora_Prestada
   description: 'Dani y Bea: La mancha de grasa'
+  userGuide: Busca en el ventanal.
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 1b9ea75ae948bfd4e873057e5221347c, type: 2}
   cameraID: cameraMission01
   cameraContainerName: Mission01
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
   missionStartTransform: {fileID: 1862190778121117722, guid: 86a04230c9ccd664aac5947514ce0aae, type: 3}
   useGlobalCoordinates: 1
-  lockPlayerDuringMission: 1
   canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

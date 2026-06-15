@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 3aeccb6941ff4fc46980129702383a72, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
     FaceExpression: 
-  questionText: "\xBFCu\xE1nto crees que se conocen Paco y Pablo?"
+  voiceClip: {fileID: 0}
+  questionText: "\xBFCu\xE1nto crees que se conocen Fran y Pablo?"
   options:
   - "No se conoc\xEDan, se acaban de conocer"
   - Son conocidos, pero no tienen mucha confianza
@@ -27,3 +28,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: est\xE1n ya en la cafeter\xEDa, y est\xE1n hablando abiertamente."
+  correctText: "\xA1S\xED, muy bien!"
+  inferenceCategory: 0
+  wrongText: No es eso exactamente, prueba otra vez...
+  revealText: Fran y Pablo son amigos.
