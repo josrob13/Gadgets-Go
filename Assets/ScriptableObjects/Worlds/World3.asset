@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9906f4baf17eaab44823a659bef97796, type: 3}
+  m_Name: World3
+  m_EditorClassIdentifier: 
+  worldName: Oficina
+  sceneName: World3-Office
+  missions:
+  - {fileID: 11400000, guid: 904286f8e3763984d98390666663b766, type: 2}
+  - {fileID: 11400000, guid: 9b881563702c34c4a86ab4b202a53311, type: 2}
+  - {fileID: 11400000, guid: 8a31322417e81864d865ca107446dbad, type: 2}
+  - {fileID: 11400000, guid: e7c1de857eff1bd4aa29667c445c734e, type: 2}

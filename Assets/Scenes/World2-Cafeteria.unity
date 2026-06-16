@@ -26649,7 +26649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1245014017}
   m_Layer: 0
-  m_Name: Char_Mission03_Disgust
+  m_Name: Char_Mission06_Disgust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36900,7 +36900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1747428593}
   m_Layer: 0
-  m_Name: Char_Mission04_Angry
+  m_Name: Char_Mission01_Angry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

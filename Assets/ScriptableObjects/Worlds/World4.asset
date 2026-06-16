@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9906f4baf17eaab44823a659bef97796, type: 3}
+  m_Name: World4
+  m_EditorClassIdentifier: 
+  worldName: Teatro
+  sceneName: World4-Theater
+  missions:
+  - {fileID: 11400000, guid: 55ddc4fcb49791a49b52649e125880af, type: 2}
+  - {fileID: 11400000, guid: efac8e2824042bf469c8ccdc38ac69e5, type: 2}

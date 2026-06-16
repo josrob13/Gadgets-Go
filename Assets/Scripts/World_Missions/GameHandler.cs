@@ -5,6 +5,9 @@ public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
     [SerializeField] private WorldsDB worldsDB;
+    [Tooltip("Escena que se carga cuando el jugador completa TODOS los mundos. " +
+             "Debe estar añadida en File → Build Settings.")]
+    [SerializeField] private string endSceneName = "ThankYou";
     private int indexWorld = 0;
     public string PlayerName { get; set; } = "Jugador";
     public int CurrentWorldIndex => indexWorld;
@@ -134,7 +137,13 @@ public class GameHandler : MonoBehaviour
 
         if (indexWorld >= worldsDB.worlds.Length)
         {
-            Debug.Log("[GameHandler] ¡Todos los mundos completados! Juego finalizado.");
+            Debug.Log($"[GameHandler] ¡Todos los mundos completados! Cargando escena final '{endSceneName}'.");
+
+            if (SceneLoader.Instance != null)
+                SceneLoader.Instance.LoadSceneAsync(endSceneName);
+            else
+                Debug.LogError("[GameHandler] SceneLoader.Instance es null — no se puede cargar la escena final.");
+
             return true;
         }
 

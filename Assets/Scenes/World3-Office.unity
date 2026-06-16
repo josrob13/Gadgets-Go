@@ -28876,7 +28876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &390657529
 Transform:
   m_ObjectHideFlags: 0
@@ -48667,7 +48667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636627921}
   m_Layer: 0
-  m_Name: Char_Mission04_Suspicion
+  m_Name: Char_Mission03_Suspicion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105540,7 +105540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1435579045}
   m_Layer: 0
-  m_Name: Char_Mission04_Sadness
+  m_Name: Char_Mission08_Sadness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109665,7 +109665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1494854408}
   m_Layer: 0
-  m_Name: Char_Mission04_Worry
+  m_Name: Char_Mission05_Worry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138036,7 +138036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865580784}
   m_Layer: 0
-  m_Name: Char_Mission03_Fear
+  m_Name: Char_Mission02_Fear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
