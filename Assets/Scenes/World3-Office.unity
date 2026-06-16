@@ -52318,7 +52318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &699999619
 Transform:
   m_ObjectHideFlags: 0
@@ -84553,6 +84553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldsDB: {fileID: 11400000, guid: e39f23e473e3d63479e90cc295e53741, type: 2}
+  endSceneName: ThankYou
 --- !u!114 &1149538453
 MonoBehaviour:
   m_ObjectHideFlags: 0
