@@ -1,0 +1,55 @@
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducción}{VI}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Punto de Partida}{VI}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Justificación: Por qué el salto a la Realidad Virtual}{VII}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Motivación}{VIII}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Objetivos}{IX}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Generales}{IX}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Específicos}{X}{subsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.2.1}Objetivos de diseño}{X}{subsubsection.1.4.2.1}%
+\contentsline {subsubsection}{\numberline {1.4.2.2}Objetivos de desarrollo}{XI}{subsubsection.1.4.2.2}%
+\contentsline {section}{\numberline {1.5}Metodología}{XI}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Estado del Arte y Tecnologías Inmersivas}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Realidades Extendidas como herramientas terapéuticas avanzadas}{2}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Aplicaciones de la Realidad Aumentada}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Aplicaciones de la Realidad Virtual}{6}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Tecnologías de vanguardia en Meta Quest Pro}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Eye-tracking (seguimiento ocular) y atención sostenida}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Natural Facial Expressions (seguimiento facial)}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Computación Afectiva: Detección de estados emocionales en entornos virtuales}{10}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Diseño, Implementación y Validación del Sistema en Realidad Virtual}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Diseño y Optimización de Activos (Assets)}{13}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Modelado de Personajes: Nuevos Assets de avatares coherentes con la narrativa}{14}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Entornos Inmersivos: Nuevos escenarios coherentes con la narrativa}{16}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Diseño de la Interfaz Espacial (Diegetic UI): Menús integrados en el mundo virtual}{17}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Arquitectura del Sistema e Integración Biométrica}{20}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tecnologías Unity, Meta XR SDK y OpenXR}{20}{subsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Proceso de investigación y elección de la base tecnológica}{20}{subsubsection.3.2.1.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.2}La pila tecnológica resultante}{22}{subsubsection.3.2.1.2}%
+\contentsline {subsection}{\numberline {3.2.2}Implementación del Sistema de Eye-tracking}{24}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Detección de contacto visual con NPCs}{24}{subsubsection.3.2.2.1}%
+\contentsline {subsection}{\numberline {3.2.3}Algoritmo de Detección de Estado del Ánimo}{25}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}Procesamiento de expresiones faciales en tiempo real}{26}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}Sistema de alertas y pausas preventivas ante fatiga o frustración}{27}{subsubsection.3.2.3.2}%
+\contentsline {subsection}{\numberline {3.2.4}Guía Virtual}{28}{subsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.4.1}Lógica de apoyo y sistema de pistas}{29}{subsubsection.3.2.4.1}%
+\contentsline {subsection}{\numberline {3.2.5}Sistema de Logging: Exportación de métricas biométricas}{29}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Desarrollo de Misiones y Dinámicas en RV}{31}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Adaptación del sistema de diálogos al espacio 3D}{32}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Navegación e interacción en RV: lo aprovechado del SDK y lo construido a medida}{34}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Flujo final del videojuego}{37}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Pruebas, Validación y Análisis de Datos}{39}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Pruebas de rendimiento: Tasa de refresco y latencia de sensores}{39}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Evaluación de la precisión del seguimiento ocular y facial}{40}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Análisis de la experiencia de usuario (UX) en Realidad Virtual}{41}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Simulación de datos: ejemplo de informe de progreso exportado}{42}{subsection.3.4.4}%
+\contentsline {chapter}{\numberline {4}Discusión, Conclusiones y Trabajos Futuros}{45}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ventajas competitivas de la tecnología Meta Quest Pro en el tratamiento del TEA}{45}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Alcance y limitaciones de la detección automática de emociones}{46}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Conclusiones finales}{47}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Trabajos futuros}{48}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Integración de IA Generativa para el Guía Virtual}{48}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Multijugador social en RV para entrenamiento grupal}{48}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Otras aplicaciones tecnológicas dirigidas a personas TEA}{48}{subsection.4.4.3}%

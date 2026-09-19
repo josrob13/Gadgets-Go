@@ -1,0 +1,813 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{ekman1978}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f57fd5f1b9feec71b7d8f0ce35b57dbc}{%
+           family={Ekman},
+           familyi={E\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cddd249b8d4a78b56d625f20556bcc88}{%
+           family={Friesen},
+           familyi={F\bibinitperiod},
+           given={Wallace\bibnamedelima V.},
+           giveni={W\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Palo Alto, CA}%
+      }
+      \list{publisher}{1}{%
+        {Consulting Psychologists Press}%
+      }
+      \strng{namehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{fullhash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{fullhashraw}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{bibnamehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authorbibnamehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authornamehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authorfullhash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authorfullhashraw}{7c96d5c8319baea6fb804debef7b7748}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Facial Action Coding System: A Technique for the Measurement of Facial Movement}
+      \field{year}{1978}
+    \endentry
+    \entry{gag}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9685c050469bdd99a52465d14a529507}{%
+           family={{Game Accessibility Guidelines}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{9685c050469bdd99a52465d14a529507}
+      \strng{fullhash}{9685c050469bdd99a52465d14a529507}
+      \strng{fullhashraw}{9685c050469bdd99a52465d14a529507}
+      \strng{bibnamehash}{9685c050469bdd99a52465d14a529507}
+      \strng{authorbibnamehash}{9685c050469bdd99a52465d14a529507}
+      \strng{authornamehash}{9685c050469bdd99a52465d14a529507}
+      \strng{authorfullhash}{9685c050469bdd99a52465d14a529507}
+      \strng{authorfullhashraw}{9685c050469bdd99a52465d14a529507}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Game Accessibility Guidelines: A straightforward reference for inclusive game design}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://gameaccessibilityguidelines.com/
+      \endverb
+      \verb{url}
+      \verb https://gameaccessibilityguidelines.com/
+      \endverb
+    \endentry
+    \entry{guillon2014}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=7df4d3ddadd8c397848b2e7d889fb959}{%
+           family={Guillon},
+           familyi={G\bibinitperiod},
+           given={Quentin},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6d0beaeb07db158773c082ccb610acf1}{%
+           family={Hadjikhani},
+           familyi={H\bibinitperiod},
+           given={Nouchine},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4a8423ada16d4bf41d33419b83504d1d}{%
+           family={Baduel},
+           familyi={B\bibinitperiod},
+           given={Sophie},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=58869374e3896965f6df9019faebfd65}{%
+           family={Rogé},
+           familyi={R\bibinitperiod},
+           given={Bernadette},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{524c4d2f79d2ab8444aec561c52b0b06}
+      \strng{fullhash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{fullhashraw}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{bibnamehash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{authorbibnamehash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{authornamehash}{524c4d2f79d2ab8444aec561c52b0b06}
+      \strng{authorfullhash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{authorfullhashraw}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neuroscience and Biobehavioral Reviews}
+      \field{title}{Visual social attention in autism spectrum disorder: Insights from eye tracking studies}
+      \field{volume}{42}
+      \field{year}{2014}
+      \field{pages}{279\bibrangedash 297}
+      \range{pages}{19}
+    \endentry
+    \entry{klin2002}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=541a9cb2f5e358efd62913bdd89d98f0}{%
+           family={Klin},
+           familyi={K\bibinitperiod},
+           given={Ami},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4b402bdad9bb30133f1d3099738a5bbf}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Warren},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fcaf7ad70220138fd8b8c41d2a9a8228}{%
+           family={Schultz},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ac65c5aa3d2b91ae1dbf2590b8ed0016}{%
+           family={Volkmar},
+           familyi={V\bibinitperiod},
+           given={Fred},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=53b0782f7db4288a2add0a5f211a48ed}{%
+           family={Cohen},
+           familyi={C\bibinitperiod},
+           given={Donald},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{071d25e9b40816b97006bede639070b5}
+      \strng{fullhash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{fullhashraw}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{bibnamehash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{authorbibnamehash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{authornamehash}{071d25e9b40816b97006bede639070b5}
+      \strng{authorfullhash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{authorfullhashraw}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Archives of General Psychiatry}
+      \field{number}{9}
+      \field{title}{Visual fixation patterns during viewing of naturalistic social situations as predictors of social competence in individuals with autism}
+      \field{volume}{59}
+      \field{year}{2002}
+      \field{pages}{809\bibrangedash 816}
+      \range{pages}{8}
+    \endentry
+    \entry{laviola2000}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ba77fe1a51bbe7ce7bccddc9627e2bfe}{%
+           family={LaViola},
+           familyi={L\bibinitperiod},
+           given={Joseph\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{fullhash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{fullhashraw}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{bibnamehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authorbibnamehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authornamehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authorfullhash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authorfullhashraw}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGCHI Bulletin}
+      \field{number}{1}
+      \field{title}{A discussion of cybersickness in virtual environments}
+      \field{volume}{32}
+      \field{year}{2000}
+      \field{pages}{47\bibrangedash 56}
+      \range{pages}{10}
+    \endentry
+    \entry{mesa2018}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=e05e17b1a5e3f8337764d21014e96d36}{%
+           family={Mesa-Gresa},
+           familyi={M\bibinithyphendelim G\bibinitperiod},
+           given={Patricia},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8c7ff7bc61e4a3a711ae5b445079bbf8}{%
+           family={Gil-Gómez},
+           familyi={G\bibinithyphendelim G\bibinitperiod},
+           given={Hermenegildo},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6dec9d30cd5dbff4f0fb5a4f6aef3ee1}{%
+           family={Lozano-Quilis},
+           familyi={L\bibinithyphendelim Q\bibinitperiod},
+           given={José-Antonio},
+           giveni={J\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d93021f0ceb64af7e82be8efd8e6002}{%
+           family={Gil-Gómez},
+           familyi={G\bibinithyphendelim G\bibinitperiod},
+           given={José-Antonio},
+           giveni={J\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{88cd8ea72435a1bf16a64e887f9ca325}
+      \strng{fullhash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{fullhashraw}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{bibnamehash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{authorbibnamehash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{authornamehash}{88cd8ea72435a1bf16a64e887f9ca325}
+      \strng{authorfullhash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{authorfullhashraw}{fb8bcdd104f4dbde04a02b78464e2945}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{8}
+      \field{title}{Effectiveness of Virtual Reality for Children and Adolescents with Autism Spectrum Disorder: An Evidence-Based Systematic Review}
+      \field{volume}{18}
+      \field{year}{2018}
+      \field{pages}{2486}
+      \range{pages}{1}
+    \endentry
+    \entry{metaovr}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6bbbd9ef7c6e4b5ccdf34119df0a1655}{%
+           family={{Meta Platforms}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{fullhash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{fullhashraw}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{bibnamehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authorbibnamehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authornamehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authorfullhash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authorfullhashraw}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Movement SDK for Unity: Eye Tracking and Face Tracking Documentation}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developers.meta.com/horizon/documentation/unity/move-overview/
+      \endverb
+      \verb{url}
+      \verb https://developers.meta.com/horizon/documentation/unity/move-overview/
+      \endverb
+    \endentry
+    \entry{picard1997}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7dd0cb6b02efa214ad5f10a28d1241b6}{%
+           family={Picard},
+           familyi={P\bibinitperiod},
+           given={Rosalind\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{fullhash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{fullhashraw}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{bibnamehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authorbibnamehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authornamehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authorfullhash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authorfullhashraw}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Affective Computing}
+      \field{year}{1997}
+    \endentry
+    \entry{slater2009}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=df83b602f850d5091f5ab7de4726e66e}{%
+           family={Slater},
+           familyi={S\bibinitperiod},
+           given={Mel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{fullhash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{fullhashraw}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{bibnamehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authorbibnamehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authornamehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authorfullhash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authorfullhashraw}{df83b602f850d5091f5ab7de4726e66e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Philosophical Transactions of the Royal Society B}
+      \field{number}{1535}
+      \field{title}{Place illusion and plausibility can lead to realistic behaviour in immersive virtual environments}
+      \field{volume}{364}
+      \field{year}{2009}
+      \field{pages}{3549\bibrangedash 3557}
+      \range{pages}{9}
+    \endentry
+    \entry{openxr}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5dbfd58daa08d01e28fb0ec7a08f3ef5}{%
+           family={{The Khronos Group}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{fullhash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{fullhashraw}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{bibnamehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authorbibnamehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authornamehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authorfullhash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authorfullhashraw}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{OpenXR Specification}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.khronos.org/openxr/
+      \endverb
+      \verb{url}
+      \verb https://www.khronos.org/openxr/
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{ekman1978}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f57fd5f1b9feec71b7d8f0ce35b57dbc}{%
+           family={Ekman},
+           familyi={E\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cddd249b8d4a78b56d625f20556bcc88}{%
+           family={Friesen},
+           familyi={F\bibinitperiod},
+           given={Wallace\bibnamedelima V.},
+           giveni={W\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Palo Alto, CA}%
+      }
+      \list{publisher}{1}{%
+        {Consulting Psychologists Press}%
+      }
+      \strng{namehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{fullhash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{fullhashraw}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{bibnamehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authorbibnamehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authornamehash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authorfullhash}{7c96d5c8319baea6fb804debef7b7748}
+      \strng{authorfullhashraw}{7c96d5c8319baea6fb804debef7b7748}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Facial Action Coding System: A Technique for the Measurement of Facial Movement}
+      \field{year}{1978}
+    \endentry
+    \entry{gag}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9685c050469bdd99a52465d14a529507}{%
+           family={{Game Accessibility Guidelines}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{9685c050469bdd99a52465d14a529507}
+      \strng{fullhash}{9685c050469bdd99a52465d14a529507}
+      \strng{fullhashraw}{9685c050469bdd99a52465d14a529507}
+      \strng{bibnamehash}{9685c050469bdd99a52465d14a529507}
+      \strng{authorbibnamehash}{9685c050469bdd99a52465d14a529507}
+      \strng{authornamehash}{9685c050469bdd99a52465d14a529507}
+      \strng{authorfullhash}{9685c050469bdd99a52465d14a529507}
+      \strng{authorfullhashraw}{9685c050469bdd99a52465d14a529507}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Game Accessibility Guidelines: A straightforward reference for inclusive game design}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://gameaccessibilityguidelines.com/
+      \endverb
+      \verb{url}
+      \verb https://gameaccessibilityguidelines.com/
+      \endverb
+    \endentry
+    \entry{guillon2014}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=7df4d3ddadd8c397848b2e7d889fb959}{%
+           family={Guillon},
+           familyi={G\bibinitperiod},
+           given={Quentin},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6d0beaeb07db158773c082ccb610acf1}{%
+           family={Hadjikhani},
+           familyi={H\bibinitperiod},
+           given={Nouchine},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4a8423ada16d4bf41d33419b83504d1d}{%
+           family={Baduel},
+           familyi={B\bibinitperiod},
+           given={Sophie},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=58869374e3896965f6df9019faebfd65}{%
+           family={Rogé},
+           familyi={R\bibinitperiod},
+           given={Bernadette},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{524c4d2f79d2ab8444aec561c52b0b06}
+      \strng{fullhash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{fullhashraw}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{bibnamehash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{authorbibnamehash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{authornamehash}{524c4d2f79d2ab8444aec561c52b0b06}
+      \strng{authorfullhash}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \strng{authorfullhashraw}{9c8ad4d21b9590c592eae4ad5fef52a3}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neuroscience and Biobehavioral Reviews}
+      \field{title}{Visual social attention in autism spectrum disorder: Insights from eye tracking studies}
+      \field{volume}{42}
+      \field{year}{2014}
+      \field{pages}{279\bibrangedash 297}
+      \range{pages}{19}
+    \endentry
+    \entry{klin2002}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=541a9cb2f5e358efd62913bdd89d98f0}{%
+           family={Klin},
+           familyi={K\bibinitperiod},
+           given={Ami},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4b402bdad9bb30133f1d3099738a5bbf}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Warren},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fcaf7ad70220138fd8b8c41d2a9a8228}{%
+           family={Schultz},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ac65c5aa3d2b91ae1dbf2590b8ed0016}{%
+           family={Volkmar},
+           familyi={V\bibinitperiod},
+           given={Fred},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=53b0782f7db4288a2add0a5f211a48ed}{%
+           family={Cohen},
+           familyi={C\bibinitperiod},
+           given={Donald},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{071d25e9b40816b97006bede639070b5}
+      \strng{fullhash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{fullhashraw}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{bibnamehash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{authorbibnamehash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{authornamehash}{071d25e9b40816b97006bede639070b5}
+      \strng{authorfullhash}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \strng{authorfullhashraw}{adb45e1f6da6e1c5060b63cf1c3fca0e}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Archives of General Psychiatry}
+      \field{number}{9}
+      \field{title}{Visual fixation patterns during viewing of naturalistic social situations as predictors of social competence in individuals with autism}
+      \field{volume}{59}
+      \field{year}{2002}
+      \field{pages}{809\bibrangedash 816}
+      \range{pages}{8}
+    \endentry
+    \entry{laviola2000}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ba77fe1a51bbe7ce7bccddc9627e2bfe}{%
+           family={LaViola},
+           familyi={L\bibinitperiod},
+           given={Joseph\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{fullhash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{fullhashraw}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{bibnamehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authorbibnamehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authornamehash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authorfullhash}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \strng{authorfullhashraw}{ba77fe1a51bbe7ce7bccddc9627e2bfe}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGCHI Bulletin}
+      \field{number}{1}
+      \field{title}{A discussion of cybersickness in virtual environments}
+      \field{volume}{32}
+      \field{year}{2000}
+      \field{pages}{47\bibrangedash 56}
+      \range{pages}{10}
+    \endentry
+    \entry{mesa2018}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=e05e17b1a5e3f8337764d21014e96d36}{%
+           family={Mesa-Gresa},
+           familyi={M\bibinithyphendelim G\bibinitperiod},
+           given={Patricia},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8c7ff7bc61e4a3a711ae5b445079bbf8}{%
+           family={Gil-Gómez},
+           familyi={G\bibinithyphendelim G\bibinitperiod},
+           given={Hermenegildo},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6dec9d30cd5dbff4f0fb5a4f6aef3ee1}{%
+           family={Lozano-Quilis},
+           familyi={L\bibinithyphendelim Q\bibinitperiod},
+           given={José-Antonio},
+           giveni={J\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d93021f0ceb64af7e82be8efd8e6002}{%
+           family={Gil-Gómez},
+           familyi={G\bibinithyphendelim G\bibinitperiod},
+           given={José-Antonio},
+           giveni={J\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{88cd8ea72435a1bf16a64e887f9ca325}
+      \strng{fullhash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{fullhashraw}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{bibnamehash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{authorbibnamehash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{authornamehash}{88cd8ea72435a1bf16a64e887f9ca325}
+      \strng{authorfullhash}{fb8bcdd104f4dbde04a02b78464e2945}
+      \strng{authorfullhashraw}{fb8bcdd104f4dbde04a02b78464e2945}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{8}
+      \field{title}{Effectiveness of Virtual Reality for Children and Adolescents with Autism Spectrum Disorder: An Evidence-Based Systematic Review}
+      \field{volume}{18}
+      \field{year}{2018}
+      \field{pages}{2486}
+      \range{pages}{1}
+    \endentry
+    \entry{metaovr}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6bbbd9ef7c6e4b5ccdf34119df0a1655}{%
+           family={{Meta Platforms}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{fullhash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{fullhashraw}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{bibnamehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authorbibnamehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authornamehash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authorfullhash}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \strng{authorfullhashraw}{6bbbd9ef7c6e4b5ccdf34119df0a1655}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Movement SDK for Unity: Eye Tracking and Face Tracking Documentation}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developers.meta.com/horizon/documentation/unity/move-overview/
+      \endverb
+      \verb{url}
+      \verb https://developers.meta.com/horizon/documentation/unity/move-overview/
+      \endverb
+    \endentry
+    \entry{picard1997}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7dd0cb6b02efa214ad5f10a28d1241b6}{%
+           family={Picard},
+           familyi={P\bibinitperiod},
+           given={Rosalind\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{fullhash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{fullhashraw}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{bibnamehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authorbibnamehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authornamehash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authorfullhash}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \strng{authorfullhashraw}{7dd0cb6b02efa214ad5f10a28d1241b6}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Affective Computing}
+      \field{year}{1997}
+    \endentry
+    \entry{slater2009}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=df83b602f850d5091f5ab7de4726e66e}{%
+           family={Slater},
+           familyi={S\bibinitperiod},
+           given={Mel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{fullhash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{fullhashraw}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{bibnamehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authorbibnamehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authornamehash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authorfullhash}{df83b602f850d5091f5ab7de4726e66e}
+      \strng{authorfullhashraw}{df83b602f850d5091f5ab7de4726e66e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Philosophical Transactions of the Royal Society B}
+      \field{number}{1535}
+      \field{title}{Place illusion and plausibility can lead to realistic behaviour in immersive virtual environments}
+      \field{volume}{364}
+      \field{year}{2009}
+      \field{pages}{3549\bibrangedash 3557}
+      \range{pages}{9}
+    \endentry
+    \entry{openxr}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5dbfd58daa08d01e28fb0ec7a08f3ef5}{%
+           family={{The Khronos Group}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{fullhash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{fullhashraw}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{bibnamehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authorbibnamehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authornamehash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authorfullhash}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \strng{authorfullhashraw}{5dbfd58daa08d01e28fb0ec7a08f3ef5}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{OpenXR Specification}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.khronos.org/openxr/
+      \endverb
+      \verb{url}
+      \verb https://www.khronos.org/openxr/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

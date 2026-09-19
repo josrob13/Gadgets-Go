@@ -1,0 +1,1416 @@
+% Clase del documento
+\documentclass[12pt,twoside,titlepage]{report}
+
+
+% --- Configuración de Bibliografía ---
+
+\usepackage[backend=biber, style=apa, url=true]{biblatex}
+\addbibresource{bibliografia.bib}
+
+% DEL VIDEO: \usepackage{natbib}
+
+% --- Fin configuración bibliografía ---
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Paquetes %%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a4paper,bindingoffset=3mm,bottom=35mm]{geometry}
+\usepackage{eurosym}
+
+\usepackage{caption}
+% Configuración para que se vea elegante
+\captionsetup[figure]{
+    labelfont=bf,      % "Figura 1" en negrita
+    textfont=it,       % El texto del título en cursiva
+    size=small,        % Letra un poco más pequeña que el cuerpo
+    labelsep=period,   % Separar con punto en lugar de dos puntos
+    justification=centering % Centrar el título
+}
+
+% Usad \usepackage[dvips]{graphicx} o \usepackage[pdftex]{graphicx} (no ambos)
+%\usepackage[dvips]{graphicx} %%% para LaTeX. Las figuras deben estar en formato eps
+
+\usepackage[colorlinks=true,pdftex]{hyperref}   %%% Opcional. Para incluir marcadores y enlaces en el pdf
+\usepackage[pdftex]{graphicx}  %%% para pdflatex. Las figuras pueden estar en pdf, jpg, svg y otros formatos
+
+\usepackage{fancyvrb}
+
+\usepackage[spanish]{babel}
+
+%\usepackage[latin1]{inputenc} % Usad en WinEdt/MikTex
+\usepackage[utf8]{inputenc} % Usad en overleaf
+
+%\usepackage[T1]{fontenc}
+
+\usepackage{xcolor}
+\usepackage{listings}
+% Algunos paquetes útiles
+\usepackage{tcolorbox}  % Para los cuadros de color
+\usepackage{xcolor}     % Para definir colores personalizados
+\usepackage{amsmath}    % Para símbolos matemáticos y notación avanzada
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{afterpage}
+\usepackage{paralist}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage{paralist}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{fancyhdr}
+\usepackage{rotating}
+\usepackage{multirow}
+
+
+% Otros paquetes
+
+\usepackage{quotchap}
+\usepackage{lipsum}
+\usepackage{placeins}
+
+% --- Paquetes para código ---
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0.0,0.3,0.8}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{codeblue},
+    stringstyle=\color{codepurple},
+    commentstyle=\color{codegray},
+    breaklines=true,
+    showstringspaces=false
+}
+
+% Definición de colores estilo "VS Code"
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Configuración del estilo
+\lstdefinestyle{estiloPython}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize, % Fuente monoespaciada y tamaño pequeño
+    breakatwhitespace=false,
+    breaklines=true,                 % Romper líneas largas automáticamente
+    captionpos=b,                    % Posición del título (abajo)
+    keepspaces=true,
+    numbers=left,                    % Números de línea a la izquierda
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    language=Python,                 % Lenguaje específico
+    frame=single,                    % Marco alrededor del código
+    rulecolor=\color{black}          % Color del marco
+}
+
+\lstset{style=estiloPython}
+
+\usepackage{inconsolata} % Fuente monoespaciada muy bonita y legible
+
+% --- FIN DE PAQUETES PARA CÓDIGO ---
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Definiciones básicas %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nombreautor}{José Andrés Villagrán Robles}
+\newcommand{\nombretutorA}{Sofía Bayona Beriso}
+\newcommand{\nombretutorB}{José Manuel Puerta}
+\newcommand{\titulotrabajo}{Desarrollo de un entorno inmersivo de realidad virtual como apoyo terapéutico para la interpretabilidad social en personas TEA - Serious Game v2.0}
+\newcommand{\escuela}{Escuela Técnica Superior\\de Ingeniería Informática}
+\newcommand{\escuelalargo}{Escuela Técnica Superior de Ingeniería Informática}
+\newcommand{\universidad}{Universidad Rey Juan Carlos}
+\newcommand{\fecha}{20 de Noviembre de 2025}
+\newcommand{\grado}{Doble Grado en Ingeniería Informática e Ingeniería del Software}
+\newcommand{\curso}{Curso 2025-2026}
+\newcommand{\logoUniversidad}{logoURJC.pdf} % logoURJC.eps
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Otras definiciones %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Definiciones de colores (para hidelinks)
+\definecolor{BlueLink}{rgb}{0.165,0.322,0.745}
+\definecolor{PinkLink}{rgb}{0.8,0.22,0.5}
+\definecolor{gray}{rgb}{0.6,0.6,0.6}
+
+
+% Enlaces
+\hypersetup{hidelinks,pageanchor=true,colorlinks,citecolor=PinkLink,urlcolor=black,linkcolor=BlueLink}
+
+% Profundidad de numeración y de índice: al agrupar varios capítulos como
+% apartados de uno solo, se necesita numerar e indexar hasta el nivel
+% subsubsection (p. ej. 3.2.1.1) para que esos contenidos no queden sin número.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\newcommand\blankpage{%
+    \newpage
+    \null
+    \thispagestyle{empty}%
+    %\addtocounter{page}{-1}%
+    \newpage}
+
+
+% Texto referencias
+\addto{\captionsspanish}{\renewcommand{\bibname}{Bibliografía}}
+
+% Texto Índice de tablas
+\addto\captionsspanish{
+\def\tablename{Tabla}
+\def\listtablename{\'{I}ndice de tablas}
+}
+
+
+\floatname{algorithm}{Algoritmo}
+
+\newfloat{algorithm}{t}{lop}
+
+
+%\newenvironment{pseudocodigo}[1][htb]
+%  {\renewcommand{\algorithmcfname}{Pseudocódig}% Update algorithm name
+%   \begin{algorithm}[#1]%
+%  }{\end{algorithm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Estilo de código (en Python) %%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\definecolor{mydeepteal}{rgb}{0.16,0.22,0.23}
+\definecolor{myteal}{rgb}{0.31,0.44,0.46}
+\definecolor{mymediumteal}{rgb}{0.41,0.58,0.60}
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+
+%\newcommand*{\FormatDigit}[1]{\textcolor{mydeepteal}{#1}}
+\newcommand*{\FormatDigit}[1]{\textcolor{black}{#1}}
+
+% Python style for highlighting
+\newcommand\mypythonstyle{\lstset{
+language=Python,
+basicstyle=\ttfamily\small,
+%basicstyle=\linespread{1.0}\footnotesize\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\bfseries\ttfamily\color{myteal},
+%keywordstyle=\ttb\color{myteal},
+commentstyle=\itshape\color{myteal},
+stringstyle=\color{mydeepteal},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{mydeepteal},    % Custom highlighting style
+% Any extra options here
+showstringspaces=false,            %
+backgroundcolor=\color{bg},
+rulecolor = \color{bg},
+%identifierstyle=\color{deepgreen},
+breaklines=true,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny,
+tabsize=4,
+xleftmargin=1em,
+frame = single,
+framesep = 3pt,
+framextopmargin=0pt,
+framexbottommargin=0pt,
+framexleftmargin=0pt,
+framexrightmargin=0pt,
+fontadjust=true,
+basewidth=0.55em, % compactness of code
+upquote=true,
+}}
+
+% Python environment
+\lstnewenvironment{mypython}[1][]
+{
+\mypythonstyle
+\lstset{#1}
+}
+{}
+
+\newcommand\mypythonstylenormalinline{\lstset{
+language=Python,
+basicstyle=\ttfamily\normalsize,
+%basicstyle=\linespread{1.0}\footnotesize\ttm,
+otherkeywords={self},            % Add keywords here
+keywordstyle=\bfseries\ttfamily\color{myteal},
+%keywordstyle=\ttb\color{myteal},
+commentstyle=\itshape\color{mymediumteal},
+stringstyle=\color{mydeepteal},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{mydeepteal},    % Custom highlighting style
+% Any extra options here
+showstringspaces=false,            %
+backgroundcolor=\color{bg},
+rulecolor = \color{bg},
+%identifierstyle=\color{deepgreen},
+breaklines=false,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny,
+tabsize=4,
+xleftmargin=0em,
+frame = single,
+framesep = 3pt,
+framextopmargin=0pt,
+framexbottommargin=0pt,
+framexleftmargin=0pt,
+framexrightmargin=0pt,
+fontadjust=true,
+%basewidth=0.55em, % compactness of code
+upquote=true,
+}}
+
+\newcommand\mypythoninline[1]{{\mypythonstylenormalinline\lstinline!#1!}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Comandos definidos por el autor
+
+\newcommand{\transpuesta}{\mbox{\tiny $\mathsf{T}$}}
+
+% --- Comando para reservar huecos de figuras, diagramas y fotografías pendientes ---
+% Uso:  \huecofigura{Texto descriptivo / pie de figura}
+%       \huecofigura[10cm]{...}  para fijar una altura distinta a la de por defecto.
+% El hueco aparece enmarcado y en gris, y su pie se registra en el Índice de figuras.
+\newcommand{\huecofigura}[2][6.5cm]{%
+  \begin{figure}[H]
+    \centering
+    \setlength{\fboxsep}{0pt}%
+    \fcolorbox{gray}{bg}{\parbox[c][#1][c]{0.86\textwidth}{%
+      \centering\itshape\color{gray}%
+      [ESPACIO RESERVADO PARA FIGURA]\\[6pt]#2}}%
+    \caption{#2}
+  \end{figure}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Inicio del documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Portada
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pagenumbering{gobble}
+%\pagenumbering{arabic}
+
+% Universidad, Facultad
+\begin{titlepage}
+\selectlanguage{spanish}
+
+% logo
+\begin{center}
+    \includegraphics[scale=0.6]{\logoUniversidad}
+\end{center}
+
+\bigskip
+
+\begin{center}
+\begin{LARGE}
+\escuela \\
+\end{LARGE}
+\end{center}
+
+\bigskip
+\bigskip
+
+% Grado
+\begin{center}
+\begin{large}
+\textbf{\grado }\\
+\end{large}
+\end{center}
+
+% Curso
+\begin{center}
+\begin{large}
+\textbf{\curso}\\
+\end{large}
+\end{center}
+
+\bigskip
+
+\textbf{\begin{center}
+\begin{large}
+\textbf{}
+\end{large}
+\end{center}}
+
+\bigskip
+\bigskip
+\bigskip
+
+% Nombre del TFG
+\begin{center}
+\textbf{\begin{large}
+\MakeUppercase{\titulotrabajo}\\
+\end{large}}
+\end{center}
+
+% Nombre del autor
+\vspace{\fill}
+\begin{center}
+\textbf{Autor: \nombreautor}\\ \smallskip
+% Tutor
+\textbf{Tutores: \nombretutorA, \nombretutorB}\\
+% Añadir segundo tutor si hubiera
+
+
+\bigskip
+
+% Fecha
+%\textbf{\fecha}\\
+\end{center}
+\end{titlepage}
+
+\hypersetup{pageanchor=true}
+
+\normalsize
+ % Se deben añadir página en blanco para que lo capítulos de la memoria o estas secciones introductorias empiecen en páginas impares
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Estilo de párrafo de los capítulos
+\setlength{\parskip}{0.75em}
+\renewcommand{\baselinestretch}{1.25}
+% Interlineado simple
+\spacing{1}
+
+\pagenumbering{Roman}
+\setcounter{page}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Índices %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Estilo de párrafo de los Índices
+\setlength{\parskip}{1pt}
+\renewcommand{\baselinestretch}{1}
+\renewcommand{\contentsname}{Índice de contenidos}
+
+
+% Índice de contenidos
+\tableofcontents
+
+\listoffigures
+
+
+% Índice de códigos/algoritmos (OPCIONAL).   El término "Códigos" se puede cambiar por "Métodos", "Funciones", "Algoritmos", etc.
+
+
+
+
+
+% En este documento (de momento) no se ha considerado incluir un índice de algoritmos/pseudocódigos, como el que aparece en \ref{AdditionalLouvain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Cabeceras y pies de página (Opcional) %%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\headheight}{28pt}
+\pagestyle{fancy}
+
+
+\renewcommand{\chaptermark}[1]{\markboth{Capítulo \thechapter.\ #1}{}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RO]{}
+\fancyhead[RE]{\nouppercase\rightmark}
+\fancyhead[LE]{}
+\fancyfoot[C]{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulos de la memoria %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% Capítulo 1
+\chapter{Introducción}
+
+\section{Punto de Partida}
+
+Este trabajo no parte de cero: es la continuación del primer Trabajo de Fin de Grado, en el que se diseñó y desarrolló un prototipo de \textit{Serious Game} orientado al entrenamiento de la interpretabilidad social en personas con Trastorno del Espectro Autista (TEA).
+Dicho videojuego ya estableció una base funcional y modular, con un sistema de diálogos, misiones y retroalimentación adaptado al perfil cognitivo y sensorial del colectivo, desarrollado en colaboración con la Asociación Asperger de Madrid.
+Este segundo trabajo se centrará en mejorar el proyecto ya creado, extendiéndolo en varios aspectos que lo convierten en una experiencia mucho más inmersiva, robusta y adaptada para las personas autistas.\\
+
+Tras el desarrollo del videojuego base, quedó presente una limitación estructural inherente al formato de pantalla en dispositivos conocidos como el PC, plataforma de desarrollo de la herramienta.
+La experiencia que se vive en este tipo de formatos es incapaz, por tanto, de replicar con exactitud los estímulos sociales del mundo real.
+Y, justamente, el tema que se trata en estos TFG's requiere de una potencia tecnológica real que sumerja al usuario en el mundo virtual, logrando así una vivencia lo más parecida a la del mundo real.
+Esto consigue cerrar bastante la brecha entre el entrenamiento virtual y la transferibilidad de las habilidades obtenidas, que si se hiciera con un videojuego normal y corriente.
+Este problema principal es también el que motiva y justifica este segundo trabajo.\\
+
+La principal distinción de este proyecto es la adaptación y portación del juego a la Realidad Virtual.
+Debido a las limitaciones recién comentadas de los Serious Games convencionales, se ha decidido utilizar las gafas de Realidad Virtual \textbf{Meta Quest Pro}.
+La elección de este hardware no ha sido arbitraria: a diferencia de otros dispositivos de RV orientados al entretenimiento, las Meta Quest Pro integran de forma nativa tecnología de seguimiento ocular y facial, lo que las convierte en una herramienta con un valor clínico directo.
+El \textit{eye-tracking} en particular, permite registrar hacia dónde dirige la atención el usuario durante las escenas sociales, proporcionando al terapeuta información valiosa sobre el entrenamiento realizado por el usuario (es conocido que algunas personas autistas se distraen con facilidad, o presentan TDAH).
+Esto, sumado a la inmersión de 360º que ofrecen las gafas de RV, permite un control total de los estímulos a los que se expone el usuario, algo especialmente relevante en un colectivo con hipersensibilidad sensorial.\\
+
+Por otro lado, la Asociación Asperger de Madrid continúa siendo un pilar fundamental en este segundo proyecto, aportando la validación clínica necesaria para garantizar que las decisiones de diseño respondan las necesidades reales de los usuarios finales y no únicamente criterios técnicos.
+
+\section{Justificación: Por qué el salto a la Realidad Virtual}
+
+La justificación de este segundo trabajo parte de una cuestión de fondo que conviene abordar de manera explícita: dado que el videojuego original ya resultaba funcional y satisfacía sus objetivos pedagógicos, es necesario concretar qué aporta la Realidad Virtual para que su incorporación justifique un proyecto que ya parte de una base sólida, y donde se busca mejorar la experiencia del usuario y la propia herramienta.
+La respuesta se da gracias al concepto de \textbf{validez ecológica}, entendido como el grado en que las condiciones de un entrenamiento reproducen las del entorno real en el que las habilidades adquiridas se aplicarán en un futuro.
+Cuanto mayor es esa correspondencia, mayor es la probabilidad de que las habilidades trabajadas se transfieran a la vida cotidiana, que constituye, en última instancia, el objetivo final de esta y de toda herramienta terapéutica.\\
+\\
+Un videojuego en pantalla, por muy cuidado que esté su diseño, impone una distancia inevitable entre el usuario y la escena.
+El jugador observa la interacción social a través de una ventana rectangular, manipula la cámara con el ratón o el teclado, y permanece consciente en todo momento de que se encuentra delante de un monitor.
+Esa distancia es, paradójicamente, lo que hacía cómodo el primer prototipo, pero también lo que limitaba su alcance: aunque no se trabaje tan profundamente en este proyecto las expresiones corporales, la propia sensación de estar en el mismo mundo que los personajes de la escena hace que el usuario sienta más compromiso con esta y sus alrededores. Las claves sociales más sutiles, de la expresión facial o de la distancia interpersonal, simplemente pierden impacto cuando todo ocurre en un plano bidimensional.\\
+\\
+La Realidad Virtual elimina ese límite.
+Al colocar al usuario dentro de la escena, con una inmersión de 360 grados y una correspondencia uno a uno entre el movimiento de su cabeza y el punto de vista virtual, se reproduce con mucha mayor fidelidad la experiencia de estar físicamente presente en una conversación \parencite{slater2009}.
+El usuario ya no observa a los personajes: comparte el espacio con ellos.
+Debe girar la cabeza para mirarlos, debe gestionar la distancia a la que se sitúa, y recibe las claves no verbales a la escala y desde la perspectiva en que ocurrirían en el mundo real.
+Este salto cualitativo es el que permite trabajar dimensiones de la interpretabilidad social que el formato de pantalla dejaba fuera de alcance.\\
+\\
+A esta inmersión se suma un segundo factor, igual o más determinante, que es el que termina de justificar la elección concreta de las Meta Quest Pro frente a otras gafas del mercado: la integración nativa de sensores biométricos.
+El \textit{eye-tracking} y el \textit{face-tracking} convierten al dispositivo no solo en una pantalla inmersiva, sino en un instrumento de medición clínica.
+Mientras el usuario entrena, el sistema puede registrar de forma silenciosa y objetiva hacia dónde mira y cómo se siente, dos variables que un terapeuta no puede medir por observación externa con la misma precisión, y mucho menos cuantificar para su seguimiento a lo largo del tiempo.
+Es esta combinación de inmersión y biometría la que transforma un videojuego educativo en una herramienta terapéutica avanzada, y la que hace que el salto a la Realidad Virtual no sea un capricho tecnológico, sino una necesidad para llevar el proyecto al siguiente nivel.
+
+\section{Motivación}
+
+La motivación de este segundo trabajo hereda directamente la del primero: aportar algo positivo a un colectivo que históricamente ha sido apartado, manteniendo el respaldo y la validación de la Asociación Asperger de Madrid.
+Sin embargo, la migración a la Realidad Virtual añade una motivación nueva y propia, centrada en el verdadero potencial clínico que aporta la inmersión de las Meta Quest Pro, y la capacidad de análisis de aspectos como el \textit{eye-tracking} y el \textit{face-tracking} cuando se aplican al TEA.\\
+\\
+Por una parte, se consigue una mayor validez ecológica al colocar al usuario en la propia escena del videojuego, donde podrá visualizar todos los elementos de los que depende este, como los modelos 3D de los personajes y las estructuras.
+También vivirá en primera persona la experiencia que hasta el momento se servía en una pantalla plana, pudiendo interactuar con el entorno de primera mano.
+Se rompe la barrera donde el usuario podría sentirse menos apegado con el juego, y se consigue un mayor \textit{engagement} o retención, con el que el usuario adoptará un papel mucho más comprometido con los escenarios sociales que deberá atender.
+Este cambio es fundamental, y define una mejora significativa con respecto al primer Trabajo de Fin de Grado.\\
+\\
+Por otro lado, el seguimiento ocular tiene un significado especial en este contexto.
+Numerosos estudios han documentado que las personas autistas presentan patrones de mirada atípicos durante la interacción social \parencite{klin2002}: tienden a evitar el contacto visual directo, a fijar la atención en regiones poco informativas del rostro o del entorno, y a distraerse con mayor facilidad de los estímulos socialmente relevantes.
+Estos patrones son precisamente uno de los marcadores que la terapia busca trabajar, pero también uno de los más difíciles de medir, porque dependen de microsegundos y de movimientos que el ojo humano del terapeuta no alcanza a registrar con fiabilidad.
+Que un dispositivo de consumo permita capturar de forma objetiva hacia dónde mira el usuario durante una escena social es una verdadera ventaja: por primera vez, la herramienta no solo entrena la atención social, sino que la mide, y entrega esa medida al profesional para fundamentar su intervención.\\
+\\
+Y, finalmente, el seguimiento facial aporta una motivación complementaria, esta vez orientada al bienestar.
+Las personas con TEA presentan con frecuencia hipersensibilidad sensorial y una baja tolerancia a la sobreestimulación, lo que puede derivar en episodios de estrés o frustración que pasan desapercibidos hasta que ya son severos.
+Poder detectar de forma temprana, a través de las microexpresiones faciales, que un usuario empieza a sentirse incómodo, y reaccionar pausando suavemente la experiencia para ofrecerle un respiro, supone anteponer la seguridad del usuario a cualquier otro objetivo.
+Es, en definitiva, la materialización tecnológica de un principio que las organizaciones terapéuticas como la Asociación han señalado desde el primer momento: el entrenamiento nunca debe convertirse en una fuente de malestar.\\
+\\
+Descubrir hasta dónde puede llegar la tecnología actual al ponerse al servicio de la terapia, y comprobar que sensores pensados originalmente para el entretenimiento pueden reconvertirse en instrumentos de valor clínico real, ha sido el motor que ha impulsado todo el desarrollo de este segundo trabajo.
+
+\section{Objetivos}
+
+\subsection{Generales}
+
+El objetivo general de este Trabajo de Fin de Grado es mejorar la calidad de la experiencia del videojuego desarrollado en el primer trabajo, migrándolo a un entorno de Realidad Virtual. Así, los objetivos generales del proyecto se pueden resumir en los siguientes puntos:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.4em]
+  \item Migrar la totalidad del juego base a un entorno de Realidad Virtual, garantizando que todas las mecánicas existentes (exploración, diálogos, misiones y evaluación) funcionen de forma fluida y nativa en el nuevo formato.
+  \item Aprovechar la tecnología que ofrecen las gafas Meta Quest Pro para integrar la recogida de datos de los sensores biométricos junto con las demás métricas recogidas durante el juego, con el fin de medir la atención y el estado anímico del usuario durante la experiencia, ofreciendo también un punto de vista más enfocado al personal terapéutico.
+\end{enumerate}
+
+\subsection{Específicos}
+
+A partir de los objetivos generales se desglosan los siguientes objetivos específicos, agrupados en dos bloques principales que reflejan las fases del trabajo: una primera de \textbf{diseño}, que decide cómo debe ser la experiencia en Realidad Virtual antes de escribir una sola línea de código; y una segunda de \textbf{desarrollo}, que materializa esas decisiones en una aplicación funcional.
+
+\subsubsection{Objetivos de diseño}
+
+El salto a la Realidad Virtual no es solo un cambio de dispositivo: obliga al usuario a readaptarse por completo al movimiento, a observar e interactuar dentro de la experiencia.
+Estos objetivos definen ese rediseño, siempre atendiendo al confort y la accesibilidad.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.4em]
+  \item Diseñar un esquema de \textbf{navegación} (locomoción) por el mundo virtual cómodo y seguro, que permita al usuario desplazarse entre las distintas zonas de cada escenario minimizando el riesgo de mareo cinético (\textit{cybersickness}), un factor especialmente crítico en personas con hipersensibilidad sensorial.
+  \item Diseñar las \textbf{mecánicas de interacción} en RV (selección de opciones, inicio de misiones, manipulación de elementos y entrada de texto), eligiendo el método de entrada apropiado (mandos y seguimiento de manos).
+  \item Rediseñar la \textbf{interfaz} del videojuego, migrándola de una capa plana superpuesta a la pantalla a una \textbf{interfaz espacial} (\textit{diegética}) integrada en el mundo, situada a una distancia cómoda de lectura y libre de la fatiga visual que provoca el texto pegado a los ojos.
+  \item Diseñar y seleccionar nuevos \textbf{activos} (avatares y entornos) coherentes con la narrativa y legibles a corta distancia, mitigando el efecto del \textit{Valle Inquietante} y respetando un presupuesto gráfico ajustado al hardware.
+\end{enumerate}
+
+\subsubsection{Objetivos de desarrollo}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.4em]
+  \item Migrar la totalidad del juego base al entorno de Realidad Virtual de Meta Quest Pro, garantizando que todas las mecánicas existentes funcionen de forma fluida.
+  \item Implementar la navegación y la interacción diseñadas, reutilizando los componentes que ofrece el \textit{SDK} oficial siempre que sea posible y desarrollando desde cero aquellas piezas que el \textit{SDK} no cubre o no resuelve de la forma deseada.
+  \item Implementar un sistema de \textit{eye-tracking} que detecte hacia dónde dirige la atención el usuario durante las escenas sociales y que avise de forma sutil cuando se distraiga del foco de la misión.
+  \item Implementar un sistema de \textit{face-tracking} que monitorice el estado anímico del usuario y pause automáticamente la experiencia, recomendándole un descanso, cuando detecte signos sostenidos de incomodidad, estrés o frustración.
+  \item Integrar pistas de audio y voces en los diálogos para enriquecer la interpretabilidad tonal y la inmersión.
+  \item Desarrollar un guía virtual, que actuará como asistente para el usuario dentro del mundo, que ofrezca pistas dinámicas y un panel de seguimiento de las misiones pendientes.
+  \item Implementar un sistema de \textit{logging} que exporte las métricas biométricas y de progreso en formato CSV, además de un informe visual, para su posterior análisis terapéutico.
+\end{enumerate}
+
+\section{Metodología}
+
+La metodología de este segundo trabajo mantiene la filosofía del primero: un desarrollo iterativo e incremental, centrado en el usuario y validado de forma continua por la Asociación Asperger de Madrid o tutores.
+Se ha conservado el modelo de ciclos cortos de desarrollo, con reuniones periódicas de revisión en las que se planificaban tareas, se priorizaban funcionalidades y se discutían los problemas surgidos, asegurando que cada nueva incorporación al sistema se evaluara tanto desde el punto de vista técnico como desde el pedagógico.\\
+\\
+No obstante, la naturaleza de esta extensión ha impuesto algunos matices propios.
+El primero es que se trata de un trabajo de \textbf{evolución sobre una base existente}, y no de un desarrollo desde cero.
+Esto ha condicionado la metodología hacia un enfoque de refactorización: cada subsistema heredado del primer trabajo (diálogos, misiones, progreso, persistencia) ha tenido que adaptarse al paradigma de la Realidad Virtual sin romper la arquitectura modular que ya existía, aprovechando que esta había sido diseñada precisamente con esta extensión en mente.
+La buena modularidad del proyecto original ha sido, en este sentido, la mejor decisión posible.\\
+\\
+De cara a herramientas empleadas en la metodología, podemos destacar GitHub, para el control de versiones. En el mismo repositorio que guarda el priumer trabajo,
+se ha creado una rama extra llamada ``vr-integration''. A partir del punto del primer trabajo es desde donde se ha continuado: se han añadido muchas cosas y se han
+quitado también otras, pero en general se ha mantenido, como se comentaba anteriormente, una visión de refactorización y mejora sobre el primer trabajo. Además, destaca también el uso de
+GitHub Projects, una herramienta de organización de trabajo parecida a la herramienta Jira, integrada en el propio GitHub, que ha permitido ordenar el trabajo cómodamente, estableciendo fechas límite y pudiendo ver todas
+las tareas pendientes en un Backlog, además de actualizarlas y/o modificarlas al gusto. Esta herramienta ha sido clave en la metodología de este segundo trabajo, y ha permitido tener un registro más claro de las tareas que
+se iban completando a lo largo del desarrollo. En esta imagen se puede ver un ejemplo de una de las tareas propuestas.
+
+\huecofigura[7cm]{Ejemplo de la tarea 'Implement Eye-Tracking', propuesta para el backlog de GitHub Projects de este proyecto.}
+
+El segundo matiz es la incorporación de una fase específica de \textbf{pruebas sobre hardware real}.
+A diferencia de un videojuego de PC, una aplicación de Realidad Virtual no puede validarse íntegramente en el editor: el confort, la latencia de los sensores, la legibilidad de las interfaces espaciales o la naturalidad de la locomoción solo se aprecian con las gafas puestas; y, a pesar de que exista una alternativa, como el simulador de Realidad Virtual de Meta, este presentaba problemas en su incorporación con el proyecto, y no representaba fielmente la experiencia real, o directamente no se podía utilizar en ciertas ocasiones.
+Por ello, el ciclo de desarrollo ha intercalado de forma sistemática etapas de implementación en el editor de Unity con etapas de despliegue y prueba en las propias Meta Quest Pro, ajustando los parámetros de confort y de detección biométrica según la experiencia directa.\\
+\\
+Finalmente, las fases del proyecto han seguido una secuencia cronológica clara: una primera etapa de investigación del estado del arte y de las tecnologías inmersivas; una segunda etapa de migración del núcleo jugable a la Realidad Virtual; una tercera etapa de integración de los sensores biométricos y de los subsistemas nuevos (audio, guía virtual y \textit{logging}); y una etapa final de optimización, pruebas y validación de la experiencia completa con el apoyo de la Asociación.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Estilo resto de páginas
+\pagestyle{fancy}
+
+
+% Estilo de párrafo de los capítulos
+\setlength{\parskip}{0.75em}
+\renewcommand{\baselinestretch}{1.25}
+% Interlineado simple
+\spacing{1}
+% Numeración contenido
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Capítulo 2
+\chapter{Estado del Arte y Tecnologías Inmersivas}
+
+El primer Trabajo de Fin de Grado ya recorrió la historia de los \textit{Serious Games} y de las aplicaciones móviles dirigidas al TEA.
+Este capítulo retoma ese recorrido justo donde lo dejó, adentrándose ahora en el terreno que da sentido a esta extensión: las tecnologías inmersivas.
+Se analizarán proyectos de Realidad Aumentada y Realidad Virtual que han marcado el camino en la intervención del autismo \parencite{mesa2018}, se profundizará en las tecnologías de vanguardia que incorporan las Meta Quest Pro, y se introducirá el concepto de computación afectiva, cerrando con una comparativa que justifica el valor clínico diferencial de los sensores biométricos frente a la Realidad Virtual convencional.
+
+\section{Realidades Extendidas como herramientas terapéuticas avanzadas}
+
+Antes de analizar proyectos concretos, conviene delimitar las Realidades Extendidas o Tecnologías Inmersivas, ya que con frecuencia se emplean como sinónimos términos que designan realidades distintas.
+Por un lado, la \textbf{Realidad Aumentada} (RA) trata de superponer elementos digitales sobre el entorno físico, sin aislar al usuario de él.
+Y, por otro, la \textbf{Realidad Virtual} (RV) se encarga de sustituir por completo el entorno físico por uno digital, aislando al usuario para sumergirlo en un mundo simulado.
+Entre ambas, sin embargo, se sitúan los enfoques de \textbf{Realidad Mixta} y, de manera particularmente relevante para este trabajo, la técnica de \textit{passthrough}: las cámaras exteriores del visor reconstruyen en tiempo real el entorno real del usuario y permiten mezclar sobre él objetos virtuales, logrando una combinación de ambos mundos, intercalable al gusto del usuario.
+El \textit{passthrough} resulta especialmente interesante en el TEA, porque ofrece una vía de transición suave hacia la inmersión total, dejando que el usuario mantenga una referencia de su entorno seguro mientras se introduce poco a poco en lo virtual.\\
+\\
+Más allá de la imagen, el ecosistema inmersivo se completa con tecnologías que estimulan otros sentidos: los dispositivos \textbf{hápticos}, que devuelven sensaciones táctiles y de vibración para reforzar la presencia; o incluso desarrollos experimentales como las \textbf{narices electrónicas} y los sistemas de olfato digital, que buscan añadir el olor a la experiencia.
+Aunque estas últimas tecnologías quedan fuera del alcance de este proyecto, ilustran hasta qué punto el objetivo de la inmersión es \textit{engañar} al cerebro estimulando tantos sentidos como sea posible.\\
+\\
+Además de los Serious Games, el ecosistema de apoyo tecnológico para el TEA integra una variedad de aplicaciones software que, aunque no sigan una estructura propia de un videojuego, emplean una de serie de diferentes tecnologías y dispositivos tecnológicos.
+Estas herramientas varían según su propósito pedagógico, y se ejecutan en plataformas tan diversas como dispositivos móviles, o  en gafas de Realidad Virtual, pero todos siguen un cometido: ayudar a las personas TEA.
+
+\subsection{Aplicaciones de la Realidad Aumentada}
+
+La Realidad Aumentada, como se decía, consiste en superponer elementos digitales, ya sea imágenes, objetos 3D o datos, sobre el entorno físico en tiempo real, enriqueciendo el entorno que rodea al usuario e integrándolo con lo digital.
+Es el primer paso hacia un entorno virtual inmersivo, con la ventaja de poder estar presente en el mundo real, evitando así atosigar con estímulos demasiado disruptivos y tecnológicos.
+Esto ha permitido que esta tecnología se coloque como una herramienta terapéutica verdaderamente diferencial para la atención del TEA, precisamente por no aislar por completo al usuario del entorno.\\
+\\
+Algunos proyectos dedicados al tratamiento del TEA aplicando esta tecnología son:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Pictogram Room}, o la Habitación de los Pictogramas, es uno de los proyectos de uso de la RA más prestigiosos y con más trayectoria en España para la intervención en el TEA.
+Fue desarrollado en 2011, en el Instituto de Robótica de la Universidad de Valencia y el grupo \textbf{AdaptaLab}, junto con el apoyo de la \textbf{Fundación Orange}.
+Está enfocado a la atención y soporte de niños con autismo, aunque declararon que el rango de edades aplicables es realmente amplio.
+\\
+El proyecto propuso ciertos aspectos interesantes e innovadores, siendo el principal de estos el ``Espejo Aumentado'', como ellos definieron, que gracias al sensor de Microsoft Kinect y un proyector, permite convertir una pared en un espejo de gran tamaño donde el usuario se ve a sí mismo.
+Así, la aplicación captura el movimiento corporal y superpone un pictograma o muñeco que se mueve exactamente igual que él en tiempo real.
+Esto beneficia al niño en muchos aspectos: gracias al procesamiento visual, él o ella entenderá mejor su propio cuerpo y movimientos.
+También ayuda a comprender mejor determinados pictogramas, y por ende conceptos, físicos o abstractos; por ejemplo, el pictograma de beber agua desde la representación icónica de vaso.
+Cabe destacar que la aplicación permite el uso de otro jugador al mismo tiempo, pudiendo el tutor o terapeuta acompañar al usuario en todo momento.
+\\\\
+La herramienta gratuita, sigue una línea pedagógica que consta de una estructura de actividades bastante completa, incluyendo hasta ochenta actividades lúdico-educativas organizadas en diferentes objetivos:
+
+    \begin{itemize}[leftmargin=1.5cm, labelsep=0.5em, itemsep=0.5em]
+        \item \textbf{Actividades de autoconocimiento:} juegos para identificar partes del cuerpo y el esquema corporal (juegos de moverse, tocar objetos, colorear partes del cuerpo).
+        \item \textbf{Actividades de posturas:} aquellas que van un paso más allá en el conocimiento corporal, y donde se trabaja la imitación y la comunicación (imitar posturas, manejo del equilibrio).
+        \item \textbf{Actividades de señalar:} donde el usuario trabajará la atención mantenida y la atención conjunta (aprender a señalar, señalar a la vez, buscar dónde se está señalando).
+        \item \textbf{Actividades de imitación:} dinámicas donde deberán participar dos personas y donde se trabajarán los aspectos visomotrices de la imitación, incluyendo también los aspectos cognitivos relacionados con el ritmo.
+        \item \textbf{Actividades de objetos:} donde se interactúa con objetos físicos y virtuales al mismo tiempo, estimulando áreas como el tacto, la anticipación y la memoria.
+Estas últimas requieren la participación de dos personas y se encuentran en fase experimental, con potencial para cubrir íntegramente los puntos ciegos de las actividades anteriores.
+    \end{itemize}
+
+Hay que destacar que este proyecto está siendo mantenido aún a día de hoy con actualizaciones y mejoras significativas.
+Desde el 2011, han conseguido una mayor precisión en la captura del movimiento gracias a sensores de última generación (específicamente el sensor \textit{Stereolab Zed2i}), se han añadido actividades que trabajan conceptos más complejos, como la permanencia del objeto y la \textbf{atribución de falsas creencias} (Teoría de la Mente), y se ha conseguido ofrecer una amplia personalización, que permite ajustar los reforzadores audiovisuales y el ritmo de aprendizaje para adaptarse a las preferencias sensoriales de cada estudiante.
+
+Para terminar, este proyecto cuenta con una validación científica mediante estudios con niños y niñas con TEA y discapacidad intelectual, demostrando mejoras reales en imitación e interacción social.
+La herramienta ha sido usada en diferentes tesis doctorales, cuyos resultados han sido publicados en revistas científicas especializadas, como el National Institutes of Health.\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/35204977/}}
+
+  \item \textbf{Brain Power}, o Empowered Brain, es el primer sistema de RA basado en gafas inteligentes dirigido a las personas autistas.
+Fue desarrollado por un equipo de neurocientíficos de la \textbf{Massachusetts Institute of Technology} (MIT) y la \textbf{Universidad de Harvard} en julio de 2016.
+Este proyecto, a diferencia de los anteriores, utiliza gafas inteligentes para su funcionamiento (principalmente Google Glass).
+Esto ofrece una libertad y facilidad al usuario, que tendrá las manos libres y podrá recibir contacto visual directo con otras personas mientras se inunda en la experiencia digital.
+También, utiliza el motor de IA de Affectiva para analizar expresiones faciales y lenguaje corporal en tiempo real, categorizándolos con precisión.\footnote{\url{https://imotions.com/customer-stories/brain-power/}}
+
+  El sistema funciona como un conjunto de ``juegos'' diseñados para aspectos diferentes:
+    \begin{itemize}[leftmargin=1.5cm, labelsep=0.5em, itemsep=0.5em]
+        \item \textbf{Emotion Charades}, donde el usuario tendrá que identificar las emociones de su interlocutor, y donde se mostrarán iconos animados y pistas visuales sobre la cara de la otra persona a través del visor.
+        \item \textbf{Eye Contact}, que convierte en juego el contacto visual; donde el usuario recibe puntos y refuerzos visuales (destellos, sonidos positivos) cuando mira a los ojos de otra persona, fomentando la atención social sostenida.
+        \item \textbf{Anxiety Management}, donde encajan escenarios para el control del estrés y la gestión de cambios de rutina (p. ej. ir a una cita médica), y donde se refuerzan técnicas de calma.
+    \end{itemize}
+
+  Además de ofrecer esta experiencia dirigida al usuario, también devuelve información completa sobre el análisis clínico del uso de la herramienta.
+Todos los datos capturados por los sensores, como el acelerómetro, el giroscopio o la cámara, se envían a un portal web donde el terapeuta o tutor puede ver métricas que definen el estrés, la atención y la velocidad de respuesta.
+
+  El proyecto obtuvo un respaldo científico después de haber superado varios ensayos clínicos aprobados por comités de ética publicados en revistas médicas como el \textit{JMIR Mental Health}.\footnote{\url{https://mental.jmir.org/2018/2/e25/}} Los resultados observados determinaron que el uso de la aplicación aportaba mejoras significativas en la \textbf{autoconfianza}, la \textbf{reducción de ansiedad} y en \textbf{reducciones} de los síntomas de TDAH, como la hiperactividad o la impulsividad.
+Tanto es así, que se ha registrado una reducción de hasta el 90\% en la irritabilidad; una mejora del 80\% en el retraimiento social; y, además, el 89\% de los usuarios toleran el dispositivo perfectamente, incluso aquellos con hipersensibilidad.
+
+\end{enumerate}
+
+\subsection{Aplicaciones de la Realidad Virtual}
+
+La Realidad Virtual, a diferencia de la Realidad Aumentada, ofrece una experiencia completamente inmersiva para el usuario, generando entornos digitales tridimensionales con los que un usuario puede interactuar de forma participativa, no solo pasiva.
+Su objetivo principal es simular tantos sentidos como sea posible para ``engañar'' al cerebro y hacerle percibir que el entorno digital es la realidad.
+Esto otorga un abanico de posibilidades a la hora de crear escenarios inmersivos para la gente del espectro autista, además de estos ser mucho más controlados, seguros y sin la presión social del exterior.\\
+\\
+A continuación, se desarrollarán algunos proyectos relevantes que implementaron esta tecnología:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{The Blue Room}.
+Un proyecto de reconocimiento mundial para el tratamiento de fobias, desarrollado por la \textbf{Universidad de Newcastle} en colaboración con la empresa tecnológica de \textbf{Third Eye NeuroTech}, y que consiste en una sala de proyecciones de 360 grados que no requiere el uso de cascos, lo que evita la sobrecarga sensorial para aquellos sujetos con hipersensibilidad.
+
+  El proyecto ofrece una inmersión compartida: permite que el niño esté físicamente en la sala junto a un terapeuta, lo que facilita la guía directa y el seguimiento emocional del paciente.
+Además, se basa en la \textbf{Terapia-Cognitivo-Conductual}, un tipo de terapia del habla, que ayuda a tomar conciencia de los patrones de pensamiento que pueden estar ocasionando problemas en el paciente.
+Esta herramienta logra un tratamiento de la fobia mucho más directa y efectiva: mientras que en esa terapia tradicional el miedo se debía abstraer a través de la imaginación, con esta tecnología, el miedo se proyecta físicamente a su alrededor en 360 grados.
+Al ser visual y concreto, la información se procesa mejor.
+
+  El usuario también tiene la posibilidad de controlar la navegación y las escenas a través de un iPad, lo que da una sensación de seguridad y control sobre los estímulos.
+Durante las sesiones, la idea es que el terapeuta también enseñe ejercicios de relajación y respiración mientras ajusta el nivel del ruido y la complejidad del escenario según la tolerancia del paciente.
+Las escenas planteadas por la aplicación replican situaciones de la vida diaria que pueden afectar a las personas autistas: subir a un autobús lleno de gente, viajar en avión, interactuar con animales, ir de compras, etc. Todas estas situaciones, como ya hemos comentado, provocan estrés en las personas del espectro.
+
+  El proyecto fue probado en cuatro sesiones de 20 a 30 minutos, donde el 45\% de los niños lograron despejar sus fobias hasta seis meses después del tratamiento.
+También se probó en adultos, donde 5 de cada 8 experimentaron mejoras significativas en su vida diaria: los resultados demostraron que los pacientes lograban trasladar el coraje y las técnicas aprendidas en la sala a situaciones reales fuera de la terapia.
+
+  \item \textbf{Virtual Reality Social Cognition Training} (o \textit{VR-SCT}) es el nombre que tiene la investigación que llevó a cabo el \textbf{Center for BrainHealth} de la Universidad de Texas en Dallas.
+Este proyecto es referencia en materia de entrenamiento de cognición social, que como se ha mencionado, es el conjunto de procesos mentales que permiten percibir, interpretar y responder a las intenciones y comportamientos de los demás.\footnote{\url{https://www.sciencedirect.com/science/article/pii/S0747563216303089}}
+
+  Este proyecto, a diferencia de otros, aporta un enfoque en la capacidad de entender por qué alguien se siente de determinada manera y qué intenciones tiene, lo cual aborda por completo el origen del problema en las personas autistas: la Teoría de la Mente.
+Para lograr este entrenamiento, el usuario experimentará una serie de situaciones comunes en la vida adulta, como una cita a ciegas, una entrevista de trabajo, conversaciones con gente recién conocida o la negociación con un vendedor.
+El público objetivo son adultos jóvenes, principalmente entre 18 y 40 años, con autismo de alto funcionamiento, aunque se ha extendido con éxito a niños y adolescentes de entre 7 y 16 años.
+
+  Un punto a destacar también de este gran proyecto, es la metodología empleada: la interacción del usuario no es con una IA preprogramada, sino con humanos reales a través de avatares: el participante interactúa dentro del entorno virtual, utilizando un personaje que puede personalizar para que se parezca a él o ella, mientras que el tutor o terapeuta observará la interacción en tiempo real, y proporcionará \textit{feedback} instantáneo, aportando también estrategias de razonamiento social y apoyo cognitivo al participante.
+Además, en este escenario planteado del uso de la aplicación, también habrá un especialista que interpretará a los demás personajes de la escena utilizando software de modulación de voz para cambiar su identidad y género según la escena.
+
+  La aplicación consta de tres módulos principales de complejidad social:
+  \begin{itemize}[leftmargin=1.5cm, labelsep=0.5em, itemsep=0.5em]
+        \item \textbf{Reconocimiento de Emociones}, donde el usuario deberá identificar pistas visuales, faciales y prosodia (tono de voz) en contextos sociales ambiguos.
+        \item \textbf{Comprensión Social}, donde se entrenará la captación de intenciones ajenas, la detección del sarcasmo y de mentiras.
+        \item \textbf{Interacciones Complejas}, donde se entrenará varios puntos importantes, como la iniciación social, el contexto laboral y el contexto personal.
+De ahí el uso de situaciones como invitar a alguien a una fiesta, entrevistas de trabajo, o citas a ciegas, respectivamente.
+    \end{itemize}
+
+    Los estudios publicados correspondientes a esta herramienta han sido publicados en revistas como \textit{JMIR Mental Health} y \textit{Computers in Human Behavior}, donde se registraron algunos puntos clave.
+Para empezar, se registraron unos aumentos significativos en materia de Teoría de la Mente y en la escala de responsabilidad social; también, en investigaciones mediante resonancia magnética funcional, se mostraron cambios en las redes neuronales asociadas a la cognición social tras tan solo 10 horas de entrenamiento; y, finalmente, se reportaron mejoras en las relaciones personales y mayor éxito en la obtención de empleo en el mundo real tras las sesiones.
+
+    Para terminar, es importante recalcar el impacto de este proyecto.
+Tanto es así, que la herramienta pudo ser utilizada en un ensayo clínico masivo de gran importancia llamado \textbf{STEPS}.\footnote{\url{https://clinicaltrials.gov/study/NCT06438536}} Este ensayo es el más grande del mundo realizado hasta la fecha sobre intervenciones de entrenamiento cognitivo social basado en Realidad Virtual para la población adulta TEA.
+Su objetivo es demostrar la utilidad de este tipo de herramientas, reclamando la intervención superior que supone, y dejando a un lado la postura que defiende que solo son herramientas complementarias.
+El número total de participantes fueron 140 adultos autistas, todos mayores de 18 años.
+Además, el ensayo fue aleatorizado dividiendo un grupo experimental (que recibe VR-SCT más el tratamiento habitual) y otro grupo tradicional, sin VR-SCT: así quienes miden los resultados no saben qué tratamiento recibió cada persona y se evitan sesgos.
+
+    Este ensayo fue alcanzado gracias a una colaboración entre la Universidad de Texas y el Grupo de Investigación \textbf{VIRTU} en el \textbf{Centro de Investigación de Salud Mental de Copenhague} (CORE).
+Comenzó en mayo de 2024, y terminará en abril de este 2026.
+Además de esperar, obviamente, una mejora estadísticamente significativa en los déficits de cognición social, esta gran investigación es otra demostración de la gran importancia que supone mejorar la calidad de vida de las personas autistas, reduciendo cada vez más la barrera entre neurotípicos y neurodivergentes.
+\end{enumerate}
+
+
+\section{Tecnologías de vanguardia en Meta Quest Pro}
+
+Los proyectos analizados hasta ahora comparten una limitación común: para medir hacia dónde mira el usuario o cómo se siente, dependían de hardware externo (sensores Kinect, cámaras de salas, gafas inteligentes conectadas a portales web) o directamente no podían medirlo de forma objetiva.
+La elección de las \textbf{Meta Quest Pro} como plataforma de este trabajo responde precisamente a que integran de fábrica, dentro del propio visor, dos tecnologías que históricamente requerían equipamiento de laboratorio: el seguimiento ocular y el seguimiento facial.
+Esta sección detalla en qué consisten y por qué resultan especialmente valiosas en el TEA.
+
+\subsection{Eye-tracking (seguimiento ocular) y atención sostenida}
+
+El seguimiento ocular consiste en determinar, en tiempo real, hacia dónde está mirando cada ojo del usuario.
+Las Meta Quest Pro lo logran mediante un conjunto de cámaras de infrarrojos integradas en el interior del visor que, apuntando a los ojos del usuario, capturan la posición de la pupila y la reflexión corneal para reconstruir el vector de la mirada.
+El sistema expone esa información al desarrollador a través de la API de Meta como un rayo de mirada con un origen, una dirección y un valor de \textbf{confianza} que indica la fiabilidad de la medida en cada instante.\\
+\\
+El valor de esta tecnología en el TEA es doble.
+Por un lado, permite trabajar la \textbf{atención sostenida} sobre los estímulos socialmente relevantes: el sistema puede comprobar si el usuario mantiene la mirada en los personajes y en el texto de la conversación, o si por el contrario se dispersa hacia elementos irrelevantes del entorno, una tendencia frecuente en el colectivo \parencite{guillon2014}.
+Por otro lado, ofrece al terapeuta una métrica objetiva de algo que hasta ahora solo podía estimar por observación: el porcentaje de tiempo que el usuario dedica realmente al foco de la tarea, el número de veces que se distrae y la duración de esas distracciones.
+Estas variables, capturadas de forma silenciosa y no intrusiva, son precisamente las que el sistema implementado en este trabajo registra y exporta.
+
+\subsection{Natural Facial Expressions (seguimiento facial)}
+
+El seguimiento facial, comercializado por Meta como \textit{Natural Facial Expressions}, consiste en inferir la expresión del rostro del usuario a partir de las cámaras internas del visor.
+En lugar de devolver una emoción etiquetada (\textit{alegría}, \textit{tristeza}, etc.), el sistema descompone la expresión en un conjunto de \textbf{blendshapes} o coeficientes de activación muscular, basados en el estándar FACS (\textit{Facial Action Coding System}) \parencite{ekman1978}: cada coeficiente representa cuánto se está activando un músculo facial concreto, como el descenso de las cejas, la elevación del párpado superior o el estiramiento de los labios, en una escala continua de cero a uno.\\
+\\
+Esta representación de bajo nivel es, en realidad, una ventaja para los propósitos de este trabajo.
+En lugar de depender de una clasificación cerrada de emociones (que sería difícil de validar y poco fiable), el sistema puede combinar los coeficientes que mejor se correlacionan con el malestar (ceño fruncido, ojos muy abiertos, tensión en los labios) y construir su propio indicador de incomodidad ponderado, calibrado para el caso de uso terapéutico.
+Es importante señalar, además, que toda esta inferencia se realiza dentro del dispositivo y no implica enviar imágenes del rostro a ningún servidor, lo cual resulta determinante desde el punto de vista de la privacidad de un colectivo vulnerable.
+
+\section{Computación Afectiva: Detección de estados emocionales en entornos virtuales}
+
+El uso del seguimiento facial para velar por el bienestar del usuario enlaza directamente con una disciplina más amplia: la \textbf{computación afectiva}.
+Acuñada por Rosalind Picard en el MIT Media Lab \parencite{picard1997}, la computación afectiva estudia cómo lograr que los sistemas informáticos sean capaces de reconocer, interpretar y responder a las emociones humanas.
+Su premisa es que una máquina verdaderamente útil no puede ser indiferente al estado emocional de quien la usa: debe percibirlo y adaptar su comportamiento en consecuencia.\\
+\\
+En el contexto de un entorno virtual terapéutico, esta idea cobra un sentido muy concreto.
+El software interpreta las emociones del usuario mediante el procesamiento de microexpresiones faciales en tiempo real, leyendo continuamente los coeficientes de activación muscular que entrega el visor y traduciéndolos a una estimación de su estado anímico.
+A partir de esa lectura, el sistema puede reaccionar dinámicamente: cuando detecta signos sostenidos de estrés, frustración o sobreestimulación, no se limita a registrar el dato, sino que actúa sobre el flujo del juego, pausándolo suavemente y ofreciendo al usuario un respiro.\\
+\\
+Conviene, no obstante, ser prudente con el alcance de esta disciplina.
+La inferencia emocional a partir de la expresión facial es un campo activo de investigación y está sujeta a limitaciones importantes: las personas autistas pueden expresar sus emociones de formas atípicas, y una misma activación muscular puede corresponder a estados internos distintos según el contexto.
+Por ello, en este trabajo la computación afectiva no se emplea para diagnosticar ni para etiquetar emociones, sino con un propósito mucho más acotado y seguro: detectar indicios de incomodidad para anteponer el bienestar del usuario.
+Esta delimitación deliberada del alcance se discutirá en mayor profundidad en el capítulo de conclusiones.
+\\\\
+A pesar de haber escasos estudios publicados sobre el uso del reconocimiento facial para estimar el estado emocional del usuario, sí existen algunos otros proyectos de investigación que demuestran la identificación de estados emocionales,
+como frustración, estrés o ansiedad, a partir de señales fisiológicas recogidas por sensores biométricos. Este es el caso del proyecto titulado \textbf{Online Affect Detection and Adaptation in Robot Assisted Rehabilitation for Children with Autism}, realizado por un equipo de la Vanderbilt University (Nashville, Tennessee, USA) y publicado en 2007, donde entrenaron un clasificador basado en Support Vector Machines (SVM), que aprendía a predecir el nivel de ansiedad y compromiso a partir de
+54 características fisiológicas extraídas de las señales recogidas por el sistema Biopac.
+\\\\
+Tras entrenar el modelo con la ayuda de terapeutas profesionales, diseñaron una tarea llamada ``robot-based basketball'', donde un brazo robótico sujetaba un aro de baloncesto que se podía mover. El brazo tenía tres comportamientos posibles (variando dirección, velocidad y música de fondo) y se realizaron dos sesiones distintas por cada niño: en la primera, el brazo elegía el comportamiento al azar; mientras que en la otra, el robot usaba el modelo entrenado en tiempo real, leyendo la fisiología del niño mientras jugaba,
+y aplicando un algoritmo de aprendizaje por refuerzo (QV-learning) para ir aprendiendo qué comportamiento era más adecuado para ese usuario concreto.
+\\\\
+Los resultados de esta investigación confirmaron que distintos comportamientos del robot generaban niveles de agrado significativamente diferentes en cada niño; y, además, el modelo predijo los comportamientos con una precisión media del 82\%. Esta investigación, a pesar de tener ciertas limitaciones, como el hecho de que solo midieran el ``agrado'' del paciente o que la muestra de usuarios fuera muy pequeña (n=4), resulta una evidencia clara sobre el uso de \textit{affective computing} en un proyecto real,
+y demuestra hacia dónde se mueve esta idea de una máquina que responde al estado anímico de un humano.
+\\\\
+Para cerrar este capítulo, y habiéndose comentado los beneficios del uso de sensores biométricos para este tipo de proyectos, conviene destacar la mejora que supone utilizarlos en una tecnología como la Realidad Virtual, donde ya se muestra una mejora frente a la pantalla plana, ofreciendo inmersión y presencia para el usuario.
+Es precisamente gracias a la combinación del seguimiento de señales como las oculares y faciales que se consigue extender la RV convencional a una tecnología mucho más controlada:
+se pasa de trabajar con un entorno ``ciego'', que depende de un profesional externo al sistema para reconocer lo que está pasando en el usuario, a un sistema mucho más cuantificado, con métricas objetivas y recogidas de manera no intrusiva,
+dando pie a un mejor punto de partida para el entrenamiento de habilidades sociales y facilitando el seguimiento de cada usuario específico.
+
+% Capitulo 3 (fusión de los antiguos capítulos 3, 4, 5 y 6)
+\chapter{Diseño, Implementación y Validación del Sistema en Realidad Virtual}
+
+Este capítulo constituye el engranaje principal del trabajo: en él se recorre, de principio a fin, todo el proceso de llevar el videojuego a la Realidad Virtual.
+Se ha organizado en cuatro grandes apartados que siguen el orden natural del desarrollo.
+
+\section{Diseño y Optimización de Activos (Assets)}
+\label{sec:assets}
+
+La migración a la Realidad Virtual no es únicamente una cuestión de código: exige repensar por completo los activos visuales del proyecto.
+En el formato de pantalla, el usuario observaba la escena desde una distancia fija y a través de una cámara que el desarrollador controlaba; en Realidad Virtual, el usuario puede acercarse a un personaje hasta quedar a un palmo de su rostro, rodear un objeto o agacharse para mirarlo desde abajo.
+Esto eleva enormemente las exigencias sobre la calidad y la coherencia de los modelos, y a la vez impone una restricción de rendimiento severa, porque las Quest Pro ejecutan el juego de forma autónoma (\textit{standalone}), sin la potencia de un PC.
+Este apartado describe cómo se ha resuelto esa tensión entre fidelidad y rendimiento en personajes, entornos e interfaz.
+
+\subsection{Modelado de Personajes: Nuevos Assets de avatares coherentes con la narrativa}
+
+El primer trabajo utilizó el paquete gratuito \textit{FREE Starter Pack - Sidekick Modular Characters} de la empresa Synty, una elección deliberadamente provisional pensada para validar la arquitectura sin invertir en activos definitivos.
+Para esta versión 2.0, y tal como ya se anticipaba, se ha dado el salto al paquete profesional \textit{Modern Civilians - Sidekick Modular Characters}, también de Synty, que ofrece una mayor variedad de avatares civiles coherentes con los entornos cotidianos de la narrativa detectivesca (un pabellón, una cafetería, una oficina, un teatro).\\
+\\
+La selección de estos nuevos avatares se ha guiado por los siguientes criterios técnicos y de diseño:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Coherencia narrativa y diversidad:} cada escenario social requiere personajes verosímiles para ese contexto.
+El nuevo paquete permite componer, a partir de piezas modulares (cabezas, torsos, prendas, accesorios), una población variada que refuerza la validez ecológica de cada escena sin que los personajes parezcan clones entre sí.
+  \item \textbf{Compatibilidad con el estándar Humanoid:} se ha mantenido el requisito de que el \textit{rig} óseo de los modelos sea totalmente compatible con el sistema Humanoid de Unity.
+Esto garantiza el \textit{retargeting} de las animaciones profesionales heredadas del primer trabajo (procedentes de Mixamo) y permite que el lenguaje corporal de los personajes sea claro y poco ambiguo, condición indispensable para que el usuario capte las pistas sociales sin distracciones.
+  \item \textbf{Sistema de \textit{Blend Shapes} de fábrica:} la legibilidad del rostro es aún más crítica en RV que en pantalla, porque el usuario puede acercarse a los personajes.
+Por ello, uno de los criterios también fue que el paquete incorporara de fábrica un sistema de \textit{Blend Shapes} para representar las emociones correctamente, y no tener que desarrollar un sistema facial desde cero.
+  \item \textbf{Mitigación del Valle Inquietante:} se mantiene la estrategia de \textbf{Realismo Estilizado} (\textit{Low Poly}) del primer trabajo, una decisión que en RV cobra todavía más sentido.
+Al ser un entorno completamente inmersivo, un fotorrealismo imperfecto resultaría mucho más perturbador que en una pantalla, pudiendo generar rechazo o ansiedad en usuarios con hipersensibilidad.
+El estilo estilizado ofrece personajes expresivos y agradables, evitando el efecto del Valle Inquietante.
+\end{enumerate}
+
+\huecofigura[7cm]{Comparativa entre los avatares del paquete provisional (v1.0) y los nuevos avatares profesionales \textit{Modern Civilians} integrados en la v2.0.}
+
+Más allá de la geometría de los avatares, la coherencia de la herramienta depende en gran medida de la \textbf{expresividad facial}, que en Realidad Virtual adquiere una exigencia que el formato de pantalla no imponía.
+Como el usuario puede acercarse al rostro de un personaje hasta una distancia mínima, cualquier defecto en la malla o en la transición entre gestos resulta inmediatamente perceptible y rompe la inmersión.
+Por ello se ha conservado y depurado el sistema de animación facial heredado del primer trabajo, basado en \textit{Blend Shapes} y construido sobre el principio de \textbf{animación por capas}: las expresiones del rostro se aplican sobre una capa aditiva independiente del Animator, de modo que un personaje pueda, por ejemplo, mantener una postura corporal de brazos cruzados mientras su rostro transiciona de la neutralidad a la sospecha, sin que ambas animaciones entren en conflicto.\\
+\\
+Este desacoplamiento entre cuerpo y rostro, gestionado por los componentes encargados de la animación de los personajes, es el que permite componer escenas sociales ricas y poco ambiguas combinando libremente lenguaje corporal y emoción facial.
+En la versión de Realidad Virtual se ha prestado especial atención a que estas transiciones sean suaves (mediante mezclas o \textit{blends} temporizadas) y a que las emociones resulten legibles desde cualquier ángulo y a corta distancia, condiciones indispensables para que el usuario pueda realizar las inferencias sociales que constituyen el núcleo de la terapia.
+
+\huecofigura[6cm]{Detalle de las expresiones faciales (\textit{Blend Shapes}) de un personaje observadas a corta distancia en Realidad Virtual, mostrando la transición entre dos estados emocionales.}
+
+\subsection{Entornos Inmersivos: Nuevos escenarios coherentes con la narrativa}
+
+Así como los modelos 3D de los personajes no estaban alineados con el contexto narrativo, tampoco lo estaba el escenario en el que transcurrían las escenas.
+En la primera versión, solo existía un único escenario donde ocurrían todas las escenas. No existía como tal una sensación de avance lineal en la historia, ni se podía contextualizar formalmente a cada personaje: más bien eran simples personajes sueltos con historias independientes.
+En esta versión, en cambio, se han añadido diferentes \textit{assets} acordes con la historia del juego, de tal forma que el usuario siente que hay un avance narrativo mientras está jugando, y sienta que además, cada personaje está relacionado de alguna forma u otra, ya que compartirán un contexto propio del escenario.
+\\\\
+Además, la inclusión de diferentes escenarios virtuales también ha traído un reto extra relacionado con la ejecución del juego en las gafas de Meta.
+A diferencia de un PC con una tarjeta gráfica dedicada, las Meta Quest Pro montan un procesador móvil que debe renderizar la escena \textbf{dos veces} en cada fotograma (una imagen por ojo) y mantener una tasa de refresco alta y constante.
+\\\\
+Para conseguir ese sólido rendimiento en las gafas, y evitar tirones y bajadas de rendimiento, que podrían causar \textit{cybersickness}, un efecto especialmente molesto para el colectivo TEA, se han aplicado las siguientes técnicas de optimización:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Iluminación precalculada (\textit{baked lighting}):} se ha llevado al extremo la estrategia de iluminación estática ya iniciada en el primer trabajo.
+La iluminación y las sombras se calculan una sola vez en el editor y se almacenan en mapas de luz (\textit{lightmaps}), de modo que en tiempo de ejecución el coste de iluminar la escena es prácticamente nulo.
+Esto libera el procesador para tareas más críticas como el seguimiento de la cabeza y de los sensores.
+\end{enumerate}
+
+Los entornos escogidos han sido: un pabellón, donde el usuario comenzará la serie de misiones en la historia; una cafetería; un teatro; y una oficina.
+Estos cuatro entornos no se han elegido al azar: dan cuerpo a la continuidad de la narrativa detectivesca de la A.A.D.S. (Agencia de Análisis y Decodificación Social) iniciada en el primer trabajo, y todos son espacios cotidianos en los que la comunicación social es frecuente y rica en matices, lo que refuerza la validez ecológica del entrenamiento; a la vez, son suficientemente distintos entre sí como para sostener la variedad y el \textit{engagement} a lo largo de la progresión.
+Cada uno reside en su propia escena de Unity, lo que aísla los recursos de cada nivel y evita saturar la memoria del dispositivo, una consideración importante también con el hardware.
+
+\huecofigura[7cm]{Vista de uno de los nuevos entornos inmersivos (gimnasio) y captura del Frame Debugger de Unity mostrando la reducción de \textit{draw calls} tras la optimización.}
+
+\subsection{Diseño de la Interfaz Espacial (Diegetic UI): Menús integrados en el mundo virtual}
+
+En un videojuego de pantalla, la interfaz se superpone sobre la imagen como una capa plana (lo que se conoce como interfaz en \textit{Screen Space}): el texto de los diálogos, las preguntas o los mensajes de ayuda aparecen \textit{pegados} a la pantalla.
+En Realidad Virtual este enfoque es directamente inviable: una interfaz pegada a cada ojo resulta incómoda, difícil de enfocar y puede provocar fatiga visual y mareo.
+Toda la interfaz debe, por tanto, rediseñarse para vivir \textbf{dentro del mundo} (interfaz en \textit{World Space}), como objetos tridimensionales situados a una distancia cómoda de los ojos del usuario.\\
+\\
+Este cambio de paradigma, conocido como \textbf{interfaz espacial} o \textbf{diegética}, ha guiado el rediseño de toda la capa de presentación del juego según los siguientes principios:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Paneles en el espacio, a distancia cómoda:} el panel de diálogos, el cuestionario de evaluación y el resto de elementos de interfaz se han convertido en lienzos (\textit{Canvas}) en \textit{World Space} situados a una distancia de en torno a dos metros y medio de la cabeza del usuario, una distancia que evita la fatiga de enfoque y resulta natural de leer.
+Estos paneles se orientan automáticamente hacia el usuario para que siempre queden de frente.
+  \item \textbf{Tipografía y contraste reforzados:} el texto se ha rediseñado con tamaños y contrastes adecuados a la resolución y la distancia propias de la RV, manteniendo el criterio de alta legibilidad del primer trabajo y evitando la sobrecarga visual.
+  \item \textbf{Comodidad y control para el usuario:} dado que cada usuario tiene una estatura, una postura y una sensibilidad distintas, el panel de diálogo puede reposicionarse: el usuario puede \textit{agarrar} el lienzo con el mando y recolocarlo donde le resulte más cómodo, devolviéndole el control sobre su propio campo de visión.
+  \item \textbf{Interacción mediante puntero láser:} la selección de respuestas y opciones se realiza con un puntero láser que emana del mando, una metáfora de interacción ya consolidada y muy intuitiva en RV, que se detallará en el apartado de arquitectura (\ref{sec:arquitectura}).
+\end{enumerate}
+
+El resultado es una interfaz que se siente parte del mundo virtual y no un elemento extraño superpuesto, reforzando la inmersión y respetando en todo momento la comodidad sensorial del usuario.
+
+\huecofigura[7cm]{Panel de diálogo y cuestionario de evaluación renderizados como interfaz espacial (\textit{World Space}) dentro de la escena, con el puntero láser del mando apuntando a una de las opciones.}
+
+Conviene detenerse en dos elementos diegéticos que ilustran especialmente bien esta filosofía de interfaz integrada en el mundo.
+El primero es el ya mencionado \textbf{lienzo de diálogo agarrable}: además de orientarse automáticamente hacia el usuario, puede ser tomado con el gatillo lateral del mando y reubicado en el espacio, conservando la posición y la orientación relativas a la mano en el momento de agarrarlo, y permaneciendo fijo allí donde se suelte.
+Mientras se manipula, el puntero láser se oculta para no interferir.
+Esto devuelve al usuario un control total sobre dónde situar la información, adaptándose a su estatura, a su postura e incluso a si prefiere leer sentado o de pie.\\
+\\
+El segundo es el \textbf{indicador de monedas} (\textit{SpyCoins}), la recompensa lúdica que acompaña al avance del jugador y que da continuidad al sistema de gamificación del primer trabajo.
+En lugar de fijarlo a una esquina de la pantalla (algo imposible y molesto en RV), se ha implementado como un pequeño panel que sigue al usuario con un movimiento suave y amortiguado, situado de forma cómoda en la zona baja del campo de visión, siempre visible pero nunca intrusivo.
+De manera deliberada, este panel carece de cualquier componente de detección de rayos, de modo que jamás intercepta el puntero láser ni interfiere con la interacción.
+Ambos elementos comparten un mismo principio: la información debe estar disponible cuando se necesita, sin imponerse ni romper la sensación de presencia.
+
+\huecofigura[6cm]{Indicador de monedas (\textit{SpyCoins}) acompañando al usuario en la zona baja del campo de visión con un seguimiento suave, y el lienzo de diálogo siendo reubicado con el mando.}
+
+% Antiguo Capitulo 4 (ahora apartado del capítulo de Realidad Virtual)
+\section{Arquitectura del Sistema e Integración Biométrica}
+\label{sec:arquitectura}
+
+Este apartado constituye el núcleo técnico del trabajo.
+En él se describe la materialización en código de todos los sistemas que dan vida a la versión 2.0: desde la base tecnológica que sostiene la Realidad Virtual, hasta los dos pilares biométricos (\textit{eye-tracking} y \textit{face-tracking}), pasando por la guía virtual y el sistema de registro de métricas.
+La filosofía de diseño hereda la del primer trabajo (modularidad, desacoplamiento y patrones sólidos), con un principio rector añadido que la directriz de la Asociación impuso desde el inicio: \textbf{la lógica de las analíticas de tracking debe permanecer completamente separada del sistema de diálogos}, comunicándose con él únicamente a través de eventos.
+
+\subsection{Tecnologías Unity, Meta XR SDK y OpenXR}
+
+\subsubsection{Proceso de investigación y elección de la base tecnológica}
+
+Antes de escribir una sola línea de código de Realidad Virtual, hubo que resolver una pregunta nada trivial: ¿cómo se lleva exactamente un juego de Unity ya existente a unas gafas Meta Quest Pro y, sobre todo, cómo se accede a sus sensores?
+La migración no era un simple cambio de plataforma de compilación, y la decisión sobre qué capa tecnológica adoptar condicionaba todo el desarrollo posterior.
+Por ello, esta fase arrancó con un periodo de investigación dedicado a comparar las distintas vías disponibles.\\
+
+La primera vía explorada fue la de los \textbf{paquetes de terceros de la Unity Asset Store}.
+El ecosistema de Unity ofrece numerosos activos que prometen \textit{kits} de interacción y locomoción en RV listos para usar, y a primera vista resultaban atractivos por su sencillez.
+Sin embargo, un análisis más detenido reveló sus carencias para este proyecto concreto: muchos de ellos no exponían los sensores específicos de las Quest Pro (el seguimiento ocular y facial eran, precisamente, el corazón del trabajo), dependían de versiones concretas del motor, presentaban un mantenimiento irregular y, al ser intermediarios, añadían una capa opaca entre el juego y el hardware que dificultaba la depuración.
+Apoyar sobre ellos los sistemas biométricos habría sido construir sobre un cimiento frágil.\\
+
+Descartada esa opción, la investigación condujo al \textbf{SDK oficial de Meta}, el \textit{Meta XR All-in-One SDK} (paquete \texttt{com.meta.xr.sdk.all}).
+Frente a las alternativas de terceros, el SDK del propio fabricante ofrecía la garantía de acceso directo y soportado a todas las capacidades del dispositivo, una documentación oficial mantenida al día y, lo más importante, los únicos componentes que exponen de forma nativa el \textit{eye-tracking} (\texttt{OVREyeGaze}) y el \textit{face-tracking} (\texttt{OVRFaceExpressions}).
+Esta fue la base tecnológica finalmente adoptada, complementada con el módulo \textit{Movement} de Meta para el seguimiento facial y corporal y con el \textit{Interaction SDK} para la locomoción.\\
+
+El SDK de Meta facilita el desarrollo en muchos aspectos.
+Su principal aportación a la accesibilidad del desarrollo son los \textbf{Building Blocks}: un sistema de bloques prefabricados que se arrastran a la escena y resuelven de un plumazo tareas de fontanería que de otro modo llevarían días, como el \textit{rig} de cámara del jugador (\texttt{OVRCameraRig}, con sus anclajes de cabeza y manos), la configuración de los mandos, el \textit{passthrough} o el armazón de la locomoción.
+Sobre estos bloques, el SDK aporta además los componentes de seguimiento ocular y facial ya mencionados y un conjunto de \textit{prefabs} de interacción de referencia.\\
+
+Ahora bien, la experiencia con estos bloques no estuvo exenta de fricciones, y conviene reflejarlas con honestidad porque consumieron una parte relevante del esfuerzo.
+La integración de algunos \textbf{Building Blocks} sobre un proyecto \textit{preexistente} (y no sobre una escena vacía, que es el caso para el que están pensados) provocó conflictos: dependencias que se solapaban con paquetes de Unity ya instalados, bloques que asumían una jerarquía de escena concreta, incompatibilidades entre versiones del SDK y del propio motor, y comportamientos que funcionaban en el editor pero no en el dispositivo \textit{standalone}, o al revés.
+Resolver estos problemas exigió comprender en profundidad qué hacía cada bloque por dentro, en lugar de tratarlos como cajas negras.\\
+
+Y, sobre todo, el SDK \textbf{cubre lo genérico, pero no lo específico}.
+Proporciona los cimientos de la locomoción y la interacción, pero no una solución de confort pensada para un colectivo con hipersensibilidad sensorial, ni un puntero láser que combine la selección de interfaz espacial con la de objetos del mundo, ni un lienzo de diálogo agarrable, ni la coordinación de todos estos elementos con los sistemas biométricos y de diálogo heredados.
+Todas esas piezas, que son las que dan carácter propio al trabajo, hubo que diseñarlas e implementarlas desde cero sobre la base que el SDK ofrecía.
+El detalle de qué se aprovechó del SDK y qué se construyó a mano se desarrolla a lo largo de este capítulo, en especial en el apartado dedicado a las mecánicas de interacción y la locomoción.
+
+\subsubsection{La pila tecnológica resultante}
+
+La base tecnológica del proyecto sigue siendo el motor \textbf{Unity} y el lenguaje \textbf{C\#}, lo que ha permitido reaprovechar íntegramente la arquitectura del primer trabajo.
+Sobre esa base, la integración con la Realidad Virtual se apoya en la siguiente pila tecnológica:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{OpenXR como capa de abstracción:} OpenXR \parencite{openxr} es el estándar abierto de la industria para la Realidad Virtual y Aumentada.
+Actuar sobre él, en lugar de sobre una API propietaria cerrada, garantiza que el proyecto no quede atado de forma irreversible a un único fabricante y facilita su portabilidad futura a otros dispositivos.
+  \item \textbf{Meta XR SDK (OVR):} sobre OpenXR, el SDK de Meta expone las capacidades específicas y avanzadas de las Quest Pro que no forman parte del estándar base, en particular el seguimiento ocular (a través del componente \texttt{OVREyeGaze}) y el seguimiento facial (a través de \texttt{OVRFaceExpressions}) \parencite{metaovr}.
+El \textit{rig} del jugador se construye en torno al \texttt{OVRCameraRig}, que proporciona los anclajes de la cabeza (\texttt{centerEyeAnchor}) y de las manos, y la entrada de los mandos se gestiona mediante la API \texttt{OVRInput}.
+  \item \textbf{Oculus Interaction SDK (locomoción):} la locomoción del usuario se apoya en el \textit{Interaction SDK} de Oculus, que ofrece componentes de movimiento en primera persona (\texttt{FirstPersonLocomotor}) y de teleportación.
+Sobre esta base se ha implementado lógica de confort propia, descrita más adelante en este mismo capítulo (\ref{sec:misiones}).
+\end{enumerate}
+
+Una característica importante de la arquitectura es que muchos sistemas se han diseñado para ser \textbf{tolerantes a la ausencia del hardware VR}.
+Los gestores comprueban en tiempo de ejecución si existe un \texttt{OVRCameraRig} en la escena y, en caso contrario, recurren a un comportamiento alternativo de escritorio.
+Esto ha permitido desarrollar y depurar gran parte de la lógica en el editor, sin necesidad de tener las gafas puestas en todo momento, agilizando enormemente el desarrollo.\\
+
+Conviene precisar algunos elementos de esta integración por su relevancia técnica.
+El \textit{rig} del jugador se articula en torno al \texttt{OVRCameraRig}, una jerarquía de objetos que Meta proporciona y que expone los anclajes fundamentales del cuerpo del usuario en el espacio virtual: el \texttt{centerEyeAnchor} (la posición y orientación de la cabeza, equivalente a los ojos del usuario) y los anclajes de ambas manos, sobre los que se montan los mandos y el puntero láser.
+Frente al primer trabajo, donde el avatar era un objeto \texttt{Player} controlado por teclado, aquí la posición real del usuario la dicta el seguimiento físico de su cabeza, lo que ha obligado a reescribir toda la lógica que dependía de la posición del jugador (por ejemplo, la detección de interacciones por proximidad pasa a centrarse en el \texttt{centerEyeAnchor} y no en la raíz del \textit{rig}).\\
+
+Se ha mantenido, además, el \textit{Universal Render Pipeline} (URP) del primer trabajo, ahora configurado para un renderizado estéreo eficiente, una decisión clave para el presupuesto de rendimiento descrito en el capítulo anterior.
+Por último, merece la pena subrayar el patrón de \textbf{tolerancia a la ausencia de hardware VR} con un ejemplo concreto: el gestor de misiones comprueba en tiempo de ejecución si existe un \texttt{OVRCameraRig} y, en función de ello, ejecuta una rama de código para Realidad Virtual (bloqueo de la locomoción, sin forzar la rotación de la cabeza) o una rama de escritorio (con cámaras virtuales de Cinemachine, heredadas del primer trabajo).
+Este doble camino ha permitido seguir depurando gran parte de la lógica en el editor sin las gafas puestas.
+
+\huecofigura[6.5cm]{Diagrama de la pila tecnológica: aplicación (Unity/C\#) sobre Meta XR SDK (OVR) sobre OpenXR sobre el \textit{runtime} de Meta Quest Pro.}
+
+\subsection{Implementación del Sistema de Eye-tracking}
+
+El sistema de seguimiento ocular se ha encapsulado íntegramente en la clase \texttt{EyeTracking}, un componente autocontenido y completamente independiente del resto del juego, fiel a la directriz de modularidad.
+Su responsabilidad es doble: determinar en cada instante si el usuario está mirando o no a los elementos relevantes de la escena, y acumular las métricas de atención que después se exportarán al terapeuta.
+
+\subsubsection{Detección de contacto visual con NPCs}
+
+La detección se fundamenta en el rayo de mirada que proporciona el componente \texttt{OVREyeGaze} de las Quest Pro.
+En cada fotograma, dentro del método \texttt{Update()}, la clase realiza las siguientes operaciones:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Comprobación de fiabilidad:} antes de hacer nada, el sistema verifica que el seguimiento ocular esté activo y que el valor de \textbf{confianza} de la medida supere un umbral mínimo (configurable, por defecto $0{,}5$).
+Si la confianza es baja, ese fotograma se descarta para no contaminar las métricas con datos poco fiables, una decisión clave para la validez de los datos.
+  \item \textbf{Lanzamiento del rayo:} se construye un rayo con el origen y la dirección de la mirada y se lanza contra la geometría de la escena mediante \texttt{Physics.Raycast}, obteniendo el objeto sobre el que se posa la mirada del usuario.
+  \item \textbf{Clasificación del objetivo:} el método \texttt{IsFocusTarget()} determina si el objeto golpeado es un \textit{foco de atención} válido.
+Para máxima flexibilidad, esta comprobación admite tres mecanismos combinables: por \textit{capa} (\textit{LayerMask}), por \textit{etiqueta} (\textit{tag}), o por una lista explícita de objetos.
+Además, la búsqueda recorre la jerarquía de padres del objeto golpeado, de modo que mirar a cualquier parte de un personaje (su cabeza, su torso, su ropa) cuente como mirar al personaje completo.
+  \item \textbf{Conteo de distracciones:} si en un fotograma el usuario deja de mirar a un foco al que sí miraba en el fotograma anterior, se incrementa un contador de \textit{eventos de distracción}.
+Esto permite distinguir entre una distracción larga y muchas distracciones cortas, dos patrones clínicamente distintos.
+\end{enumerate}
+
+A partir de esta clasificación, la clase mantiene de forma continua tres acumuladores temporales: el tiempo total con seguimiento válido, el tiempo mirando al foco y el tiempo distraído, de los que se deriva el \textbf{porcentaje de distracción}.
+El método \texttt{ResetTracking()} reinicia estos acumuladores al comienzo de cada misión, de modo que las métricas se registran por separado para cada escena social.\\
+
+La integración de este componente con el resto del juego respeta el principio de desacoplamiento.
+Es el gestor de misiones quien, al comenzar cada escena social, invoca \texttt{ResetTracking()} para que las métricas se acoten a esa misión, y quien, al terminarla, recupera los acumuladores y los entrega al sistema de analíticas mediante \texttt{RegisterMissionEyeData()}.
+El componente de \textit{eye-tracking}, por su parte, ignora por completo la existencia de las misiones: se limita a observar la mirada y a contar.
+Además de su función de registro, el sistema ofrece una \textbf{realimentación sutil en tiempo real}: cuando detecta que el usuario lleva distraído un tiempo superior a un umbral configurable (por defecto cinco segundos), resalta de forma discreta el recuadro de texto del diálogo para reconducir su atención, sin mensajes intrusivos ni penalizaciones, de nuevo en línea con el principio de no generar frustración.
+
+\huecofigura[6.5cm]{Diagrama de clases del funcionamiento de \texttt{EyeTracking}: rayo de mirada de \texttt{OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}
+
+\subsection{Algoritmo de Detección de Estado del Ánimo}
+
+El segundo pilar biométrico es el sistema de detección del estado anímico, cuyo objetivo no es diagnosticar emociones, sino velar por el bienestar del usuario detectando indicios sostenidos de incomodidad.
+Toda la lógica reside en la clase \texttt{FaceTrackingManager}, implementada como un \textbf{Singleton} persistente (\texttt{DontDestroyOnLoad}) y, de nuevo, totalmente desacoplada del sistema de diálogos: se comunica con el resto del juego exclusivamente a través de un evento, \texttt{OnDiscomfortStateChanged}, al que cualquier sistema interesado puede suscribirse.
+
+\subsubsection{Procesamiento de expresiones faciales en tiempo real}
+
+El corazón del algoritmo es el cálculo, en cada fotograma, de una \textbf{puntuación de incomodidad} (\textit{discomfort score}) a partir de los \textit{blendshapes} que entrega el componente \texttt{OVRFaceExpressions}.
+El proceso es el siguiente:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Lectura segura de los \textit{blendshapes}:} se leen los coeficientes de activación de los músculos faciales más asociados al malestar.
+Cada lectura se realiza de forma protegida (\texttt{try/catch}), de modo que si un \textit{blendshape} concreto no está disponible en una configuración determinada, el fallo quede aislado y no interrumpa el cálculo.
+  \item \textbf{Combinación ponderada:} se combinan tres grupos de indicadores, cada uno con un peso configurable que refleja su relevancia: el \textbf{descenso de las cejas} (ceño fruncido), con el peso más alto por ser el marcador más fiable de tensión; la \textbf{elevación del párpado superior} (ojos muy abiertos, asociados a sorpresa o alarma); y el \textbf{estiramiento de los labios} (tensión facial).
+La puntuación final es la media ponderada de estos grupos, un valor continuo entre cero y uno.
+  \item \textbf{Confirmación temporal:} una expresión puntual no debe disparar una alarma, pues podría tratarse de un gesto natural de concentración al leer.
+Por ello, el sistema solo considera que existe incomodidad real cuando la puntuación supera el umbral (por defecto $0{,}15$) de forma \textbf{sostenida} durante un tiempo mínimo (por defecto $3{,}5$ segundos).
+Un temporizador acumula el tiempo en que se supera el umbral y se descuenta cuando la expresión se relaja, de modo que solo el malestar persistente activa el evento.
+\end{enumerate}
+
+Cuando se confirma la incomodidad sostenida, el gestor dispara \texttt{OnDiscomfortStateChanged(true)}; cuando esta se resuelve, dispara el evento con \texttt{false}.
+Toda la lógica de qué hacer ante esa señal recae en los sistemas suscriptores, manteniendo el gestor facial completamente ajeno a ellos.
+
+\huecofigura[6.5cm]{Diagrama de clases del \texttt{FaceTrackingManager}: lectura de \textit{blendshapes} de \texttt{OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt{OnDiscomfortStateChanged}.}
+
+\subsubsection{Sistema de alertas y pausas preventivas ante fatiga o frustración}
+
+La respuesta a la señal de incomodidad la gestiona la clase \texttt{FaceTrackingUI}, suscrita al evento del gestor facial.
+Su comportamiento se ha diseñado siguiendo escrupulosamente la directriz de la Asociación de que el sistema de parada debe ser \textbf{reactivo pero sutil}, para no generar más frustración de la que pretende aliviar:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Panel de descanso:} al detectarse la incomodidad, aparece de forma suave (con un fundido de entrada) un panel en \textit{World Space} situado frente a los ojos del usuario, con un mensaje sereno (\textit{``Tómate un descanso''}) que reconoce que el usuario podría estar estresado y le invita a respirar, sin lenguaje alarmista ni señalar el error.
+  \item \textbf{Pausa real del juego:} al mostrarse el panel, se detiene el tiempo del juego (\texttt{Time.timeScale = 0}) y se pausa también la voz del diálogo, de modo que el usuario no pierde nada de la escena mientras descansa.
+La experiencia queda literalmente congelada esperándole.
+  \item \textbf{Reanudación bajo control del usuario:} la experiencia no se reanuda automáticamente ni por temporizador, sino \textbf{cuando el propio usuario decide} que está listo, pulsando un botón de confirmación.
+Devolver al usuario el control sobre cuándo continuar es esencial para no añadir presión.
+  \item \textbf{Periodo de enfriamiento (\textit{cooldown}):} tras reanudar, el sistema entra en un periodo de gracia (por defecto 15 segundos) durante el cual no vuelve a disparar la alerta.
+Esto evita el molesto efecto de alarmas repetidas en cadena, dando al usuario margen para reincorporarse con calma.
+\end{enumerate}
+
+Es importante subrayar que, mientras la guía virtual está abierta, la detección facial se suspende deliberadamente: las expresiones de concentración al leer una pista no deben confundirse con malestar.
+Esta coordinación entre subsistemas se resuelve, de nuevo, mediante una simple llamada que pone el gestor facial en pausa.
+
+\huecofigura[7cm]{Panel de descanso (\textit{``Tómate un descanso''}) mostrado en \textit{World Space} al detectarse incomodidad facial sostenida, con el botón de reanudación bajo control del usuario.}
+
+\subsection{Guía Virtual}
+
+Uno de los objetivos de la versión 2.0 era dotar al juego de un asistente que cumpliera una doble función de apoyo: orientar al usuario sobre qué debe hacer y ofrecerle pistas durante las misiones.
+Esta funcionalidad se ha materializado en una \textbf{guía virtual} encarnada en un compañero (un pequeño robot) que acompaña al usuario por el mundo.
+La guía se compone de dos clases principales: \texttt{VRGuideController}, que gestiona la lógica y la apertura del panel, y \texttt{VRGuideUI}, que construye y muestra los distintos paneles de información.
+
+\subsubsection{Lógica de apoyo y sistema de pistas}
+
+El compañero permanece en reposo a un lado del usuario (a la altura de la cintura, ligeramente a la izquierda) gracias a la clase \texttt{CompanionLazyFollow}, que lo hace seguir al jugador con un movimiento suave y amortiguado (\textit{lazy-follow}), nunca brusco, para que su presencia resulte tranquilizadora y no intrusiva.
+El usuario invoca la guía en cualquier momento pulsando el botón de menú del mando izquierdo, momento en el que el compañero se reposiciona suavemente frente al usuario, a la altura de los ojos, y despliega su menú.\\
+
+La apertura de la guía desencadena una orquestación cuidadosa de varios subsistemas, todo ello para crear un espacio de calma:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item Se pausan el sistema de diálogos y la voz, de modo que el usuario pueda consultar la guía sin perder el hilo de la conversación.
+  \item Se suspende la detección facial, para que la concentración al leer no se confunda con incomodidad.
+  \item Se desactiva la locomoción, evitando que el usuario se desplace accidentalmente con el \textit{joystick} mientras consulta el panel.
+\end{enumerate}
+
+El menú principal ofrece dos ayudas.
+La primera, \textit{``¿Qué debo hacer?''}, está siempre disponible y orienta al usuario sobre el objetivo.
+La segunda, \textit{``Pista''}, solo se habilita cuando el usuario se encuentra ante una pregunta del cuestionario: en ese caso, la guía consulta la pregunta activa (que el sistema de diálogos expone públicamente) y muestra el texto de ayuda asociado a esa pregunta concreta.
+Cada pregunta del juego puede llevar, en su definición, una pista explicativa propia editable por el terapeuta.
+De forma coherente con el principio de separación, cada vez que se solicita una pista, la guía notifica al sistema de analíticas para que registre el uso, dato que tiene valor clínico, porque indica en qué inferencias el usuario necesita más apoyo.
+
+\subsection{Sistema de Logging: Exportación de métricas biométricas}
+
+Toda la información que capturan los sistemas de \textit{eye-tracking} y \textit{face-tracking}, junto con las métricas de desempeño heredadas del primer trabajo, carecería de valor si no llegara de forma ordenada al terapeuta.
+De ello se encarga el sistema de \textit{logging}, vertebrado en torno a la clase \texttt{AnalyticsManager}, un Singleton persistente que centraliza la recogida de datos y su posterior exportación.\\
+
+El modelo de datos se estructura en torno a la clase \texttt{DialogueAnalyticsEntry}, que agrupa, \textbf{por cada misión}, el conjunto completo de métricas: el tiempo dedicado, el número de respuestas incorrectas, las pistas solicitadas, el tiempo medio de respuesta, los segundos de mirada enfocada y distraída, el número de eventos de distracción, y los eventos, la duración y el pico de incomodidad facial.
+A nivel global se registran además el tiempo total de juego y los totales de incomodidad.
+Los errores de inferencia se contabilizan de forma separada según cuatro \textbf{categorías de inferencia social}, que dan continuidad al esquema pedagógico del primer trabajo: recepción del mensaje, reconocimiento emocional, predicción del siguiente movimiento y comprensión de la relación entre los personajes.\\
+
+El flujo de captura respeta el principio de desacoplamiento: el \texttt{AnalyticsManager} se \textit{suscribe} a los eventos de los demás sistemas (al evento de incomodidad del gestor facial, a las respuestas del gestor de diálogos) y recibe de ellos los datos del \textit{eye-tracking} al finalizar cada misión, sin que esos sistemas necesiten conocer nada sobre las analíticas.
+Cuando la partida se guarda, entran en juego dos exportaciones complementarias:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Exportación en CSV:} el método \texttt{ExportTherapistCsv()} vuelca todas las métricas a un fichero de valores separados por punto y coma, codificado en UTF-8, listo para abrirse en cualquier hoja de cálculo y para su análisis estadístico posterior.
+El sistema gestiona además el caso de que el fichero esté abierto en otro programa, generando en ese caso una copia con marca de tiempo para no perder datos.
+  \item \textbf{Organización por terapeuta:} la clase \texttt{SaveSystem} organiza los ficheros en carpetas independientes por terapeuta (con un identificador y una marca de tiempo), de modo que los datos de distintos profesionales o sesiones nunca se mezclen, respetando así la pseudonimización y la privacidad de un colectivo vulnerable.
+\end{enumerate}
+
+A este volcado de datos en bruto se le suma, como se verá en el apartado de pruebas (\ref{sec:pruebas}), la generación automática de un informe visual en HTML que transforma estos números en gráficos interpretables.\\
+
+Para dimensionar el valor de este sistema conviene detallar qué se registra exactamente.
+Por cada misión, la entrada de analíticas (\texttt{DialogueAnalyticsEntry}) almacena el número de sesiones jugadas, el tiempo dedicado, las respuestas incorrectas, las pistas solicitadas, el tiempo medio de respuesta a las preguntas, los segundos de mirada enfocada y distraída con su número de eventos de distracción, y los eventos, los segundos y el pico de incomodidad facial.
+A nivel global se guardan el tiempo total de juego y los totales de incomodidad, y de forma independiente se contabilizan los errores según las cuatro categorías de inferencia social ya mencionadas.
+Toda esta recogida es \textbf{pasiva y silenciosa}: el usuario nunca percibe que está siendo medido, lo que garantiza que su comportamiento durante el entrenamiento sea natural.\\
+
+En cuanto a la persistencia, el sistema organiza los datos por terapeuta, creando una carpeta independiente identificada con su nombre y una marca temporal, de modo que las sesiones de distintos profesionales o pacientes nunca se mezclen.
+Al guardar la partida se generan de forma simultánea tres artefactos complementarios: el fichero de guardado en formato JSON (para reanudar la sesión), el volcado de métricas en CSV (para el análisis estadístico) y el informe visual en HTML (para una lectura inmediata por parte del terapeuta).
+El sistema contempla incluso el caso de que el CSV esté abierto en otro programa, generando entonces una copia con marca temporal para no perder ningún dato.
+Esta exportación triple es la materialización final del objetivo de convertir el videojuego en una fuente objetiva de información clínica.
+
+\huecofigura[6.5cm]{Diagrama del flujo de \textit{logging}: los sistemas biométricos y de diálogo emiten eventos que el \texttt{AnalyticsManager} acumula en entradas \texttt{DialogueAnalyticsEntry}, y que el \texttt{SaveSystem} exporta finalmente como CSV, JSON e informe HTML en la carpeta del terapeuta.}
+
+% Antiguo Capitulo 5 (ahora apartado del capítulo de Realidad Virtual)
+\section{Desarrollo de Misiones y Dinámicas en RV}
+\label{sec:misiones}
+
+Con la base tecnológica y los sistemas biométricos descritos, este apartado aborda cómo se ha trasladado la jugabilidad nuclear (el ciclo de exploración, observación y resolución) al espacio tridimensional de la Realidad Virtual.
+La migración no ha consistido en reescribir esta lógica desde cero, sino en adaptar al nuevo paradigma los sistemas heredados del primer trabajo, preservando su arquitectura y aprovechando los puntos de extensión que ya estaban previstos.
+
+\subsection{Adaptación del sistema de diálogos al espacio 3D}
+
+El sistema de diálogos era el corazón del primer trabajo y debía seguir siéndolo en la versión 2.0, pero su presentación cambiaba radicalmente.
+En pantalla, el texto aparecía en un recuadro fijo en la parte inferior; en RV, debía vivir en el espacio.
+La adaptación ha respetado el motor de diálogos existente (basado en la concatenación de nodos \texttt{DialogueNode}, con sus variantes \texttt{QuestionNode} para las preguntas y otras para los mensajes posteriores a la respuesta) y ha actuado sobre la capa de presentación y sobre dos dimensiones nuevas: la posición espacial y el audio.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Un único lienzo que se teletransporta:} en lugar de crear y destruir interfaces, existe un único \textit{Canvas} de diálogo en \textit{World Space}, gestionado por la clase \texttt{DialogueCanvasController}.
+Al iniciarse una misión, este lienzo se teletransporta a la zona de la escena correspondiente, se sitúa de cara al usuario a una distancia cómoda y se activa; al terminar, se oculta.
+El lienzo es además \textit{agarrable} (clase \texttt{VRGrabbableCanvas}), permitiendo al usuario recolocarlo a su gusto con el mando.
+  \item \textbf{Integración del audio espacial:} la versión 2.0 dota de voz a los diálogos a través de la clase \texttt{DialogueAudioManager}, un Singleton que posee una única fuente de audio y garantiza por diseño que \textbf{nunca se solapen dos voces}: cada vez que va a reproducir una locución, detiene primero la anterior.
+El audio es además espacial (3D): la fuente se reposiciona sobre el personaje que habla, de modo que el usuario perciba la voz proveniente de la dirección correcta, lo que refuerza enormemente la inmersión y la interpretabilidad tonal.
+Las locuciones cuentan con cortes suaves mediante fundidos para evitar transiciones bruscas.
+  \item \textbf{Respeto a las pausas biométricas:} el efecto de máquina de escribir con el que se muestra el texto, y la propia voz, se han hecho sensibles a las dos fuentes de pausa del sistema (la incomodidad facial y la apertura de la guía).
+El bucle de diálogo se detiene en seco y reanuda exactamente donde estaba en cuanto cesa la causa de la pausa, sin que el usuario pierda una sola palabra de la escena.
+  \item \textbf{Entrada de texto en RV:} para el flujo de identificación del usuario (los nodos de tipo \texttt{InputNode}, empleados en la introducción para recoger el nombre del paciente), se ha integrado el \textbf{teclado del sistema de Quest}, que se abre al apuntar con el láser a un campo de texto, resolviendo de forma nativa la entrada de texto, que es uno de los retos clásicos de la RV.
+\end{enumerate}
+
+El motor de diálogos, además, ha ganado en expresividad respecto al primer trabajo.
+La conversación se sigue modelando como una concatenación de nodos, pero la jerarquía de tipos se ha enriquecido para cubrir los nuevos escenarios: el nodo base (\texttt{DialogueNode}) representa una frase, con su orador, su estado de animación facial y corporal y, ahora, su clip de voz; el \texttt{QuestionNode} añade el enunciado, las opciones, el índice de la respuesta correcta, la categoría de inferencia social a la que pertenece y un campo de \textbf{pista} editable que consume la guía virtual; el \texttt{PostAnswerNode} permite reaccionar al resultado, eligiendo entre un clip de voz para el acierto y otro para el fallo; y el \texttt{InputNode} gestiona la introducción de datos, como el nombre del paciente al inicio.
+Para localizar a cada orador con coste constante, al arrancar la escena se construye un diccionario que asocia el nombre de cada personaje con su animador, evitando búsquedas costosas durante la conversación.\\
+
+Se ha conservado, asimismo, la pedagogía de gestión del error del primer trabajo, adaptándola al audio: ante una pregunta, el usuario dispone de hasta tres intentos; el fallo nunca se comunica de forma explícita ni penalizadora, y solo tras agotar los intentos se revela la respuesta correcta en tono de sugerencia.
+La novedad es que, en cada intento, la voz de la pregunta se reproduce de nuevo, por si el usuario desea volver a escucharla antes de responder.
+Todo este flujo respeta las dos fuentes de pausa del sistema, deteniéndose y reanudándose con limpieza ante la incomodidad facial o la apertura de la guía.
+
+\huecofigura[6.5cm]{Diagrama de clases del sistema de diálogos en la v2.0: \texttt{DialogueNode} y sus especializaciones (\texttt{QuestionNode}, \texttt{PostAnswerNode}, \texttt{InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}
+
+\huecofigura[7cm]{El \textit{Canvas} de diálogo situado entre dos personajes durante una misión, con la voz del personaje activo reproduciéndose de forma espacial desde su posición.}
+
+\subsection{Navegación e interacción en RV: lo aprovechado del SDK y lo construido a medida}
+
+Esta sección concentra el grueso del trabajo de adaptación a la Realidad Virtual y, con él, la frontera entre lo que el SDK de Meta resolvía y lo que hubo que desarrollar desde cero.
+Se aborda en tres frentes: el \textbf{método de interacción} (mandos frente a manos), la \textbf{interacción propiamente dicha} (puntero láser, selección, entrada de texto) y la \textbf{navegación} por el mundo (locomoción), donde el confort y la prevención del mareo cinético han sido la prioridad absoluta.\\
+
+Una decisión de diseño relevante fue la del método de interacción del usuario con el mundo.
+La Realidad Virtual ofrece dos grandes alternativas: el \textbf{seguimiento de manos} (\textit{hand tracking}), que prescinde de los mandos y rastrea directamente los dedos del usuario, y los \textbf{mandos} (\textit{controllers}), que aportan botones físicos y \textit{feedback} háptico.
+Tras valorar ambas opciones, se optó por los mandos como mecanismo principal, por las siguientes razones:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Fiabilidad y previsibilidad:} el \textit{hand tracking}, aunque más natural, es más propenso a errores de seguimiento (oclusiones, condiciones de luz) que pueden traducirse en acciones no deseadas.
+Para un colectivo en el que la previsibilidad y la ausencia de frustración son prioritarias, la fiabilidad del botón físico resulta preferible.
+  \item \textbf{\textit{Feedback} claro y umbral motriz bajo:} un botón ofrece una confirmación táctil inequívoca de que la acción se ha realizado.
+Además, el esquema de control se ha mantenido deliberadamente simple, en línea con el requisito de baja exigencia motriz del primer trabajo.
+\end{enumerate}
+
+Sobre esta base, las mecánicas de interacción se reparten así: la \textbf{interacción con los personajes} para iniciar una misión se realiza con un botón del mando derecho, que activa la lógica heredada de detección por proximidad (la clase \texttt{PlayerInteraction} busca el objeto interactuable más cercano dentro de un radio, ahora centrado correctamente en la cabeza del usuario en RV).
+La \textbf{selección en los menús y cuestionarios} se hace mediante un \textbf{puntero láser} (clase \texttt{VRRayPointer}) que emana del mando: este puntero combina de forma transparente la detección de elementos 3D del mundo (con colisionadores) y de elementos de interfaz en los lienzos en \textit{World Space}, ofreciendo una metáfora de apuntar-y-disparar muy intuitiva.
+Finalmente, la \textbf{guía virtual} se invoca con el botón de menú del mando izquierdo.\\
+
+Mención aparte merece la \textbf{navegación} o \textbf{locomoción}, por su impacto directo en el confort y en uno de los grandes enemigos de la Realidad Virtual: el \textbf{mareo cinético} o \textit{cybersickness}.
+Este fenómeno se produce, en esencia, por un conflicto sensorial: los ojos perciben un movimiento que el oído interno (el sistema vestibular) no confirma, y el cerebro responde con síntomas que van desde la desorientación leve hasta las náuseas \parencite{laviola2000}.
+En un colectivo con hipersensibilidad sensorial, ese malestar no es solo una molestia: puede arruinar por completo la sesión terapéutica y generar rechazo hacia la herramienta.
+Por ello, el diseño de la locomoción se abordó como un problema de confort prioritario, y no como una mera mecánica de desplazamiento.\\
+
+El \textit{Interaction SDK} de Meta proporciona como \textit{Building Block} un sistema de locomoción con dos modos: el movimiento continuo en primera persona (\texttt{FirstPersonLocomotor}) y la \textbf{teleportación} instantánea, que es el recurso clásico para combatir el \textit{cybersickness}, pues evita el movimiento continuo que lo desencadena.
+Sin embargo, la teleportación instantánea introduce un problema propio: el \textbf{salto brusco} de la imagen de un punto a otro resulta desconcertante y rompe la sensación de continuidad espacial, algo especialmente confuso para este perfil de usuario.
+Aquí el SDK ofrecía la base, pero no el confort que el proyecto necesitaba.\\
+
+La solución se construyó a medida en la clase \texttt{SmoothTeleport}, que se inserta como manejador de los eventos de locomoción del SDK (\texttt{ILocomotionEventHandler}): \textbf{intercepta} la orden de teletransporte antes de que se ejecute y, en lugar del salto instantáneo, desplaza al usuario hacia el destino con un \textbf{movimiento suave y amortiguado} gobernado por una curva de aceleración (\textit{ease-in-out}) a lo largo de poco más de un segundo.
+Se obtiene así lo mejor de ambos mundos: el usuario elige el destino con la comodidad y la sensación de control de la teleportación (sin movimiento involuntario sorpresivo), pero la transición es un viaje continuo y legible que preserva la orientación espacial, reduciendo a la vez el riesgo de mareo del movimiento continuo y la desorientación del salto instantáneo.
+Esta decisión, tomada explícitamente pensando en la sensibilidad sensorial del colectivo, es un ejemplo paradigmático de la filosofía del trabajo: tomar lo que el SDK ofrece y reescribir la parte sensible para el bienestar del usuario.\\
+
+Conviene, por último, sintetizar la frontera entre lo aprovechado y lo construido, porque resume buena parte del esfuerzo de ingeniería de este trabajo.
+\textbf{Del SDK de Meta} se han aprovechado los cimientos: el \textit{rig} del jugador (\texttt{OVRCameraRig}) y sus anclajes, la lectura de los mandos (\texttt{OVRInput}), los componentes biométricos (\texttt{OVREyeGaze}, \texttt{OVRFaceExpressions}), el armazón de la locomoción y el teclado del sistema.
+\textbf{Desde cero}, en cambio, se han desarrollado las piezas que definen el carácter de la experiencia: el puntero láser unificado (\texttt{VRRayPointer}), el desplazamiento confortable (\texttt{SmoothTeleport}), el lienzo de diálogo agarrable (\texttt{VRGrabbableCanvas}), el acompañamiento suave de la guía (\texttt{CompanionLazyFollow}), la adaptación de la interacción por proximidad al \textit{rig} de RV (\texttt{PlayerInteraction}) y toda la coordinación entre estos elementos y los sistemas heredados de diálogo y biometría.
+El SDK puso la fontanería; el confort, la accesibilidad y la cohesión con el resto del juego hubo que ponerlos a mano.\\
+
+El puntero láser merece una descripción más detallada, por ser la pieza que vertebra toda la interacción con la interfaz.
+Implementado en la clase \texttt{VRRayPointer}, combina de forma transparente dos mecanismos de detección: un \textit{raycast} físico para los elementos tridimensionales del mundo que poseen colisionador, y una consulta sobre los \textit{GraphicRaycaster} de los lienzos en \textit{World Space} para los botones de interfaz, que no necesitan colisionadores.
+De este modo, una misma acción de apuntar y pulsar el gatillo sirve tanto para seleccionar una opción del cuestionario como para interactuar con un objeto del escenario.
+Cuando el usuario apunta a un campo de texto, el puntero abre además el \textbf{teclado del sistema} de las Quest, resolviendo de forma nativa y robusta la entrada de texto.\\
+
+La activación del puntero se gobierna mediante una interfaz, \texttt{IVRPointerTarget}, que actúa como un contrato entre el puntero y los sistemas que requieren su uso (los diálogos, el menú principal, la guía, el panel de descanso).
+Cada uno de estos sistemas declara si el puntero debe estar activo en un momento dado y si debe bloquear la acción por defecto del gatillo.
+El puntero, por su parte, solo se muestra cuando algún sistema lo solicita, manteniéndose oculto el resto del tiempo para no recargar el campo de visión.
+Este diseño basado en interfaces, heredado de la filosofía del primer trabajo, mantiene el puntero completamente desacoplado de los sistemas concretos a los que sirve, respetando el principio de abierto/cerrado: pueden añadirse nuevos elementos interactivos sin tocar el código del puntero.
+
+\huecofigura[6.5cm]{Funcionamiento del puntero láser (\texttt{VRRayPointer}): doble detección por física y por \textit{GraphicRaycaster}, y activación gobernada por la interfaz \texttt{IVRPointerTarget}.}
+
+\subsection{Flujo final del videojuego}
+
+Para validar de extremo a extremo toda la cadena (locomoción, interacción, diálogo espacial, audio, biometría y registro), se implementó una \textbf{misión de prueba} completa en el primer entorno desarrollado: el gimnasio.
+Esta misión sirve como prueba de concepto integral del flujo de juego en Quest Pro, y su orquestación recae en la clase \texttt{MissionManager}, que es donde con más claridad se aprecian las adaptaciones a la RV.\\
+
+El ciclo de vida de la misión en Realidad Virtual transcurre así:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Detección e inicio:} el usuario se aproxima a los personajes de la misión y pulsa el botón de interacción.
+El gestor detecta que se está ejecutando en VR (comprobando la presencia del \texttt{OVRCameraRig}) y prepara el escenario en consecuencia.
+  \item \textbf{Bloqueo de la locomoción:} se desactiva el movimiento del usuario (locomoción y teleportación) para que permanezca centrado en la observación, pero \textbf{nunca se bloquea el seguimiento de la cabeza}: el usuario debe poder seguir girándose para mirar a los personajes con naturalidad.
+  \item \textbf{Recolocación cómoda y sin saltos visibles:} dado que las misiones se definen como \textit{ScriptableObjects} que no pueden almacenar posiciones de escena, el gestor calcula dinámicamente la mejor posición para el usuario a partir del punto medio de los personajes.
+Cuando hay dos personajes, se sitúa al usuario en la \textbf{perpendicular} a la línea que los une, de modo que quede centrado y equidistante de ambos, conservando el lado por el que se aproximó.
+Crucialmente, esta recolocación se realiza \textbf{con la pantalla en negro} (durante un fundido), para que el usuario no perciba el salto de posición, evitando la desorientación.
+En RV no se fuerza nunca la rotación de la cabeza del usuario (algo imposible y mareante): se confía en que ya está mirando hacia los personajes con los que acaba de interactuar.
+  \item \textbf{Ejecución y captura:} se reinician las métricas de \textit{eye-tracking}, se coloca el lienzo de diálogo entre los personajes y el usuario, y se ejecuta la conversación con sus preguntas.
+Durante toda la escena, los sistemas biométricos registran en silencio la atención y el estado anímico.
+  \item \textbf{Cierre y registro:} al terminar, se vuelven a capturar los datos oculares de la misión, se devuelve al usuario a su posición original (de nuevo, con la pantalla en negro), se reactiva la locomoción y se marca la misión como completada, avanzando al siguiente mundo si corresponde.
+\end{enumerate}
+
+Esta misión de prueba ha permitido verificar que todos los subsistemas conviven correctamente y que la experiencia, de principio a fin, resulta fluida, cómoda y coherente con los principios de accesibilidad del proyecto.
+
+\huecofigura[7cm]{Secuencia de la misión de prueba en el gimnasio: aproximación a los personajes, recolocación cómoda del usuario tras el fundido, y desarrollo del diálogo con el cuestionario final.}
+
+Por último, la migración a un flujo de múltiples escenas (un entorno por mundo) sacó a la luz una dependencia que en el primer trabajo quedaba oculta: los gestores de progreso e inventario del jugador existían únicamente en la escena original y no en las nuevas.
+Para resolverlo de forma robusta, se ha dotado a estos gestores de un mecanismo de \textbf{autoarranque}: mediante la inicialización automática tras la carga de escena, el sistema crea la instancia persistente del gestor si ninguna escena la aporta, garantizando que la cadena de recompensa (completar una misión, registrar el progreso y otorgar las monedas) funcione siempre, con independencia de por qué escena entre el usuario.
+Esta misma robustez se ha aplicado al cierre de la experiencia: cuando el usuario completa todas las misiones de todos los mundos, el sistema carga automáticamente una escena final de agradecimiento, construida para funcionar correctamente con el \textit{rig} de Realidad Virtual.
+
+% Antiguo Capitulo 6 (ahora apartado del capítulo de Realidad Virtual)
+\section{Pruebas, Validación y Análisis de Datos}
+\label{sec:pruebas}
+
+El perfil de los usuarios finales convierte las pruebas de este proyecto en algo más que una verificación funcional: una caída de fotogramas o una latencia excesiva en los sensores no son aquí meros defectos técnicos, sino potenciales fuentes de mareo y malestar para un colectivo especialmente sensible.
+Este apartado recoge las pruebas de rendimiento sobre el hardware real, la evaluación de la precisión del seguimiento biométrico, el análisis de la experiencia de usuario y, finalmente, una simulación del informe que recibiría el terapeuta.
+Conviene aclarar que, sobre la base de las pruebas funcionales y de punta a punta ya validadas en el primer trabajo (el correcto encadenamiento de diálogos, el registro de errores, la progresión entre mundos), esta fase se ha centrado en lo verdaderamente nuevo de la versión 2.0: el comportamiento del hardware inmersivo, la fiabilidad de los sensores biométricos y el confort de la experiencia.
+
+\subsection{Pruebas de rendimiento: Tasa de refresco y latencia de sensores}
+
+La primera batería de pruebas se centró en garantizar que la aplicación rinde dentro del exigente presupuesto del modo \textit{standalone} de las Quest Pro.
+Se monitorizaron los siguientes aspectos:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Tasa de refresco (\textit{framerate}):} se verificó que la aplicación mantiene de forma estable la tasa de refresco objetivo del visor en todos los entornos.
+Mantener una tasa alta y, sobre todo, \textbf{constante} es la condición más importante para evitar el mareo cinético: una tasa estable es preferible a una tasa pico que fluctúa.
+Las técnicas de optimización descritas en el apartado de diseño de activos (\ref{sec:assets}) (iluminación precalculada, \textit{batching}, mallas optimizadas) fueron determinantes para alcanzar este objetivo.
+  \item \textbf{Latencia de los sensores biométricos:} se comprobó que la lectura del \textit{eye-tracking} y del \textit{face-tracking} se realiza dentro del bucle de fotograma sin penalizar el rendimiento, y que la respuesta a los eventos (por ejemplo, la aparición del panel de descanso) ocurre con una latencia imperceptible para el usuario.
+  \item \textbf{Tiempos de carga y transiciones:} se validó que las transiciones entre escenas y misiones (siempre acompañadas de fundidos a negro) son fluidas y no rompen la sensación de presencia.
+\end{enumerate}
+
+\huecofigura[6.5cm]{Captura del \textit{Profiler} de Unity y del \textit{Metrics Tool} de Meta durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco y el coste de los sensores biométricos.}
+
+\subsection{Evaluación de la precisión del seguimiento ocular y facial}
+
+La fiabilidad de las métricas exportadas depende directamente de la precisión de los sensores, por lo que se dedicó una fase específica a evaluarla:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Calibración y confianza del \textit{eye-tracking}:} se comprobó la correspondencia entre el punto al que el usuario dirigía conscientemente la mirada y el objeto que el sistema detectaba como observado, validando que el filtrado por umbral de confianza descarta correctamente las lecturas poco fiables.
+La elección de no contabilizar los fotogramas de baja confianza resultó clave para la calidad de los datos.
+  \item \textbf{Calibración del umbral de incomodidad facial:} el sistema de \textit{face-tracking} se ajustó de forma iterativa con las gafas puestas, calibrando el umbral de puntuación y, sobre todo, el tiempo de confirmación sostenida, hasta encontrar el equilibrio entre dos errores opuestos: los \textbf{falsos positivos} (interrumpir al usuario por una expresión natural de concentración) y los \textbf{falsos negativos} (no detectar un malestar real).
+El periodo de enfriamiento posterior a cada alerta se introdujo precisamente a raíz de estas pruebas.
+\end{enumerate}
+
+Conviene ser honestos sobre el alcance de esta evaluación: se trata de una validación técnica del funcionamiento de los sensores y de los algoritmos, no de un estudio clínico de su validez como medida del estado interno del usuario.
+Esta distinción, así como sus implicaciones, se aborda en el capítulo de discusión.\\
+
+Junto a la evaluación de los sensores, se ha verificado de forma sistemática la correcta integración de toda la cadena en Realidad Virtual.
+Se ha comprobado que la locomoción suave y las recolocaciones del jugador durante las misiones ocurren siempre con la pantalla en negro, sin saltos visibles; que el puntero láser selecciona con fiabilidad tanto botones de interfaz como objetos del mundo; que la voz espacial de los diálogos nunca se solapa y se pausa y reanuda con limpieza ante la incomodidad facial o la apertura de la guía; que el registro de métricas biométricas se acota correctamente a cada misión; y que la exportación de los tres artefactos (JSON, CSV e informe HTML) se produce sin pérdida de datos.
+Estas pruebas de integración, realizadas repetidamente sobre el dispositivo, han sido las que han permitido afinar los numerosos parámetros de confort y detección hasta alcanzar una experiencia estable.
+
+\subsection{Análisis de la experiencia de usuario (UX) en Realidad Virtual}
+
+La experiencia de usuario en RV se evaluó atendiendo a las dimensiones que más impactan en este colectivo, siguiendo las directrices de accesibilidad para videojuegos \parencite{gag}: el confort, la claridad y la sensación de control.
+Las pruebas y la validación continua con la Asociación permitieron confirmar varios aciertos de diseño y, también, ajustar algunos aspectos:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Confort de la locomoción:} el desplazamiento suave (\texttt{SmoothTeleport}) frente al teletransporte instantáneo demostró reducir la sensación de desorientación, y la recolocación con la pantalla en negro durante las misiones eliminó por completo los saltos visuales bruscos.
+  \item \textbf{Legibilidad de la interfaz espacial:} la distancia y el tamaño de los paneles de diálogo y cuestionario resultaron cómodos de leer, y la posibilidad de recolocar el lienzo a gusto del usuario fue especialmente bien recibida, al adaptarse a distintas estaturas y posturas.
+  \item \textbf{Sutileza del sistema de pausa:} el panel de descanso cumplió su función sin generar frustración adicional, gracias a su tono sereno y a que la reanudación queda siempre en manos del usuario.
+  \item \textbf{Acompañamiento de la guía:} la presencia del compañero y el panel de seguimiento de misiones aportaron estructura y redujeron la incertidumbre, en línea con la preferencia del colectivo por la anticipación y el orden.
+\end{enumerate}
+
+\huecofigura[7cm]{Capturas de la experiencia de usuario en RV: el menú principal, una misión en curso y el HUD cómodo de monedas siempre visible en la zona baja del campo de visión.}
+
+\subsection{Simulación de datos: ejemplo de informe de progreso exportado}
+
+Para ilustrar el valor del sistema de \textit{logging} de cara al terapeuta, se presenta una simulación del informe que se genera automáticamente al guardar la partida.
+Además del volcado en CSV (pensado para el análisis estadístico fino), el sistema genera, mediante la clase \texttt{ReportGenerator}, un \textbf{informe visual en HTML} autocontenido, que incorpora la librería de gráficos \textit{Chart.js} (embebida para poder consultarse sin conexión) y que el terapeuta puede abrir en cualquier navegador.\\
+
+El informe se estructura en varias secciones:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Resumen de la sesión:} tarjetas con los indicadores globales (tiempo total de juego, misiones completadas, precisión global, eventos de incomodidad facial, respuestas incorrectas y pistas usadas).
+  \item \textbf{Análisis por misión:} gráficos de barras que comparan, misión a misión, el rendimiento en las preguntas, los segundos de mirada enfocada frente a distraída, el tiempo medio de respuesta y la incomodidad facial.
+  \item \textbf{Errores por categoría de inferencia social:} un gráfico de anillo que reparte los errores entre las cuatro categorías (recepción del mensaje, reconocimiento emocional, predicción del siguiente movimiento y comprensión de la relación), revelando de un vistazo qué dimensión de la interpretabilidad social conviene reforzar.
+  \item \textbf{Tabla de detalle:} una tabla con la totalidad de las métricas por misión, para una consulta exhaustiva.
+\end{enumerate}
+
+La Tabla~\ref{tab:informe} muestra un ejemplo de los datos por misión tal y como aparecerían en el detalle del informe, con valores simulados a modo ilustrativo.
+
+\begin{table}[H]
+\centering
+\caption{Ejemplo simulado del detalle por misión incluido en el informe del terapeuta.}
+\label{tab:informe}
+\renewcommand{\arraystretch}{1.3}
+\footnotesize
+\begin{tabular}{|p{2.6cm}|c|c|c|c|c|c|}
+\hline
+\textbf{Misión} & \textbf{Tiempo (s)} & \textbf{Incorr.} & \textbf{Pistas} & \textbf{Enfocado (s)} & \textbf{Distraído (s)} & \textbf{Incomod. (ev.)} \\
+\hline
+Gimnasio --- M1 & 132.4 & 1 & 0 & 98.2 & 34.2 & 0 \\
+\hline
+Gimnasio --- M2 & 156.8 & 2 & 1 & 102.5 & 54.3 & 1 \\
+\hline
+Cafetería --- M1 & 121.0 & 0 & 0 & 105.7 & 15.3 & 0 \\
+\hline
+Oficina --- M1 & 188.3 & 3 & 2 & 120.1 & 68.2 & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+Como se observa, el informe convierte datos en bruto en información clínicamente accionable: permite ver, por ejemplo, que la misión de la oficina concentró más errores, más pistas y más tiempo distraído, lo que sugiere que su contenido social resultó más exigente para el usuario y merece una atención especial en la terapia.
+
+\huecofigura[7.5cm]{Captura del informe HTML generado automáticamente (\texttt{informe\_terapeuta}), con las tarjetas de resumen, los gráficos de barras por misión y el gráfico de anillo de categorías de inferencia social.}
+
+% Capitulo 4 (fusión de los antiguos capítulos 7 y 8)
+\chapter{Discusión, Conclusiones y Trabajos Futuros}
+
+Concluido el desarrollo, y manteniendo la responsabilidad que implica colaborar con la Asociación Asperger de Madrid, corresponde una reflexión crítica sobre lo que esta versión 2.0 representa, sus ventajas reales y sus límites honestos.
+
+\section{Ventajas competitivas de la tecnología Meta Quest Pro en el tratamiento del TEA}
+
+La principal aportación de este trabajo es haber demostrado que un dispositivo de consumo asequible puede convertirse en una herramienta terapéutica con capacidades que hasta hace poco requerían equipamiento de laboratorio.
+Las ventajas competitivas de la plataforma elegida pueden resumirse en los siguientes puntos:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Inmersión y validez ecológica:} la RV cierra buena parte de la brecha entre el entrenamiento y la vida real, permitiendo trabajar dimensiones de la interpretabilidad social (distancia interpersonal, dirección de la mirada, presencia compartida) que el formato de pantalla dejaba fuera de alcance.
+  \item \textbf{Biometría integrada y no intrusiva:} el \textit{eye-tracking} y el \textit{face-tracking}, al venir integrados en el visor, capturan métricas objetivas sin necesidad de hardware adicional ni de incomodar al usuario, algo determinante en un colectivo con hipersensibilidad.
+  \item \textbf{Bienestar como prioridad reactiva:} la combinación del \textit{face-tracking} con el sistema de pausa preventiva sitúa el bienestar del usuario en el centro, reaccionando de forma automática y sutil ante el malestar, algo que ninguna RV convencional puede ofrecer.
+  \item \textbf{Datos para el terapeuta:} la exportación de métricas en CSV y el informe visual dotan al profesional de una base objetiva para fundamentar y personalizar la intervención, y para hacer un seguimiento longitudinal del progreso.
+  \item \textbf{Privacidad por diseño:} el procesamiento biométrico ocurre dentro del dispositivo y los datos se organizan de forma pseudonimizada por terapeuta, respetando la sensibilidad de la información manejada.
+\end{enumerate}
+
+\section{Alcance y limitaciones de la detección automática de emociones}
+
+El aspecto que más cautela exige es la detección automática del estado anímico, y conviene ser absolutamente honesto sobre su alcance para no generar expectativas infundadas:
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Detección de incomodidad, no de emociones:} el sistema no diagnostica ni etiqueta emociones.
+Su propósito, deliberadamente acotado, es detectar indicios de \textit{incomodidad sostenida} para velar por el bienestar.
+Esta delimitación es una decisión de diseño consciente y prudente, no una limitación accidental.
+  \item \textbf{Expresión atípica en el TEA:} es bien sabido que las personas autistas pueden expresar sus emociones de formas que no se corresponden con los patrones faciales típicos.
+Esto implica que un sistema basado en \textit{blendshapes} calibrados sobre patrones generales puede no capturar fielmente el estado de todos los usuarios, lo que refuerza la necesidad de la supervisión de un profesional.
+  \item \textbf{Necesidad de calibración y supervisión:} los umbrales del sistema son configurables precisamente porque no existe un ajuste universal.
+El acompañamiento del terapeuta sigue siendo imprescindible para interpretar las señales en su contexto y para personalizar la sensibilidad del sistema a cada usuario.
+  \item \textbf{Validación clínica pendiente:} igual que en el primer trabajo, la herramienta es funcional, estable y cumple sus requisitos de ingeniería, pero demostrar su eficacia terapéutica real exigiría un estudio con una muestra representativa de usuarios bajo supervisión clínica, que excede el alcance de un Trabajo de Fin de Grado.
+\end{enumerate}
+
+\section{Conclusiones finales}
+
+Este segundo Trabajo de Fin de Grado ha cumplido su objetivo general: transformar el \textit{Serious Game} de pantalla desarrollado en el primer trabajo en una experiencia de Realidad Virtual inmersiva, completa y, sobre todo, enriquecida con capacidades clínicas que antes eran impensables en una herramienta de estas características.\\
+
+Se ha migrado con éxito la totalidad del núcleo jugable a las Meta Quest Pro, adaptando el sistema de diálogos al espacio tridimensional, dotándolo de voz espacial, y rediseñando la interacción y la interfaz conforme a los principios de confort propios de la RV.
+Sobre esa base inmersiva se han integrado los dos pilares biométricos que dan sentido al proyecto: un sistema de \textit{eye-tracking} que mide la atención sostenida del usuario, y un sistema de \textit{face-tracking} que vela por su bienestar pausando la experiencia ante signos de malestar.
+Se ha añadido, además, una guía virtual que orienta y acompaña al usuario, y un sistema de \textit{logging} que pone toda la información capturada al servicio del terapeuta en forma de datos exportables e informes visuales.\\
+
+Más allá de las funcionalidades, el mayor logro ha sido mantener un equilibrio difícil: incorporar tecnología avanzada sin perder de vista que el usuario final es una persona vulnerable cuyo bienestar prevalece sobre cualquier otra consideración.
+Cada decisión técnica (el desplazamiento suave, las recolocaciones invisibles, la pausa sutil, el tono sereno de los mensajes, la guía que acompaña) ha respondido a ese principio.
+La arquitectura modular heredada del primer trabajo, lejos de quedar obsoleta, ha demostrado ser el cimiento perfecto sobre el que construir esta extensión, confirmando que las buenas decisiones de diseño tomadas en su momento siguen dando frutos.\\
+
+En definitiva, se ha conseguido una herramienta sólida, inmersiva y clínicamente más rica que su predecesora, que reduce un poco más la brecha entre el entrenamiento virtual y la vida real, y que sigue avanzando en una dirección clara: poner la mejor tecnología disponible al servicio de la calidad de vida de las personas del Espectro Autista.
+
+% Antiguo Capitulo 8 (ahora apartado del capítulo de discusión)
+\section{Trabajos futuros}
+
+El diseño modular y escalable de la herramienta, reforzado en esta versión, permite vislumbrar numerosas líneas de evolución.
+Se proponen a continuación las que se consideran más prometedoras.
+
+\subsection{Integración de IA Generativa para el Guía Virtual}
+
+Actualmente, tanto los diálogos como las pistas de la guía virtual están predefinidos mediante \textit{ScriptableObjects}.
+La línea de evolución más ambiciosa sería integrar un modelo de lenguaje (LLM) a través de su API para dotar a la guía virtual de \textbf{inteligencia generativa}.
+Esto le permitiría ofrecer pistas adaptadas al contexto exacto en que se encuentra el usuario, responder a preguntas formuladas con libertad e, incluso, modular su acompañamiento emocional según el estado anímico detectado por el \textit{face-tracking}.
+Un paso más allá sería que los propios personajes de las misiones mantuvieran conversaciones dinámicas y no lineales, lo que permitiría entrenar la improvisación social (un reto mayor para el colectivo) y garantizaría que ninguna sesión fuera igual a otra, multiplicando la reutilización de la herramienta.
+
+\subsection{Multijugador social en RV para entrenamiento grupal}
+
+La Realidad Virtual abre la puerta a una dimensión que el formato de pantalla nunca podría ofrecer con la misma fidelidad: el \textbf{entrenamiento social compartido}.
+Un modo multijugador permitiría que varios usuarios, o un usuario y su terapeuta, coincidieran en el mismo entorno virtual encarnados en avatares.
+Esto haría posible practicar interacciones sociales reales en un entorno seguro y controlado, con la presencia y la guía directa del profesional dentro de la propia escena (un enfoque que, como se vio en el estado del arte, proyectos como VR-SCT han demostrado especialmente eficaz).
+El \textit{eye-tracking} cobraría aquí un valor adicional, al permitir trabajar el contacto visual mutuo de forma medible.
+
+\subsection{Otras aplicaciones tecnológicas dirigidas a personas TEA}
+
+Por último, las capacidades desarrolladas en este trabajo son extrapolables más allá del entrenamiento de la interpretabilidad social.
+La combinación de inmersión, biometría y registro de datos podría aplicarse a otras áreas de gran impacto en el colectivo: la exposición gradual y controlada a situaciones que generan ansiedad (siguiendo la estela de \textit{The Blue Room}), el entrenamiento de la autonomía en entornos cotidianos, o la regulación emocional asistida por \textit{biofeedback}, en la que el usuario aprendería a reconocer y gestionar sus propios estados a partir de las señales que el sistema detecta.
+La incorporación de tecnologías complementarias, como los dispositivos hápticos o el \textit{passthrough} para una transición más suave a la inmersión, ampliaría aún más este abanico de posibilidades, siempre con el mismo norte: mejorar la calidad de vida de las personas del Espectro Autista y seguir reduciendo la barrera entre neurotípicos y neurodivergentes.
+
+\vspace{-1.5cm}
+
+% \bibliographystyle{apalike}
+% \bibliography{bibliografia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Contraportada en blanco %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage                % Crea una nueva página
+\thispagestyle{empty}   % Quita cabeceras y números de página (totalmente blanco)
+\null                   % Inserta un elemento invisible para asegurar que la página se genera
+\clearpage              % Finaliza la página
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fin del documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\printbibliography[title={Bibliografía}]
+
+
+% Fin del documento
+\end{document}
