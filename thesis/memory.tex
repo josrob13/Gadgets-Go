@@ -879,6 +879,13 @@ Cada uno reside en su propia escena de Unity, lo que aísla los recursos de cada
 
 \huecofigura[7cm]{Vista de uno de los nuevos entornos inmersivos (gimnasio) y captura del Frame Debugger de Unity mostrando la reducción de \textit{draw calls} tras la optimización.}
 
+Además de contar con esos escenarios que serán los principales, y donde ocurra la trama principal del videojuego, se ha adaptado el \textit{asset} que servía de menú principal, y se ha creado una escena extra
+al comenzar el juego, donde el usuario entablará conversación con el que será, según la narrativa, su ``jefe de la agencia detectivesca''. Este le preguntará su nombre, y le dará una breve introducción sobre por qué
+está ahí y qué debe lograr. La escena se ha creado exclusivamente para esta introducción y cuenta con pocos elementos 3D, pero todos ellos han sido recogidos de fuentes públicas. Como se observa, el propio diálogo de la introducción
+se basa en el sistema de diálogos actual, que no necesita de una misión para su correcto funcionamiento.
+
+\huecofigura[7cm]{Escena introductoria con el jefe de A.A.D.S}
+
 \subsection{Diseño de la Interfaz Espacial (Diegetic UI): Menús integrados en el mundo virtual}
 
 En un videojuego de pantalla, la interfaz se superpone sobre la imagen como una capa plana (lo que se conoce como interfaz en \textit{Screen Space}): el texto de los diálogos, las preguntas o los mensajes de ayuda aparecen \textit{pegados} a la pantalla.
@@ -892,12 +899,12 @@ Este cambio de paradigma, conocido como \textbf{interfaz espacial} o \textbf{die
 Estos paneles se orientan automáticamente hacia el usuario para que siempre queden de frente.
   \item \textbf{Tipografía y contraste reforzados:} el texto se ha rediseñado con tamaños y contrastes adecuados a la resolución y la distancia propias de la RV, manteniendo el criterio de alta legibilidad del primer trabajo y evitando la sobrecarga visual.
   \item \textbf{Comodidad y control para el usuario:} dado que cada usuario tiene una estatura, una postura y una sensibilidad distintas, el panel de diálogo puede reposicionarse: el usuario puede \textit{agarrar} el lienzo con el mando y recolocarlo donde le resulte más cómodo, devolviéndole el control sobre su propio campo de visión.
-  \item \textbf{Interacción mediante puntero láser:} la selección de respuestas y opciones se realiza con un puntero láser que emana del mando, una metáfora de interacción ya consolidada y muy intuitiva en RV, que se detallará en el apartado de arquitectura (\ref{sec:arquitectura}).
+  \item \textbf{Interacción mediante puntero láser:} la selección de respuestas y opciones se realiza con un puntero láser que se emite desde el mando, una metáfora de interacción ya consolidada y muy intuitiva en RV, que se detallará en el apartado de arquitectura (\ref{sec:arquitectura}).
 \end{enumerate}
 
 El resultado es una interfaz que se siente parte del mundo virtual y no un elemento extraño superpuesto, reforzando la inmersión y respetando en todo momento la comodidad sensorial del usuario.
 
-\huecofigura[7cm]{Panel de diálogo y cuestionario de evaluación renderizados como interfaz espacial (\textit{World Space}) dentro de la escena, con el puntero láser del mando apuntando a una de las opciones.}
+\huecofigura[7cm]{Panel de diálogo y cuestionario de evaluación renderizados como interfaz espacial (\textit{World Space}) dentro de la escena.}
 
 Conviene detenerse en dos elementos diegéticos que ilustran especialmente bien esta filosofía de interfaz integrada en el mundo.
 El primero es el ya mencionado \textbf{lienzo de diálogo agarrable}: además de orientarse automáticamente hacia el usuario, puede ser tomado con el gatillo lateral del mando y reubicado en el espacio, conservando la posición y la orientación relativas a la mano en el momento de agarrarlo, y permaneciendo fijo allí donde se suelte.
@@ -909,7 +916,7 @@ En lugar de fijarlo a una esquina de la pantalla (algo imposible y molesto en RV
 De manera deliberada, este panel carece de cualquier componente de detección de rayos, de modo que jamás intercepta el puntero láser ni interfiere con la interacción.
 Ambos elementos comparten un mismo principio: la información debe estar disponible cuando se necesita, sin imponerse ni romper la sensación de presencia.
 
-\huecofigura[6cm]{Indicador de monedas (\textit{SpyCoins}) acompañando al usuario en la zona baja del campo de visión con un seguimiento suave, y el lienzo de diálogo siendo reubicado con el mando.}
+\huecofigura[6cm]{Indicador de monedas (\textit{SpyCoins}) acompañando al usuario en la zona inferior del campo de visión.}
 
 % Antiguo Capitulo 4 (ahora apartado del capítulo de Realidad Virtual)
 \section{Arquitectura del Sistema e Integración Biométrica}
@@ -917,63 +924,57 @@ Ambos elementos comparten un mismo principio: la información debe estar disponi
 
 Este apartado constituye el núcleo técnico del trabajo.
 En él se describe la materialización en código de todos los sistemas que dan vida a la versión 2.0: desde la base tecnológica que sostiene la Realidad Virtual, hasta los dos pilares biométricos (\textit{eye-tracking} y \textit{face-tracking}), pasando por la guía virtual y el sistema de registro de métricas.
-La filosofía de diseño hereda la del primer trabajo (modularidad, desacoplamiento y patrones sólidos), con un principio rector añadido que la directriz de la Asociación impuso desde el inicio: \textbf{la lógica de las analíticas de tracking debe permanecer completamente separada del sistema de diálogos}, comunicándose con él únicamente a través de eventos.
+La filosofía de diseño hereda la del primer trabajo (modularidad, desacoplamiento y patrones sólidos), con un principio añadido que se impuso desde el inicio: \textbf{la lógica de las analíticas de tracking debe permanecer completamente separada del sistema de diálogos}, comunicándose con él únicamente a través de eventos.
 
 \subsection{Tecnologías Unity, Meta XR SDK y OpenXR}
 
-\subsubsection{Proceso de investigación y elección de la base tecnológica}
+\subsubsection{Investigación sobre la base tecnológica}
 
 Antes de escribir una sola línea de código de Realidad Virtual, hubo que resolver una pregunta nada trivial: ¿cómo se lleva exactamente un juego de Unity ya existente a unas gafas Meta Quest Pro y, sobre todo, cómo se accede a sus sensores?
 La migración no era un simple cambio de plataforma de compilación, y la decisión sobre qué capa tecnológica adoptar condicionaba todo el desarrollo posterior.
 Por ello, esta fase arrancó con un periodo de investigación dedicado a comparar las distintas vías disponibles.\\
-
+\\
 La primera vía explorada fue la de los \textbf{paquetes de terceros de la Unity Asset Store}.
 El ecosistema de Unity ofrece numerosos activos que prometen \textit{kits} de interacción y locomoción en RV listos para usar, y a primera vista resultaban atractivos por su sencillez.
-Sin embargo, un análisis más detenido reveló sus carencias para este proyecto concreto: muchos de ellos no exponían los sensores específicos de las Quest Pro (el seguimiento ocular y facial eran, precisamente, el corazón del trabajo), dependían de versiones concretas del motor, presentaban un mantenimiento irregular y, al ser intermediarios, añadían una capa opaca entre el juego y el hardware que dificultaba la depuración.
-Apoyar sobre ellos los sistemas biométricos habría sido construir sobre un cimiento frágil.\\
-
+Sin embargo, un análisis más detenido reveló sus carencias para este proyecto concreto: muchos de ellos no exponían los sensores específicos de las Quest Pro (el seguimiento ocular y facial eran, precisamente, los pilares del trabajo), dependían de versiones concretas del motor, presentaban un mantenimiento irregular y, al ser intermediarios, añadían una capa opaca entre el juego y el hardware que dificultaba la depuración.
+Apoyar sobre ellos los sistemas biométricos habría sido un error, y habría dado lugar a una implementación frágil. Además, el peso económico también desincentivó su uso.\\
+\\
 Descartada esa opción, la investigación condujo al \textbf{SDK oficial de Meta}, el \textit{Meta XR All-in-One SDK} (paquete \texttt{com.meta.xr.sdk.all}).
 Frente a las alternativas de terceros, el SDK del propio fabricante ofrecía la garantía de acceso directo y soportado a todas las capacidades del dispositivo, una documentación oficial mantenida al día y, lo más importante, los únicos componentes que exponen de forma nativa el \textit{eye-tracking} (\texttt{OVREyeGaze}) y el \textit{face-tracking} (\texttt{OVRFaceExpressions}).
 Esta fue la base tecnológica finalmente adoptada, complementada con el módulo \textit{Movement} de Meta para el seguimiento facial y corporal y con el \textit{Interaction SDK} para la locomoción.\\
-
+\\
 El SDK de Meta facilita el desarrollo en muchos aspectos.
-Su principal aportación a la accesibilidad del desarrollo son los \textbf{Building Blocks}: un sistema de bloques prefabricados que se arrastran a la escena y resuelven de un plumazo tareas de fontanería que de otro modo llevarían días, como el \textit{rig} de cámara del jugador (\texttt{OVRCameraRig}, con sus anclajes de cabeza y manos), la configuración de los mandos, el \textit{passthrough} o el armazón de la locomoción.
+Su principal aportación a la accesibilidad del desarrollo son los \textbf{Building Blocks}: un sistema de bloques prefabricados que se arrastran a la escena y resuelven de un plumazo tareas de fontanería que de otro modo llevarían días, como el \textit{rig} de cámara del jugador (\texttt{OVRCameraRig}, con sus anclajes de cabeza y manos), la configuración de los mandos, el \textit{passthrough} o el conjunto de la locomoción.
 Sobre estos bloques, el SDK aporta además los componentes de seguimiento ocular y facial ya mencionados y un conjunto de \textit{prefabs} de interacción de referencia.\\
-
+\\
 Ahora bien, la experiencia con estos bloques no estuvo exenta de fricciones, y conviene reflejarlas con honestidad porque consumieron una parte relevante del esfuerzo.
 La integración de algunos \textbf{Building Blocks} sobre un proyecto \textit{preexistente} (y no sobre una escena vacía, que es el caso para el que están pensados) provocó conflictos: dependencias que se solapaban con paquetes de Unity ya instalados, bloques que asumían una jerarquía de escena concreta, incompatibilidades entre versiones del SDK y del propio motor, y comportamientos que funcionaban en el editor pero no en el dispositivo \textit{standalone}, o al revés.
 Resolver estos problemas exigió comprender en profundidad qué hacía cada bloque por dentro, en lugar de tratarlos como cajas negras.\\
-
+\\
 Y, sobre todo, el SDK \textbf{cubre lo genérico, pero no lo específico}.
 Proporciona los cimientos de la locomoción y la interacción, pero no una solución de confort pensada para un colectivo con hipersensibilidad sensorial, ni un puntero láser que combine la selección de interfaz espacial con la de objetos del mundo, ni un lienzo de diálogo agarrable, ni la coordinación de todos estos elementos con los sistemas biométricos y de diálogo heredados.
 Todas esas piezas, que son las que dan carácter propio al trabajo, hubo que diseñarlas e implementarlas desde cero sobre la base que el SDK ofrecía.
 El detalle de qué se aprovechó del SDK y qué se construyó a mano se desarrolla a lo largo de este capítulo, en especial en el apartado dedicado a las mecánicas de interacción y la locomoción.
 
-\subsubsection{La pila tecnológica resultante}
+\subsubsection{Tecnologías utilizadas}
 
 La base tecnológica del proyecto sigue siendo el motor \textbf{Unity} y el lenguaje \textbf{C\#}, lo que ha permitido reaprovechar íntegramente la arquitectura del primer trabajo.
-Sobre esa base, la integración con la Realidad Virtual se apoya en la siguiente pila tecnológica:
+Sobre esa base, la integración con la Realidad Virtual se apoya en las siguientes tecnologías utilizadas:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
   \item \textbf{OpenXR como capa de abstracción:} OpenXR \parencite{openxr} es el estándar abierto de la industria para la Realidad Virtual y Aumentada.
-Actuar sobre él, en lugar de sobre una API propietaria cerrada, garantiza que el proyecto no quede atado de forma irreversible a un único fabricante y facilita su portabilidad futura a otros dispositivos.
+Actuar sobre él, en lugar de sobre una API propietaria cerrada, garantiza que el proyecto no quede atado a un único fabricante y facilita su portabilidad futura a otros dispositivos.
   \item \textbf{Meta XR SDK (OVR):} sobre OpenXR, el SDK de Meta expone las capacidades específicas y avanzadas de las Quest Pro que no forman parte del estándar base, en particular el seguimiento ocular (a través del componente \texttt{OVREyeGaze}) y el seguimiento facial (a través de \texttt{OVRFaceExpressions}) \parencite{metaovr}.
 El \textit{rig} del jugador se construye en torno al \texttt{OVRCameraRig}, que proporciona los anclajes de la cabeza (\texttt{centerEyeAnchor}) y de las manos, y la entrada de los mandos se gestiona mediante la API \texttt{OVRInput}.
   \item \textbf{Oculus Interaction SDK (locomoción):} la locomoción del usuario se apoya en el \textit{Interaction SDK} de Oculus, que ofrece componentes de movimiento en primera persona (\texttt{FirstPersonLocomotor}) y de teleportación.
 Sobre esta base se ha implementado lógica de confort propia, descrita más adelante en este mismo capítulo (\ref{sec:misiones}).
 \end{enumerate}
 
-Una característica importante de la arquitectura es que muchos sistemas se han diseñado para ser \textbf{tolerantes a la ausencia del hardware VR}.
-Los gestores comprueban en tiempo de ejecución si existe un \texttt{OVRCameraRig} en la escena y, en caso contrario, recurren a un comportamiento alternativo de escritorio.
-Esto ha permitido desarrollar y depurar gran parte de la lógica en el editor, sin necesidad de tener las gafas puestas en todo momento, agilizando enormemente el desarrollo.\\
-
 Conviene precisar algunos elementos de esta integración por su relevancia técnica.
 El \textit{rig} del jugador se articula en torno al \texttt{OVRCameraRig}, una jerarquía de objetos que Meta proporciona y que expone los anclajes fundamentales del cuerpo del usuario en el espacio virtual: el \texttt{centerEyeAnchor} (la posición y orientación de la cabeza, equivalente a los ojos del usuario) y los anclajes de ambas manos, sobre los que se montan los mandos y el puntero láser.
 Frente al primer trabajo, donde el avatar era un objeto \texttt{Player} controlado por teclado, aquí la posición real del usuario la dicta el seguimiento físico de su cabeza, lo que ha obligado a reescribir toda la lógica que dependía de la posición del jugador (por ejemplo, la detección de interacciones por proximidad pasa a centrarse en el \texttt{centerEyeAnchor} y no en la raíz del \textit{rig}).\\
-
-Se ha mantenido, además, el \textit{Universal Render Pipeline} (URP) del primer trabajo, ahora configurado para un renderizado estéreo eficiente, una decisión clave para el presupuesto de rendimiento descrito en el capítulo anterior.
-Por último, merece la pena subrayar el patrón de \textbf{tolerancia a la ausencia de hardware VR} con un ejemplo concreto: el gestor de misiones comprueba en tiempo de ejecución si existe un \texttt{OVRCameraRig} y, en función de ello, ejecuta una rama de código para Realidad Virtual (bloqueo de la locomoción, sin forzar la rotación de la cabeza) o una rama de escritorio (con cámaras virtuales de Cinemachine, heredadas del primer trabajo).
-Este doble camino ha permitido seguir depurando gran parte de la lógica en el editor sin las gafas puestas.
+\\
+Se ha mantenido, además, el \textit{Universal Render Pipeline} (URP) del primer trabajo, ahora configurado para un renderizado eficiente, una decisión clave para el presupuesto de rendimiento descrito en el capítulo anterior.
 
 \huecofigura[6.5cm]{Diagrama de la pila tecnológica: aplicación (Unity/C\#) sobre Meta XR SDK (OVR) sobre OpenXR sobre el \textit{runtime} de Meta Quest Pro.}
 

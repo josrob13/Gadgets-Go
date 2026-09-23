@@ -23,12 +23,12 @@
 \contentsline {section}{\numberline {3.1}Diseño y Optimización de Activos (Assets)}{13}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Modelado de Personajes: Nuevos Assets de avatares coherentes con la narrativa}{14}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Entornos Inmersivos: Nuevos escenarios coherentes con la narrativa}{16}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Diseño de la Interfaz Espacial (Diegetic UI): Menús integrados en el mundo virtual}{17}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.3}Diseño de la Interfaz Espacial (Diegetic UI): Menús integrados en el mundo virtual}{18}{subsection.3.1.3}%
 \contentsline {section}{\numberline {3.2}Arquitectura del Sistema e Integración Biométrica}{20}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tecnologías Unity, Meta XR SDK y OpenXR}{20}{subsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.1.1}Proceso de investigación y elección de la base tecnológica}{20}{subsubsection.3.2.1.1}%
-\contentsline {subsubsection}{\numberline {3.2.1.2}La pila tecnológica resultante}{22}{subsubsection.3.2.1.2}%
-\contentsline {subsection}{\numberline {3.2.2}Implementación del Sistema de Eye-tracking}{24}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tecnologías Unity, Meta XR SDK y OpenXR}{21}{subsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Investigación sobre la base tecnológica}{21}{subsubsection.3.2.1.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.2}Tecnologías utilizadas}{22}{subsubsection.3.2.1.2}%
+\contentsline {subsection}{\numberline {3.2.2}Implementación del Sistema de Eye-tracking}{23}{subsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.2.1}Detección de contacto visual con NPCs}{24}{subsubsection.3.2.2.1}%
 \contentsline {subsection}{\numberline {3.2.3}Algoritmo de Detección de Estado del Ánimo}{25}{subsection.3.2.3}%
 \contentsline {subsubsection}{\numberline {3.2.3.1}Procesamiento de expresiones faciales en tiempo real}{26}{subsubsection.3.2.3.1}%

@@ -76,6 +76,7 @@ crashlytics-build.properties
 # .md files
 *.md
 !README.md
+!notas.md
 
 # Large size assets
 Assets/Synty/
