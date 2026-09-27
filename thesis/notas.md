@@ -27,3 +27,11 @@ pagina 18, huecos demasiado grandes entre si
 pagina 22 hay una ref mal puesta en OpenXR punto 1
 
 pagina 23 mucho hueco al principio
+
+pagina 31 mucho espacio en exportacion en csv y json y demas
+
+pagina 36 citacion mal hecha despues de "nauseas", al principio
+
+**NO SE USA AÚN EL NUEVO PACK DE UI, HAY QUE AÑADIRLO**
+
+utilizar la animacion del signo de interrogación para decir si una mision esta completada o no

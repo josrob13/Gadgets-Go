@@ -962,11 +962,11 @@ La base tecnológica del proyecto sigue siendo el motor \textbf{Unity} y el leng
 Sobre esa base, la integración con la Realidad Virtual se apoya en las siguientes tecnologías utilizadas:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{OpenXR como capa de abstracción:} OpenXR \parencite{openxr} es el estándar abierto de la industria para la Realidad Virtual y Aumentada.
+  \item \textbf{OpenXR como capa principal:} OpenXR \parencite{openxr} es el estándar abierto de la industria para la Realidad Virtual y Aumentada.
 Actuar sobre él, en lugar de sobre una API propietaria cerrada, garantiza que el proyecto no quede atado a un único fabricante y facilita su portabilidad futura a otros dispositivos.
   \item \textbf{Meta XR SDK (OVR):} sobre OpenXR, el SDK de Meta expone las capacidades específicas y avanzadas de las Quest Pro que no forman parte del estándar base, en particular el seguimiento ocular (a través del componente \texttt{OVREyeGaze}) y el seguimiento facial (a través de \texttt{OVRFaceExpressions}) \parencite{metaovr}.
 El \textit{rig} del jugador se construye en torno al \texttt{OVRCameraRig}, que proporciona los anclajes de la cabeza (\texttt{centerEyeAnchor}) y de las manos, y la entrada de los mandos se gestiona mediante la API \texttt{OVRInput}.
-  \item \textbf{Oculus Interaction SDK (locomoción):} la locomoción del usuario se apoya en el \textit{Interaction SDK} de Oculus, que ofrece componentes de movimiento en primera persona (\texttt{FirstPersonLocomotor}) y de teleportación.
+  \item \textbf{Oculus Interaction SDK:} la locomoción del usuario se apoya en el \textit{Interaction SDK} de Oculus, que ofrece componentes de movimiento en primera persona (\texttt{FirstPersonLocomotor}) y de teleportación.
 Sobre esta base se ha implementado lógica de confort propia, descrita más adelante en este mismo capítulo (\ref{sec:misiones}).
 \end{enumerate}
 
@@ -981,7 +981,7 @@ Se ha mantenido, además, el \textit{Universal Render Pipeline} (URP) del primer
 \subsection{Implementación del Sistema de Eye-tracking}
 
 El sistema de seguimiento ocular se ha encapsulado íntegramente en la clase \texttt{EyeTracking}, un componente autocontenido y completamente independiente del resto del juego, fiel a la directriz de modularidad.
-Su responsabilidad es doble: determinar en cada instante si el usuario está mirando o no a los elementos relevantes de la escena, y acumular las métricas de atención que después se exportarán al terapeuta.
+Sus responsabilidades son: determinar en cada instante si el usuario está mirando o no a los elementos relevantes de la escena, y acumular las métricas de atención que después se exportarán al terapeuta.
 
 \subsubsection{Detección de contacto visual con NPCs}
 
@@ -1001,18 +1001,31 @@ Esto permite distinguir entre una distracción larga y muchas distracciones cort
 
 A partir de esta clasificación, la clase mantiene de forma continua tres acumuladores temporales: el tiempo total con seguimiento válido, el tiempo mirando al foco y el tiempo distraído, de los que se deriva el \textbf{porcentaje de distracción}.
 El método \texttt{ResetTracking()} reinicia estos acumuladores al comienzo de cada misión, de modo que las métricas se registran por separado para cada escena social.\\
-
+\\
 La integración de este componente con el resto del juego respeta el principio de desacoplamiento.
 Es el gestor de misiones quien, al comenzar cada escena social, invoca \texttt{ResetTracking()} para que las métricas se acoten a esa misión, y quien, al terminarla, recupera los acumuladores y los entrega al sistema de analíticas mediante \texttt{RegisterMissionEyeData()}.
 El componente de \textit{eye-tracking}, por su parte, ignora por completo la existencia de las misiones: se limita a observar la mirada y a contar.
+\\\\
 Además de su función de registro, el sistema ofrece una \textbf{realimentación sutil en tiempo real}: cuando detecta que el usuario lleva distraído un tiempo superior a un umbral configurable (por defecto cinco segundos), resalta de forma discreta el recuadro de texto del diálogo para reconducir su atención, sin mensajes intrusivos ni penalizaciones, de nuevo en línea con el principio de no generar frustración.
+Esto se logra gracias al método de \texttt{SetHighlight()} de la clase DialogueUI, donde se activa un highlightFrame alrededor del recuadro de texto del DialogueUI. De esta manera, se logra una iluminación del marco del diálogo, algo más completo y funcional que un simple aviso normal y corriente.
+\\\\
+Junto a la iluminación del marco, la clase también admite un \textit{distractionWarningUI} con su propio texto configurable (en este caso, ``Por favor, concéntrate en los personajes o el recuadro de texto.''), de esta manera no solo se incluye un aviso visual, sino que también se refuerza el aviso con un mensaje por texto personalizable para el desarrollador.
+Este aviso, se apagará solo, a diferencia del panel de descanso del Face-Tracking, donde sí existe una lógica de \textit{cooldown}. Aquí, en cuanto \texttt{hitFocus} vuelva a ser verdadero en un solo frame (detectado gracias al raycast de EyeTracking), la variable \texttt{currentDistractedDuration} se resetea a cero y \texttt{SetWarning(false)} se dispara inmediatamente.
+Todo este mecanismo ni si quiera se ejecutará si el nivel de confianza del \texttt{OVREyeGaze} está por debajo del umbral definido, en este caso del 50\%.
+\\\\
+Para poder construir la estética del aviso se ha utilizado el mismo canvas del cuadro de diálogo, y se han definido ciertas características que permanecen ocultas hasta que se active este proceso. Se ha creado un \texttt{BorderImage} que rodea el cuadro de diálogo y que además lleva un componente \texttt{Animator} con su propio Controller asignado.
+Este componente permite crear una animación sencilla de ``pulso'' sobre el borde, para que el resultado final quede más dinámico.
+Junto a esto, también se ha utilizado un icono de advertencia que aparece en la esquina superior derecha, junto al texto personalizable, que vivirán en el objeto \texttt{AttentionBadge}, y que usarán el \texttt{HorizontalLayoutGroup} para una correcta alineación con el marco.
+Finalmente, estos \textit{gameObjects} estarán colocados en la jerarquía del proyecto de tal forma que sean hijos de un objeto padre principal, llamado \texttt{HighlightFrame}, y que será el que finalmente se active o desactive por código.
 
-\huecofigura[6.5cm]{Diagrama de clases del funcionamiento de \texttt{EyeTracking}: rayo de mirada de \texttt{OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}
+\huecofigura[6.5cm]{Diagrama de clases del funcionamiento de \texttt{EyeTracking}: rayo de \texttt{OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}
+
+\huecofigura[6.5cm]{Estética visual del aviso de distracción en el recuadro de diálogo de las misiones, HighlightFrame.}
 
 \subsection{Algoritmo de Detección de Estado del Ánimo}
 
-El segundo pilar biométrico es el sistema de detección del estado anímico, cuyo objetivo no es diagnosticar emociones, sino velar por el bienestar del usuario detectando indicios sostenidos de incomodidad.
-Toda la lógica reside en la clase \texttt{FaceTrackingManager}, implementada como un \textbf{Singleton} persistente (\texttt{DontDestroyOnLoad}) y, de nuevo, totalmente desacoplada del sistema de diálogos: se comunica con el resto del juego exclusivamente a través de un evento, \texttt{OnDiscomfortStateChanged}, al que cualquier sistema interesado puede suscribirse.
+El segundo pilar biométrico es el sistema de detección del estado anímico, cuyo objetivo no es diagnosticar emociones, sino cuidar el bienestar del usuario detectando indicios sostenidos de incomodidad.
+Toda la lógica reside en la clase \texttt{FaceTrackingManager}, implementada como un \textbf{Singleton} persistente y, de nuevo, totalmente desacoplada del sistema de diálogos: se comunica con el resto del juego exclusivamente a través de un evento, \texttt{OnDiscomfortStateChanged}, al que cualquier sistema interesado puede suscribirse.
 
 \subsubsection{Procesamiento de expresiones faciales en tiempo real}
 
@@ -1029,7 +1042,7 @@ Por ello, el sistema solo considera que existe incomodidad real cuando la puntua
 Un temporizador acumula el tiempo en que se supera el umbral y se descuenta cuando la expresión se relaja, de modo que solo el malestar persistente activa el evento.
 \end{enumerate}
 
-Cuando se confirma la incomodidad sostenida, el gestor dispara \texttt{OnDiscomfortStateChanged(true)}; cuando esta se resuelve, dispara el evento con \texttt{false}.
+Cuando se confirma la incomodidad sostenida, el gestor dispara \texttt{OnDiscomfort\hspace{0pt}StateChanged(true)}; cuando esta se resuelve, dispara el evento con \texttt{false}.
 Toda la lógica de qué hacer ante esa señal recae en los sistemas suscriptores, manteniendo el gestor facial completamente ajeno a ellos.
 
 \huecofigura[6.5cm]{Diagrama de clases del \texttt{FaceTrackingManager}: lectura de \textit{blendshapes} de \texttt{OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt{OnDiscomfortStateChanged}.}
@@ -1037,7 +1050,7 @@ Toda la lógica de qué hacer ante esa señal recae en los sistemas suscriptores
 \subsubsection{Sistema de alertas y pausas preventivas ante fatiga o frustración}
 
 La respuesta a la señal de incomodidad la gestiona la clase \texttt{FaceTrackingUI}, suscrita al evento del gestor facial.
-Su comportamiento se ha diseñado siguiendo escrupulosamente la directriz de la Asociación de que el sistema de parada debe ser \textbf{reactivo pero sutil}, para no generar más frustración de la que pretende aliviar:
+Su comportamiento se ha diseñado siguiendo estrictamente una puntualización de cara al colectivo TEA: el sistema de parada debe ser \textbf{reactivo pero sutil}, para no generar más frustración de la que pretende aliviar:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
   \item \textbf{Panel de descanso:} al detectarse la incomodidad, aparece de forma suave (con un fundido de entrada) un panel en \textit{World Space} situado frente a los ojos del usuario, con un mensaje sereno (\textit{``Tómate un descanso''}) que reconoce que el usuario podría estar estresado y le invita a respirar, sin lenguaje alarmista ni señalar el error.
@@ -1057,14 +1070,14 @@ Esta coordinación entre subsistemas se resuelve, de nuevo, mediante una simple 
 \subsection{Guía Virtual}
 
 Uno de los objetivos de la versión 2.0 era dotar al juego de un asistente que cumpliera una doble función de apoyo: orientar al usuario sobre qué debe hacer y ofrecerle pistas durante las misiones.
-Esta funcionalidad se ha materializado en una \textbf{guía virtual} encarnada en un compañero (un pequeño robot) que acompaña al usuario por el mundo.
-La guía se compone de dos clases principales: \texttt{VRGuideController}, que gestiona la lógica y la apertura del panel, y \texttt{VRGuideUI}, que construye y muestra los distintos paneles de información.
+Esta funcionalidad se ha materializado en un \textbf{guía virtual} encarnada en un compañero (un pequeño robot) que acompaña al usuario por el mundo.
+El guía se compone de dos clases principales: \texttt{VRGuideController}, que gestiona la lógica y la apertura del panel, y \texttt{VRGuideUI}, que construye y muestra los distintos paneles de información.
 
 \subsubsection{Lógica de apoyo y sistema de pistas}
 
 El compañero permanece en reposo a un lado del usuario (a la altura de la cintura, ligeramente a la izquierda) gracias a la clase \texttt{CompanionLazyFollow}, que lo hace seguir al jugador con un movimiento suave y amortiguado (\textit{lazy-follow}), nunca brusco, para que su presencia resulte tranquilizadora y no intrusiva.
 El usuario invoca la guía en cualquier momento pulsando el botón de menú del mando izquierdo, momento en el que el compañero se reposiciona suavemente frente al usuario, a la altura de los ojos, y despliega su menú.\\
-
+\\
 La apertura de la guía desencadena una orquestación cuidadosa de varios subsistemas, todo ello para crear un espacio de calma:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
@@ -1076,46 +1089,44 @@ La apertura de la guía desencadena una orquestación cuidadosa de varios subsis
 El menú principal ofrece dos ayudas.
 La primera, \textit{``¿Qué debo hacer?''}, está siempre disponible y orienta al usuario sobre el objetivo.
 La segunda, \textit{``Pista''}, solo se habilita cuando el usuario se encuentra ante una pregunta del cuestionario: en ese caso, la guía consulta la pregunta activa (que el sistema de diálogos expone públicamente) y muestra el texto de ayuda asociado a esa pregunta concreta.
-Cada pregunta del juego puede llevar, en su definición, una pista explicativa propia editable por el terapeuta.
+Cada pregunta del juego puede llevar, en su definición, una pista explicativa propia editable por el desarrollador.
 De forma coherente con el principio de separación, cada vez que se solicita una pista, la guía notifica al sistema de analíticas para que registre el uso, dato que tiene valor clínico, porque indica en qué inferencias el usuario necesita más apoyo.
 
-\subsection{Sistema de Logging: Exportación de métricas biométricas}
+\subsection{Persistencia y Exportación de métricas}
 
+Para evitar que el progreso del jugador viva únicamente en el momento del juego, y que cada ejecución signifique partir de cero, se ha trabajado en la persistencia.
+Para ello, se ha modificado la estructura antigua, eliminándose la clase \texttt{GameData} y creando en su lugar dos estructuras de datos independientes: una para el progreso del jugador y otra para las métricas terapéuticas.
+Por la parte del progreso del jugador será la clase de \texttt{PlayerSaveData} la que guardará toda la información correspondiente al ``nick'' del jugador, el índice del mundo actual, las misiones completadas, el inventario y la posición del jugador en el mundo virtual.
+La clase \texttt{SaveSystem}, por otro lado, se encargará de guardar y cargar el progreso del jugador, así como las métricas terapéuticas, gracias a los métodos de \texttt{SaveProgress()}, \texttt{SaveMetrics()},
+\texttt{LoadProgress()} y \texttt{LoadMetrics()}.
+Dentro de esta estructura, \texttt{GameHandler} tendrá el rol de orquestar todas estas acciones que afectan directamente al progreso, haciendo llamadas a \texttt{SaveSystem} para cargar o guardar el progreso según haga falta, y a \texttt{AnalyticsManager} en caso de necesitar un guardado rápido de las métricas en formato JSON con el método \texttt{SaveMetricsLight()}, que a su vez utiliza la clase interna de \texttt{JsonUtility}.
+\\\\
 Toda la información que capturan los sistemas de \textit{eye-tracking} y \textit{face-tracking}, junto con las métricas de desempeño heredadas del primer trabajo, carecería de valor si no llegara de forma ordenada al terapeuta.
-De ello se encarga el sistema de \textit{logging}, vertebrado en torno a la clase \texttt{AnalyticsManager}, un Singleton persistente que centraliza la recogida de datos y su posterior exportación.\\
-
-El modelo de datos se estructura en torno a la clase \texttt{DialogueAnalyticsEntry}, que agrupa, \textbf{por cada misión}, el conjunto completo de métricas: el tiempo dedicado, el número de respuestas incorrectas, las pistas solicitadas, el tiempo medio de respuesta, los segundos de mirada enfocada y distraída, el número de eventos de distracción, y los eventos, la duración y el pico de incomodidad facial.
+De ello se encarga la clase \texttt{AnalyticsManager}, un Singleton persistente que centraliza la recogida de datos y su posterior exportación.\\
+\\
+Por parte de las métricas, el modelo de datos se recoge en la clase \texttt{TherapyMetrics}, que agrupa, \textbf{por cada misión}, el conjunto completo de métricas: el tiempo dedicado, el número de respuestas incorrectas, las pistas solicitadas, el tiempo medio de respuesta, los segundos de mirada enfocada y distraída, el número de eventos de distracción, y los eventos, la duración y el pico de incomodidad facial.
 A nivel global se registran además el tiempo total de juego y los totales de incomodidad.
-Los errores de inferencia se contabilizan de forma separada según cuatro \textbf{categorías de inferencia social}, que dan continuidad al esquema pedagógico del primer trabajo: recepción del mensaje, reconocimiento emocional, predicción del siguiente movimiento y comprensión de la relación entre los personajes.\\
-
+Los errores de inferencia se contabilizan de forma separada según cuatro \textbf{categorías de inferencia social}, que dan continuidad al esquema pedagógico del primer trabajo: recepción del mensaje, reconocimiento emocional, predicción o inferencia de la siguiente acción y comprensión de la relación entre los personajes.\\
+\\
 El flujo de captura respeta el principio de desacoplamiento: el \texttt{AnalyticsManager} se \textit{suscribe} a los eventos de los demás sistemas (al evento de incomodidad del gestor facial, a las respuestas del gestor de diálogos) y recibe de ellos los datos del \textit{eye-tracking} al finalizar cada misión, sin que esos sistemas necesiten conocer nada sobre las analíticas.
-Cuando la partida se guarda, entran en juego dos exportaciones complementarias:
+Cuando la partida se guarda al salir, terminar el juego o completar un nivel completo, se contará con el siguiente procedimiento de guardado:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{Exportación en CSV:} el método \texttt{ExportTherapistCsv()} vuelca todas las métricas a un fichero de valores separados por punto y coma, codificado en UTF-8, listo para abrirse en cualquier hoja de cálculo y para su análisis estadístico posterior.
+  \item \textbf{Exportación en checkpoints:} el método \texttt{SaveMetricsAndExport()} vuelca todas las métricas a un fichero de valores separados por punto y coma, codificado en UTF-8, listo para abrirse en cualquier hoja de cálculo y para su análisis estadístico posterior. Para eso, llamará internamente al método de \texttt{SaveSystem.SaveMetrics()}, junto a \texttt{SaveSystem.ExportTher\hspace{0pt}apistReports()}, que realizará el guardado rápido, además del guardado por CSV.
+De esta manera, se consiguen dos tipos de guardados distintos, uno ligero, que no consume muchos recursos, donde sólo se guarda la información en formato JSON, y otro más completo, donde además se exportarán las métricas en el formato deseable para el terapeuta.
 El sistema gestiona además el caso de que el fichero esté abierto en otro programa, generando en ese caso una copia con marca de tiempo para no perder datos.
   \item \textbf{Organización por terapeuta:} la clase \texttt{SaveSystem} organiza los ficheros en carpetas independientes por terapeuta (con un identificador y una marca de tiempo), de modo que los datos de distintos profesionales o sesiones nunca se mezclen, respetando así la pseudonimización y la privacidad de un colectivo vulnerable.
 \end{enumerate}
 
-A este volcado de datos en bruto se le suma, como se verá en el apartado de pruebas (\ref{sec:pruebas}), la generación automática de un informe visual en HTML que transforma estos números en gráficos interpretables.\\
+A este volcado de datos en bruto se le suma, como se verá en el apartado de pruebas (\ref{sec:pruebas}), la generación automática de un informe visual en HTML que transforma estos números en gráficos interpretables.
 
-Para dimensionar el valor de este sistema conviene detallar qué se registra exactamente.
-Por cada misión, la entrada de analíticas (\texttt{DialogueAnalyticsEntry}) almacena el número de sesiones jugadas, el tiempo dedicado, las respuestas incorrectas, las pistas solicitadas, el tiempo medio de respuesta a las preguntas, los segundos de mirada enfocada y distraída con su número de eventos de distracción, y los eventos, los segundos y el pico de incomodidad facial.
-A nivel global se guardan el tiempo total de juego y los totales de incomodidad, y de forma independiente se contabilizan los errores según las cuatro categorías de inferencia social ya mencionadas.
-Toda esta recogida es \textbf{pasiva y silenciosa}: el usuario nunca percibe que está siendo medido, lo que garantiza que su comportamiento durante el entrenamiento sea natural.\\
-
-En cuanto a la persistencia, el sistema organiza los datos por terapeuta, creando una carpeta independiente identificada con su nombre y una marca temporal, de modo que las sesiones de distintos profesionales o pacientes nunca se mezclen.
-Al guardar la partida se generan de forma simultánea tres artefactos complementarios: el fichero de guardado en formato JSON (para reanudar la sesión), el volcado de métricas en CSV (para el análisis estadístico) y el informe visual en HTML (para una lectura inmediata por parte del terapeuta).
-El sistema contempla incluso el caso de que el CSV esté abierto en otro programa, generando entonces una copia con marca temporal para no perder ningún dato.
-Esta exportación triple es la materialización final del objetivo de convertir el videojuego en una fuente objetiva de información clínica.
-
-\huecofigura[6.5cm]{Diagrama del flujo de \textit{logging}: los sistemas biométricos y de diálogo emiten eventos que el \texttt{AnalyticsManager} acumula en entradas \texttt{DialogueAnalyticsEntry}, y que el \texttt{SaveSystem} exporta finalmente como CSV, JSON e informe HTML en la carpeta del terapeuta.}
+\huecofigura[6.5cm]{Diagrama del flujo de exportación y persistencia de datos: procesamiento de \texttt{AnalyticsManager}, \texttt{SaveSystem} y \texttt{GameHandler}.}
 
 % Antiguo Capitulo 5 (ahora apartado del capítulo de Realidad Virtual)
 \section{Desarrollo de Misiones y Dinámicas en RV}
 \label{sec:misiones}
 
-Con la base tecnológica y los sistemas biométricos descritos, este apartado aborda cómo se ha trasladado la jugabilidad nuclear (el ciclo de exploración, observación y resolución) al espacio tridimensional de la Realidad Virtual.
+Con la base tecnológica y los sistemas biométricos descritos, este apartado aborda cómo se ha trasladado la jugabilidad base (el ciclo de exploración, observación y resolución) al espacio tridimensional de la Realidad Virtual.
 La migración no ha consistido en reescribir esta lógica desde cero, sino en adaptar al nuevo paradigma los sistemas heredados del primer trabajo, preservando su arquitectura y aprovechando los puntos de extensión que ya estaban previstos.
 
 \subsection{Adaptación del sistema de diálogos al espacio 3D}
@@ -1125,34 +1136,32 @@ En pantalla, el texto aparecía en un recuadro fijo en la parte inferior; en RV,
 La adaptación ha respetado el motor de diálogos existente (basado en la concatenación de nodos \texttt{DialogueNode}, con sus variantes \texttt{QuestionNode} para las preguntas y otras para los mensajes posteriores a la respuesta) y ha actuado sobre la capa de presentación y sobre dos dimensiones nuevas: la posición espacial y el audio.
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{Un único lienzo que se teletransporta:} en lugar de crear y destruir interfaces, existe un único \textit{Canvas} de diálogo en \textit{World Space}, gestionado por la clase \texttt{DialogueCanvasController}.
+  \item \textbf{Una única instancia del lienzo:} en lugar de crear y destruir interfaces, existe un único \textit{Canvas} de diálogo en \textit{World Space}, gestionado por la clase \texttt{DialogueCanvasController}.
 Al iniciarse una misión, este lienzo se teletransporta a la zona de la escena correspondiente, se sitúa de cara al usuario a una distancia cómoda y se activa; al terminar, se oculta.
 El lienzo es además \textit{agarrable} (clase \texttt{VRGrabbableCanvas}), permitiendo al usuario recolocarlo a su gusto con el mando.
   \item \textbf{Integración del audio espacial:} la versión 2.0 dota de voz a los diálogos a través de la clase \texttt{DialogueAudioManager}, un Singleton que posee una única fuente de audio y garantiza por diseño que \textbf{nunca se solapen dos voces}: cada vez que va a reproducir una locución, detiene primero la anterior.
 El audio es además espacial (3D): la fuente se reposiciona sobre el personaje que habla, de modo que el usuario perciba la voz proveniente de la dirección correcta, lo que refuerza enormemente la inmersión y la interpretabilidad tonal.
 Las locuciones cuentan con cortes suaves mediante fundidos para evitar transiciones bruscas.
-  \item \textbf{Respeto a las pausas biométricas:} el efecto de máquina de escribir con el que se muestra el texto, y la propia voz, se han hecho sensibles a las dos fuentes de pausa del sistema (la incomodidad facial y la apertura de la guía).
+  \item \textbf{Gestión de las pausas del juego:} el efecto de máquina de escribir con el que se muestra el texto, y la propia voz, se han hecho sensibles a las dos fuentes de pausa del sistema (la incomodidad facial y la apertura de la guía).
 El bucle de diálogo se detiene en seco y reanuda exactamente donde estaba en cuanto cesa la causa de la pausa, sin que el usuario pierda una sola palabra de la escena.
-  \item \textbf{Entrada de texto en RV:} para el flujo de identificación del usuario (los nodos de tipo \texttt{InputNode}, empleados en la introducción para recoger el nombre del paciente), se ha integrado el \textbf{teclado del sistema de Quest}, que se abre al apuntar con el láser a un campo de texto, resolviendo de forma nativa la entrada de texto, que es uno de los retos clásicos de la RV.
+  \item \textbf{Entrada de texto en RV:} para el flujo de identificación del usuario (los nodos de tipo \texttt{InputNode}, empleados en la introducción para recoger el nombre del paciente), se ha integrado el \textbf{teclado del sistema de Quest}, que se abre al apuntar con el láser a un campo de texto, resolviendo de forma nativa la entrada de texto, que es uno de los retos clásicos de la RV. Sin embargo, a la hora del desarrollo se ha permitido también el uso de input por teclado físico, ya que el teclado del sistema Android (que es el sistema operativo debajo de las Meta Quest Pro), solo se habilita cuando la aplicación se ejecuta de forma nativa en el dispositivo; y mientras se ejecuta en el entorno de Unity, usar esta opción no es posible.
 \end{enumerate}
 
 El motor de diálogos, además, ha ganado en expresividad respecto al primer trabajo.
 La conversación se sigue modelando como una concatenación de nodos, pero la jerarquía de tipos se ha enriquecido para cubrir los nuevos escenarios: el nodo base (\texttt{DialogueNode}) representa una frase, con su orador, su estado de animación facial y corporal y, ahora, su clip de voz; el \texttt{QuestionNode} añade el enunciado, las opciones, el índice de la respuesta correcta, la categoría de inferencia social a la que pertenece y un campo de \textbf{pista} editable que consume la guía virtual; el \texttt{PostAnswerNode} permite reaccionar al resultado, eligiendo entre un clip de voz para el acierto y otro para el fallo; y el \texttt{InputNode} gestiona la introducción de datos, como el nombre del paciente al inicio.
 Para localizar a cada orador con coste constante, al arrancar la escena se construye un diccionario que asocia el nombre de cada personaje con su animador, evitando búsquedas costosas durante la conversación.\\
-
+\\
 Se ha conservado, asimismo, la pedagogía de gestión del error del primer trabajo, adaptándola al audio: ante una pregunta, el usuario dispone de hasta tres intentos; el fallo nunca se comunica de forma explícita ni penalizadora, y solo tras agotar los intentos se revela la respuesta correcta en tono de sugerencia.
 La novedad es que, en cada intento, la voz de la pregunta se reproduce de nuevo, por si el usuario desea volver a escucharla antes de responder.
 Todo este flujo respeta las dos fuentes de pausa del sistema, deteniéndose y reanudándose con limpieza ante la incomodidad facial o la apertura de la guía.
 
 \huecofigura[6.5cm]{Diagrama de clases del sistema de diálogos en la v2.0: \texttt{DialogueNode} y sus especializaciones (\texttt{QuestionNode}, \texttt{PostAnswerNode}, \texttt{InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}
 
-\huecofigura[7cm]{El \textit{Canvas} de diálogo situado entre dos personajes durante una misión, con la voz del personaje activo reproduciéndose de forma espacial desde su posición.}
-
 \subsection{Navegación e interacción en RV: lo aprovechado del SDK y lo construido a medida}
 
-Esta sección concentra el grueso del trabajo de adaptación a la Realidad Virtual y, con él, la frontera entre lo que el SDK de Meta resolvía y lo que hubo que desarrollar desde cero.
+Esta sección concentra el contenido del trabajo de adaptación a la Realidad Virtual y, con él, la frontera entre lo que el SDK de Meta resolvía y lo que hubo que desarrollar desde cero.
 Se aborda en tres frentes: el \textbf{método de interacción} (mandos frente a manos), la \textbf{interacción propiamente dicha} (puntero láser, selección, entrada de texto) y la \textbf{navegación} por el mundo (locomoción), donde el confort y la prevención del mareo cinético han sido la prioridad absoluta.\\
-
+\\
 Una decisión de diseño relevante fue la del método de interacción del usuario con el mundo.
 La Realidad Virtual ofrece dos grandes alternativas: el \textbf{seguimiento de manos} (\textit{hand tracking}), que prescinde de los mandos y rastrea directamente los dedos del usuario, y los \textbf{mandos} (\textit{controllers}), que aportan botones físicos y \textit{feedback} háptico.
 Tras valorar ambas opciones, se optó por los mandos como mecanismo principal, por las siguientes razones:
@@ -1167,55 +1176,63 @@ Además, el esquema de control se ha mantenido deliberadamente simple, en línea
 Sobre esta base, las mecánicas de interacción se reparten así: la \textbf{interacción con los personajes} para iniciar una misión se realiza con un botón del mando derecho, que activa la lógica heredada de detección por proximidad (la clase \texttt{PlayerInteraction} busca el objeto interactuable más cercano dentro de un radio, ahora centrado correctamente en la cabeza del usuario en RV).
 La \textbf{selección en los menús y cuestionarios} se hace mediante un \textbf{puntero láser} (clase \texttt{VRRayPointer}) que emana del mando: este puntero combina de forma transparente la detección de elementos 3D del mundo (con colisionadores) y de elementos de interfaz en los lienzos en \textit{World Space}, ofreciendo una metáfora de apuntar-y-disparar muy intuitiva.
 Finalmente, la \textbf{guía virtual} se invoca con el botón de menú del mando izquierdo.\\
-
+\\
 Mención aparte merece la \textbf{navegación} o \textbf{locomoción}, por su impacto directo en el confort y en uno de los grandes enemigos de la Realidad Virtual: el \textbf{mareo cinético} o \textit{cybersickness}.
-Este fenómeno se produce, en esencia, por un conflicto sensorial: los ojos perciben un movimiento que el oído interno (el sistema vestibular) no confirma, y el cerebro responde con síntomas que van desde la desorientación leve hasta las náuseas \parencite{laviola2000}.
+Este fenómeno se produce, en esencia, por un conflicto sensorial: los ojos perciben un movimiento que el oído interno no confirma, y el cerebro responde con síntomas que van desde la desorientación leve hasta las náuseas \parencite{laviola2000}.
 En un colectivo con hipersensibilidad sensorial, ese malestar no es solo una molestia: puede arruinar por completo la sesión terapéutica y generar rechazo hacia la herramienta.
 Por ello, el diseño de la locomoción se abordó como un problema de confort prioritario, y no como una mera mecánica de desplazamiento.\\
-
-El \textit{Interaction SDK} de Meta proporciona como \textit{Building Block} un sistema de locomoción con dos modos: el movimiento continuo en primera persona (\texttt{FirstPersonLocomotor}) y la \textbf{teleportación} instantánea, que es el recurso clásico para combatir el \textit{cybersickness}, pues evita el movimiento continuo que lo desencadena.
-Sin embargo, la teleportación instantánea introduce un problema propio: el \textbf{salto brusco} de la imagen de un punto a otro resulta desconcertante y rompe la sensación de continuidad espacial, algo especialmente confuso para este perfil de usuario.
-Aquí el SDK ofrecía la base, pero no el confort que el proyecto necesitaba.\\
-
-La solución se construyó a medida en la clase \texttt{SmoothTeleport}, que se inserta como manejador de los eventos de locomoción del SDK (\texttt{ILocomotionEventHandler}): \textbf{intercepta} la orden de teletransporte antes de que se ejecute y, en lugar del salto instantáneo, desplaza al usuario hacia el destino con un \textbf{movimiento suave y amortiguado} gobernado por una curva de aceleración (\textit{ease-in-out}) a lo largo de poco más de un segundo.
-Se obtiene así lo mejor de ambos mundos: el usuario elige el destino con la comodidad y la sensación de control de la teleportación (sin movimiento involuntario sorpresivo), pero la transición es un viaje continuo y legible que preserva la orientación espacial, reduciendo a la vez el riesgo de mareo del movimiento continuo y la desorientación del salto instantáneo.
+\\
+El \textit{Interaction SDK} de Meta proporciona como \textit{Building Block} un sistema de locomoción con dos modos: el movimiento continuo en primera persona (\texttt{FirstPerson\hspace{0pt}Locomotor}) y la \textbf{teleportación} instantánea, que es el recurso clásico para combatir el \textit{cybersickness}, pues evita el movimiento continuo que lo desencadena.
+Para hacerlo más llamativo y aportar algo de carácter al videojuego, se implementó un añadido que manipulaba la teleportación instantánea, y aplicaba una ``animación'' que daba la sensación al usuario de ir levitando hasta la ubicación deseada.
+Sin embargo, este añadido introdujo un problema propio: el \textbf{efecto de teleportación} de la imagen de un punto a otro resulta desconcertante y rompe la sensación de continuidad espacial, algo especialmente confuso para este perfil de usuario.
+Por tanto, se aplicaron medidas para que el resultado final mantuviese un aspecto dinámico y propio del videojuego, pero evitando el mareo cibernético que producía.\\
+\\
+La solución se construyó entorno a la clase \texttt{SmoothTeleport}, que se inserta como manejador de los eventos de locomoción del SDK (\texttt{ILocomotionEventHandler}): \textbf{intercepta} la orden de teletransporte antes de que se ejecute y, en lugar del salto instantáneo, desplaza al usuario hacia el destino con un \textbf{movimiento suave y amortiguado} gobernado por una curva de aceleración (\textit{ease-in-out}) a lo largo de poco más de un segundo.
+Se obtiene así lo mejor de ambos mundos: el usuario elige el destino con la comodidad y la sensación de control de la teleportación (sin movimiento involuntario sorpresivo), pero la transición es un viaje dinámico y con personalidad.
+El problema del \textit{cybersickness} se presentó justamente al implementar esta funcionalidad, pero se arregló añadiendo un efecto de visión túnel en el canvas mientras se produce el teletransporte; de esa manera, al reducir el foco de atención, el usuario no detecta las alteraciones bruscas en el movimiento.
 Esta decisión, tomada explícitamente pensando en la sensibilidad sensorial del colectivo, es un ejemplo paradigmático de la filosofía del trabajo: tomar lo que el SDK ofrece y reescribir la parte sensible para el bienestar del usuario.\\
-
+\\
 Conviene, por último, sintetizar la frontera entre lo aprovechado y lo construido, porque resume buena parte del esfuerzo de ingeniería de este trabajo.
 \textbf{Del SDK de Meta} se han aprovechado los cimientos: el \textit{rig} del jugador (\texttt{OVRCameraRig}) y sus anclajes, la lectura de los mandos (\texttt{OVRInput}), los componentes biométricos (\texttt{OVREyeGaze}, \texttt{OVRFaceExpressions}), el armazón de la locomoción y el teclado del sistema.
 \textbf{Desde cero}, en cambio, se han desarrollado las piezas que definen el carácter de la experiencia: el puntero láser unificado (\texttt{VRRayPointer}), el desplazamiento confortable (\texttt{SmoothTeleport}), el lienzo de diálogo agarrable (\texttt{VRGrabbableCanvas}), el acompañamiento suave de la guía (\texttt{CompanionLazyFollow}), la adaptación de la interacción por proximidad al \textit{rig} de RV (\texttt{PlayerInteraction}) y toda la coordinación entre estos elementos y los sistemas heredados de diálogo y biometría.
 El SDK puso la fontanería; el confort, la accesibilidad y la cohesión con el resto del juego hubo que ponerlos a mano.\\
-
-El puntero láser merece una descripción más detallada, por ser la pieza que vertebra toda la interacción con la interfaz.
+\\
+El puntero láser merece una descripción más detallada, por ser la pieza que sostiene toda la interacción con la interfaz.
 Implementado en la clase \texttt{VRRayPointer}, combina de forma transparente dos mecanismos de detección: un \textit{raycast} físico para los elementos tridimensionales del mundo que poseen colisionador, y una consulta sobre los \textit{GraphicRaycaster} de los lienzos en \textit{World Space} para los botones de interfaz, que no necesitan colisionadores.
 De este modo, una misma acción de apuntar y pulsar el gatillo sirve tanto para seleccionar una opción del cuestionario como para interactuar con un objeto del escenario.
 Cuando el usuario apunta a un campo de texto, el puntero abre además el \textbf{teclado del sistema} de las Quest, resolviendo de forma nativa y robusta la entrada de texto.\\
-
+\\
 La activación del puntero se gobierna mediante una interfaz, \texttt{IVRPointerTarget}, que actúa como un contrato entre el puntero y los sistemas que requieren su uso (los diálogos, el menú principal, la guía, el panel de descanso).
 Cada uno de estos sistemas declara si el puntero debe estar activo en un momento dado y si debe bloquear la acción por defecto del gatillo.
 El puntero, por su parte, solo se muestra cuando algún sistema lo solicita, manteniéndose oculto el resto del tiempo para no recargar el campo de visión.
 Este diseño basado en interfaces, heredado de la filosofía del primer trabajo, mantiene el puntero completamente desacoplado de los sistemas concretos a los que sirve, respetando el principio de abierto/cerrado: pueden añadirse nuevos elementos interactivos sin tocar el código del puntero.
 
-\huecofigura[6.5cm]{Funcionamiento del puntero láser (\texttt{VRRayPointer}): doble detección por física y por \textit{GraphicRaycaster}, y activación gobernada por la interfaz \texttt{IVRPointerTarget}.}
+\huecofigura[5.5cm]{Funcionamiento del puntero láser (\texttt{VRRayPointer}): doble detección por física y por \textit{GraphicRaycaster}, interfaz \texttt{IVRPointerTarget}.}
 
 \subsection{Flujo final del videojuego}
 
-Para validar de extremo a extremo toda la cadena (locomoción, interacción, diálogo espacial, audio, biometría y registro), se implementó una \textbf{misión de prueba} completa en el primer entorno desarrollado: el gimnasio.
-Esta misión sirve como prueba de concepto integral del flujo de juego en Quest Pro, y su orquestación recae en la clase \texttt{MissionManager}, que es donde con más claridad se aprecian las adaptaciones a la RV.\\
-
-El ciclo de vida de la misión en Realidad Virtual transcurre así:
+Para validar de extremo a extremo toda la cadena (locomoción, interacción, diálogo espacial, audio, biometría y registro), se implementó una serie de misiones en \textbf{todos los cinco escenarios} como se pensó originalmente: dos misiones por escenario.
+Algunas de estas misiones han sido modificadas para que cuadren con los nuevos entornos 3D y el ambiente de esta versión 2.0 del juego, pero la estructura inicial de hacer que el usuario se enfrente a emociones más positivas antes que negativas, sigue presente.
+El flujo final pretende ser una conexión entre los escenarios sociales a los que tendrá que enfrentarse el jugador, y el ambiente lúdico de un propio videojuego: por este motivo, ahora las misiones y los diferentes escenarios se conectan entre sí cada vez que se avanza de nivel.
+Además, estas misiones sirven como prueba de concepto integral del flujo de juego en Quest Pro, y su orquestación recae en la clase \texttt{MissionManager}, que es donde con más claridad se aprecian las adaptaciones a la RV.\\
+\\
+El ciclo de vida de un nivel en Realidad Virtual transcurre así:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{Detección e inicio:} el usuario se aproxima a los personajes de la misión y pulsa el botón de interacción.
-El gestor detecta que se está ejecutando en VR (comprobando la presencia del \texttt{OVRCameraRig}) y prepara el escenario en consecuencia.
+  \item \textbf{Carga del escenario:} el entorno 3D asociado al nivel se carga comprobando la presencia del \texttt{OVRCameraRig}, y coloca al usuario en una cierta posición inicial (si es que es una partida nueva, o la primera vez que se juega ese nivel).
+  Entonces es cuando el usuario puede moverse libremente hasta encontrarse con una misión.
+  \item \textbf{Detección e inicio de la misión:} el usuario se aproxima a los personajes de la misión, activándose a su vez el panel de aproximación que detecta que hay una misión alrededor cerca, y pulsa el botón de interacción.
+El gestor da paso al comienzo de la misión.
   \item \textbf{Bloqueo de la locomoción:} se desactiva el movimiento del usuario (locomoción y teleportación) para que permanezca centrado en la observación, pero \textbf{nunca se bloquea el seguimiento de la cabeza}: el usuario debe poder seguir girándose para mirar a los personajes con naturalidad.
   \item \textbf{Recolocación cómoda y sin saltos visibles:} dado que las misiones se definen como \textit{ScriptableObjects} que no pueden almacenar posiciones de escena, el gestor calcula dinámicamente la mejor posición para el usuario a partir del punto medio de los personajes.
 Cuando hay dos personajes, se sitúa al usuario en la \textbf{perpendicular} a la línea que los une, de modo que quede centrado y equidistante de ambos, conservando el lado por el que se aproximó.
 Crucialmente, esta recolocación se realiza \textbf{con la pantalla en negro} (durante un fundido), para que el usuario no perciba el salto de posición, evitando la desorientación.
-En RV no se fuerza nunca la rotación de la cabeza del usuario (algo imposible y mareante): se confía en que ya está mirando hacia los personajes con los que acaba de interactuar.
+En RV no se fuerza nunca la rotación de la cabeza del usuario (algo imposible y mareante): se asume que ya está mirando hacia los personajes con los que acaba de interactuar.
   \item \textbf{Ejecución y captura:} se reinician las métricas de \textit{eye-tracking}, se coloca el lienzo de diálogo entre los personajes y el usuario, y se ejecuta la conversación con sus preguntas.
 Durante toda la escena, los sistemas biométricos registran en silencio la atención y el estado anímico.
+También estarán disponibles las pistas asociadas a cada pregunta del quiz posterior, utilizando el botón que invoca al guía virtual.
   \item \textbf{Cierre y registro:} al terminar, se vuelven a capturar los datos oculares de la misión, se devuelve al usuario a su posición original (de nuevo, con la pantalla en negro), se reactiva la locomoción y se marca la misión como completada, avanzando al siguiente mundo si corresponde.
+Este proceso se repite por cada nivel, hasta que se llega al final del juego: en ese momento, se presentará al usuario un nuevo escenario, parecido al del menú inicial, donde se mostrará un canvas con un mensaje de finalización del videojuego.
 \end{enumerate}
 
 Esta misión de prueba ha permitido verificar que todos los subsistemas conviven correctamente y que la experiencia, de principio a fin, resulta fluida, cómoda y coherente con los principios de accesibilidad del proyecto.
