@@ -1235,9 +1235,9 @@ También estarán disponibles las pistas asociadas a cada pregunta del quiz post
 Este proceso se repite por cada nivel, hasta que se llega al final del juego: en ese momento, se presentará al usuario un nuevo escenario, parecido al del menú inicial, donde se mostrará un canvas con un mensaje de finalización del videojuego.
 \end{enumerate}
 
-Esta misión de prueba ha permitido verificar que todos los subsistemas conviven correctamente y que la experiencia, de principio a fin, resulta fluida, cómoda y coherente con los principios de accesibilidad del proyecto.
+Esta preparación del diseño de niveles del videojuego, ha permitido verificar que todos los subsistemas conviven correctamente y que la experiencia, de principio a fin, resulta fluida, cómoda y coherente con los principios de accesibilidad del proyecto.
 
-\huecofigura[7cm]{Secuencia de la misión de prueba en el gimnasio: aproximación a los personajes, recolocación cómoda del usuario tras el fundido, y desarrollo del diálogo con el cuestionario final.}
+\huecofigura[7cm]{Distintos escenarios del videojuego, diseño de niveles.}
 
 Por último, la migración a un flujo de múltiples escenas (un entorno por mundo) sacó a la luz una dependencia que en el primer trabajo quedaba oculta: los gestores de progreso e inventario del jugador existían únicamente en la escena original y no en las nuevas.
 Para resolverlo de forma robusta, se ha dotado a estos gestores de un mecanismo de \textbf{autoarranque}: mediante la inicialización automática tras la carga de escena, el sistema crea la instancia persistente del gestor si ninguna escena la aporta, garantizando que la cadena de recompensa (completar una misión, registrar el progreso y otorgar las monedas) funcione siempre, con independencia de por qué escena entre el usuario.

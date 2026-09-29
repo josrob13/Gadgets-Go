@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.27)  27 SEP 2026 23:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.27)  28 SEP 2026 22:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -894,4 +894,899 @@ Package: quotchap 2020/11/13 v1.3 Decorative Chapter Headings with Quotes
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 )
-Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count498
+\l__lipsum_a_int=\count499
+\l__lipsum_b_int=\count500
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\inconsolata.sty
+Package: inconsolata 2019/05/17 v1.12
+ `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks53
+\XKV@tempa@toks=\toks54
+)
+\XKV@depth=\count501
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\zifour@ocount=\count502
+)
+Package hyperref Info: Option `pageanchor' set `true' on input line 165.
+Package hyperref Info: Option `colorlinks' set `true' on input line 165.
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 215.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
+
+Package biblatex Warning: Load 'inputenc' before biblatex.
+
+
+Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
+(biblatex)                Loading 'csquotes' recommended.
+
+\@quotelevel=\count503
+\@quotereset=\count504
+(memory.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 12.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+LaTeX Info: Redefining \. on input line 14.
+LaTeX Info: Redefining \% on input line 14.
+)
+\openout1 = `memory.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 326.
+LaTeX Font Info:    ... okay on input line 326.
+Package biblatex Info: Trying to load language 'spanish' -> 'spanish-apa'...
+Package biblatex Info: ... file 'spanish-apa.lbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\spanish-apa.lbx
+File: spanish-apa.lbx 2025/08/27 v9.20 APA biblatex localisation
+Package biblatex Info: Trying to load language 'spanish'...
+Package biblatex Info: ... file 'spanish.lbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\spanish.lbx
+File: spanish.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load language 'spanish'...
+Package biblatex Info: ... file 'spanish.lbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\spanish.lbx
+File: spanish.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
+))
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout3 = `memory.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'memory.bbl' found.
+ (memory.bbl)
+Package biblatex Info: Reference section=0 on input line 326.
+Package biblatex Info: Reference segment=0 on input line 326.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* bindingoffset: 8.53581pt
+* modes: twoside 
+* h-part:(L,W,R)=(70.67737pt, 412.27864pt, 106.01605pt)
+* v-part:(T,H,B)=(101.40665pt, 644.05556pt, 99.58464pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=412.27864pt
+* \textheight=644.05556pt
+* \oddsidemargin=6.94319pt
+* \evensidemargin=33.74606pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=95.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: rotating package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 326.
+(memory.out) (memory.out)
+\@outlinefile=\write6
+\openout6 = `memory.out'.
+
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count505
+\scratchdimen=\dimen296
+\scratchbox=\box88
+\nofMPsegments=\count506
+\nofMParguments=\count507
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count508
+\MPscratchDim=\dimen297
+\MPnumerator=\count509
+\makeMPintoPDFobject=\count510
+\everyMPtoPDFconversion=\toks56
+) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+LaTeX Info: Redefining \sptext on input line 326.
+LaTeX Info: Redefining \. on input line 326.
+LaTeX Info: Redefining \% on input line 326.
+\c@lstlisting=\count511
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+)
+LaTeX Info: Redefining \sptext on input line 339.
+LaTeX Info: Redefining \. on input line 339.
+LaTeX Info: Redefining \% on input line 339.
+<logoURJC.pdf, id=214, 413.545pt x 158.5925pt>
+File: logoURJC.pdf Graphic file (type pdf)
+<use logoURJC.pdf>
+Package pdftex.def Info: logoURJC.pdf  used on input line 343.
+(pdftex.def)             Requested size: 248.1289pt x 95.15622pt.
+ [1
+
+{C:/Users/josec/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./logoURJC.pdf>]
+LaTeX Info: Redefining \sptext on input line 404.
+LaTeX Info: Redefining \. on input line 404.
+LaTeX Info: Redefining \% on input line 404.
+Package hyperref Info: Option `pageanchor' set `true' on input line 406.
+LaTeX Font Info:    Trying to load font information for OT1+pbk on input line 431.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pbk.fd
+File: ot1pbk.fd 2001/06/04 font definitions for OT1/pbk.
+)
+LaTeX Font Info:    Font shape `OT1/pbk/b/n' in size <24.88> not available
+(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 431.
+LaTeX Font Info:    Font shape `OT1/pbk/b/n' in size <100> not available
+(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 431.
+ (memory.toc
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \sptext on input line 2.
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+LaTeX Info: Redefining \sptext on input line 3.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (3.96521pt too wide) detected at line 7
+ []\OT1/cmr/m/n/12 VIII
+ []
+
+[2
+
+])
+\tf@toc=\write7
+\openout7 = `memory.toc'.
+
+ [3] (memory.lof
+LaTeX Info: Redefining \sptext on input line 1.
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \sptext on input line 2.
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+LaTeX Info: Redefining \sptext on input line 3.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
+LaTeX Font Info:    Trying to load font information for OT1+zi4 on input line 15.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\ot1zi4.fd
+File: ot1zi4.fd 2018/01/14 OT1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
+(Font)              scaled to size 12.0pt on input line 15.
+
+Overfull \hbox (2.46066pt too wide) in paragraph at lines 20--20
+ [][] [][][]\OT1/cmr/m/n/12 Diagrama de cla-ses del sis-te-ma de di^^Salo-gos en la v2.0: \OT1/zi4/m/n/12 DialogueNode 
+ []
+
+
+Overfull \hbox (10.98433pt too wide) in paragraph at lines 20--20
+ \OT1/cmr/m/n/12 y sus es-pe-cia-li-za-cio-nes (\OT1/zi4/m/n/12 QuestionNode\OT1/cmr/m/n/12 , \OT1/zi4/m/n/12 PostAnswerNode\OT1/cmr/m/n/12 , \OT1/zi4/m/n/12 InputNode\OT1/cmr/m/n/12 ), 
+ []
+
+[4
+
+{C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}]
+Overfull \hbox (56.55159pt too wide) in paragraph at lines 25--25
+ [][] [][][]\OT1/cmr/m/n/12 Captura del in-for-me HTML ge-ne-ra-do au-tom^^Sati-ca-men-te (\OT1/zi4/m/n/12 informe[]terapeuta\OT1/cmr/m/n/12 ), 
+ []
+
+)
+\tf@lof=\write8
+\openout8 = `memory.lof'.
+
+ [5]
+Cap\'{\i }tulo 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 481--484
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--490
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 491--496
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6
+
+{C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 501--519
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 501--519
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 501--519
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 519.
+LaTeX Info: Redefining \. on input line 519.
+LaTeX Info: Redefining \% on input line 519.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 519.
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 522--541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--541
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 541.
+LaTeX Info: Redefining \. on input line 541.
+LaTeX Info: Redefining \% on input line 541.
+[8]
+LaTeX Info: Redefining \sptext on input line 550.
+LaTeX Info: Redefining \. on input line 550.
+LaTeX Info: Redefining \% on input line 550.
+ [9]
+LaTeX Info: Redefining \sptext on input line 573.
+LaTeX Info: Redefining \. on input line 573.
+LaTeX Info: Redefining \% on input line 573.
+ [10]
+Underfull \hbox (badness 10000) in paragraph at lines 583--597
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 583--597
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 597.
+LaTeX Info: Redefining \. on input line 597.
+LaTeX Info: Redefining \% on input line 597.
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 600--605
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 605.
+LaTeX Info: Redefining \. on input line 605.
+LaTeX Info: Redefining \% on input line 605.
+[12]
+LaTeX Info: Redefining \sptext on input line 625.
+LaTeX Info: Redefining \. on input line 625.
+LaTeX Info: Redefining \% on input line 625.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.625 \chapter
+              {Estado del Arte y Tecnologías Inmersivas} [1]
+Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--644
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--644
+
+ []
+
+[2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 647--652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 654--665
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 665.
+LaTeX Info: Redefining \. on input line 665.
+LaTeX Info: Redefining \% on input line 665.
+[3]
+LaTeX Info: Redefining \sptext on input line 677.
+LaTeX Info: Redefining \. on input line 677.
+LaTeX Info: Redefining \% on input line 677.
+ [4]
+LaTeX Info: Redefining \sptext on input line 696.
+LaTeX Info: Redefining \. on input line 696.
+LaTeX Info: Redefining \% on input line 696.
+ [5]
+Underfull \hbox (badness 10000) in paragraph at lines 704--709
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 718.
+LaTeX Info: Redefining \. on input line 718.
+LaTeX Info: Redefining \% on input line 718.
+[6]
+Overfull \hbox (5.40775pt too wide) in paragraph at lines 726--728
+\OT1/cmr/m/n/12 bre que tie-ne la in-ves-ti-ga-ci^^Son que llev^^So a ca-bo el \OT1/cmr/bx/n/12 Cen-ter for BrainHealth
+ []
+
+LaTeX Info: Redefining \sptext on input line 735.
+LaTeX Info: Redefining \. on input line 735.
+LaTeX Info: Redefining \% on input line 735.
+[7]
+Overfull \hbox (1.58766pt too wide) in paragraph at lines 738--739
+[]\OT1/cmr/bx/n/12 Reconocimiento de Emo-cio-nes\OT1/cmr/m/n/12 , don-de el usua-rio de-ber^^Sa iden-
+ []
+
+LaTeX Info: Redefining \sptext on input line 756.
+LaTeX Info: Redefining \. on input line 756.
+LaTeX Info: Redefining \% on input line 756.
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 767--775
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 775.
+LaTeX Info: Redefining \. on input line 775.
+LaTeX Info: Redefining \% on input line 775.
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 778--784
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--814
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--814
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--814
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--814
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--814
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--814
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 814.
+LaTeX Info: Redefining \. on input line 814.
+LaTeX Info: Redefining \% on input line 814.
+[10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 814.
+LaTeX Info: Redefining \. on input line 814.
+LaTeX Info: Redefining \% on input line 814.
+ [11]
+LaTeX Info: Redefining \sptext on input line 816.
+LaTeX Info: Redefining \. on input line 816.
+LaTeX Info: Redefining \% on input line 816.
+ [12]
+Cap\'{\i }tulo 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 831--835
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13
+
+]
+LaTeX Info: Redefining \sptext on input line 849.
+LaTeX Info: Redefining \. on input line 849.
+LaTeX Info: Redefining \% on input line 849.
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 850--856
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 858.
+LaTeX Info: Redefining \. on input line 858.
+LaTeX Info: Redefining \% on input line 858.
+ [15]
+Underfull \hbox (badness 10000) in paragraph at lines 861--869
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 861--869
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 874.
+LaTeX Info: Redefining \. on input line 874.
+LaTeX Info: Redefining \% on input line 874.
+[16]
+LaTeX Info: Redefining \sptext on input line 888.
+LaTeX Info: Redefining \. on input line 888.
+LaTeX Info: Redefining \% on input line 888.
+ [17]
+Underfull \hbox (badness 10000) in paragraph at lines 891--896
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 901.
+LaTeX Info: Redefining \. on input line 901.
+LaTeX Info: Redefining \% on input line 901.
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 909--918
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 918.
+LaTeX Info: Redefining \. on input line 918.
+LaTeX Info: Redefining \% on input line 918.
+[19]
+Overfull \hbox (45.77916pt too wide) in paragraph at lines 922--922
+[]\OT1/cmr/bx/n/17.28 Arquitectura del Sis-te-ma e In-te-gra-ci^^Son Biom^^Setri-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 933--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 933--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 933--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 933--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 933--958
+
+ []
+
+
+Underfull \vbox (badness 5548) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 958.
+LaTeX Info: Redefining \. on input line 958.
+LaTeX Info: Redefining \% on input line 958.
+ [20]
+LaTeX Info: Redefining \sptext on input line 958.
+LaTeX Info: Redefining \. on input line 958.
+LaTeX Info: Redefining \% on input line 958.
+ [21]
+LaTeX Info: Redefining \sptext on input line 971.
+LaTeX Info: Redefining \. on input line 971.
+LaTeX Info: Redefining \% on input line 971.
+ [22]
+Underfull \hbox (badness 10000) in paragraph at lines 973--978
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 985.
+LaTeX Info: Redefining \. on input line 985.
+LaTeX Info: Redefining \% on input line 985.
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1020.
+LaTeX Info: Redefining \. on input line 1020.
+LaTeX Info: Redefining \% on input line 1020.
+[24]
+
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 1021.
+
+LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
+(Font)              scaled to size 12.0pt on input line 1021.
+LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
+(Font)              scaled to size 10.95pt on input line 1021.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1022.
+LaTeX Info: Redefining \. on input line 1022.
+LaTeX Info: Redefining \% on input line 1022.
+ [25]
+LaTeX Info: Redefining \sptext on input line 1034.
+LaTeX Info: Redefining \. on input line 1034.
+LaTeX Info: Redefining \% on input line 1034.
+ [26]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1049.
+LaTeX Info: Redefining \. on input line 1049.
+LaTeX Info: Redefining \% on input line 1049.
+ [27]
+LaTeX Info: Redefining \sptext on input line 1063.
+LaTeX Info: Redefining \. on input line 1063.
+LaTeX Info: Redefining \% on input line 1063.
+ [28]
+Underfull \hbox (badness 10000) in paragraph at lines 1078--1082
+
+ []
+
+
+Underfull \vbox (badness 2932) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1082.
+LaTeX Info: Redefining \. on input line 1082.
+LaTeX Info: Redefining \% on input line 1082.
+ [29]
+Underfull \hbox (badness 10000) in paragraph at lines 1097--1113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1097--1113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1097--1113
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1113.
+LaTeX Info: Redefining \. on input line 1113.
+LaTeX Info: Redefining \% on input line 1113.
+[30]
+LaTeX Info: Redefining \sptext on input line 1118.
+LaTeX Info: Redefining \. on input line 1118.
+LaTeX Info: Redefining \% on input line 1118.
+ [31]
+Underfull \vbox (badness 2903) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1137.
+LaTeX Info: Redefining \. on input line 1137.
+LaTeX Info: Redefining \% on input line 1137.
+ [32]
+LaTeX Info: Redefining \sptext on input line 1148.
+LaTeX Info: Redefining \. on input line 1148.
+LaTeX Info: Redefining \% on input line 1148.
+ [33]
+Underfull \hbox (badness 10000) in paragraph at lines 1150--1157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1168
+
+ []
+
+
+Underfull \vbox (badness 1194) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1168.
+LaTeX Info: Redefining \. on input line 1168.
+LaTeX Info: Redefining \% on input line 1168.
+ [34]
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+
+ []
+
+
+Overfull \hbox (12.0219pt too wide) in paragraph at lines 1176--1209
+\OT1/cmr/m/n/12 (\OT1/zi4/m/it/12 VRGrabbableCanvas\OT1/cmr/m/n/12 ), el acom-pa~namien-to sua-ve de la gu^^S^^Pa (\OT1/zi4/m/it/12 CompanionLazyFollow\OT1/cmr/m/n/12 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1209.
+LaTeX Info: Redefining \. on input line 1209.
+LaTeX Info: Redefining \% on input line 1209.
+[35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1209.
+LaTeX Info: Redefining \. on input line 1209.
+LaTeX Info: Redefining \% on input line 1209.
+ [36]
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1220
+
+ []
+
+
+Underfull \vbox (badness 4492) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1220.
+LaTeX Info: Redefining \. on input line 1220.
+LaTeX Info: Redefining \% on input line 1220.
+ [37]
+LaTeX Info: Redefining \sptext on input line 1231.
+LaTeX Info: Redefining \. on input line 1231.
+LaTeX Info: Redefining \% on input line 1231.
+ [38]
+LaTeX Info: Redefining \sptext on input line 1245.
+LaTeX Info: Redefining \. on input line 1245.
+LaTeX Info: Redefining \% on input line 1245.
+ [39]
+LaTeX Info: Redefining \sptext on input line 1264.
+LaTeX Info: Redefining \. on input line 1264.
+LaTeX Info: Redefining \% on input line 1264.
+ [40]
+LaTeX Info: Redefining \sptext on input line 1278.
+LaTeX Info: Redefining \. on input line 1278.
+LaTeX Info: Redefining \% on input line 1278.
+ [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1280--1282
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1296.
+LaTeX Info: Redefining \. on input line 1296.
+LaTeX Info: Redefining \% on input line 1296.
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 1303--1305
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1311.
+LaTeX Info: Redefining \. on input line 1311.
+LaTeX Info: Redefining \% on input line 1311.
+[43]
+Overfull \hbox (71.02328pt too wide) in paragraph at lines 1323--1336
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1341.
+LaTeX Info: Redefining \. on input line 1341.
+LaTeX Info: Redefining \% on input line 1341.
+ [44]
+LaTeX Info: Redefining \sptext on input line 1343.
+LaTeX Info: Redefining \. on input line 1343.
+LaTeX Info: Redefining \% on input line 1343.
+ [45]
+Cap\'{\i }tulo 4.
+[46
+
+]
+LaTeX Info: Redefining \sptext on input line 1373.
+LaTeX Info: Redefining \. on input line 1373.
+LaTeX Info: Redefining \% on input line 1373.
+ [47]
+Underfull \hbox (badness 10000) in paragraph at lines 1377--1378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1379--1382
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1383--1386
+
+ []
+
+
+Underfull \vbox (badness 1152) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1394.
+LaTeX Info: Redefining \. on input line 1394.
+LaTeX Info: Redefining \% on input line 1394.
+ [48]
+LaTeX Info: Redefining \sptext on input line 1414.
+LaTeX Info: Redefining \. on input line 1414.
+LaTeX Info: Redefining \% on input line 1414.
+ [49]
+LaTeX Info: Redefining \sptext on input line 1422.
+LaTeX Info: Redefining \. on input line 1422.
+LaTeX Info: Redefining \% on input line 1422.
+ [50] [51] [52
+
+
+] (memory.aux
+LaTeX Info: Redefining \sptext on input line 12.
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+LaTeX Info: Redefining \sptext on input line 13.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+LaTeX Info: Redefining \sptext on input line 14.
+LaTeX Info: Redefining \. on input line 14.
+LaTeX Info: Redefining \% on input line 14.
+)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `memory.out' has not changed.
+(rerunfilecheck)             Checksum: 31CA006C12296C6943839332A512C708;15216.
+Package logreq Info: Writing requests to 'memory.run.xml'.
+\openout1 = `memory.run.xml'.
+
+ )
+(\end occurred inside a group at level 2)
+
+### semi simple group (level 2) entered at line 616 (\begingroup)
+### semi simple group (level 1) entered at line 417 (\begingroup)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 37923 strings out of 467871
+ 728576 string characters out of 5418376
+ 1720437 words of memory out of 5000000
+ 66010 multiletter control sequences out of 15000+600000
+ 641056 words of font info for 87 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 98i,12n,108p,873b,2895s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
+
+ <C:\Users\josec\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/urw/bookman/ubkd8a.pfb>
+Output written on memory.pdf (64 pages, 471785 bytes).
+PDF statistics:
+ 864 PDF objects out of 1000 (max. 8388607)
+ 233 named destinations out of 1000 (max. 500000)
+ 434 words of extra memory for PDF output out of 10000 (max. 10000000)
+

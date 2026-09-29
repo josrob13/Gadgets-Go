@@ -22,7 +22,7 @@ public class EyeTracking : MonoBehaviour
     public GameObject textBoxHighlightUI;
 
     [TextArea]
-    public string warningMessage = "Por favor concéntrate en los personajes o el recuadro de texto.";
+    public string warningMessage = "Por favor, concéntrate en los personajes o el recuadro de texto.";
 
     private float focusedTime;
     private float distractedTime;
