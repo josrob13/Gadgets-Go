@@ -4,7 +4,7 @@
 
 % --- Configuración de Bibliografía ---
 
-\usepackage[backend=biber, style=apa, url=true]{biblatex}
+\usepackage[backend=biber, style=ieee, url=true]{biblatex}
 \addbibresource{bibliografia.bib}
 
 % DEL VIDEO: \usepackage{natbib}
@@ -762,8 +762,14 @@ Los proyectos analizados hasta ahora comparten una limitación común: para medi
 La elección de las \textbf{Meta Quest Pro} como plataforma de este trabajo responde precisamente a que integran de fábrica, dentro del propio visor, dos tecnologías que históricamente requerían equipamiento de laboratorio: el seguimiento ocular y el seguimiento facial.
 Esta sección detalla en qué consisten y por qué resultan especialmente valiosas en el TEA.
 
-\subsection{Eye-tracking (seguimiento ocular) y atención sostenida}
+\subsection{Atención Sostenida y Eye-tracking (seguimiento ocular)}
 
+La atención sostenida es la capacidad de mantener el foco atencional sobre un estímulo o una tarea durante un periodo prolongado de tiempo, resistiendo distracción y fatiga.
+En los modelos clínicos de la atención, como el de \parencite{sohlberg1987effectiveness}, se considera uno de los componentes básicos sobre los que se apoyan otros más complejos, como la atención selectiva, alternante o dividida.
+En el contexto de la interpretabilidad social, esta capacidad resulta especialmente importante, ya que comprender una conversación, las emociones intrínsecas en ella y sacar inferencias exige mantener la atención en los interlocutores, su rostro y gestos durante toda la interacción.
+Las personas TEA tienden, en su mayoría, a expresar patrones atencionales atípicos ante los estímulos sociales, con un menor tiempo de fijación en los rostros y una mayor atención hacia elementos no sociales del entorno \parencite{klin2002,chitategmark2016}, como también nos avisaban desde la Asociación Asperger.
+Disponer del \textit{eye-tracking} permite medir de forma objetiva y precisa esta atención que prestará el usuario.
+\\\\
 El seguimiento ocular consiste en determinar, en tiempo real, hacia dónde está mirando cada ojo del usuario.
 Las Meta Quest Pro lo logran mediante un conjunto de cámaras de infrarrojos integradas en el interior del visor que, apuntando a los ojos del usuario, capturan la posición de la pupila y la reflexión corneal para reconstruir el vector de la mirada.
 El sistema expone esa información al desarrollador a través de la API de Meta como un rayo de mirada con un origen, una dirección y un valor de \textbf{confianza} que indica la fiabilidad de la medida en cada instante.\\
@@ -818,7 +824,7 @@ dando pie a un mejor punto de partida para el entrenamiento de habilidades socia
 Este capítulo constituye el engranaje principal del trabajo: en él se recorre, de principio a fin, todo el proceso de llevar el videojuego a la Realidad Virtual.
 Se ha organizado en cuatro grandes apartados que siguen el orden natural del desarrollo.
 
-\section{Diseño y Optimización de Activos (Assets)}
+\section{Diseño y Uso de Activos (Assets)}
 \label{sec:assets}
 
 La migración a la Realidad Virtual no es únicamente una cuestión de código: exige repensar por completo los activos visuales del proyecto.
@@ -928,7 +934,7 @@ La filosofía de diseño hereda la del primer trabajo (modularidad, desacoplamie
 
 \subsection{Tecnologías Unity, Meta XR SDK y OpenXR}
 
-\subsubsection{Investigación sobre la base tecnológica}
+\subsubsection{Estudio de librerias para Meta Quest Pro}
 
 Antes de escribir una sola línea de código de Realidad Virtual, hubo que resolver una pregunta nada trivial: ¿cómo se lleva exactamente un juego de Unity ya existente a unas gafas Meta Quest Pro y, sobre todo, cómo se accede a sus sensores?
 La migración no era un simple cambio de plataforma de compilación, y la decisión sobre qué capa tecnológica adoptar condicionaba todo el desarrollo posterior.
@@ -1092,7 +1098,7 @@ La segunda, \textit{``Pista''}, solo se habilita cuando el usuario se encuentra 
 Cada pregunta del juego puede llevar, en su definición, una pista explicativa propia editable por el desarrollador.
 De forma coherente con el principio de separación, cada vez que se solicita una pista, la guía notifica al sistema de analíticas para que registre el uso, dato que tiene valor clínico, porque indica en qué inferencias el usuario necesita más apoyo.
 
-\subsection{Persistencia y Exportación de métricas}
+\subsection{Persistencia de sesión y Exportación de métricas}
 
 Para evitar que el progreso del jugador viva únicamente en el momento del juego, y que cada ejecución signifique partir de cero, se ha trabajado en la persistencia.
 Para ello, se ha modificado la estructura antigua, eliminándose la clase \texttt{GameData} y creando en su lugar dos estructuras de datos independientes: una para el progreso del jugador y otra para las métricas terapéuticas.
@@ -1157,7 +1163,7 @@ Todo este flujo respeta las dos fuentes de pausa del sistema, deteniéndose y re
 
 \huecofigura[6.5cm]{Diagrama de clases del sistema de diálogos en la v2.0: \texttt{DialogueNode} y sus especializaciones (\texttt{QuestionNode}, \texttt{PostAnswerNode}, \texttt{InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}
 
-\subsection{Navegación e interacción en RV: lo aprovechado del SDK y lo construido a medida}
+\subsection{Navegación e interacción en RV: Librería SDK y adaptaciones \textit{ad hoc}}
 
 Esta sección concentra el contenido del trabajo de adaptación a la Realidad Virtual y, con él, la frontera entre lo que el SDK de Meta resolvía y lo que hubo que desarrollar desde cero.
 Se aborda en tres frentes: el \textbf{método de interacción} (mandos frente a manos), la \textbf{interacción propiamente dicha} (puntero láser, selección, entrada de texto) y la \textbf{navegación} por el mundo (locomoción), donde el confort y la prevención del mareo cinético han sido la prioridad absoluta.\\
@@ -1248,7 +1254,7 @@ Esta misma robustez se ha aplicado al cierre de la experiencia: cuando el usuari
 \label{sec:pruebas}
 
 El perfil de los usuarios finales convierte las pruebas de este proyecto en algo más que una verificación funcional: una caída de fotogramas o una latencia excesiva en los sensores no son aquí meros defectos técnicos, sino potenciales fuentes de mareo y malestar para un colectivo especialmente sensible.
-Este apartado recoge las pruebas de rendimiento sobre el hardware real, la evaluación de la precisión del seguimiento biométrico, el análisis de la experiencia de usuario y, finalmente, una simulación del informe que recibiría el terapeuta.
+Este apartado recoge las pruebas de rendimiento sobre el hardware real, la evaluación de la precisión del seguimiento biométrico, el análisis de la experiencia de usuario y, finalmente, se describen los resultados obtenidos en el ensayo autorizado por el Comité Ético de la Universidad Rey Juan Carlos, pudiendo observarse también el formato del informe terapéutico final.
 Conviene aclarar que, sobre la base de las pruebas funcionales y de punta a punta ya validadas en el primer trabajo (el correcto encadenamiento de diálogos, el registro de errores, la progresión entre mundos), esta fase se ha centrado en lo verdaderamente nuevo de la versión 2.0: el comportamiento del hardware inmersivo, la fiabilidad de los sensores biométricos y el confort de la experiencia.
 
 \subsection{Pruebas de rendimiento: Tasa de refresco y latencia de sensores}
@@ -1264,7 +1270,7 @@ Las técnicas de optimización descritas en el apartado de diseño de activos (\
   \item \textbf{Tiempos de carga y transiciones:} se validó que las transiciones entre escenas y misiones (siempre acompañadas de fundidos a negro) son fluidas y no rompen la sensación de presencia.
 \end{enumerate}
 
-\huecofigura[6.5cm]{Captura del \textit{Profiler} de Unity y del \textit{Metrics Tool} de Meta durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco y el coste de los sensores biométricos.}
+\huecofigura[6.5cm]{\textit{Profiler} de Unity y de \textit{Metrics Tool} de Meta durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco.}
 
 \subsection{Evaluación de la precisión del seguimiento ocular y facial}
 
@@ -1279,30 +1285,48 @@ El periodo de enfriamiento posterior a cada alerta se introdujo precisamente a r
 
 Conviene ser honestos sobre el alcance de esta evaluación: se trata de una validación técnica del funcionamiento de los sensores y de los algoritmos, no de un estudio clínico de su validez como medida del estado interno del usuario.
 Esta distinción, así como sus implicaciones, se aborda en el capítulo de discusión.\\
-
+\\
 Junto a la evaluación de los sensores, se ha verificado de forma sistemática la correcta integración de toda la cadena en Realidad Virtual.
 Se ha comprobado que la locomoción suave y las recolocaciones del jugador durante las misiones ocurren siempre con la pantalla en negro, sin saltos visibles; que el puntero láser selecciona con fiabilidad tanto botones de interfaz como objetos del mundo; que la voz espacial de los diálogos nunca se solapa y se pausa y reanuda con limpieza ante la incomodidad facial o la apertura de la guía; que el registro de métricas biométricas se acota correctamente a cada misión; y que la exportación de los tres artefactos (JSON, CSV e informe HTML) se produce sin pérdida de datos.
 Estas pruebas de integración, realizadas repetidamente sobre el dispositivo, han sido las que han permitido afinar los numerosos parámetros de confort y detección hasta alcanzar una experiencia estable.
 
-\subsection{Análisis de la experiencia de usuario (UX) en Realidad Virtual}
+\subsection{Análisis de la experiencia de usuario (UX), Ensayo Clínico y Comité Ético}
 
 La experiencia de usuario en RV se evaluó atendiendo a las dimensiones que más impactan en este colectivo, siguiendo las directrices de accesibilidad para videojuegos \parencite{gag}: el confort, la claridad y la sensación de control.
-Las pruebas y la validación continua con la Asociación permitieron confirmar varios aciertos de diseño y, también, ajustar algunos aspectos:
+Gracias al Comité Ético de la Universidad, se pudo aprobar el plan de un ensayo clínico con usuarios reales aunque no objetivos (neurotípicos) para que probaran el videojuego y aportaran datos verosímiles para el análisis de la experiencia de usuario y mejora de esta.
+Para ello, el ensayo está estructurado en cuatro partes:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{Confort de la locomoción:} el desplazamiento suave (\texttt{SmoothTeleport}) frente al teletransporte instantáneo demostró reducir la sensación de desorientación, y la recolocación con la pantalla en negro durante las misiones eliminó por completo los saltos visuales bruscos.
-  \item \textbf{Legibilidad de la interfaz espacial:} la distancia y el tamaño de los paneles de diálogo y cuestionario resultaron cómodos de leer, y la posibilidad de recolocar el lienzo a gusto del usuario fue especialmente bien recibida, al adaptarse a distintas estaturas y posturas.
-  \item \textbf{Sutileza del sistema de pausa:} el panel de descanso cumplió su función sin generar frustración adicional, gracias a su tono sereno y a que la reanudación queda siempre en manos del usuario.
-  \item \textbf{Acompañamiento de la guía:} la presencia del compañero y el panel de seguimiento de misiones aportaron estructura y redujeron la incertidumbre, en línea con la preferencia del colectivo por la anticipación y el orden.
+  \item \textbf{Cuestionario de interpretabilidad social previo:} el usuario deberá completar un cuestionario de interpretabilidad social antes de jugar al videojuego, para medir sus dificultades en el aspecto central que se trata en este proyecto.
+  \\\\
+  Para encontrar un cuestionario que fuera fiel a los avances en investigación sobre interpretabilidad social, y pudiera realmente reflejar el estado actual del usuario en este aspecto, se hizo un trabajo de investigación profundo sobre los posibles cuestionarios que han sido creados para este propósito.
+  Tras una primera investigación inicial, se reunieron unos 15 cuestionarios en total, todos ellos con el potencial de cubrir parcial o completamente la interpretabilidad social en un individuo.
+  Los cuestionarios recogidos fueron clasificados en un excel por su dominio principal; la edad de los usuarios con los que se probó; el formato; coste; si existía alguna traducción o validación al español; cómo se podía conseguir el cuestionario (contacto); y algunos comentarios extra.
+  Tras descartar los cuestionarios de pago y aquellos que tampoco estaban completamente alineados con la interpretabilidad social, se decidió, en conjunto con Celia Nogales, Doctora en Psicología y actual docente de la Universidad Rey Juan Carlos, que los cuestionarios relevantes para el ensayo serían ``Historias Extrañas de Happé (1994)'' \parencite{happe1994} y algunas preguntas específicamente seleccionadas de ``Interpersonal Reactivity Index'' \parencite{davis1983}.
+  Estos serán los cuestionarios sobre habilidades sociales que completarán los usuarios antes de comenzar su experiencia en el juego.
+  \item \textbf{Prueba del videojuego:} el usuario probarán el juego de comienzo a fin, experimentando el flujo final tal y como se ha descrito en capítulos anteriores.
+  \item \textbf{Cuestionario social post-videojuego:} el usuario responderá de nuevo al mismo cuestionario social que se le presentó al inicio del ensayo, ahora habiendo entrenado sus habilidades sociales con una sesión del videojuego.
+  \item \textbf{Cuestionarios de usabilidad y aspectos generales del videojuego:} el usuario deberá responder a dos cuestionarios adicionales sobre la usabilidad y aspectos generales del videojuego: el ``System Usability Scale'', cuestionario estandarizado sobre usabilidad; y un cuestionario subjetivo de creación propia en escala Likert.
+  Gracias a estos cuestionarios, se podrá saber qué aspectos son mejorables en cuanto a la propia experiencia del videojuego, su usabilidad y añadidos extra que podrían implementarse de cara a trabajos futuros.
 \end{enumerate}
 
-\huecofigura[7cm]{Capturas de la experiencia de usuario en RV: el menú principal, una misión en curso y el HUD cómodo de monedas siempre visible en la zona baja del campo de visión.}
+\huecofigura[5.5cm]{Excel con los 15 cuestionarios iniciales recogidos. En rojo los que no eran gratuitos, en verde los finalmente escogidos.}
 
-\subsection{Simulación de datos: ejemplo de informe de progreso exportado}
+Las pruebas realizadas gracias a los ensayos permitieron confirmar varios aciertos de diseño y, también, recoger los puntos negativos:
 
-Para ilustrar el valor del sistema de \textit{logging} de cara al terapeuta, se presenta una simulación del informe que se genera automáticamente al guardar la partida.
-Además del volcado en CSV (pensado para el análisis estadístico fino), el sistema genera, mediante la clase \texttt{ReportGenerator}, un \textbf{informe visual en HTML} autocontenido, que incorpora la librería de gráficos \textit{Chart.js} (embebida para poder consultarse sin conexión) y que el terapeuta puede abrir en cualquier navegador.\\
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
+  \item \textbf{Confort de la locomoción:} el desplazamiento suave (\texttt{SmoothTeleport}) y el movimiento vía \textit{joystick} frente al teletransporte instantáneo demostró reducir la sensación de desorientación, y la recolocación con la pantalla en negro durante las misiones eliminó por completo los saltos visuales bruscos.
+  Aunque, el movimiento por \textit{joystick} seguía siendo preferido por los usuarios, al no tener ni siquiera que aprender los gestos de teleportación con el \textit{hand-tracking} integrado.
+  \item \textbf{Legibilidad de la interfaz espacial:} la distancia y el tamaño de los paneles de diálogo y cuestionario resultaron cómodos de leer, y la posibilidad de recolocar el lienzo a gusto del usuario fue especialmente bien recibida, al adaptarse a distintas estaturas y posturas.
+  \item \textbf{Sutileza del sistema de pausa:} el panel de descanso cumplió su función sin generar frustración adicional, gracias a su tono sereno y a que la reanudación queda siempre en manos del usuario.
+  \item \textbf{Acompañamiento de la guía:} la presencia del compañero y el panel de seguimiento de misiones aportaron estructura y redujeron la incertidumbre, un aspecto importante a la hora de utilizar esta herramienta con gente neurodivergente, ya que la sensación de acompañamiento refuerza la confianza y seguridad en sí mismos.
+\end{enumerate}
 
+\huecofigura[6cm]{Capturas de la experiencia de usuario en RV: el menú principal, una misión en curso y el HUD cómodo de monedas siempre visible en la zona baja del campo de visión.}
+
+Detrás de la experiencia de los ensayos, el mecanismo fundamental para poder observar los resultados con mayor precisión es el de la exportación de métricas terapéuticas.
+Para ello, además del volcado en CSV (pensado para el análisis estadístico fino), el sistema genera, mediante la clase \texttt{ReportGenerator}, un \textbf{informe visual en HTML} autocontenido, que incorpora la librería de gráficos \textit{Chart.js} (embebida para poder consultarse sin conexión) y que el terapeuta puede abrir en cualquier navegador.
+\\\\
 El informe se estructura en varias secciones:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
@@ -1312,28 +1336,9 @@ El informe se estructura en varias secciones:
   \item \textbf{Tabla de detalle:} una tabla con la totalidad de las métricas por misión, para una consulta exhaustiva.
 \end{enumerate}
 
-La Tabla~\ref{tab:informe} muestra un ejemplo de los datos por misión tal y como aparecerían en el detalle del informe, con valores simulados a modo ilustrativo.
+La Figura~\ref{fig:informe} muestra un ejemplo de los datos por misión tal y como aparecerían en el detalle del informe, con valores traídos de uno de los usuarios del ensayo clínico.
 
-\begin{table}[H]
-\centering
-\caption{Ejemplo simulado del detalle por misión incluido en el informe del terapeuta.}
-\label{tab:informe}
-\renewcommand{\arraystretch}{1.3}
-\footnotesize
-\begin{tabular}{|p{2.6cm}|c|c|c|c|c|c|}
-\hline
-\textbf{Misión} & \textbf{Tiempo (s)} & \textbf{Incorr.} & \textbf{Pistas} & \textbf{Enfocado (s)} & \textbf{Distraído (s)} & \textbf{Incomod. (ev.)} \\
-\hline
-Gimnasio --- M1 & 132.4 & 1 & 0 & 98.2 & 34.2 & 0 \\
-\hline
-Gimnasio --- M2 & 156.8 & 2 & 1 & 102.5 & 54.3 & 1 \\
-\hline
-Cafetería --- M1 & 121.0 & 0 & 0 & 105.7 & 15.3 & 0 \\
-\hline
-Oficina --- M1 & 188.3 & 3 & 2 & 120.1 & 68.2 & 2 \\
-\hline
-\end{tabular}
-\end{table}
+\huecofigura[5cm]{Ejemplo de la tabla de métricas del ensayo, detalle por misión.}
 
 Como se observa, el informe convierte datos en bruto en información clínicamente accionable: permite ver, por ejemplo, que la misión de la oficina concentró más errores, más pistas y más tiempo distraído, lo que sugiere que su contenido social resultó más exigente para el usuario y merece una atención especial en la terapia.
 
@@ -1342,9 +1347,17 @@ Como se observa, el informe convierte datos en bruto en información clínicamen
 % Capitulo 4 (fusión de los antiguos capítulos 7 y 8)
 \chapter{Discusión, Conclusiones y Trabajos Futuros}
 
-Concluido el desarrollo, y manteniendo la responsabilidad que implica colaborar con la Asociación Asperger de Madrid, corresponde una reflexión crítica sobre lo que esta versión 2.0 representa, sus ventajas reales y sus límites honestos.
+Concluido el desarrollo, y manteniendo la responsabilidad al colaborar con la Asociación Asperger de Madrid, corresponde una reflexión crítica sobre lo que esta versión 2.0 representa, qué aporta y qué añadidos podrían perfeccionar aún más este proyecto.
 
-\section{Ventajas competitivas de la tecnología Meta Quest Pro en el tratamiento del TEA}
+\section{Análisis crítico del uso de Meta Quest Pro en el apoyo a personas TEA}
+
+La sociedad avanza, y con ella, la tecnología. Cada día se ven avances nuevos y diferentes en todos los ámbitos posibles, a pesar de que ahora mismo destaque principalmente la Inteligencia Artificial.
+El mundo se encuentra en un momento donde la accesibilidad a esas nuevas tecnologías define más que nunca la calidad de vida de una persona; más aún si esta percibe el mundo que le rodea de manera distinta a la mayoría, ya sea por una disfunción de movilidad (avances en robótica), o, en este caso, por ser una persona autista.
+Este motivo, remarcado ya varias veces en el documento, ha sido la fuente inspiradora y motivación del trabajo. El objetivo final es poder mejorar la calidad de vida de estas personas y generar un impacto real que ayude a integrarse en el día a día.
+No obstante, la tecnología no resuelve todos los problemas de inmediato, y aunque ofrezca destacadas posibilidades, no siempre está todo cubierto.
+Este capítulo trata precisamente de valorar de manera crítica las ventajas, desventajas y límites reales de esta tecnología enfocada directamente hacia el apoyo al Trastorno del Espectro Autista.
+
+\subsection{Ventajas y desventajas de la tecnología Meta Quest Pro en el tratamiento del TEA}
 
 La principal aportación de este trabajo es haber demostrado que un dispositivo de consumo asequible puede convertirse en una herramienta terapéutica con capacidades que hasta hace poco requerían equipamiento de laboratorio.
 Las ventajas competitivas de la plataforma elegida pueden resumirse en los siguientes puntos:
@@ -1357,7 +1370,7 @@ Las ventajas competitivas de la plataforma elegida pueden resumirse en los sigui
   \item \textbf{Privacidad por diseño:} el procesamiento biométrico ocurre dentro del dispositivo y los datos se organizan de forma pseudonimizada por terapeuta, respetando la sensibilidad de la información manejada.
 \end{enumerate}
 
-\section{Alcance y limitaciones de la detección automática de emociones}
+\subsection{Alcance y limitaciones de la tecnología}
 
 El aspecto que más cautela exige es la detección automática del estado anímico, y conviene ser absolutamente honesto sobre su alcance para no generar expectativas infundadas:
 

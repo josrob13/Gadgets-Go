@@ -35,3 +35,21 @@ pagina 36 citacion mal hecha despues de "nauseas", al principio
 **NO SE USA AÚN EL NUEVO PACK DE UI, HAY QUE AÑADIRLO**
 
 utilizar la animacion del signo de interrogación para decir si una mision esta completada o no
+
+INCLUIR EL 3.4.4 DENTRO DEL 3.4.3, completar el contenido
+
+conclusiones que sean utiles para seguir mi trabajo
+
+SURVEYS -> state-of-art review
+
+en discusiones pensar un esquema sobre lo que hablar
+
+video explicativo de como se juega, mision de familiarizacion de uso ¿?
+
+experimento listo
+
+revisar el 3.4.1, sobre la tasa de refresco y las tecnicas de optimizacion descritas en el 3.1
+
+Charts.js es embebido? se puede usar sin conexión? -> revisar
+
+Despues de - Figura 3.19. Ejemplo de la tabla de métricas del ensayo, detalle por misión. - plantear correctamente el parrafo de despues, comentando los detalles que correspondan a la captura de las metricas.

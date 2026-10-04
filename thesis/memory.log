@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.27)  28 SEP 2026 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.27)  4 OCT 2026 14:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -122,10 +122,7 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 File: blx-dm.def 2025/07/10 v3.21 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'apa.dbx' found.
- (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\apa.dbx
-File: apa.dbx 2025/08/27 v9.20 APA biblatex style data model
-)
+Package biblatex Info: ... file 'ieee.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@afterword=\count332
@@ -164,48 +161,38 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@savedshortauthor=\count365
 \c@shorteditor=\count366
 \c@savedshorteditor=\count367
-\c@narrator=\count368
-\c@savednarrator=\count369
-\c@execproducer=\count370
-\c@savedexecproducer=\count371
-\c@execdirector=\count372
-\c@savedexecdirector=\count373
-\c@with=\count374
-\c@savedwith=\count375
-\c@labelname=\count376
-\c@savedlabelname=\count377
-\c@institution=\count378
-\c@savedinstitution=\count379
-\c@lista=\count380
-\c@savedlista=\count381
-\c@listb=\count382
-\c@savedlistb=\count383
-\c@listc=\count384
-\c@savedlistc=\count385
-\c@listd=\count386
-\c@savedlistd=\count387
-\c@liste=\count388
-\c@savedliste=\count389
-\c@listf=\count390
-\c@savedlistf=\count391
-\c@location=\count392
-\c@savedlocation=\count393
-\c@organization=\count394
-\c@savedorganization=\count395
-\c@origlocation=\count396
-\c@savedoriglocation=\count397
-\c@origpublisher=\count398
-\c@savedorigpublisher=\count399
-\c@publisher=\count400
-\c@savedpublisher=\count401
-\c@language=\count402
-\c@savedlanguage=\count403
-\c@origlanguage=\count404
-\c@savedoriglanguage=\count405
-\c@citation=\count406
-\c@savedcitation=\count407
-\c@pageref=\count408
-\c@savedpageref=\count409
+\c@labelname=\count368
+\c@savedlabelname=\count369
+\c@institution=\count370
+\c@savedinstitution=\count371
+\c@lista=\count372
+\c@savedlista=\count373
+\c@listb=\count374
+\c@savedlistb=\count375
+\c@listc=\count376
+\c@savedlistc=\count377
+\c@listd=\count378
+\c@savedlistd=\count379
+\c@liste=\count380
+\c@savedliste=\count381
+\c@listf=\count382
+\c@savedlistf=\count383
+\c@location=\count384
+\c@savedlocation=\count385
+\c@organization=\count386
+\c@savedorganization=\count387
+\c@origlocation=\count388
+\c@savedoriglocation=\count389
+\c@origpublisher=\count390
+\c@savedorigpublisher=\count391
+\c@publisher=\count392
+\c@savedpublisher=\count393
+\c@language=\count394
+\c@savedlanguage=\count395
+\c@origlanguage=\count396
+\c@savedoriglanguage=\count397
+\c@pageref=\count398
+\c@savedpageref=\count399
 \shorthandwidth=\skip59
 \shortjournalwidth=\skip60
 \shortserieswidth=\skip61
@@ -229,58 +216,58 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
-\c@textcitecount=\count410
-\c@textcitetotal=\count411
-\c@textcitemaxnames=\count412
-\c@biburlbigbreakpenalty=\count413
-\c@biburlbreakpenalty=\count414
-\c@biburlnumpenalty=\count415
-\c@biburlucpenalty=\count416
-\c@biburllcpenalty=\count417
+\c@textcitecount=\count400
+\c@textcitetotal=\count401
+\c@textcitemaxnames=\count402
+\c@biburlbigbreakpenalty=\count403
+\c@biburlbreakpenalty=\count404
+\c@biburlnumpenalty=\count405
+\c@biburlucpenalty=\count406
+\c@biburllcpenalty=\count407
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count418
+\c@smartand=\count408
 )
-Package biblatex Info: Trying to load bibliography style 'apa'...
-Package biblatex Info: ... file 'apa.bbx' found.
- (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\apa.bbx
-File: apa.bbx 2025/08/27 v9.20 APA biblatex references style
+Package biblatex Info: Trying to load bibliography style 'ieee'...
+Package biblatex Info: ... file 'ieee.bbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+File: ieee.bbx 2025-08-01 v1.4f biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
+File: numeric-comp.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+File: numeric.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count419
-\c@bbx:relatedtotal=\count420
-)
-Package biblatex Info: Delimiter 'nameyeardelim' in context 'bib' already defined, overwriting.
-Package biblatex Info: Delimiter 'nameyeardelim' in context 'biblist' already defined, overwriting.
-Package biblatex Info: Delimiter 'nonameyeardelim' in context 'bib' already defined, overwriting.
-Package biblatex Info: Delimiter 'nonameyeardelim' in context 'biblist' already defined, overwriting.
-)
-Package biblatex Info: Trying to load citation style 'apa'...
-Package biblatex Info: ... file 'apa.cbx' found.
- (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\apa.cbx
-File: apa.cbx 2025/08/27 v9.20 APA biblatex citation style
-Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined, overwriting.
-Package biblatex Info: Delimiter 'andothersdelim' in context '' already defined, overwriting.
-Package biblatex Info: Redefining '\fullcite'.
-Package biblatex Info: Redefining '\citeauthor'.
-Package biblatex Info: Redefining '\citeyear'.
+\c@bbx:relatedcount=\count409
+\c@bbx:relatedtotal=\count410
+))))
+Package biblatex Info: Trying to load citation style 'ieee'...
+Package biblatex Info: ... file 'ieee.cbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+File: ieee.cbx 2025-08-01 v1.4f biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-verb'...
+Package biblatex Info: ... file 'numeric-verb.cbx' found.
+ (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
+File: numeric-verb.cbx 2025/07/10 v3.21 biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
-Package biblatex Info: Redefining '\cites'.
 Package biblatex Info: Redefining '\parencite'.
-Package biblatex Info: Redefining '\parencites'.
 Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\footcites'.
 Package biblatex Info: Redefining '\footcitetext'.
-Package biblatex Info: Redefining '\footcitetexts'.
 Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\smartcites'.
 Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
 Package biblatex Info: Redefining '\textcites'.
-)
+))
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
@@ -292,7 +279,7 @@ Package biblatex Info: Document encoding is UTF8 ....
 Package: expl3 2025-12-24 L3 programming layer (loader) 
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count421
+\l__color_backend_stack_int=\count411
 ))
 Package biblatex Info: ... and expl3
 (biblatex)             2025-12-24 L3 programming layer (loader) 
@@ -307,9 +294,9 @@ Package: geometry 2026/03/07 v6.0 Page Geometry
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count422
-\Gm@cntv=\count423
-\c@Gm@tempcnt=\count424
+\Gm@cnth=\count412
+\Gm@cntv=\count413
+\c@Gm@tempcnt=\count414
 \Gm@bindingoffset=\dimen149
 \Gm@wd@mp=\dimen150
 \Gm@odd@mp=\dimen151
@@ -336,8 +323,8 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen164
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count425
-\c@continuedfloat=\count426
+\c@caption@flags=\count415
+\c@continuedfloat=\count416
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
@@ -353,13 +340,13 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count427
+\c@section@level=\count417
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen165
-\Hy@linkcounter=\count428
-\Hy@pagecounter=\count429
+\Hy@linkcounter=\count418
+\Hy@pagecounter=\count419
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -367,7 +354,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count430
+\Hy@SavedSpaceFactor=\count420
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -381,7 +368,7 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count431
+\c@Hy@tempcnt=\count421
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen166
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
@@ -389,7 +376,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count432
+\Fld@menulength=\count422
 \Field@Width=\dimen167
 \Fld@charsize=\dimen168
 Package hyperref Info: Hyper figures OFF on input line 6078.
@@ -399,15 +386,15 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring ON on input line 6096.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count433
-\c@Item=\count434
-\c@Hfootnote=\count435
+\Hy@abspage=\count423
+\c@Item=\count424
+\c@Hfootnote=\count425
 )
 Package hyperref Info: Driver: hpdftex.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count436
-\c@bookmark@seq@number=\count437
+\Fld@listcount=\count426
+\c@bookmark@seq@number=\count427
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
@@ -433,15 +420,15 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 \Gin@req@width=\dimen170
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
 Package: fancyvrb 2026/04/16 4.6a verbatim text (tvz,hv)
-\FV@CodeLineNo=\count438
+\FV@CodeLineNo=\count428
 \FV@InFile=\read3
 \FV@TabBox=\box54
-\c@FancyVerbLine=\count439
-\FV@StepNumber=\count440
+\c@FancyVerbLine=\count429
+\FV@StepNumber=\count430
 \FV@OutFile=\write4
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
-\babel@savecnt=\count441
+\babel@savecnt=\count431
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2068.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2070.
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2072.
@@ -453,7 +440,7 @@ LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) o
 \l@unhyphenated=\language80
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read4
-\bbl@dirlevel=\count442
+\bbl@dirlevel=\count432
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
 (babel)             Reported on input line 4196.
@@ -469,7 +456,7 @@ Package babel Info: Importing font and identification data for spanish
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks19
-\es@quotdepth=\count443
+\es@quotdepth=\count433
 Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making . an active character on input line 675.
 Package babel Info: Making < an active character on input line 722.
@@ -498,24 +485,24 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count444
+\lst@mode=\count434
 \lst@gtempboxa=\box55
 \lst@token=\toks22
-\lst@length=\count445
+\lst@length=\count435
 \lst@currlwidth=\dimen172
-\lst@column=\count446
-\lst@pos=\count447
+\lst@column=\count436
+\lst@pos=\count437
 \lst@lostspace=\dimen173
 \lst@width=\dimen174
-\lst@newlines=\count448
-\lst@lineno=\count449
+\lst@newlines=\count438
+\lst@lineno=\count439
 \lst@maxwidth=\dimen175
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-\c@lstnumber=\count450
-\lst@skipnumbers=\count451
+\c@lstnumber=\count440
+\lst@skipnumbers=\count441
 \lst@framebox=\box56
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
@@ -560,14 +547,14 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yd=\dimen187
 \w@pgf@writea=\write5
 \r@pgf@reada=\read5
-\c@pgf@counta=\count452
-\c@pgf@countb=\count453
-\c@pgf@countc=\count454
-\c@pgf@countd=\count455
+\c@pgf@counta=\count442
+\c@pgf@countb=\count443
+\c@pgf@countc=\count444
+\c@pgf@countd=\count445
 \t@pgf@toka=\toks27
 \t@pgf@tokb=\toks28
 \t@pgf@tokc=\toks29
-\pgf@sys@id@count=\count456
+\pgf@sys@id@count=\count446
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
@@ -578,21 +565,21 @@ File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count457
-\pgfsyssoftpath@bigbuffer@items=\count458
+\pgfsyssoftpath@smallbuffer@items=\count447
+\pgfsyssoftpath@bigbuffer@items=\count448
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
 Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen188
-\pgfmath@count=\count459
+\pgfmath@count=\count449
 \pgfmath@box=\box58
 \pgfmath@toks=\toks30
 \pgfmath@stack@operand=\toks31
 \pgfmath@stack@operation=\toks32
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count460
+\c@pgfmathroundto@lastzeros=\count450
 )) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen189
@@ -622,7 +609,7 @@ File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box59
 \pgf@hbox=\box60
 \pgf@layerbox@main=\box61
-\pgf@picture@serial@count=\count461
+\pgf@picture@serial@count=\count451
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgflinewidth=\dimen263
@@ -643,8 +630,8 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen268
-\pgf@sys@shading@range@num=\count462
-\pgf@shadingcount=\count463
+\pgf@sys@shading@range@num=\count452
+\pgf@shadingcount=\count453
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
@@ -679,7 +666,7 @@ Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count464
+\pgf@plot@mark@count=\count454
 \pgfplotmarksize=\dimen273
 )
 \tikz@lastx=\dimen274
@@ -694,17 +681,17 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@figbox@bg=\box65
 \tikz@tempbox=\box66
 \tikz@tempbox@bg=\box67
-\tikztreelevel=\count465
-\tikznumberofchildren=\count466
-\tikznumberofcurrentchild=\count467
-\tikz@fig@count=\count468
+\tikztreelevel=\count455
+\tikznumberofchildren=\count456
+\tikznumberofcurrentchild=\count457
+\tikz@fig@count=\count458
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count469
-\pgfmatrixcurrentcolumn=\count470
-\pgf@matrix@numberofcolumns=\count471
+\pgfmatrixcurrentrow=\count459
+\pgfmatrixcurrentcolumn=\count460
+\pgf@matrix@numberofcolumns=\count461
 )
-\tikz@expandcount=\count472
+\tikz@expandcount=\count462
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
@@ -723,9 +710,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box69
 \tcb@lowerbox=\box70
 \tcb@phantombox=\box71
-\c@tcbbreakpart=\count473
-\c@tcblayer=\count474
-\c@tcolorbox@number=\count475
+\c@tcbbreakpart=\count463
+\c@tcblayer=\count464
+\c@tcolorbox@number=\count465
 \l__tcobox_tmpa_box=\box72
 \l__tcobox_tmpa_dim=\dimen282
 \tcb@temp=\box73
@@ -749,14 +736,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count476
+\inf@bad=\count466
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count477
-\leftroot@=\count478
+\uproot@=\count467
+\leftroot@=\count468
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count479
-\DOTSCASE@=\count480
+\classnum@=\count469
+\DOTSCASE@=\count470
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -769,20 +756,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen285
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count481
+\macc@depth=\count471
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count482
+\c@MaxMatrixCols=\count472
 \dotsspace@=\muskip22
-\c@parentequation=\count483
-\dspbrk@lvl=\count484
+\c@parentequation=\count473
+\dspbrk@lvl=\count474
 \tag@help=\toks39
-\row@=\count485
-\column@=\count486
-\maxfields@=\count487
+\row@=\count475
+\column@=\count476
+\maxfields@=\count477
 \andhelp@=\toks40
 \eqnshift@=\dimen286
 \alignsep@=\dimen287
@@ -835,11 +822,11 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@outerparindent=\dimen294
 \enit@toks=\toks47
 \enit@inbox=\box83
-\enit@count@id=\count488
-\enitdp@description=\count489
+\enit@count@id=\count478
+\enitdp@description=\count479
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count490
+\c@float@type=\count480
 \float@exts=\toks48
 \float@box=\box84
 \@float@everytoks=\toks49
@@ -849,13 +836,13 @@ Package: setspace 2022/12/04 v6.7b set line spacing
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
 \@float@every@algorithm=\toks50
-\c@algorithm=\count491
+\c@algorithm=\count481
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count492
-\c@ALC@line=\count493
-\c@ALC@rem=\count494
-\c@ALC@depth=\count495
+\c@ALC@unique=\count482
+\c@ALC@line=\count483
+\c@ALC@rem=\count484
+\c@ALC@depth=\count485
 \ALC@tlm=\skip84
 \algorithmicindent=\skip85
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
@@ -877,7 +864,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \@temptokenb=\toks51
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/graphics\rotating.sty
 Package: rotating 2025/01/14 v2.16e rotated objects in LaTeX
-\c@r@tfl@t=\count496
+\c@r@tfl@t=\count486
 \rotFPtop=\skip100
 \rotFPbot=\skip101
 \rot@float@box=\box86
@@ -885,7 +872,7 @@ Package: rotating 2025/01/14 v2.16e rotated objects in LaTeX
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip102
-\multirow@cntb=\count497
+\multirow@cntb=\count487
 \multirow@dima=\skip103
 \bigstrutjot=\dimen295
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/quotchap\quotchap.sty
@@ -895,9 +882,9 @@ Package: quotchap 2020/11/13 v1.3 Decorative Chapter Headings with Quotes
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count498
-\l__lipsum_a_int=\count499
-\l__lipsum_b_int=\count500
+\g__lipsum_par_int=\count488
+\l__lipsum_a_int=\count489
+\l__lipsum_b_int=\count490
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -912,10 +899,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks53
 \XKV@tempa@toks=\toks54
 )
-\XKV@depth=\count501
+\XKV@depth=\count491
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-\zifour@ocount=\count502
+\zifour@ocount=\count492
 )
 Package hyperref Info: Option `pageanchor' set `true' on input line 165.
 Package hyperref Info: Option `colorlinks' set `true' on input line 165.
@@ -930,8 +917,8 @@ Package biblatex Warning: Load 'inputenc' before biblatex.
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count503
-\@quotereset=\count504
+\@quotelevel=\count493
+\@quotereset=\count494
 (memory.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -962,20 +949,11 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 326.
 LaTeX Font Info:    ... okay on input line 326.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 326.
 LaTeX Font Info:    ... okay on input line 326.
-Package biblatex Info: Trying to load language 'spanish' -> 'spanish-apa'...
-Package biblatex Info: ... file 'spanish-apa.lbx' found.
- (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\spanish-apa.lbx
-File: spanish-apa.lbx 2025/08/27 v9.20 APA biblatex localisation
 Package biblatex Info: Trying to load language 'spanish'...
 Package biblatex Info: ... file 'spanish.lbx' found.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\spanish.lbx
 File: spanish.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
 )
-Package biblatex Info: Trying to load language 'spanish'...
-Package biblatex Info: ... file 'spanish.lbx' found.
- (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\spanish.lbx
-File: spanish.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
-))
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -1035,16 +1013,16 @@ Package hyperref Info: Link coloring ON on input line 326.
 
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count505
+\scratchcounter=\count495
 \scratchdimen=\dimen296
 \scratchbox=\box88
-\nofMPsegments=\count506
-\nofMParguments=\count507
+\nofMPsegments=\count496
+\nofMParguments=\count497
 \everyMPshowfont=\toks55
-\MPscratchCnt=\count508
+\MPscratchCnt=\count498
 \MPscratchDim=\dimen297
-\MPnumerator=\count509
-\makeMPintoPDFobject=\count510
+\MPnumerator=\count499
+\makeMPintoPDFobject=\count500
 \everyMPtoPDFconversion=\toks56
 ) (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1055,7 +1033,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 LaTeX Info: Redefining \sptext on input line 326.
 LaTeX Info: Redefining \. on input line 326.
 LaTeX Info: Redefining \% on input line 326.
-\c@lstlisting=\count511
+\c@lstlisting=\count501
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
 )
@@ -1139,7 +1117,7 @@ Overfull \hbox (10.98433pt too wide) in paragraph at lines 20--20
 [4
 
 {C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}]
-Overfull \hbox (56.55159pt too wide) in paragraph at lines 25--25
+Overfull \hbox (56.55159pt too wide) in paragraph at lines 27--27
  [][] [][][]\OT1/cmr/m/n/12 Captura del in-for-me HTML ge-ne-ra-do au-tom^^Sati-ca-men-te (\OT1/zi4/m/n/12 informe[]terapeuta\OT1/cmr/m/n/12 ), 
  []
 
@@ -1282,6 +1260,8 @@ LaTeX Info: Redefining \sptext on input line 677.
 LaTeX Info: Redefining \. on input line 677.
 LaTeX Info: Redefining \% on input line 677.
  [4]
+LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
+(Font)              scaled to size 10.0pt on input line 679.
 LaTeX Info: Redefining \sptext on input line 696.
 LaTeX Info: Redefining \. on input line 696.
 LaTeX Info: Redefining \% on input line 696.
@@ -1310,65 +1290,78 @@ LaTeX Info: Redefining \sptext on input line 756.
 LaTeX Info: Redefining \. on input line 756.
 LaTeX Info: Redefining \% on input line 756.
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 767--775
+Overfull \hbox (8.4925pt too wide) in paragraph at lines 765--765
+[]\OT1/cmr/bx/n/14.4 Atenci^^Son Sos-te-ni-da y Eye-tracking (se-gui-mien-to ocu-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 767--781
 
  []
 
-LaTeX Info: Redefining \sptext on input line 775.
-LaTeX Info: Redefining \. on input line 775.
-LaTeX Info: Redefining \% on input line 775.
+
+Underfull \hbox (badness 10000) in paragraph at lines 767--781
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 781.
+LaTeX Info: Redefining \. on input line 781.
+LaTeX Info: Redefining \% on input line 781.
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 778--784
+Underfull \hbox (badness 10000) in paragraph at lines 784--790
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--814
+Underfull \hbox (badness 10000) in paragraph at lines 793--820
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--814
+Underfull \hbox (badness 10000) in paragraph at lines 793--820
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--814
+Underfull \hbox (badness 10000) in paragraph at lines 793--820
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--814
+Underfull \hbox (badness 10000) in paragraph at lines 793--820
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--814
+Underfull \hbox (badness 10000) in paragraph at lines 793--820
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--814
+Underfull \hbox (badness 10000) in paragraph at lines 793--820
 
  []
 
-LaTeX Info: Redefining \sptext on input line 814.
-LaTeX Info: Redefining \. on input line 814.
-LaTeX Info: Redefining \% on input line 814.
-[10]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 814.
-LaTeX Info: Redefining \. on input line 814.
-LaTeX Info: Redefining \% on input line 814.
+LaTeX Info: Redefining \sptext on input line 820.
+LaTeX Info: Redefining \. on input line 820.
+LaTeX Info: Redefining \% on input line 820.
+ [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 820.
+LaTeX Info: Redefining \. on input line 820.
+LaTeX Info: Redefining \% on input line 820.
  [11]
-LaTeX Info: Redefining \sptext on input line 816.
-LaTeX Info: Redefining \. on input line 816.
-LaTeX Info: Redefining \% on input line 816.
+LaTeX Info: Redefining \sptext on input line 822.
+LaTeX Info: Redefining \. on input line 822.
+LaTeX Info: Redefining \% on input line 822.
  [12]
 Cap\'{\i }tulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--835
+Underfull \hbox (badness 10000) in paragraph at lines 837--841
 
  []
 
@@ -1378,359 +1371,380 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [13
 
 ]
-LaTeX Info: Redefining \sptext on input line 849.
-LaTeX Info: Redefining \. on input line 849.
-LaTeX Info: Redefining \% on input line 849.
+LaTeX Info: Redefining \sptext on input line 855.
+LaTeX Info: Redefining \. on input line 855.
+LaTeX Info: Redefining \% on input line 855.
  [14]
-Underfull \hbox (badness 10000) in paragraph at lines 850--856
+Underfull \hbox (badness 10000) in paragraph at lines 856--862
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 858.
-LaTeX Info: Redefining \. on input line 858.
-LaTeX Info: Redefining \% on input line 858.
+LaTeX Info: Redefining \sptext on input line 864.
+LaTeX Info: Redefining \. on input line 864.
+LaTeX Info: Redefining \% on input line 864.
  [15]
-Underfull \hbox (badness 10000) in paragraph at lines 861--869
+Underfull \hbox (badness 10000) in paragraph at lines 867--875
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 861--869
+Underfull \hbox (badness 10000) in paragraph at lines 867--875
 
  []
 
-LaTeX Info: Redefining \sptext on input line 874.
-LaTeX Info: Redefining \. on input line 874.
-LaTeX Info: Redefining \% on input line 874.
+LaTeX Info: Redefining \sptext on input line 880.
+LaTeX Info: Redefining \. on input line 880.
+LaTeX Info: Redefining \% on input line 880.
 [16]
-LaTeX Info: Redefining \sptext on input line 888.
-LaTeX Info: Redefining \. on input line 888.
-LaTeX Info: Redefining \% on input line 888.
+LaTeX Info: Redefining \sptext on input line 894.
+LaTeX Info: Redefining \. on input line 894.
+LaTeX Info: Redefining \% on input line 894.
  [17]
-Underfull \hbox (badness 10000) in paragraph at lines 891--896
+Underfull \hbox (badness 10000) in paragraph at lines 897--902
 
  []
 
-LaTeX Info: Redefining \sptext on input line 901.
-LaTeX Info: Redefining \. on input line 901.
-LaTeX Info: Redefining \% on input line 901.
+LaTeX Info: Redefining \sptext on input line 907.
+LaTeX Info: Redefining \. on input line 907.
+LaTeX Info: Redefining \% on input line 907.
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 909--918
+Underfull \hbox (badness 10000) in paragraph at lines 915--924
 
  []
 
-LaTeX Info: Redefining \sptext on input line 918.
-LaTeX Info: Redefining \. on input line 918.
-LaTeX Info: Redefining \% on input line 918.
+LaTeX Info: Redefining \sptext on input line 924.
+LaTeX Info: Redefining \. on input line 924.
+LaTeX Info: Redefining \% on input line 924.
 [19]
-Overfull \hbox (45.77916pt too wide) in paragraph at lines 922--922
+Overfull \hbox (45.77916pt too wide) in paragraph at lines 928--928
 []\OT1/cmr/bx/n/17.28 Arquitectura del Sis-te-ma e In-te-gra-ci^^Son Biom^^Setri-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--958
+Underfull \hbox (badness 10000) in paragraph at lines 939--964
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--958
+Underfull \hbox (badness 10000) in paragraph at lines 939--964
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--958
+Underfull \hbox (badness 10000) in paragraph at lines 939--964
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--958
+Underfull \hbox (badness 10000) in paragraph at lines 939--964
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--958
+Underfull \hbox (badness 10000) in paragraph at lines 939--964
 
  []
 
 
 Underfull \vbox (badness 5548) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 958.
-LaTeX Info: Redefining \. on input line 958.
-LaTeX Info: Redefining \% on input line 958.
+LaTeX Info: Redefining \sptext on input line 964.
+LaTeX Info: Redefining \. on input line 964.
+LaTeX Info: Redefining \% on input line 964.
  [20]
-LaTeX Info: Redefining \sptext on input line 958.
-LaTeX Info: Redefining \. on input line 958.
-LaTeX Info: Redefining \% on input line 958.
+LaTeX Info: Redefining \sptext on input line 964.
+LaTeX Info: Redefining \. on input line 964.
+LaTeX Info: Redefining \% on input line 964.
  [21]
-LaTeX Info: Redefining \sptext on input line 971.
-LaTeX Info: Redefining \. on input line 971.
-LaTeX Info: Redefining \% on input line 971.
- [22]
-Underfull \hbox (badness 10000) in paragraph at lines 973--978
+Overfull \hbox (14.47449pt too wide) in paragraph at lines 973--975
+\OT1/zi4/m/n/12 OVRCameraRig\OT1/cmr/m/n/12 , que pro-por-cio-na los an-cla-jes de la ca-be-za (\OT1/zi4/m/n/12 centerEyeAnchor\OT1/cmr/m/n/12 )
+ []
+
+LaTeX Info: Redefining \sptext on input line 977.
+LaTeX Info: Redefining \. on input line 977.
+LaTeX Info: Redefining \% on input line 977.
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 979--984
 
  []
 
-LaTeX Info: Redefining \sptext on input line 985.
-LaTeX Info: Redefining \. on input line 985.
-LaTeX Info: Redefining \% on input line 985.
+LaTeX Info: Redefining \sptext on input line 991.
+LaTeX Info: Redefining \. on input line 991.
+LaTeX Info: Redefining \% on input line 991.
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1020
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
 
  []
 
-LaTeX Info: Redefining \sptext on input line 1020.
-LaTeX Info: Redefining \. on input line 1020.
-LaTeX Info: Redefining \% on input line 1020.
+LaTeX Info: Redefining \sptext on input line 1026.
+LaTeX Info: Redefining \. on input line 1026.
+LaTeX Info: Redefining \% on input line 1026.
 [24]
 
 LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
-(Font)              using `OT1/zi4/m/n' instead on input line 1021.
+(Font)              using `OT1/zi4/m/n' instead on input line 1027.
 
 LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
-(Font)              scaled to size 12.0pt on input line 1021.
+(Font)              scaled to size 12.0pt on input line 1027.
 LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
-(Font)              scaled to size 10.95pt on input line 1021.
+(Font)              scaled to size 10.95pt on input line 1027.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1022.
-LaTeX Info: Redefining \. on input line 1022.
-LaTeX Info: Redefining \% on input line 1022.
+LaTeX Info: Redefining \sptext on input line 1028.
+LaTeX Info: Redefining \. on input line 1028.
+LaTeX Info: Redefining \% on input line 1028.
  [25]
-LaTeX Info: Redefining \sptext on input line 1034.
-LaTeX Info: Redefining \. on input line 1034.
-LaTeX Info: Redefining \% on input line 1034.
+LaTeX Info: Redefining \sptext on input line 1040.
+LaTeX Info: Redefining \. on input line 1040.
+LaTeX Info: Redefining \% on input line 1040.
  [26]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1049.
-LaTeX Info: Redefining \. on input line 1049.
-LaTeX Info: Redefining \% on input line 1049.
+LaTeX Info: Redefining \sptext on input line 1055.
+LaTeX Info: Redefining \. on input line 1055.
+LaTeX Info: Redefining \% on input line 1055.
  [27]
-LaTeX Info: Redefining \sptext on input line 1063.
-LaTeX Info: Redefining \. on input line 1063.
-LaTeX Info: Redefining \% on input line 1063.
+LaTeX Info: Redefining \sptext on input line 1069.
+LaTeX Info: Redefining \. on input line 1069.
+LaTeX Info: Redefining \% on input line 1069.
  [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1078--1082
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1088
 
  []
 
 
 Underfull \vbox (badness 2932) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1082.
-LaTeX Info: Redefining \. on input line 1082.
-LaTeX Info: Redefining \% on input line 1082.
+LaTeX Info: Redefining \sptext on input line 1088.
+LaTeX Info: Redefining \. on input line 1088.
+LaTeX Info: Redefining \% on input line 1088.
  [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1119
 
  []
 
-LaTeX Info: Redefining \sptext on input line 1113.
-LaTeX Info: Redefining \. on input line 1113.
-LaTeX Info: Redefining \% on input line 1113.
+LaTeX Info: Redefining \sptext on input line 1119.
+LaTeX Info: Redefining \. on input line 1119.
+LaTeX Info: Redefining \% on input line 1119.
 [30]
-LaTeX Info: Redefining \sptext on input line 1118.
-LaTeX Info: Redefining \. on input line 1118.
-LaTeX Info: Redefining \% on input line 1118.
+LaTeX Info: Redefining \sptext on input line 1124.
+LaTeX Info: Redefining \. on input line 1124.
+LaTeX Info: Redefining \% on input line 1124.
  [31]
 Underfull \vbox (badness 2903) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1137.
-LaTeX Info: Redefining \. on input line 1137.
-LaTeX Info: Redefining \% on input line 1137.
+LaTeX Info: Redefining \sptext on input line 1143.
+LaTeX Info: Redefining \. on input line 1143.
+LaTeX Info: Redefining \% on input line 1143.
  [32]
-LaTeX Info: Redefining \sptext on input line 1148.
-LaTeX Info: Redefining \. on input line 1148.
-LaTeX Info: Redefining \% on input line 1148.
+LaTeX Info: Redefining \sptext on input line 1154.
+LaTeX Info: Redefining \. on input line 1154.
+LaTeX Info: Redefining \% on input line 1154.
  [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1157
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1162--1168
+Underfull \hbox (badness 10000) in paragraph at lines 1168--1174
 
  []
 
 
 Underfull \vbox (badness 1194) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1168.
-LaTeX Info: Redefining \. on input line 1168.
-LaTeX Info: Redefining \% on input line 1168.
+LaTeX Info: Redefining \sptext on input line 1174.
+LaTeX Info: Redefining \. on input line 1174.
+LaTeX Info: Redefining \% on input line 1174.
  [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1215
 
  []
 
 
-Overfull \hbox (12.0219pt too wide) in paragraph at lines 1176--1209
+Overfull \hbox (12.0219pt too wide) in paragraph at lines 1182--1215
 \OT1/cmr/m/n/12 (\OT1/zi4/m/it/12 VRGrabbableCanvas\OT1/cmr/m/n/12 ), el acom-pa~namien-to sua-ve de la gu^^S^^Pa (\OT1/zi4/m/it/12 CompanionLazyFollow\OT1/cmr/m/n/12 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1215
 
  []
 
-LaTeX Info: Redefining \sptext on input line 1209.
-LaTeX Info: Redefining \. on input line 1209.
-LaTeX Info: Redefining \% on input line 1209.
+LaTeX Info: Redefining \sptext on input line 1215.
+LaTeX Info: Redefining \. on input line 1215.
+LaTeX Info: Redefining \% on input line 1215.
 [35]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1209.
-LaTeX Info: Redefining \. on input line 1209.
-LaTeX Info: Redefining \% on input line 1209.
+LaTeX Info: Redefining \sptext on input line 1215.
+LaTeX Info: Redefining \. on input line 1215.
+LaTeX Info: Redefining \% on input line 1215.
  [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1214--1220
+Underfull \hbox (badness 10000) in paragraph at lines 1220--1226
 
- []
-
-
-Underfull \vbox (badness 4492) has occurred while \output is active []
-
-LaTeX Info: Redefining \sptext on input line 1220.
-LaTeX Info: Redefining \. on input line 1220.
-LaTeX Info: Redefining \% on input line 1220.
- [37]
-LaTeX Info: Redefining \sptext on input line 1231.
-LaTeX Info: Redefining \. on input line 1231.
-LaTeX Info: Redefining \% on input line 1231.
- [38]
-LaTeX Info: Redefining \sptext on input line 1245.
-LaTeX Info: Redefining \. on input line 1245.
-LaTeX Info: Redefining \% on input line 1245.
- [39]
-LaTeX Info: Redefining \sptext on input line 1264.
-LaTeX Info: Redefining \. on input line 1264.
-LaTeX Info: Redefining \% on input line 1264.
- [40]
-LaTeX Info: Redefining \sptext on input line 1278.
-LaTeX Info: Redefining \. on input line 1278.
-LaTeX Info: Redefining \% on input line 1278.
- [41]
-Underfull \hbox (badness 10000) in paragraph at lines 1280--1282
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1296.
-LaTeX Info: Redefining \. on input line 1296.
-LaTeX Info: Redefining \% on input line 1296.
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 1303--1305
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1311.
-LaTeX Info: Redefining \. on input line 1311.
-LaTeX Info: Redefining \% on input line 1311.
-[43]
-Overfull \hbox (71.02328pt too wide) in paragraph at lines 1323--1336
- [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1341.
-LaTeX Info: Redefining \. on input line 1341.
-LaTeX Info: Redefining \% on input line 1341.
+LaTeX Info: Redefining \sptext on input line 1226.
+LaTeX Info: Redefining \. on input line 1226.
+LaTeX Info: Redefining \% on input line 1226.
+ [37]
+LaTeX Info: Redefining \sptext on input line 1237.
+LaTeX Info: Redefining \. on input line 1237.
+LaTeX Info: Redefining \% on input line 1237.
+ [38]
+LaTeX Info: Redefining \sptext on input line 1251.
+LaTeX Info: Redefining \. on input line 1251.
+LaTeX Info: Redefining \% on input line 1251.
+ [39]
+LaTeX Info: Redefining \sptext on input line 1269.
+LaTeX Info: Redefining \. on input line 1269.
+LaTeX Info: Redefining \% on input line 1269.
+ [40]
+LaTeX Info: Redefining \sptext on input line 1284.
+LaTeX Info: Redefining \. on input line 1284.
+LaTeX Info: Redefining \% on input line 1284.
+ [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1286--1292
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1300--1307
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1307.
+LaTeX Info: Redefining \. on input line 1307.
+LaTeX Info: Redefining \% on input line 1307.
+[42]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1314.
+LaTeX Info: Redefining \. on input line 1314.
+LaTeX Info: Redefining \% on input line 1314.
+ [43]
+Underfull \vbox (badness 5802) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1326.
+LaTeX Info: Redefining \. on input line 1326.
+LaTeX Info: Redefining \% on input line 1326.
  [44]
-LaTeX Info: Redefining \sptext on input line 1343.
-LaTeX Info: Redefining \. on input line 1343.
-LaTeX Info: Redefining \% on input line 1343.
- [45]
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1331
+
+ []
+
+
+LaTeX Warning: Reference `fig:informe' on page 45 undefined on input line 1339.
+
+LaTeX Info: Redefining \sptext on input line 1340.
+LaTeX Info: Redefining \. on input line 1340.
+LaTeX Info: Redefining \% on input line 1340.
+[45]
+LaTeX Info: Redefining \sptext on input line 1348.
+LaTeX Info: Redefining \. on input line 1348.
+LaTeX Info: Redefining \% on input line 1348.
+ [46]
 Cap\'{\i }tulo 4.
-[46
+[47
 
 ]
-LaTeX Info: Redefining \sptext on input line 1373.
-LaTeX Info: Redefining \. on input line 1373.
-LaTeX Info: Redefining \% on input line 1373.
- [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1377--1378
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1379--1382
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1383--1386
-
- []
-
-
-Underfull \vbox (badness 1152) has occurred while \output is active []
-
-LaTeX Info: Redefining \sptext on input line 1394.
-LaTeX Info: Redefining \. on input line 1394.
-LaTeX Info: Redefining \% on input line 1394.
+LaTeX Info: Redefining \sptext on input line 1381.
+LaTeX Info: Redefining \. on input line 1381.
+LaTeX Info: Redefining \% on input line 1381.
  [48]
-LaTeX Info: Redefining \sptext on input line 1414.
-LaTeX Info: Redefining \. on input line 1414.
-LaTeX Info: Redefining \% on input line 1414.
- [49]
-LaTeX Info: Redefining \sptext on input line 1422.
-LaTeX Info: Redefining \. on input line 1422.
-LaTeX Info: Redefining \% on input line 1422.
- [50] [51] [52
+Underfull \hbox (badness 10000) in paragraph at lines 1390--1391
+
+ []
 
 
-] (memory.aux
+Underfull \hbox (badness 10000) in paragraph at lines 1392--1395
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1396.
+LaTeX Info: Redefining \. on input line 1396.
+LaTeX Info: Redefining \% on input line 1396.
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 1396--1399
+
+ []
+
+
+Underfull \vbox (badness 6412) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1421.
+LaTeX Info: Redefining \. on input line 1421.
+LaTeX Info: Redefining \% on input line 1421.
+ [50]
+LaTeX Info: Redefining \sptext on input line 1435.
+LaTeX Info: Redefining \. on input line 1435.
+LaTeX Info: Redefining \% on input line 1435.
+ [51] [52]
+Overfull \hbox (8.61671pt too wide) in paragraph at lines 1443--1443
+\OT1/cmr/m/n/12 Spec-trum Di-sor-der: An Evidence-Based Sys-te-ma-tic Re-view'', \OT1/cmr/m/it/12 Sen-sors\OT1/cmr/m/n/12 , vol. 18,
+ []
+
+[53
+
+
+]
+LaTeX Info: Redefining \sptext on input line 1447.
+LaTeX Info: Redefining \. on input line 1447.
+LaTeX Info: Redefining \% on input line 1447.
+ [54] (memory.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -1749,8 +1763,11 @@ L3 programming layer <2025-12-24>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `memory.out' has not changed.
-(rerunfilecheck)             Checksum: 31CA006C12296C6943839332A512C708;15216.
+(rerunfilecheck)             Checksum: DE0A316F276BE4E1CE6BD73A98B0EBD2;15177.
 Package logreq Info: Writing requests to 'memory.run.xml'.
 \openout1 = `memory.run.xml'.
 
@@ -1761,13 +1778,13 @@ Package logreq Info: Writing requests to 'memory.run.xml'.
 ### semi simple group (level 1) entered at line 417 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 37923 strings out of 467871
- 728576 string characters out of 5418376
- 1720437 words of memory out of 5000000
- 66010 multiletter control sequences out of 15000+600000
- 641056 words of font info for 87 fonts, out of 8000000 for 9000
+ 37413 strings out of 467871
+ 717729 string characters out of 5418376
+ 1621498 words of memory out of 5000000
+ 65486 multiletter control sequences out of 15000+600000
+ 641612 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,12n,108p,873b,2895s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,108p,873b,2352s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
 
@@ -1783,10 +1800,10 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
- <C:\Users\josec\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/urw/bookman/ubkd8a.pfb>
-Output written on memory.pdf (64 pages, 471785 bytes).
+ <C:\Users\josec\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/urw/bookman/ubkd8a.pfb>
+Output written on memory.pdf (66 pages, 470137 bytes).
 PDF statistics:
- 864 PDF objects out of 1000 (max. 8388607)
- 233 named destinations out of 1000 (max. 500000)
+ 893 PDF objects out of 1000 (max. 8388607)
+ 244 named destinations out of 1000 (max. 500000)
  434 words of extra memory for PDF output out of 10000 (max. 10000000)
 
