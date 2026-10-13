@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Intro 10
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "Perfecto, pues ahora que nos conocemos, te env\xEDo a tu primera localizaci\xF3n.
-    En cada localizaci\xF3n tendr\xE1s disponibles 2 misiones."
+  text: "Perfecto, pues ahora que nos conocemos, te env\xEDo a tu primera localizaci\xF3n,
+    para que comiences con tus primeras misiones. Cuando las completes, se te trasladar\xE1
+    a la siguiente localizaci\xF3n."
   nextNode: {fileID: 11400000, guid: e0498c1557f6bce4a9ae4c0a38780efe, type: 2}
   speakerAnimator: Robi
   actorState:

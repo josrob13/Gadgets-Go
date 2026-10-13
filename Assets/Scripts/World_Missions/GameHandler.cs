@@ -5,9 +5,11 @@ public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
     [SerializeField] private WorldsDB worldsDB;
-    [Tooltip("Escena que se carga cuando el jugador completa TODOS los mundos. " +
-             "Debe estar añadida en File → Build Settings.")]
+
+    [Tooltip("Escena que se carga cuando el jugador completa TODOS los mundos. " + "Debe estar añadida en File → Build Settings.")]
     [SerializeField] private string endSceneName = "ThankYou";
+    [Tooltip("Escena Intro")]
+    [SerializeField] private string introSceneName = "Intro";
     private int indexWorld = 0;
     public string PlayerName { get; set; } = "Jugador";
     public int CurrentWorldIndex => indexWorld;
@@ -35,37 +37,57 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    private PlayerSaveData BuildProgress() => new PlayerSaveData
+    {
+        playerName = PlayerName,
+        savedWorldIndex = indexWorld,
+        completedMissions = PlayerProgress.Instance != null ? PlayerProgress.Instance.ExportCompletedMissions() : new List<string>(),
+        inventory = PlayerInventory.Instance != null ? PlayerInventory.Instance.Export() : new InventoryData()
+    };
+
+    private void ApplyProgress(PlayerSaveData p)
+    {
+        PlayerName = p.playerName;
+        indexWorld = p.savedWorldIndex;
+        PlayerProgress.Instance?.ImportCompletedMissions(p.completedMissions);
+        PlayerInventory.Instance?.Import(p.inventory);
+    }
+
+    private void OnApplicationPause(bool paused) { if (paused) SaveLight(); }
+    private void OnApplicationQuit() { SaveLight(); }
+
+    public void SaveProgress() => SaveSystem.SaveProgress(BuildProgress());
+
+    private void BeginSession(string folder, bool isNew)
+    {
+        SaveSystem.SetTherapistFolder(folder);
+        ApplyProgress(isNew ? new PlayerSaveData() : SaveSystem.LoadProgress());
+        AnalyticsManager.Instance?.Import(isNew ? new TherapyMetrics() : SaveSystem.LoadMetrics());
+    }
+
+    public void SaveLight()
+    {
+        SaveProgress();
+        AnalyticsManager.Instance?.SaveMetricsLight();
+    }
+
+    public void SaveFull()
+    {
+        var p = BuildProgress();
+        SaveSystem.SaveProgress(p);
+        AnalyticsManager.Instance?.SaveMetricsAndExport(p);
+    }
+
     public void StartNewGame(string baseTherapistId)
     {
         Debug.Log("[GameHandler] Iniciando Nueva Partida...");
 
-        // 1. Crear nueva carpeta con timestamp
-        string therapistFolder = SaveSystem.CreateNewTherapistFolder(baseTherapistId);
-        SaveSystem.SetTherapistFolder(therapistFolder);
+        BeginSession(SaveSystem.CreateNewTherapistFolder(baseTherapistId), isNew: true);
+        SaveProgress();
+        SceneLoader.Instance?.LoadSceneAsync(introSceneName);
 
-        // 2. Reseteamos los analytics para empezar de cero
-        AnalyticsManager.Instance?.ResetAnalytics();
-
-        // 3. Creamos datos limpios por defecto
-        GameData newGameData = new GameData();
-        newGameData.playerName = PlayerName;
-
-        // 4. Sobrescribimos el archivo viejo en el disco duro
-        SaveSystem.Save(newGameData);
-
-        // 5. Reiniciamos las variables internas del GameHandler por si acaso
-        this.indexWorld = newGameData.savedWorldIndex;
-
-        // 6. Llamamos al SceneLoader para ir a la intro (que a su vez cargará el primer mundo)
-        // Asegúrate de que "Intro" y "World1-PolyGym" estén en File -> Build Settings
-        if (SceneLoader.Instance != null)
-        {
-            SceneLoader.Instance.LoadSceneAsync("Intro");
-        }
-        else
-        {
+        if (SceneLoader.Instance == null)
             Debug.LogError("¡No se encontró el SceneLoader en la escena!");
-        }
     }
 
     public void LoadCurrentWorld()
@@ -88,31 +110,21 @@ public class GameHandler : MonoBehaviour
 
     public void ContinueGame()
     {
-        string mostRecentFolder = SaveSystem.GetMostRecentTherapistFolder();
-        if (!string.IsNullOrEmpty(mostRecentFolder))
+        string folder = SaveSystem.GetMostRecentTherapistFolder();
+        if (string.IsNullOrEmpty(folder))
         {
-            SaveSystem.SetTherapistFolder(mostRecentFolder);
-            GameData loadedData = SaveSystem.Load();
-            this.indexWorld = loadedData.savedWorldIndex;
-            AnalyticsManager.Instance?.LoadAnalyticsFromSave();
-
-            Debug.Log($"[GameHandler] Continuando partida en carpeta: {mostRecentFolder}");
-            LoadCurrentWorld();
+            Debug.LogWarning("[GameHandler] No hay partidas guardadas.");
+            return;
         }
-        else
-        {
-            Debug.LogWarning("[GameHandler] No hay partidas guardadas para continuar.");
-        }
+        BeginSession(folder, isNew: false);
+        Debug.Log($"[GameHandler] Continuando partida en carpeta: {folder}");
+        LoadCurrentWorld();
     }
 
     public void LoadGame(string therapistId)
     {
-        SaveSystem.SetTherapistFolder(therapistId);
-        GameData loadedData = SaveSystem.Load();
-        this.indexWorld = loadedData.savedWorldIndex;
-        AnalyticsManager.Instance?.LoadAnalyticsFromSave();
-
         Debug.Log($"[GameHandler] Cargando partida desde carpeta: {therapistId}");
+        BeginSession(therapistId, isNew: false);
         LoadCurrentWorld();
     }
     
@@ -131,9 +143,8 @@ public class GameHandler : MonoBehaviour
         if (!PlayerProgress.Instance.IsWorldCompleted(current)) return false;
 
         indexWorld = idx + 1;
-
         // Persist the new world index to disk immediately.
-        AnalyticsManager.Instance?.SaveAnalytics();
+        SaveLight();
 
         if (indexWorld >= worldsDB.worlds.Length)
         {

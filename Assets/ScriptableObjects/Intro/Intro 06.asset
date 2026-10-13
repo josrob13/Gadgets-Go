@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Intro 06
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "El objetivo es descubrir qu\xE9 cosas les est\xE1 ocurriendo a las personas,
-    y qui\xE9n es el responsable de todo esto."
+  text: "El objetivo es descubrir qu\xE9 cosas les est\xE1n ocurriendo a las personas,
+    para mapear el comportamiento social en la ciudad."
   nextNode: {fileID: 11400000, guid: 2c62bc256cc53f24fa64fe995721d350, type: 2}
   speakerAnimator: Robi
   actorState:

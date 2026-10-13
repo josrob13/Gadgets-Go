@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: "No solo est\xE1n sucediendo cosas malas, tambi\xE9n est\xE1n pasando cosas
-    buenas... Por eso es tan extra\xF1o."
+    buenas... Como la vida misma."
   nextNode: {fileID: 11400000, guid: 4c87f0c2b1397594c86b2338593888a3, type: 2}
   speakerAnimator: Robi
   actorState:

@@ -5,10 +5,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField] private GameObject normalUI;
-    [SerializeField] private CanvasGroup fadeCanvasGroup;
-    [SerializeField] private float defaultFadeDuration = 1.5f;
-
     // ── Referencia al fade nativo de OVR (se busca automáticamente en Start) ──
     private OVRScreenFade ovrFade;
 
@@ -23,9 +19,6 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if (fadeCanvasGroup == null)
-            fadeCanvasGroup = GetComponentInChildren<CanvasGroup>();
     }
 
     private void Start()
@@ -41,8 +34,8 @@ public class UIManager : MonoBehaviour
 
     public void GameQuit()
     {
-        Debug.Log("Game is quitting — saving analytics...");
-        AnalyticsManager.Instance?.SaveAnalytics();
+        Debug.Log("Game is quitting — saving...");
+        GameHandler.Instance?.SaveLight();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -50,66 +43,28 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Fade  (VR → OVRScreenFade | Desktop → CanvasGroup)
-    // ─────────────────────────────────────────────────────────────────────────
+    public IEnumerator FadeOut(float duration) => Fade(fadeOut: true, duration);
+    public IEnumerator FadeIn(float duration)  => Fade(fadeOut: false, duration);
 
-    /// <summary>
-    /// Oscurece la pantalla hasta negro (0 → 1 en alpha).
-    /// En VR usa OVRScreenFade para cubrir ambos ojos por completo.
-    /// </summary>
-    public IEnumerator FadeOut(float duration)
+    private IEnumerator Fade(bool fadeOut, float duration)
     {
-        if (ovrFade != null)
+        var fade = GetOvrFade();
+        if (fade == null)
         {
-            // OVRScreenFade.FadeOut() reproduce la animación internamente;
-            // esperamos su duración antes de continuar.
-            ovrFade.FadeOut();
+            Debug.LogWarning("[UIManager] OVRScreenFade no encontrado: se omite el fundido.");
             yield return new WaitForSeconds(duration);
+            yield break;
         }
-        else
-        {
-            // Fallback: Canvas 2D (modo escritorio)
-            float time = 0f;
-            fadeCanvasGroup.alpha = 0f;
 
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                fadeCanvasGroup.alpha = Mathf.Clamp01(time / duration);
-                yield return null;
-            }
-
-            fadeCanvasGroup.alpha = 1f;
-        }
+        if (fadeOut) fade.FadeOut(); else fade.FadeIn();
+        yield return new WaitForSeconds(duration);
     }
 
-    /// <summary>
-    /// Aclara la pantalla desde negro (1 → 0 en alpha).
-    /// En VR usa OVRScreenFade para cubrir ambos ojos por completo.
-    /// </summary>
-    public IEnumerator FadeIn(float duration)
+    private OVRScreenFade GetOvrFade()
     {
-        if (ovrFade != null)
-        {
-            ovrFade.FadeIn();
-            yield return new WaitForSeconds(duration);
-        }
-        else
-        {
-            // Fallback: Canvas 2D (modo escritorio)
-            float time = 0f;
-            fadeCanvasGroup.alpha = 1f;
-
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                fadeCanvasGroup.alpha = Mathf.Clamp01(1f - (time / duration));
-                yield return null;
-            }
-
-            fadeCanvasGroup.alpha = 0f;
-        }
+        if (ovrFade == null)
+            ovrFade = FindObjectOfType<OVRScreenFade>();
+        return ovrFade;
     }
 }
 

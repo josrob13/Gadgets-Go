@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Intro 12
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "Eso es todo por ahora. \xA1Mucha suerte, agente!"
-  nextNode: {fileID: 0}
+  text: "Puedes llamarlo con el bot\xF3n start del mando izquierdo."
+  nextNode: {fileID: 11400000, guid: 75c12bc61ab375440bf192b529888dd5, type: 2}
   speakerAnimator: Robi
   actorState:
     BodyAnimation: 

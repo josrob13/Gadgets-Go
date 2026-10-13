@@ -32,7 +32,7 @@ public class AnalyticsManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeMaps();
-            LoadAnalyticsFromSave();
+            // LoadAnalyticsFromSave();
         }
         else
         {
@@ -118,6 +118,37 @@ public class AnalyticsManager : MonoBehaviour
         session.timeSpent += currentDialogueElapsed;
         currentDialogueId = null;
         currentDialogueElapsed = 0f;
+    }
+
+    public TherapyMetrics Export() => new TherapyMetrics
+    {
+        totalPlayedTime = totalPlayedTime,
+        dialogueAnalyticsSessions = dialogueAnalyticsSessions,
+        inferenceCategoryErrors = inferenceCategoryErrors,
+        totalFaceDiscomfortEvents = totalFaceDiscomfortEvents,
+        totalFaceDiscomfortSeconds = totalFaceDiscomfortSeconds
+    };
+
+    public void Import(TherapyMetrics m)
+    {
+        m ??= new TherapyMetrics();
+        totalPlayedTime            = m.totalPlayedTime;
+        dialogueAnalyticsSessions  = m.dialogueAnalyticsSessions ?? new List<DialogueAnalyticsEntry>();
+        inferenceCategoryErrors    = m.inferenceCategoryErrors   ?? new List<InferenceCategoryErrorCounter>();
+        totalFaceDiscomfortEvents  = m.totalFaceDiscomfortEvents;
+        totalFaceDiscomfortSeconds = m.totalFaceDiscomfortSeconds;
+        InitializeMaps();
+        currentDialogueId = null;
+        currentDialogueElapsed = 0f;
+        _isTrackingDiscomfort = false;
+        _discomfortMissionId = null;
+    }
+
+    public void SaveMetricsLight() => SaveSystem.SaveMetrics(Export());
+    public void SaveMetricsAndExport(PlayerSaveData p)
+    {
+        SaveMetricsLight();
+        SaveSystem.ExportTherapistReports(p, Export());
     }
 
     public void RegisterInferenceError(SocialInferenceCategory category)
@@ -328,6 +359,6 @@ public class AnalyticsManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveAnalytics();
+        // SaveAnalytics();
     }
 }

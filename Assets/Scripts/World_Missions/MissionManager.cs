@@ -258,6 +258,7 @@ public class MissionManager : MonoBehaviour
         Debug.Log($"Finalizando y guardando misión: {currentMission.GetMissionName()}");
         if (PlayerProgress.Instance.CompleteMission(currentMission.GetMissionName()))
         {
+            GameHandler.Instance?.SaveLight();
             GameHandler.Instance?.NextWorld();
         }
     }

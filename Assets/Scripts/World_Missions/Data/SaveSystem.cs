@@ -6,6 +6,10 @@ using System;
 
 public static class SaveSystem
 {
+    private const string ProgressFile = "player_progress.json";
+
+    private const string MetricsFile = "therapy_metrics.json";
+
     private static string currentTherapistFolder = "";
 
     public static void SetTherapistFolder(string therapistId)
@@ -30,6 +34,31 @@ public static class SaveSystem
             }
         }
         return Path.Combine(basePath, "gamedata.json");
+    }
+    
+    public static bool HasActiveSession => !string.IsNullOrEmpty(currentTherapistFolder);
+
+    private static string SessionPath(string file)
+    {
+        return Path.Combine(Application.persistentDataPath, currentTherapistFolder, file);
+    }
+
+    public static void SaveProgress(PlayerSaveData data)
+    {
+        if (!HasActiveSession) return;
+        Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, currentTherapistFolder));
+        File.WriteAllText(SessionPath(ProgressFile), JsonUtility.ToJson(data, true));
+    }
+
+    public static PlayerSaveData LoadProgress()
+    {
+        PlayerSaveData data = null;
+        if (HasActiveSession && File.Exists(SessionPath(ProgressFile)))
+            data = JsonUtility.FromJson<PlayerSaveData>(File.ReadAllText(SessionPath(ProgressFile)));
+        data ??= new PlayerSaveData();
+        data.inventory ??= new InventoryData();
+        data.completedMissions ??= new List<string>();
+        return data;
     }
 
     public static void Save(GameData data)
@@ -90,7 +119,7 @@ public static class SaveSystem
         foreach (string folder in folders)
         {
             string folderPath = Path.Combine(basePath, folder);
-            string filePath = Path.Combine(folderPath, "gamedata.json");
+            string filePath = Path.Combine(folderPath, ProgressFile);
             if (File.Exists(filePath))
             {
                 DateTime lastWrite = File.GetLastWriteTime(filePath);
@@ -120,5 +149,28 @@ public static class SaveSystem
             }
         }
         return folders;
+    }
+
+    internal static void SaveMetrics(TherapyMetrics therapyMetrics)
+    {
+        if (!HasActiveSession) return;
+        Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, currentTherapistFolder));
+        File.WriteAllText(SessionPath(MetricsFile), JsonUtility.ToJson(therapyMetrics, true));
+    }
+
+    public static TherapyMetrics LoadMetrics()
+    {
+        TherapyMetrics m = null;
+        if (HasActiveSession && File.Exists(SessionPath(MetricsFile)))
+            m = JsonUtility.FromJson<TherapyMetrics>(File.ReadAllText(SessionPath(MetricsFile)));
+        m ??= new TherapyMetrics();
+        m.dialogueAnalyticsSessions ??= new List<DialogueAnalyticsEntry>();
+        m.inferenceCategoryErrors ??= new List<InferenceCategoryErrorCounter>();
+        return m;
+    }
+
+    internal static void ExportTherapistReports(PlayerSaveData p, TherapyMetrics therapyMetrics)
+    {
+        throw new NotImplementedException();
     }
 }

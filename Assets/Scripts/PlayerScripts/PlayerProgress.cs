@@ -12,10 +12,6 @@ public class PlayerProgress : MonoBehaviour
 
     public static PlayerProgress Instance { get; private set; }
 
-    // PlayerProgress solo está colocado en la escena legacy RealGame; las escenas de
-    // mundo no lo incluyen. MissionManager/GameHandler usan PlayerProgress.Instance SIN
-    // comprobación de null, así que garantizamos una instancia persistente desde el
-    // arranque para que la cadena de recompensa (CompleteMission → AddSpyCoins) funcione.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void EnsureExists()
     {
@@ -24,7 +20,7 @@ public class PlayerProgress : MonoBehaviour
         new GameObject(nameof(PlayerProgress)).AddComponent<PlayerProgress>();
     }
 
-    // I use here serialized structures in order to save the data. Hashsets for example are not serializable
+    // I use here serialized structures in order to save the data. Hashsets for example are not serializable.
     [Header("Player Progress")]
     [SerializeField] private List<string> completedMissionsSerialized = new();
 
@@ -60,6 +56,16 @@ public class PlayerProgress : MonoBehaviour
 
         foreach (var error in errorsByMissionSerialized)
             errorsByMission[error.missionId] = error.errors;
+    }
+
+    public List<string> ExportCompletedMissions() => new List<string>(completedMissions);
+
+    public void ImportCompletedMissions(List<string> ids)
+    {
+        completedMissions = new HashSet<string>(ids ?? new List<string>());
+        errorsByMission.Clear();
+        errorsByMissionSerialized.Clear();
+        totalErrors = 0;
     }
 
     public bool CompleteMission(string missionId)

@@ -184,7 +184,7 @@ public class ThankYouScreen : MonoBehaviour, IVRPointerTarget
             return;
         }
 
-        AnalyticsManager.Instance?.SaveAnalytics();
+        GameHandler.Instance?.SaveLight();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

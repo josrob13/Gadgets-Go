@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Intro 09
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: Mhm, ya veo. Un nombre muy interesante.
+  text: "Aj\xE1, ya veo. Bonito nombre."
   nextNode: {fileID: 11400000, guid: 3fc94ffdd53423d46846b1ae977430b2, type: 2}
   speakerAnimator: Robi
   actorState:

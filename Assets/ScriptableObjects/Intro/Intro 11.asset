@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Intro 11
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "Tendr\xE1s que completar las dos misiones para avanzar de localizaci\xF3n."
-  nextNode: {fileID: 11400000, guid: 75c12bc61ab375440bf192b529888dd5, type: 2}
+  text: "No te preocupes, porque enviaremos junto a ti a un compa\xF1ero-robot para
+    que puedas preguntarle cualquier duda que te surja."
+  nextNode: {fileID: 11400000, guid: 08f2e3cd656d88e47a9ae3bf1bb103e7, type: 2}
   speakerAnimator: Robi
   actorState:
     BodyAnimation: 
