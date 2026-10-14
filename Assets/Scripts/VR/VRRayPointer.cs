@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 using TMPro;
 
@@ -54,6 +55,10 @@ public class VRRayPointer : MonoBehaviour
 
     private void Start()
     {
+        var uiModule = FindObjectOfType<InputSystemUIInputModule>();
+        if (uiModule != null)
+            uiModule.deselectOnBackgroundClick = false;
+
         _targets = FindObjectsOfType<MonoBehaviour>(true).OfType<IVRPointerTarget>().ToArray();
         _canvasRaycasters = FindObjectsOfType<GraphicRaycaster>(true);
 
@@ -282,7 +287,8 @@ public class VRRayPointer : MonoBehaviour
     /// </summary>
     private void OpenVRKeyboard(TMP_InputField field)
     {
-        // Stop any previous keyboard session
+        if (field.isFocused) return;
+        
         if (_keyboardCoroutine != null) StopCoroutine(_keyboardCoroutine);
         if (_activeInputField != null)
             _activeInputField.onEndEdit.RemoveListener(OnInputFieldEndEdit);
