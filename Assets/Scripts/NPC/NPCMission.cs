@@ -12,6 +12,11 @@ public class NPCMission : MonoBehaviour, IMissionProvider
     /// </summary>
     public Mission GetMission() => mission;
 
+    public bool IsCompleted()
+    {
+        return mission != null && PlayerProgress.Instance != null && PlayerProgress.Instance.IsMissionCompleted(mission.GetMissionName());
+    }
+
     public void StartMission()
     {
         if (mission != null)

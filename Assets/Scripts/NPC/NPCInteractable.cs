@@ -4,6 +4,7 @@ using UnityEngine;
 public class NPCInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
+    [SerializeField] private string completedText = "¡Misión ya completada!";
 
     private NPCLookAt npcLookAt;
     private bool isOnCooldown = false;
@@ -52,6 +53,8 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     
     public string GetInteractText()
     {
+        if (missionProvider != null && missionProvider.IsCompleted())
+            return completedText;
         return interactText;
     }
 

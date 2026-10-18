@@ -33,21 +33,13 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            CacheSpeakerAnimators();
+        Instance = this;
+        CacheSpeakerAnimators();
 
-            if (canvasController == null)
-                canvasController = GetComponentInChildren<DialogueCanvasController>();
-            if (canvasController == null)
-                canvasController = FindFirstObjectByType<DialogueCanvasController>();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (canvasController == null)
+            canvasController = GetComponentInChildren<DialogueCanvasController>();
+        if (canvasController == null)
+            canvasController = FindFirstObjectByType<DialogueCanvasController>();
     }
 
     private void Start()
@@ -60,6 +52,7 @@ public class DialogueManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (Instance == this) Instance = null;
         if (FaceTrackingManager.Instance != null)
             FaceTrackingManager.Instance.OnDiscomfortStateChanged -= OnDiscomfortStateChanged;
     }

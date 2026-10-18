@@ -17,31 +17,58 @@ public class MissionManager : MonoBehaviour
 
     private Vector3 playerStartPosition;
     private SmoothTeleport smoothTeleport;
+    private bool isRunning;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Debug.LogWarning($"[MissionManager] Se ha encontrado una segunda instancia de MissionManager en la escena. El objeto '{this.name}' será destruido para mantener el singleton.");
-            Destroy(gameObject);
-        }
+        Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     public void StartMission(Mission mission)
     {
+        if (!CanStartMission(mission)) return;
+
         currentMission = mission;
-        // En VR no se usa Cinemachine (vCamMission solo se aplica en la rama desktop de RunMission),
-        // así que protegemos contra CameraManager ausente para no lanzar NPE y abortar la misión.
+        // Cinemachine is not used in VR (vCamMission is only used in the desktop branch of RunMission),
+        // so we handle the case where CameraManager is missing to prevent a NPE and mission abort.
         vCamMission = CameraManager.Instance != null
             ? CameraManager.Instance.GetCamera(currentMission.GetCameraID())
             : null;
         Debug.Log($"Starting mission: {currentMission.GetMissionName()}");
-        StartCoroutine(RunMission());
+        isRunning = true;
+        StartCoroutine(RunMissionGuarded());
+    }
+
+    private bool CanStartMission(Mission mission)
+    {
+        if (mission == null) return false;
+
+        if (isRunning)
+        {
+            Debug.LogWarning("[MissionManager] Ya hay una misión en curso; se ignora la nueva petición.");
+            return false;
+        }
+
+        string missionId = mission.GetMissionName();
+        if (PlayerProgress.Instance != null && PlayerProgress.Instance.IsMissionCompleted(missionId))
+        {
+            Debug.Log($"[MissionManager] La misión '{missionId}' ya está completada; no se relanza.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private IEnumerator RunMissionGuarded()
+    {
+        try { yield return RunMission(); }
+        finally { isRunning = false; }
     }
 
     private void ToErrorRegister(bool isCorrect, QuestionNode questionNode)
@@ -77,6 +104,10 @@ public class MissionManager : MonoBehaviour
         // ─── Disable locomotion (but NOT head tracking) ───
         // En VR no existe el componente Player (se usa PlayerVR); el movimiento se bloquea
         // vía smoothTeleport / fpLocomotor. Protegemos player para no lanzar NPE.
+        bool playerWasEnabled   = player != null && player.enabled;
+        bool teleportWasEnabled = smoothTeleport != null && smoothTeleport.enabled;
+        bool locomotorWasEnabled = fpLocomotor != null && fpLocomotor.enabled;
+
         if (player != null)
             player.enabled = false;
         if (smoothTeleport != null)
@@ -208,6 +239,7 @@ public class MissionManager : MonoBehaviour
 
         // ─── Execute dialogue system with canvas position ───
         DialogueManager.Instance.OnQuestionAnswered += ToErrorRegister;
+        bool dialogueFinished = false;
         try
         {
             yield return DialogueManager.Instance.StartDialogue(
@@ -216,10 +248,21 @@ public class MissionManager : MonoBehaviour
                 canvasPosition,
                 canvasRotation
             );
+            dialogueFinished = true;
         }
         finally
         {
             DialogueManager.Instance.OnQuestionAnswered -= ToErrorRegister;
+            if (!dialogueFinished)
+            {
+                playerRoot.position = playerStartPosition;
+                playerRoot.rotation = playerStartRotation;
+                if (player != null)         player.enabled = playerWasEnabled;
+                if (smoothTeleport != null) smoothTeleport.enabled = teleportWasEnabled;
+                if (fpLocomotor != null)    fpLocomotor.enabled = locomotorWasEnabled;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
 
         if (eyeTracker != null)
@@ -246,11 +289,11 @@ public class MissionManager : MonoBehaviour
 
         // ─── Reactivate locomotion (ya con la pantalla visible) ───
         if (player != null)
-            player.enabled = true;
+            player.enabled = playerWasEnabled;
         if (smoothTeleport != null)
-            smoothTeleport.enabled = true;
+            smoothTeleport.enabled = teleportWasEnabled;
         if (fpLocomotor != null)
-            fpLocomotor.enabled = true;
+            fpLocomotor.enabled = locomotorWasEnabled;
 
         Debug.Log($"[MissionManager] Jugador liberado. Movimiento reactivado en posición anterior.");
 

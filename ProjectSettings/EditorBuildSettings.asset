@@ -11,15 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 7430b902b8f43e04e8e159154b65a1eb
-  - enabled: 0
-    path: Assets/Scenes/RealGame.unity
-    guid: 853919e5e4555234998bed34e5d890fb
   - enabled: 1
     path: Assets/Scenes/World1-PolyGym.unity
     guid: e6a9734e940af0e4986e5f2a919de118
   - enabled: 1
-    path: Assets/Scenes/Mundo1_Instituto.unity
-    guid: fb8e644e5bd4ca849b758916122f247d
+    path: Assets/Scenes/World2-Cafeteria.unity
+    guid: aa5743a0c8bd7d44a89a77d594441650
+  - enabled: 1
+    path: Assets/Scenes/World3-Office.unity
+    guid: 731f7c511fd22364fb133a2d6106430d
+  - enabled: 1
+    path: Assets/Scenes/World4-Theater.unity
+    guid: 1c144a5ca934c1b4f8d7f2baf140991d
   - enabled: 1
     path: Assets/Scenes/ThankYou.unity
     guid: 6c7f7c50fbe741dc88fc187ec5ba629f
