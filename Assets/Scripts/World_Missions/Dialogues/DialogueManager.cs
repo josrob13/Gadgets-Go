@@ -67,7 +67,8 @@ public class DialogueManager : MonoBehaviour
             DialogueAudioManager.Instance?.PauseVoice();
         else if (!_guidePaused)
             DialogueAudioManager.Instance?.ResumeVoice();
-        Debug.Log($"[DialogueManager] Di\u00e1logo {(isDiscomfort ? "pausado" : "reanudado")} por detecci\u00f3n facial.");
+        Debug.Log($"[DialogueManager] Diálogo {(isDiscomfort ? "pausado" : "reanudado")} por detección facial.");
+        AnalyticsManager.Instance?.RegisterFaceDiscomfort(isDiscomfort, FaceTrackingManager.Instance != null ? FaceTrackingManager.Instance.DiscomfortScore : 0f);
     }
 
     /// <summary>

@@ -40,25 +40,6 @@ public class AnalyticsManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        if (FaceTrackingManager.Instance != null)
-        {
-            FaceTrackingManager.Instance.OnDiscomfortStateChanged += OnFaceDiscomfortChanged;
-            Debug.Log("[AnalyticsManager] Subscribed to FaceTrackingManager.");
-        }
-        else
-        {
-            Debug.LogWarning("[AnalyticsManager] FaceTrackingManager not found — face analytics disabled.");
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (FaceTrackingManager.Instance != null)
-            FaceTrackingManager.Instance.OnDiscomfortStateChanged -= OnFaceDiscomfortChanged;
-    }
-
     private void InitializeMaps()
     {
         dialogueAnalyticsMap = new Dictionary<string, DialogueAnalyticsEntry>();
@@ -195,7 +176,7 @@ public class AnalyticsManager : MonoBehaviour
         entry.questionsAnswered++;
     }
 
-    private void OnFaceDiscomfortChanged(bool isDiscomfort)
+    public void RegisterFaceDiscomfort(bool isDiscomfort, float score)
     {
         Debug.Log($"[Analytics] FaceDiscomfort changed: {isDiscomfort}");
         string missionId = MissionManager.Instance?.GetCurrentMissionId();
@@ -211,7 +192,7 @@ public class AnalyticsManager : MonoBehaviour
             {
                 var entry = GetOrCreateDialogueEntry(missionId);
                 entry.faceDiscomfortEvents++;
-                entry.faceDiscomfortPeakScore = Mathf.Max(entry.faceDiscomfortPeakScore, FaceTrackingManager.Instance?.DiscomfortScore ?? 0f);
+                entry.faceDiscomfortPeakScore = Mathf.Max(entry.faceDiscomfortPeakScore, score);
             }
         }
         else

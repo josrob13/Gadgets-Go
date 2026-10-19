@@ -33,18 +33,14 @@ public class VRGuideController : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(transform.root.gameObject);
-            _guideUI = GetComponent<VRGuideUI>();
-            Debug.Log($"[VRGuideController] Awake — Instance set. _guideUI found: {_guideUI != null}. companion assigned: {companion != null}. worldsDB assigned: {worldsDB != null}");
-        }
-        else
-        {
-            Debug.Log("[VRGuideController] Duplicate detected — destroying this instance.");
-            Destroy(gameObject);
-        }
+        Instance = this;
+        _guideUI = GetComponent<VRGuideUI>();
+        Debug.Log($"[VRGuideController] Awake — Instance set. _guideUI found: {_guideUI != null}. companion assigned: {companion != null}. worldsDB assigned: {worldsDB != null}");
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 
     private void Start()

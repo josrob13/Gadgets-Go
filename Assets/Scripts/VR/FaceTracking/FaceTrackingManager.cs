@@ -43,14 +43,7 @@ public class FaceTrackingManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         if (faceExpressions == null)
             faceExpressions = FindFirstObjectByType<OVRFaceExpressions>();
@@ -61,6 +54,11 @@ public class FaceTrackingManager : MonoBehaviour
             Debug.LogWarning("[FaceTrackingManager] OVRFaceExpressions no encontrado — el face tracking está desactivado.");
         else
             Debug.Log("[FaceTrackingManager] Inicializado correctamente.");
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 
     /// <summary>
