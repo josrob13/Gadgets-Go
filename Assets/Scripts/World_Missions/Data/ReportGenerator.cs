@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 
 /// <summary>
-/// Generates a self-contained HTML therapist report from GameData.
+/// Generates a self-contained HTML therapist report from PlayerSaveData and TherapyMetrics.
 /// Place a Chart.js minified build at Assets/Resources/chartjs.txt for offline use;
 /// falls back to the jsDelivr CDN automatically if the file is absent.
 /// </summary>
@@ -15,11 +15,11 @@ public static class ReportGenerator
     private const string CHARTJS_RESOURCE_PATH = "chartjs";
     private const string CHART_CDN_FALLBACK = "https://cdn.jsdelivr.net/npm/chart.js";
 
-    public static string GenerateHTMLReport(GameData data, string outputFolderPath)
+    public static string GenerateHTMLReport(PlayerSaveData progress, TherapyMetrics metrics, string sessionId, string outputFolderPath)
     {
-        if (data == null)
+        if (progress == null || metrics == null)
         {
-            Debug.LogWarning("[ReportGenerator] GameData is null — skipping HTML report.");
+            Debug.LogWarning("[ReportGenerator] PlayerSaveData or TherapyMetrics is null — skipping HTML report.");
             return string.Empty;
         }
 
@@ -32,7 +32,7 @@ public static class ReportGenerator
 
         try
         {
-            File.WriteAllText(reportPath, BuildHTML(data, chartJsTag), Encoding.UTF8);
+            File.WriteAllText(reportPath, BuildHTML(progress, metrics, sessionId, chartJsTag), Encoding.UTF8);
             Debug.Log($"[ReportGenerator] HTML report written to: {reportPath}");
         }
         catch (Exception ex)
@@ -48,22 +48,22 @@ public static class ReportGenerator
     // HTML assembly
     // ────────────────────────────────────────────────────────────────────────────
 
-    private static string BuildHTML(GameData data, string chartJsTag)
+    private static string BuildHTML(PlayerSaveData progress, TherapyMetrics metrics, string sessionId, string chartJsTag)
     {
         int totalWrong = 0, totalQuestions = 0;
-        if (data.dialogueAnalyticsSessions != null)
-            foreach (var s in data.dialogueAnalyticsSessions) { totalWrong += s.wrongAnswers; totalQuestions += s.questionsAnswered; }
+        if (metrics.dialogueAnalyticsSessions != null)
+            foreach (var s in metrics.dialogueAnalyticsSessions) { totalWrong += s.wrongAnswers; totalQuestions += s.questionsAnswered; }
 
         string generatedDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-        string playerName    = string.IsNullOrEmpty(data.playerName) ? "—" : data.playerName;
-        string totalTime     = FormatTime(data.totalPlayedTime);
-        int missionsCompleted = data.completedMissions?.Count ?? 0;
+        string session = string.IsNullOrEmpty(sessionId) ? "—" : sessionId;
+        string totalTime = FormatTime(metrics.totalPlayedTime);
+        int missionsCompleted = progress.completedMissions?.Count ?? 0;
         string accuracyStr  = totalQuestions > 0
             ? $"{Mathf.RoundToInt((float)(totalQuestions - totalWrong) / totalQuestions * 100)}%"
             : "—";
 
-        bool hasMissions  = data.dialogueAnalyticsSessions != null && data.dialogueAnalyticsSessions.Count > 0;
-        bool hasInference = data.inferenceCategoryErrors    != null && data.inferenceCategoryErrors.Count > 0;
+        bool hasMissions  = metrics.dialogueAnalyticsSessions != null && metrics.dialogueAnalyticsSessions.Count > 0;
+        bool hasInference = metrics.inferenceCategoryErrors    != null && metrics.inferenceCategoryErrors.Count > 0;
 
         var sb = new StringBuilder(32768);
         sb.AppendLine("<!DOCTYPE html>");
@@ -84,7 +84,7 @@ public static class ReportGenerator
         sb.AppendLine("      <p class=\"subtitle\">Gadgets Go &mdash; Serious Game TEA</p>");
         sb.AppendLine("    </div>");
         sb.AppendLine("    <div class=\"hdr-meta\">");
-        sb.AppendLine("      <div class=\"meta\"><span class=\"meta-lbl\">Paciente</span><span class=\"meta-val\">" + EscapeHtml(playerName) + "</span></div>");
+        sb.AppendLine("      <div class=\"meta\"><span class=\"meta-lbl\">Sesión</span><span class=\"meta-val\">" + EscapeHtml(session) + "</span></div>");
         sb.AppendLine("      <div class=\"meta\"><span class=\"meta-lbl\">Generado</span><span class=\"meta-val\">" + generatedDate + "</span></div>");
         sb.AppendLine("    </div>");
         sb.AppendLine("  </div>");
@@ -99,9 +99,9 @@ public static class ReportGenerator
         sb.AppendLine(Card("Tiempo Total",                   totalTime,                                    "blue"));
         sb.AppendLine(Card("Misiones Completadas",           missionsCompleted.ToString(),                  "green"));
         sb.AppendLine(Card("Precisión Global",          accuracyStr,                                  "purple"));
-        sb.AppendLine(Card("Incomodidad Facial (eventos)",   data.totalFaceDiscomfortEvents.ToString(),     "red"));
+        sb.AppendLine(Card("Incomodidad Facial (eventos)",   metrics.totalFaceDiscomfortEvents.ToString(),     "red"));
         sb.AppendLine(Card("Respuestas Incorrectas",         totalWrong.ToString(),                         "orange"));
-        sb.AppendLine(Card("Pistas Usadas",                  SumHints(data).ToString(),                    "yellow"));
+        sb.AppendLine(Card("Pistas Usadas",                  SumHints(metrics).ToString(),                    "yellow"));
         sb.AppendLine("  </div>");
         sb.AppendLine("</section>");
 
@@ -127,7 +127,7 @@ public static class ReportGenerator
             sb.AppendLine("  <div class=\"inf-container\">");
             sb.AppendLine("    <div class=\"chart-card\"><div class=\"chart-wrap\"><canvas id=\"cInference\"></canvas></div></div>");
             sb.AppendLine("    <div class=\"chart-card inf-legend\">");
-            sb.AppendLine(BuildInferenceLegend(data.inferenceCategoryErrors));
+            sb.AppendLine(BuildInferenceLegend(metrics.inferenceCategoryErrors));
             sb.AppendLine("    </div>");
             sb.AppendLine("  </div>");
             sb.AppendLine("</section>");
@@ -138,14 +138,14 @@ public static class ReportGenerator
         {
             sb.AppendLine("<section>");
             sb.AppendLine("  <h2 class=\"sec-title\">Detalle por Misión</h2>");
-            sb.AppendLine(BuildDetailTable(data.dialogueAnalyticsSessions));
+            sb.AppendLine(BuildDetailTable(metrics.dialogueAnalyticsSessions));
             sb.AppendLine("</section>");
         }
 
         sb.AppendLine("</main>");
         sb.AppendLine("<footer>Gadgets Go VR &mdash; Informe generado el " + generatedDate + "</footer>");
         sb.AppendLine(chartJsTag);
-        sb.AppendLine(BuildChartJS(data));
+        sb.AppendLine(BuildChartJS(metrics));
         sb.AppendLine("</body>");
         sb.AppendLine("</html>");
         return sb.ToString();
@@ -283,12 +283,12 @@ section{display:flex;flex-direction:column}
     // Chart.js initialization script
     // ────────────────────────────────────────────────────────────────────────────
 
-    private static string BuildChartJS(GameData data)
+    private static string BuildChartJS(TherapyMetrics metrics)
     {
-        if (data.dialogueAnalyticsSessions == null || data.dialogueAnalyticsSessions.Count == 0)
+        if (metrics.dialogueAnalyticsSessions == null || metrics.dialogueAnalyticsSessions.Count == 0)
             return "<script></script>";
 
-        var ss = data.dialogueAnalyticsSessions;
+        var ss = metrics.dialogueAnalyticsSessions;
         string lbl     = JsStrArr(ss.ConvertAll(s => TruncLabel(s.dialogueId)));
         string wrong   = JsIntArr(ss.ConvertAll(s => s.wrongAnswers));
         string hints   = JsIntArr(ss.ConvertAll(s => s.hintsRequested));
@@ -300,12 +300,12 @@ section{display:flex;flex-direction:column}
 
         // Inference arrays
         string infLbl = "[]", infDat = "[]", infCol = "[]";
-        if (data.inferenceCategoryErrors != null && data.inferenceCategoryErrors.Count > 0)
+        if (metrics.inferenceCategoryErrors != null && metrics.inferenceCategoryErrors.Count > 0)
         {
             string[] nm  = { "Recepción del Mensaje", "Reconocimiento Emocional", "Predicción de Movimiento", "Comprensión Relacional" };
             string[] col = { "#4361ee", "#06d6a0", "#fb8500", "#ef233c" };
             var ll = new List<string>(); var dd = new List<string>(); var cc = new List<string>();
-            foreach (var cat in data.inferenceCategoryErrors)
+            foreach (var cat in metrics.inferenceCategoryErrors)
             {
                 int i = (int)cat.category;
                 ll.Add("\"" + EscapeJs(i < nm.Length ? nm[i] : cat.category.ToString()) + "\"");
@@ -317,7 +317,7 @@ section{display:flex;flex-direction:column}
             infCol = "[" + string.Join(",", cc) + "]";
         }
 
-        bool hasInf = data.inferenceCategoryErrors != null && data.inferenceCategoryErrors.Count > 0;
+        bool hasInf = metrics.inferenceCategoryErrors != null && metrics.inferenceCategoryErrors.Count > 0;
 
         var sb = new StringBuilder();
         sb.AppendLine("<script>");
@@ -382,11 +382,11 @@ section{display:flex;flex-direction:column}
         return h > 0 ? $"{h}h {m:D2}m {s:D2}s" : $"{m}m {s:D2}s";
     }
 
-    private static int SumHints(GameData data)
+    private static int SumHints(TherapyMetrics metrics)
     {
         int total = 0;
-        if (data.dialogueAnalyticsSessions != null)
-            foreach (var s in data.dialogueAnalyticsSessions) total += s.hintsRequested;
+        if (metrics.dialogueAnalyticsSessions != null)
+            foreach (var s in metrics.dialogueAnalyticsSessions) total += s.hintsRequested;
         return total;
     }
 

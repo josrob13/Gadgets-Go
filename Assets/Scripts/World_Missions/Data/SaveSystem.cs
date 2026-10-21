@@ -61,22 +61,6 @@ public static class SaveSystem
         return data;
     }
 
-    public static void Save(GameData data)
-    {
-        string json = JsonUtility.ToJson(data, true);
-        string filePath = GetSaveFilePath();
-        File.WriteAllText(filePath, json);
-
-        string folderPath = Path.GetDirectoryName(filePath);
-        string csvPath    = AnalyticsManager.Instance.ExportTherapistCsv();
-        string htmlPath   = ReportGenerator.GenerateHTMLReport(data, folderPath);
-
-        Debug.Log($"[SaveSystem] Partida guardada en: {filePath}");
-        Debug.Log($"[SaveSystem] CSV exportado a: {csvPath}");
-        if (!string.IsNullOrEmpty(htmlPath))
-            Debug.Log($"[SaveSystem] Informe HTML generado en: {htmlPath}");
-    }
-
     public static GameData Load()
     {
         string filePath = GetSaveFilePath();

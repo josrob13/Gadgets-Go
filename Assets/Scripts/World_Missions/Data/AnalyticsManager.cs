@@ -306,21 +306,6 @@ public class AnalyticsManager : MonoBehaviour
         InitializeMaps();
     }
 
-    public void SaveAnalytics()
-    {
-        // Freeze any in-flight discomfort accumulation so Update() doesn't add more after this point
-        _isTrackingDiscomfort = false;
-
-        GameData data = SaveSystem.Load() ?? new GameData();
-        data.totalPlayedTime = totalPlayedTime;
-        data.dialogueAnalyticsSessions = dialogueAnalyticsSessions ?? new List<DialogueAnalyticsEntry>();
-        data.inferenceCategoryErrors = inferenceCategoryErrors ?? new List<InferenceCategoryErrorCounter>();
-        data.totalFaceDiscomfortEvents = totalFaceDiscomfortEvents;
-        data.totalFaceDiscomfortSeconds = totalFaceDiscomfortSeconds;
-        data.savedWorldIndex = GameHandler.Instance?.CurrentWorldIndex ?? data.savedWorldIndex;
-        SaveSystem.Save(data);
-    }
-
     public void ResetAnalytics()
     {
         totalPlayedTime = 0f;
