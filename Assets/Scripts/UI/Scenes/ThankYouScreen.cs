@@ -220,7 +220,8 @@ public class ThankYouScreen : MonoBehaviour, IVRPointerTarget
         var rt = btn.GetComponent<RectTransform>();
         if (rt == null) return;
 
-        var col = btn.GetComponent<BoxCollider>() ?? btn.gameObject.AddComponent<BoxCollider>();
+        if (!btn.TryGetComponent(out BoxCollider col))
+            col = btn.gameObject.AddComponent<BoxCollider>();
         col.size = new Vector3(rt.rect.width, rt.rect.height, 1f);
         col.center = Vector3.zero;
     }
