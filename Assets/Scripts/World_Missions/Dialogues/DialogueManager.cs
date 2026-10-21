@@ -270,7 +270,10 @@ public class DialogueManager : MonoBehaviour
 
         string enteredName = nameInputUI.EnteredName;
         if (GameHandler.Instance != null)
+        {
             GameHandler.Instance.PlayerName = enteredName;
+            GameHandler.Instance.SaveLight();
+        }
 
         nameInputUI.Hide();
         Debug.Log($"[DialogueManager] Player name set: {enteredName}");

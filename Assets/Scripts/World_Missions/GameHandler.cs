@@ -73,9 +73,12 @@ public class GameHandler : MonoBehaviour
 
     public void SaveFull()
     {
-        var p = BuildProgress();
-        SaveSystem.SaveProgress(p);
-        AnalyticsManager.Instance?.SaveMetricsAndExport(p);
+        var progress = BuildProgress();
+        var metrics = AnalyticsManager.Instance != null ? AnalyticsManager.Instance.Export() : new TherapyMetrics();
+
+        SaveSystem.SaveProgress(progress);
+        SaveSystem.SaveMetrics(metrics);
+        SaveSystem.ExportTherapistReports(progress, metrics);
     }
 
     public void StartNewGame(string baseTherapistId)
@@ -83,7 +86,7 @@ public class GameHandler : MonoBehaviour
         Debug.Log("[GameHandler] Iniciando Nueva Partida...");
 
         BeginSession(SaveSystem.CreateNewTherapistFolder(baseTherapistId), isNew: true);
-        SaveProgress();
+        SaveLight();
         SceneLoader.Instance?.LoadSceneAsync(introSceneName);
 
         if (SceneLoader.Instance == null)
@@ -95,6 +98,18 @@ public class GameHandler : MonoBehaviour
         if (worldsDB?.worlds == null || worldsDB.worlds.Length == 0)
         {
             Debug.LogError("[GameHandler] WorldsDB no asignado o vacío — no se puede cargar el mundo actual.");
+            return;
+        }
+
+        if (indexWorld >= worldsDB.worlds.Length)
+        {
+            Debug.Log($"[GameHandler] Todos los mundos completados — cargando escena final '{endSceneName}'.");
+
+            if (SceneLoader.Instance != null)
+                SceneLoader.Instance.LoadSceneAsync(endSceneName);
+            else
+                Debug.LogError("[GameHandler] SceneLoader.Instance es null — no se puede cargar la escena final.");
+
             return;
         }
 

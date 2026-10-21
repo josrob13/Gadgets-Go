@@ -126,11 +126,6 @@ public class AnalyticsManager : MonoBehaviour
     }
 
     public void SaveMetricsLight() => SaveSystem.SaveMetrics(Export());
-    public void SaveMetricsAndExport(PlayerSaveData p)
-    {
-        SaveMetricsLight();
-        SaveSystem.ExportTherapistReports(p, Export());
-    }
 
     public void RegisterInferenceError(SocialInferenceCategory category)
     {
