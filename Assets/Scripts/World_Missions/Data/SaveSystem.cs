@@ -21,20 +21,6 @@ public static class SaveSystem
     {
         return currentTherapistFolder;
     }
-
-    private static string GetSaveFilePath()
-    {
-        string basePath = Application.persistentDataPath;
-        if (!string.IsNullOrEmpty(currentTherapistFolder))
-        {
-            basePath = Path.Combine(basePath, currentTherapistFolder);
-            if (!Directory.Exists(basePath))
-            {
-                Directory.CreateDirectory(basePath);
-            }
-        }
-        return Path.Combine(basePath, "gamedata.json");
-    }
     
     public static bool HasActiveSession => !string.IsNullOrEmpty(currentTherapistFolder);
 
@@ -59,24 +45,6 @@ public static class SaveSystem
         data.inventory ??= new InventoryData();
         data.completedMissions ??= new List<string>();
         return data;
-    }
-
-    public static GameData Load()
-    {
-        string filePath = GetSaveFilePath();
-        if (File.Exists(filePath))
-        {
-            string json = File.ReadAllText(filePath);
-            GameData loadedData = JsonUtility.FromJson<GameData>(json);
-            
-            Debug.Log("[SaveSystem] Partida cargada correctamente.");
-            return loadedData;
-        }
-        else
-        {
-            Debug.LogWarning("[SaveSystem] No se encontró partida guardada. Creando datos nuevos.");
-            return new GameData();
-        }
     }
 
     public static string CreateNewTherapistFolder(string baseTherapistId)

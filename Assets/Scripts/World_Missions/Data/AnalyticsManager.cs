@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using UnityEngine;
 
 public class AnalyticsManager : MonoBehaviour
@@ -32,7 +30,6 @@ public class AnalyticsManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeMaps();
-            // LoadAnalyticsFromSave();
         }
         else
         {
@@ -206,36 +203,5 @@ public class AnalyticsManager : MonoBehaviour
         dialogueAnalyticsSessions.Add(entry);
         dialogueAnalyticsMap[dialogueId] = entry;
         return entry;
-    }
-
-    public void LoadAnalyticsFromSave()
-    {
-        GameData savedData = SaveSystem.Load();
-        if (savedData == null)
-            return;
-
-        totalPlayedTime = savedData.totalPlayedTime;
-        dialogueAnalyticsSessions = savedData.dialogueAnalyticsSessions ?? new List<DialogueAnalyticsEntry>();
-        inferenceCategoryErrors = savedData.inferenceCategoryErrors ?? new List<InferenceCategoryErrorCounter>();
-        totalFaceDiscomfortEvents = savedData.totalFaceDiscomfortEvents;
-        totalFaceDiscomfortSeconds = savedData.totalFaceDiscomfortSeconds;
-        InitializeMaps();
-    }
-
-    public void ResetAnalytics()
-    {
-        totalPlayedTime = 0f;
-        currentDialogueId = null;
-        currentDialogueElapsed = 0f;
-        dialogueAnalyticsSessions.Clear();
-        inferenceCategoryErrors.Clear();
-        dialogueAnalyticsMap.Clear();
-        inferenceErrorMap.Clear();
-        Debug.Log("[AnalyticsManager] Analytics reseteados para nueva partida.");
-    }
-
-    private void OnApplicationQuit()
-    {
-        // SaveAnalytics();
     }
 }
