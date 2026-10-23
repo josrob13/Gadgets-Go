@@ -14,9 +14,6 @@ public class GameHandler : MonoBehaviour
     public string PlayerName { get; set; } = "Jugador";
     public int CurrentWorldIndex => indexWorld;
 
-    [ContextMenu("DEBUG - Save Full")]
-    private void DebugSaveFull() => SaveFull();
-
     private void Awake()
     {
         if (Instance == null)
@@ -57,7 +54,7 @@ public class GameHandler : MonoBehaviour
     }
 
     private void OnApplicationPause(bool paused) { if (paused) SaveLight(); }
-    private void OnApplicationQuit() { SaveLight(); }
+    private void OnApplicationQuit() { SaveFull(); }
 
     public void SaveProgress() => SaveSystem.SaveProgress(BuildProgress());
 
@@ -162,7 +159,7 @@ public class GameHandler : MonoBehaviour
 
         indexWorld = idx + 1;
         // Persist the new world index to disk immediately.
-        SaveLight();
+        SaveFull();
 
         if (indexWorld >= worldsDB.worlds.Length)
         {

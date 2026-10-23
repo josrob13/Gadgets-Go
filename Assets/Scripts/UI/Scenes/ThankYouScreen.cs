@@ -184,7 +184,7 @@ public class ThankYouScreen : MonoBehaviour, IVRPointerTarget
             return;
         }
 
-        GameHandler.Instance?.SaveLight();
+        GameHandler.Instance?.SaveFull();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

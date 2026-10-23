@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     public void GameQuit()
     {
         Debug.Log("Game is quitting — saving...");
-        GameHandler.Instance?.SaveLight();
+        GameHandler.Instance?.SaveFull();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
