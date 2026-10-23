@@ -14,6 +14,9 @@ public class GameHandler : MonoBehaviour
     public string PlayerName { get; set; } = "Jugador";
     public int CurrentWorldIndex => indexWorld;
 
+    [ContextMenu("DEBUG - Save Full")]
+    private void DebugSaveFull() => SaveFull();
+
     private void Awake()
     {
         if (Instance == null)

@@ -155,6 +155,84 @@ public static class SaveSystem
 
     internal static void ExportTherapistReports(PlayerSaveData p, TherapyMetrics therapyMetrics)
     {
-        throw new NotImplementedException();
+        if (!HasActiveSession) return;
+
+        string folderPath = Path.Combine(Application.persistentDataPath, currentTherapistFolder);
+        Directory.CreateDirectory(folderPath);
+
+        string csvPath  = WriteCsv(p, therapyMetrics, folderPath);
+        string htmlPath = ReportGenerator.GenerateHTMLReport(p, therapyMetrics, currentTherapistFolder, folderPath);
+
+        Debug.Log($"[SaveSystem] CSV exportado a: {csvPath}");
+        if (!string.IsNullOrEmpty(htmlPath))
+            Debug.Log($"[SaveSystem] Informe HTML generado en: {htmlPath}");
+    }
+
+    private static string WriteCsv(PlayerSaveData p, TherapyMetrics m, string folderPath)
+    {
+        string reportPath = Path.Combine(folderPath, "informe_terapeuta.csv");
+
+        var lines = new List<string>
+        {
+            "Tipo;Valor",
+            $"Misiones completadas;{p.completedMissions?.Count ?? 0}",
+            $"Tiempo total de juego (s);{m.totalPlayedTime:F1}",
+            "",
+            $"Eventos de incomodidad facial (total);{m.totalFaceDiscomfortEvents}",
+            $"Tiempo de incomodidad facial (s, total);{m.totalFaceDiscomfortSeconds:F1}",
+            "",
+            "dialogueId;sesiones;tiempoSegundos;respuestasErroneas;pistasUsadas;avgTiempoRespuestaS;ojosEnfocadosS;ojosDistrayendoseS;eventosDistraccion;eventosIncomodidadFacial;tiempoIncomodidadFacialS;peakScoreIncomodidad"
+        };
+
+        if (m.dialogueAnalyticsSessions != null && m.dialogueAnalyticsSessions.Count > 0)
+        {
+            foreach (var s in m.dialogueAnalyticsSessions)
+            {
+                string id = EscapeCsvField(s.dialogueId);
+                lines.Add($"{id};{s.sessionsPlayed};{s.timeSpent:F1};{s.wrongAnswers};{s.hintsRequested};{s.AvgAnswerTimeSeconds:F1};{s.eyeFocusedSeconds:F1};{s.eyeDistractedSeconds:F1};{s.eyeDistractionEvents};{s.faceDiscomfortEvents};{s.faceDiscomfortSeconds:F1};{s.faceDiscomfortPeakScore:F2}");
+            }
+        }
+        else
+        {
+            lines.Add("No hay datos de diálogo disponibles;;;;;;;;;;;;");
+        }
+
+        lines.Add("");
+        lines.Add("category;errors");
+
+        if (m.inferenceCategoryErrors != null && m.inferenceCategoryErrors.Count > 0)
+        {
+            foreach (var counter in m.inferenceCategoryErrors)
+                lines.Add($"{counter.category};{counter.errors}");
+        }
+        else
+        {
+            lines.Add("No hay errores de inferencia registrados;");
+        }
+
+        try
+        {
+            File.WriteAllLines(reportPath, lines, Encoding.UTF8);
+        }
+        catch (IOException)
+        {
+            // File is open in another program — write to a timestamped backup instead
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            reportPath = reportPath.Replace(".csv", $"_{timestamp}.csv");
+            File.WriteAllLines(reportPath, lines, Encoding.UTF8);
+            Debug.LogWarning($"[SaveSystem] CSV en uso — backup exportado a: {reportPath}");
+        }
+
+        return reportPath;
+    }
+
+    private static string EscapeCsvField(string value)
+    {
+        if (string.IsNullOrEmpty(value)) return string.Empty;
+
+        if (value.Contains(";") || value.Contains("\"") || value.Contains("\n") || value.Contains("\r"))
+            return "\"" + value.Replace("\"", "\"\"") + "\"";
+
+        return value;
     }
 }
