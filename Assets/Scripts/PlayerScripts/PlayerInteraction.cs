@@ -9,10 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private OVRInput.Button interactKey = OVRInput.Button.Two;
     [Tooltip("Mando con el que se interactúa. Botón B derecho => RTouch.")]
     [SerializeField] private OVRInput.Controller interactController = OVRInput.Controller.RTouch;
-    [SerializeField] private OVRInput.Button menuKey = OVRInput.Button.Three;
-    [SerializeField] private InteractiveMenu interactiveMenu;
-    [SerializeField] private Transform centerEyeAnchor; // <-- AÑADIR ESTO
-    public UIManager uiManager;
+    [SerializeField] private Transform centerEyeAnchor;
 
     private void Start()
     {

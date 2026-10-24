@@ -9,6 +9,7 @@ public static class SaveSystem
     private const string ProgressFile = "player_progress.json";
 
     private const string MetricsFile = "therapy_metrics.json";
+    public const int CurrentSaveVersion = 1;
 
     private static string currentTherapistFolder = "";
 
@@ -24,6 +25,53 @@ public static class SaveSystem
     
     public static bool HasActiveSession => !string.IsNullOrEmpty(currentTherapistFolder);
 
+    private static bool TryWriteJson(string file, object data)
+    {
+        try
+        {
+            Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, currentTherapistFolder));
+            string path = SessionPath(file);
+            string tmp = path + ".tmp";
+            File.WriteAllText(tmp, JsonUtility.ToJson(data, true));
+
+            if (File.Exists(path)) File.Replace(tmp, path, path + ".bak");
+            else File.Move(tmp, path);
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[SaveSystem] No se pudo guardar '{file}': {e.Message}");
+            return false;
+        }
+    }
+
+    private static T ReadJson<T>(string file) where T : class
+    {
+        if (!HasActiveSession) return null;
+
+        string path = SessionPath(file);
+        foreach (string candidate in new[] { path, path + ".bak" })
+        {
+            if (!File.Exists(candidate)) continue;
+            try
+            {
+                var obj = JsonUtility.FromJson<T>(File.ReadAllText(candidate));
+                if (obj != null) return obj;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"[SaveSystem] No se pudo leer '{candidate}': {e.Message}");
+            }
+        }
+        return null;
+    }
+
+    private static void WarnIfNewer(int version, string file)
+    {
+        if (version > CurrentSaveVersion)
+            Debug.LogWarning($"[SaveSystem] '{file}' es de una versión más nueva ({version}) que la del juego ({CurrentSaveVersion}).");
+    }
+
     private static string SessionPath(string file)
     {
         return Path.Combine(Application.persistentDataPath, currentTherapistFolder, file);
@@ -32,18 +80,17 @@ public static class SaveSystem
     public static void SaveProgress(PlayerSaveData data)
     {
         if (!HasActiveSession) return;
-        Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, currentTherapistFolder));
-        File.WriteAllText(SessionPath(ProgressFile), JsonUtility.ToJson(data, true));
+        data.saveVersion = CurrentSaveVersion;
+        data.sessionId = currentTherapistFolder;
+        TryWriteJson(ProgressFile, data);
     }
 
     public static PlayerSaveData LoadProgress()
     {
-        PlayerSaveData data = null;
-        if (HasActiveSession && File.Exists(SessionPath(ProgressFile)))
-            data = JsonUtility.FromJson<PlayerSaveData>(File.ReadAllText(SessionPath(ProgressFile)));
-        data ??= new PlayerSaveData();
+        var data = ReadJson<PlayerSaveData>(ProgressFile) ?? new PlayerSaveData();
         data.inventory ??= new InventoryData();
         data.completedMissions ??= new List<string>();
+        WarnIfNewer(data.saveVersion, ProgressFile);
         return data;
     }
 
@@ -103,37 +150,42 @@ public static class SaveSystem
         return folders;
     }
 
-    internal static void SaveMetrics(TherapyMetrics therapyMetrics)
+    public static void SaveMetrics(TherapyMetrics therapyMetrics)
     {
         if (!HasActiveSession) return;
-        Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, currentTherapistFolder));
-        File.WriteAllText(SessionPath(MetricsFile), JsonUtility.ToJson(therapyMetrics, true));
+        therapyMetrics.saveVersion = CurrentSaveVersion;
+        therapyMetrics.sessionId = currentTherapistFolder;
+        TryWriteJson(MetricsFile, therapyMetrics);
     }
 
     public static TherapyMetrics LoadMetrics()
     {
-        TherapyMetrics m = null;
-        if (HasActiveSession && File.Exists(SessionPath(MetricsFile)))
-            m = JsonUtility.FromJson<TherapyMetrics>(File.ReadAllText(SessionPath(MetricsFile)));
-        m ??= new TherapyMetrics();
+        var m = ReadJson<TherapyMetrics>(MetricsFile) ?? new TherapyMetrics();
         m.dialogueAnalyticsSessions ??= new List<DialogueAnalyticsEntry>();
         m.inferenceCategoryErrors ??= new List<InferenceCategoryErrorCounter>();
+        WarnIfNewer(m.saveVersion, MetricsFile);
         return m;
     }
 
     internal static void ExportTherapistReports(PlayerSaveData p, TherapyMetrics therapyMetrics)
     {
         if (!HasActiveSession) return;
+        try
+        {
+            string folderPath = Path.Combine(Application.persistentDataPath, currentTherapistFolder);
+            Directory.CreateDirectory(folderPath);
 
-        string folderPath = Path.Combine(Application.persistentDataPath, currentTherapistFolder);
-        Directory.CreateDirectory(folderPath);
+            string csvPath  = WriteCsv(p, therapyMetrics, folderPath);
+            string htmlPath = ReportGenerator.GenerateHTMLReport(p, therapyMetrics, currentTherapistFolder, folderPath);
 
-        string csvPath  = WriteCsv(p, therapyMetrics, folderPath);
-        string htmlPath = ReportGenerator.GenerateHTMLReport(p, therapyMetrics, currentTherapistFolder, folderPath);
-
-        Debug.Log($"[SaveSystem] CSV exportado a: {csvPath}");
-        if (!string.IsNullOrEmpty(htmlPath))
-            Debug.Log($"[SaveSystem] Informe HTML generado en: {htmlPath}");
+            Debug.Log($"[SaveSystem] CSV exportado a: {csvPath}");
+            if (!string.IsNullOrEmpty(htmlPath))
+                Debug.Log($"[SaveSystem] Informe HTML generado en: {htmlPath}");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[SaveSystem] No se pudieron generar los informes: {e.Message}");
+        }
     }
 
     private static string WriteCsv(PlayerSaveData p, TherapyMetrics m, string folderPath)

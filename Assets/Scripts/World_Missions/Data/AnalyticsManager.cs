@@ -101,8 +101,8 @@ public class AnalyticsManager : MonoBehaviour
     public TherapyMetrics Export() => new TherapyMetrics
     {
         totalPlayedTime = totalPlayedTime,
-        dialogueAnalyticsSessions = dialogueAnalyticsSessions,
-        inferenceCategoryErrors = inferenceCategoryErrors,
+        dialogueAnalyticsSessions = dialogueAnalyticsSessions.ConvertAll(e => e.Clone()),
+        inferenceCategoryErrors = inferenceCategoryErrors.ConvertAll(e => e.Clone()),
         totalFaceDiscomfortEvents = totalFaceDiscomfortEvents,
         totalFaceDiscomfortSeconds = totalFaceDiscomfortSeconds
     };
