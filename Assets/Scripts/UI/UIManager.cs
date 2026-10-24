@@ -23,13 +23,12 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        // OVRScreenFade está en la cámara principal del rig VR.
-        // Buscarlo aquí (Start) permite que el OVRCameraRig esté ya inicializado.
+        // Search OVRCameraRig, OVRScreenFade, just to make sure and warn to the user
         ovrFade = FindObjectOfType<OVRScreenFade>();
         if (ovrFade != null)
             Debug.Log("[UIManager] OVRScreenFade detectado: se usará fade VR nativo.");
         else
-            Debug.Log("[UIManager] OVRScreenFade no encontrado: se usará CanvasGroup (modo desktop).");
+            Debug.Log("[UIManager] OVRScreenFade no encontrado!! - no habrá fundidos.");
     }
 
     public void GameQuit()
