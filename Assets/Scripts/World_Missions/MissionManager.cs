@@ -12,9 +12,6 @@ public class MissionManager : MonoBehaviour
     [Header("Player Scripts")]
     [SerializeField] private Player player;
 
-    [Header("Player UI")]
-    [SerializeField] private GameObject normalUI;
-
     private Vector3 playerStartPosition;
     private SmoothTeleport smoothTeleport;
     private bool isRunning;
@@ -225,9 +222,6 @@ public class MissionManager : MonoBehaviour
         if (!isVR && vCamMission != null)
             vCamMission.Priority++;
 
-        if (normalUI != null)
-            normalUI.SetActive(false);
-
         yield return new WaitForSeconds(2f);
 
         Debug.Log($"Mission Name: {currentMission.GetMissionName()} - Iniciando diálogo");
@@ -271,14 +265,17 @@ public class MissionManager : MonoBehaviour
             Debug.LogWarning("[Analytics] EyeTracking is null — no eye data registered.");
         AnalyticsManager.Instance?.RegisterMissionEyeData(currentMission.GetMissionName(), eyeTracker);
 
+        // Make sure that data is saved in case of errors, and record the completed mission
+        bool newlyCompleted = PlayerProgress.Instance != null && PlayerProgress.Instance.CompleteMission(currentMission.GetMissionName());
+        if (newlyCompleted)
+            GameHandler.Instance?.SaveLight();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         // ─── Fade out and clean up ───
         yield return UIManager.Instance.FadeOut(currentMission.GetFadeDuration());
         currentMission.DeactivateCameras();
-        if (normalUI != null)
-            normalUI.SetActive(true);
 
         // Devolver al jugador a su posición previa AHORA que la pantalla está en negro (sin salto visible).
         playerRoot.position = playerStartPosition;
@@ -297,13 +294,10 @@ public class MissionManager : MonoBehaviour
 
         Debug.Log($"[MissionManager] Jugador liberado. Movimiento reactivado en posición anterior.");
 
-        // ─── Complete the mission ───
-        Debug.Log($"Finalizando y guardando misión: {currentMission.GetMissionName()}");
-        if (PlayerProgress.Instance.CompleteMission(currentMission.GetMissionName()))
-        {
-            GameHandler.Instance?.SaveLight();
+        // ─── Advance world (only after the player is released) ───
+        Debug.Log($"Misión finalizada: {currentMission.GetMissionName()}");
+        if (newlyCompleted)
             GameHandler.Instance?.NextWorld();
-        }
     }
 
     public string GetCurrentMissionId()
