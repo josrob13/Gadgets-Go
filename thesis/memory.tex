@@ -1031,7 +1031,7 @@ Finalmente, estos \textit{gameObjects} estarán colocados en la jerarquía del p
 \subsection{Algoritmo de Detección de Estado del Ánimo}
 
 El segundo pilar biométrico es el sistema de detección del estado anímico, cuyo objetivo no es diagnosticar emociones, sino cuidar el bienestar del usuario detectando indicios sostenidos de incomodidad.
-Toda la lógica reside en la clase \texttt{FaceTrackingManager}, implementada como un \textbf{Singleton} persistente y, de nuevo, totalmente desacoplada del sistema de diálogos: se comunica con el resto del juego exclusivamente a través de un evento, \texttt{OnDiscomfortStateChanged}, al que cualquier sistema interesado puede suscribirse.
+Toda la lógica reside en la clase \texttt{FaceTrackingManager}, implementada como un \textbf{Singleton} de escena (una instancia por escena, ligada al rig de VR) y, de nuevo, totalmente desacoplada del sistema de diálogos: se comunica con el resto del juego exclusivamente a través de un evento, \texttt{OnDiscomfortStateChanged}, al que cualquier sistema interesado puede suscribirse.
 
 \subsubsection{Procesamiento de expresiones faciales en tiempo real}
 
@@ -1050,6 +1050,7 @@ Un temporizador acumula el tiempo en que se supera el umbral y se descuenta cuan
 
 Cuando se confirma la incomodidad sostenida, el gestor dispara \texttt{OnDiscomfort\hspace{0pt}StateChanged(true)}; cuando esta se resuelve, dispara el evento con \texttt{false}.
 Toda la lógica de qué hacer ante esa señal recae en los sistemas suscriptores, manteniendo el gestor facial completamente ajeno a ellos.
+Actualmente se suscriben a él la interfaz de descanso (\texttt{FaceTrackingUI}) y el gestor de diálogos, que pausa la voz y reenvía el dato a las analíticas.
 
 \huecofigura[6.5cm]{Diagrama de clases del \texttt{FaceTrackingManager}: lectura de \textit{blendshapes} de \texttt{OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt{OnDiscomfortStateChanged}.}
 
@@ -1102,10 +1103,17 @@ De forma coherente con el principio de separación, cada vez que se solicita una
 
 Para evitar que el progreso del jugador viva únicamente en el momento del juego, y que cada ejecución signifique partir de cero, se ha trabajado en la persistencia.
 Para ello, se ha modificado la estructura antigua, eliminándose la clase \texttt{GameData} y creando en su lugar dos estructuras de datos independientes: una para el progreso del jugador y otra para las métricas terapéuticas.
-Por la parte del progreso del jugador será la clase de \texttt{PlayerSaveData} la que guardará toda la información correspondiente al ``nick'' del jugador, el índice del mundo actual, las misiones completadas, el inventario y la posición del jugador en el mundo virtual.
+Por la parte del progreso del jugador será la clase de \texttt{PlayerSaveData} la que guardará toda la información correspondiente al ``nick'' del jugador, el índice del mundo actual, las misiones completadas y el inventario.
+La posición del jugador en el mundo virtual se decidió mantener definida en la propia escena, de manera que el jugador aparecerá siempre desde esa posición, tanto si es la primera vez que juega el nivel, como si continúa una partida en progreso.
 La clase \texttt{SaveSystem}, por otro lado, se encargará de guardar y cargar el progreso del jugador, así como las métricas terapéuticas, gracias a los métodos de \texttt{SaveProgress()}, \texttt{SaveMetrics()},
 \texttt{LoadProgress()} y \texttt{LoadMetrics()}.
 Dentro de esta estructura, \texttt{GameHandler} tendrá el rol de orquestar todas estas acciones que afectan directamente al progreso, haciendo llamadas a \texttt{SaveSystem} para cargar o guardar el progreso según haga falta, y a \texttt{AnalyticsManager} en caso de necesitar un guardado rápido de las métricas en formato JSON con el método \texttt{SaveMetricsLight()}, que a su vez utiliza la clase interna de \texttt{JsonUtility}.
+\\\\
+Para poder utilizar correctamente la estructura de la persistencia de sesión, se han creado dos métodos adicionales en las clases críticas de esta funcionalidad. Por una parte, el método \texttt{Export()}, que se encarga de crear una réplica del estado de una determinada clase, devolviendo un objeto de datos independiente que contiene los valores que tenía en el instante de la llamada de la función.
+Y, por otra, el método \texttt{Import()} que funciona como un \textit{Setter}, asignando los valores del objeto que se le pasa por parámetro a la instancia del componente que ya existe en el videojuego.
+Estos métodos pertenecen a las clases de \texttt{PlayerProgress}, \texttt{PlayerInventory} y \texttt{AnalyticsManager}, y se usan cada vez que se quiere trasladar la información de dentro del videojuego a afuera, o viceversa.
+Por ejemplo, a la hora de exportar el progreso del jugador a un fichero de datos, es \texttt{GameHandler} quien, al usar su método \texttt{BuildProgress}, invoca a su vez al método de \texttt{Export()} de \texttt{PlayerInventory} para terminar de preparar toda la información que se volcará posteriormente con las distintas funciones de guardado, \texttt{SaveFull()} y \texttt{SaveLight()} (descritos más adelante).
+Lo mismo ocurre a la hora de importar el progreso del jugador, haciendo uso del método \texttt{Import()} dentro de \texttt{GameHandler.BeginSession()}.
 \\\\
 Toda la información que capturan los sistemas de \textit{eye-tracking} y \textit{face-tracking}, junto con las métricas de desempeño heredadas del primer trabajo, carecería de valor si no llegara de forma ordenada al terapeuta.
 De ello se encarga la clase \texttt{AnalyticsManager}, un Singleton persistente que centraliza la recogida de datos y su posterior exportación.\\
@@ -1114,14 +1122,28 @@ Por parte de las métricas, el modelo de datos se recoge en la clase \texttt{The
 A nivel global se registran además el tiempo total de juego y los totales de incomodidad.
 Los errores de inferencia se contabilizan de forma separada según cuatro \textbf{categorías de inferencia social}, que dan continuidad al esquema pedagógico del primer trabajo: recepción del mensaje, reconocimiento emocional, predicción o inferencia de la siguiente acción y comprensión de la relación entre los personajes.\\
 \\
-El flujo de captura respeta el principio de desacoplamiento: el \texttt{AnalyticsManager} se \textit{suscribe} a los eventos de los demás sistemas (al evento de incomodidad del gestor facial, a las respuestas del gestor de diálogos) y recibe de ellos los datos del \textit{eye-tracking} al finalizar cada misión, sin que esos sistemas necesiten conocer nada sobre las analíticas.
-Cuando la partida se guarda al salir, terminar el juego o completar un nivel completo, se contará con el siguiente procedimiento de guardado:
+El flujo de captura se diseñó inicialmente bajo el principio de desacoplamiento, mediante el patrón \textit{Observer}: el \texttt{AnalyticsManager} se \textit{suscribía} a los eventos de los demás sistemas (al evento de incomodidad del gestor facial, a las respuestas del gestor de diálogos) y recibía de ellos los datos del \textit{eye-tracking} al finalizar cada misión, sin que esos sistemas necesitasen conocer nada sobre las analíticas.
+Sin embargo, esta primera solución falló al pasar a un juego de varias escenas. El \texttt{FaceTrackingManager} era persistente, pero necesitaba la referencia al \textit{rig} de VR, que pertenece a cada escena y desaparece al cambiar de mundo, dejando una referencia muerta. Como el \texttt{AnalyticsManager}, también persistente, se suscribía a este gestor, la suscripción o bien no llegaba a producirse o bien se hacía sobre una referencia vacía, y las métricas faciales no se registraban de forma fiable.
+Para resolverlo se trabajó en dos puntos. Primero, el \texttt{FaceTrackingManager} pasó a ser un \textit{Singleton} de escena, con el mismo ciclo de vida que el \textit{rig} del que depende. Segundo, se invirtió la dirección de la dependencia: un servicio persistente no debe suscribirse a objetos de escena, por lo que \texttt{AnalyticsManager} dejó de hacerlo.
+Los sistemas biométricos mantienen el patrón \textit{Observer}, emitiendo eventos sin conocer a sus receptores, y es el \texttt{DialogueManager}, que ya estaba suscrito al gestor facial para pausar el diálogo, quien actúa como intermediario reenviando los datos relevantes al \texttt{AnalyticsManager}. De este modo, las dependencias apuntan siempre de los objetos de vida corta (en escena) a los de vida larga, y nunca al revés.
+\\\\
+A continuación, el guardado de la partida sigue el siguiente procedimiento:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{Exportación en checkpoints:} el método \texttt{SaveMetricsAndExport()} vuelca todas las métricas a un fichero de valores separados por punto y coma, codificado en UTF-8, listo para abrirse en cualquier hoja de cálculo y para su análisis estadístico posterior. Para eso, llamará internamente al método de \texttt{SaveSystem.SaveMetrics()}, junto a \texttt{SaveSystem.ExportTher\hspace{0pt}apistReports()}, que realizará el guardado rápido, además del guardado por CSV.
-De esta manera, se consiguen dos tipos de guardados distintos, uno ligero, que no consume muchos recursos, donde sólo se guarda la información en formato JSON, y otro más completo, donde además se exportarán las métricas en el formato deseable para el terapeuta.
-El sistema gestiona además el caso de que el fichero esté abierto en otro programa, generando en ese caso una copia con marca de tiempo para no perder datos.
-  \item \textbf{Organización por terapeuta:} la clase \texttt{SaveSystem} organiza los ficheros en carpetas independientes por terapeuta (con un identificador y una marca de tiempo), de modo que los datos de distintos profesionales o sesiones nunca se mezclen, respetando así la pseudonimización y la privacidad de un colectivo vulnerable.
+  \item \textbf{Exportación en ``checkpoints'':} el método \texttt{GameHandler.SaveFull()} guarda el progreso del jugador y las métricas terapéuticas en formato JSON, y a continuación invoca a \texttt{SaveSystem.ExportTherapistReports()}, que genera a partir de ambos modelos un fichero de valores separados por punto y coma, codificado en UTF-8 y listo para abrirse en cualquier hoja de cálculo, y el informe visual en HTML.
+  La unión de los dos modelos de datos solo se produce en este punto y en la exportación.
+  De esta manera, se consiguen dos tipos de guardados distintos, uno ligero (\texttt{SaveLight()}), que no consume muchos recursos y guarda únicamente la información en JSON, y que se ejecuta ante eventos frecuentes: al iniciar una partida, al introducir el nombre del jugador, al completar una misión y al pausar la aplicación.
+  Y otro más completo (\texttt{SaveFull()}), que además exporta las métricas en el formato adecuado para el terapeuta, y que se reserva para los puntos de control: al completad un mundo, al salir y al cerrar la aplicación.
+  El sistema gestiona además el caso de que el fichero esté abierto en otro programa, generando en ese caso una copia con marca de tiempo para no perder datos.
+  \item \textbf{Organización por sesión:} la clase \texttt{SaveSystem} organiza los ficheros en carpetas independientes por sesión (con un identificador basado en el terapeuta y una marca de tiempo), de modo que ni siquiera el nombre del directorio revele la identidad del usuario, respetando así la pseudonimización y la privacidad de un colectivo vulnerable.
+  \item \textbf{Escritura segura de los ficheros:} dado que el sistema operativo del visor puede cerrar la
+  aplicación en cualquier momento, y que un fichero de progreso corrupto supondría perder la sesión completa, los
+  guardados en JSON no se escriben directamente sobre el fichero final. \texttt{SaveSystem} escribe primero el
+  contenido en un fichero temporal y lo intercambia después por el definitivo, operación atómica que conserva
+  la versión anterior como copia de respaldo (\texttt{.bak}). Si el fichero principal no pudiera leerse, la
+  carga recurre automáticamente a esa copia, y cualquier error de lectura o escritura se captura y se registra,
+  de modo que un fallo de disco nunca interrumpe la partida. Además, cada fichero incluye un número de versión
+  del formato y el identificador de sesión, lo que permite detectar guardados de otra versión y prepara el sistema para futuras migraciones.
 \end{enumerate}
 
 A este volcado de datos en bruto se le suma, como se verá en el apartado de pruebas (\ref{sec:pruebas}), la generación automática de un informe visual en HTML que transforma estos números en gráficos interpretables.
@@ -1217,7 +1239,7 @@ Este diseño basado en interfaces, heredado de la filosofía del primer trabajo,
 
 \subsection{Flujo final del videojuego}
 
-Para validar de extremo a extremo toda la cadena (locomoción, interacción, diálogo espacial, audio, biometría y registro), se implementó una serie de misiones en \textbf{todos los cinco escenarios} como se pensó originalmente: dos misiones por escenario.
+Para validar de extremo a extremo toda la cadena (locomoción, interacción, diálogo espacial, audio, biometría y registro), se implementó una serie de misiones en \textbf{los cuatro escenarios}, contando con dos misiones por escenario, excepto en el de la oficina, que al ser un escenario grande son cuatro.
 Algunas de estas misiones han sido modificadas para que cuadren con los nuevos entornos 3D y el ambiente de esta versión 2.0 del juego, pero la estructura inicial de hacer que el usuario se enfrente a emociones más positivas antes que negativas, sigue presente.
 El flujo final pretende ser una conexión entre los escenarios sociales a los que tendrá que enfrentarse el jugador, y el ambiente lúdico de un propio videojuego: por este motivo, ahora las misiones y los diferentes escenarios se conectan entre sí cada vez que se avanza de nivel.
 Además, estas misiones sirven como prueba de concepto integral del flujo de juego en Quest Pro, y su orquestación recae en la clase \texttt{MissionManager}, que es donde con más claridad se aprecian las adaptaciones a la RV.\\
@@ -1237,7 +1259,7 @@ En RV no se fuerza nunca la rotación de la cabeza del usuario (algo imposible y
   \item \textbf{Ejecución y captura:} se reinician las métricas de \textit{eye-tracking}, se coloca el lienzo de diálogo entre los personajes y el usuario, y se ejecuta la conversación con sus preguntas.
 Durante toda la escena, los sistemas biométricos registran en silencio la atención y el estado anímico.
 También estarán disponibles las pistas asociadas a cada pregunta del quiz posterior, utilizando el botón que invoca al guía virtual.
-  \item \textbf{Cierre y registro:} al terminar, se vuelven a capturar los datos oculares de la misión, se devuelve al usuario a su posición original (de nuevo, con la pantalla en negro), se reactiva la locomoción y se marca la misión como completada, avanzando al siguiente mundo si corresponde.
+  \item \textbf{Cierre y registro:} al terminar, se vuelven a capturar los datos oculares de la misión, se marca la misión como completada, se devuelve al usuario a su posición original (de nuevo, con la pantalla en negro) y se reactiva la locomoción, avanzando al siguiente mundo si corresponde.
 Este proceso se repite por cada nivel, hasta que se llega al final del juego: en ese momento, se presentará al usuario un nuevo escenario, parecido al del menú inicial, donde se mostrará un canvas con un mensaje de finalización del videojuego.
 \end{enumerate}
 
@@ -1324,8 +1346,9 @@ Las pruebas realizadas gracias a los ensayos permitieron confirmar varios aciert
 
 \huecofigura[6cm]{Capturas de la experiencia de usuario en RV: el menú principal, una misión en curso y el HUD cómodo de monedas siempre visible en la zona baja del campo de visión.}
 
-Detrás de la experiencia de los ensayos, el mecanismo fundamental para poder observar los resultados con mayor precisión es el de la exportación de métricas terapéuticas.
-Para ello, además del volcado en CSV (pensado para el análisis estadístico fino), el sistema genera, mediante la clase \texttt{ReportGenerator}, un \textbf{informe visual en HTML} autocontenido, que incorpora la librería de gráficos \textit{Chart.js} (embebida para poder consultarse sin conexión) y que el terapeuta puede abrir en cualquier navegador.
+Para poder analizar con precisión los resultados de los ensayos, el mecanismo fundamental es el de la exportación de métricas terapéuticas.
+Para ello, además del volcado en CSV (pensado para el análisis estadístico fino), el sistema genera, mediante la clase \texttt{ReportGenerator}, un \textbf{informe visual en HTML} autocontenido, que el terapeuta puede abrir en cualquier navegador y que incorpora la librería de gráficos \textit{Chart.js}~\cite{chartjs2023} (versión 4.4.1, distribuida bajo licencia MIT).
+Para poder consultar el informe sin conexión, en lugar de enlazar la librería desde Internet, se ha guardado en el proyecto una copia de su versión minificada en \texttt{Assets/Resources/chatjs.txt}. Al generar cada informe, \texttt{ReportGenerator} lo inserta directamente dentro del código HTML, conservando su aviso de copyright.
 \\\\
 El informe se estructura en varias secciones:
 
@@ -1367,7 +1390,7 @@ Las ventajas competitivas de la plataforma elegida pueden resumirse en los sigui
   \item \textbf{Biometría integrada y no intrusiva:} el \textit{eye-tracking} y el \textit{face-tracking}, al venir integrados en el visor, capturan métricas objetivas sin necesidad de hardware adicional ni de incomodar al usuario, algo determinante en un colectivo con hipersensibilidad.
   \item \textbf{Bienestar como prioridad reactiva:} la combinación del \textit{face-tracking} con el sistema de pausa preventiva sitúa el bienestar del usuario en el centro, reaccionando de forma automática y sutil ante el malestar, algo que ninguna RV convencional puede ofrecer.
   \item \textbf{Datos para el terapeuta:} la exportación de métricas en CSV y el informe visual dotan al profesional de una base objetiva para fundamentar y personalizar la intervención, y para hacer un seguimiento longitudinal del progreso.
-  \item \textbf{Privacidad por diseño:} el procesamiento biométrico ocurre dentro del dispositivo y los datos se organizan de forma pseudonimizada por terapeuta, respetando la sensibilidad de la información manejada.
+  \item \textbf{Privacidad por diseño:} el procesamiento biométrico ocurre dentro del dispositivo y los datos se organizan de forma pseudonimizada por sesión, respetando la sensibilidad de la información manejada.
 \end{enumerate}
 
 \subsection{Alcance y limitaciones de la tecnología}

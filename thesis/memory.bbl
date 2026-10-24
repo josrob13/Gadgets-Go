@@ -492,6 +492,29 @@
       \verb 10.1037/0022-3514.44.1.113
       \endverb
     \endentry
+    \entry{chartjs2023}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=1bab604765053a38c1f50221d1f4d642}{%
+           family={{Chart.js Contributors}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{1bab604765053a38c1f50221d1f4d642}
+      \strng{fullhash}{1bab604765053a38c1f50221d1f4d642}
+      \strng{fullhashraw}{1bab604765053a38c1f50221d1f4d642}
+      \strng{bibnamehash}{1bab604765053a38c1f50221d1f4d642}
+      \strng{authorbibnamehash}{1bab604765053a38c1f50221d1f4d642}
+      \strng{authornamehash}{1bab604765053a38c1f50221d1f4d642}
+      \strng{authorfullhash}{1bab604765053a38c1f50221d1f4d642}
+      \strng{authorfullhashraw}{1bab604765053a38c1f50221d1f4d642}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.chartjs.org}}
+      \field{note}{Licencia MIT. Consultado el 24 de octubre de 2026}
+      \field{title}{Chart.js (versión 4.4.1)}
+      \field{year}{2023}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

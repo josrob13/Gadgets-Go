@@ -36,20 +36,20 @@
 \contentsline {subsection}{\numberline {3.2.4}Guía Virtual}{29}{subsection.3.2.4}%
 \contentsline {subsubsection}{\numberline {3.2.4.1}Lógica de apoyo y sistema de pistas}{30}{subsubsection.3.2.4.1}%
 \contentsline {subsection}{\numberline {3.2.5}Persistencia de sesión y Exportación de métricas}{30}{subsection.3.2.5}%
-\contentsline {section}{\numberline {3.3}Desarrollo de Misiones y Dinámicas en RV}{32}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Adaptación del sistema de diálogos al espacio 3D}{33}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Navegación e interacción en RV: Librería SDK y adaptaciones \textit {ad hoc}}{35}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Flujo final del videojuego}{38}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Pruebas, Validación y Análisis de Datos}{40}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Pruebas de rendimiento: Tasa de refresco y latencia de sensores}{40}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Evaluación de la precisión del seguimiento ocular y facial}{41}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Análisis de la experiencia de usuario (UX), Ensayo Clínico y Comité Ético}{42}{subsection.3.4.3}%
-\contentsline {chapter}{\numberline {4}Discusión, Conclusiones y Trabajos Futuros}{47}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Análisis crítico del uso de Meta Quest Pro en el apoyo a personas TEA}{47}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Ventajas y desventajas de la tecnología Meta Quest Pro en el tratamiento del TEA}{48}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Alcance y limitaciones de la tecnología}{48}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Conclusiones finales}{49}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Trabajos futuros}{50}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Integración de IA Generativa para el Guía Virtual}{50}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Multijugador social en RV para entrenamiento grupal}{51}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Otras aplicaciones tecnológicas dirigidas a personas TEA}{51}{subsection.4.3.3}%
+\contentsline {section}{\numberline {3.3}Desarrollo de Misiones y Dinámicas en RV}{34}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Adaptación del sistema de diálogos al espacio 3D}{34}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Navegación e interacción en RV: Librería SDK y adaptaciones \textit {ad hoc}}{36}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Flujo final del videojuego}{39}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Pruebas, Validación y Análisis de Datos}{41}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Pruebas de rendimiento: Tasa de refresco y latencia de sensores}{42}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Evaluación de la precisión del seguimiento ocular y facial}{43}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Análisis de la experiencia de usuario (UX), Ensayo Clínico y Comité Ético}{44}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {4}Discusión, Conclusiones y Trabajos Futuros}{49}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Análisis crítico del uso de Meta Quest Pro en el apoyo a personas TEA}{49}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Ventajas y desventajas de la tecnología Meta Quest Pro en el tratamiento del TEA}{50}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Alcance y limitaciones de la tecnología}{50}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Conclusiones finales}{51}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Trabajos futuros}{52}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Integración de IA Generativa para el Guía Virtual}{52}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Multijugador social en RV para entrenamiento grupal}{53}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Otras aplicaciones tecnológicas dirigidas a personas TEA}{53}{subsection.4.3.3}%
