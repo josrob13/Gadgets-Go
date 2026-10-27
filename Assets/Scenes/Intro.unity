@@ -4206,10 +4206,7 @@ MonoBehaviour:
   interactDistance: 2
   interactKey: 1
   interactController: 2
-  menuKey: 4
-  interactiveMenu: {fileID: 0}
   centerEyeAnchor: {fileID: 947468301}
-  uiManager: {fileID: 0}
 --- !u!114 &413165208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13583,7 +13580,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 915.2, y: 127.8, z: 1}
+  m_Size: {x: 915.2, y: 138.73, z: 22.07}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1341519776
 GameObject:
