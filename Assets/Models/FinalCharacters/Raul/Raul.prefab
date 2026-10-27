@@ -4813,7 +4813,7 @@ GameObject:
   - component: {fileID: 8750355500088587753}
   m_Layer: 0
   m_Name: Raul
-  m_TagString: Untagged
+  m_TagString: MainNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

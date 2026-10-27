@@ -1071,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3480112988133227417, guid: 0049abd78fb93ee46827d7feadbe4887, type: 3}
       propertyPath: m_TagString
-      value: NPC
+      value: MainNPC
       objectReference: {fileID: 0}
     - target: {fileID: 3568697210086991650, guid: 0049abd78fb93ee46827d7feadbe4887, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27064,6 +27064,7 @@ GameObject:
   - component: {fileID: 1351872145}
   - component: {fileID: 1351872144}
   - component: {fileID: 1351872143}
+  - component: {fileID: 1351872147}
   m_Layer: 3
   m_Name: DialoguePanel
   m_TagString: DialoguePanel
@@ -27121,7 +27122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1351872141}
   textComp: {fileID: 342175554}
-  highlightFrame: {fileID: 0}
+  highlightFrame: {fileID: 717641510}
   enableVRInteraction: 1
   continueGestureButton: 16384
   controller: 3
@@ -27163,6 +27164,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351872141}
   m_CullTransparentMesh: 1
+--- !u!65 &1351872147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351872141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1720.8, y: 228.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1355262624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42197,7 +42219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7605452136912280313, guid: 5390da4ffbc0a164281c721736534220, type: 3}
       propertyPath: m_TagString
-      value: NPC
+      value: MainNPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

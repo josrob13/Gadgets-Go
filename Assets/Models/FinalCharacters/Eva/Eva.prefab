@@ -4682,7 +4682,7 @@ GameObject:
   - component: {fileID: 5936526956504670815}
   m_Layer: 0
   m_Name: Eva
-  m_TagString: Untagged
+  m_TagString: MainNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
