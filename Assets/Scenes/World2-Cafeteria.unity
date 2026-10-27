@@ -1069,6 +1069,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fran
       objectReference: {fileID: 0}
+    - target: {fileID: 3480112988133227417, guid: 0049abd78fb93ee46827d7feadbe4887, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 3568697210086991650, guid: 0049abd78fb93ee46827d7feadbe4887, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.444
@@ -4121,15 +4125,17 @@ MonoBehaviour:
   eyeGaze: {fileID: 197660378}
   focusLayerMask:
     serializedVersion: 2
-    m_Bits: 571
-  focusTags: []
+    m_Bits: 0
+  focusTags:
+  - MainNPC
+  - DialoguePanel
   focusObjects: []
   minConfidence: 0.5
   distractionAlertTime: 5
   maxRayDistance: 100
   distractionWarningUI: {fileID: 0}
   distractionWarningText: {fileID: 0}
-  dialogueUI: {fileID: 0}
+  dialogueUI: {fileID: 1351872144}
   textBoxHighlightUI: {fileID: 0}
   warningMessage: "\xA1Atiende en la misi\xF3n!"
 --- !u!114 &197660377
@@ -42188,6 +42194,10 @@ PrefabInstance:
     - target: {fileID: 7605452136912280313, guid: 5390da4ffbc0a164281c721736534220, type: 3}
       propertyPath: m_Name
       value: Pablo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605452136912280313, guid: 5390da4ffbc0a164281c721736534220, type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

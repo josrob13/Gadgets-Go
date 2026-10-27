@@ -44597,15 +44597,17 @@ MonoBehaviour:
   eyeGaze: {fileID: 1980947027}
   focusLayerMask:
     serializedVersion: 2
-    m_Bits: 571
-  focusTags: []
+    m_Bits: 0
+  focusTags:
+  - MainNPC
+  - DialoguePanel
   focusObjects: []
   minConfidence: 0.5
   distractionAlertTime: 5
   maxRayDistance: 100
   distractionWarningUI: {fileID: 0}
   distractionWarningText: {fileID: 0}
-  dialogueUI: {fileID: 0}
+  dialogueUI: {fileID: 1252236922}
   textBoxHighlightUI: {fileID: 0}
   warningMessage: "\xA1Atiende en la misi\xF3n!"
 --- !u!114 &1980947026
