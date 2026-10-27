@@ -287,7 +287,11 @@ public class VRRayPointer : MonoBehaviour
     /// </summary>
     private void OpenVRKeyboard(TMP_InputField field)
     {
-        if (field.isFocused) return;
+        if (field.isFocused)
+        {
+            field.ActivateInputField();
+            return;
+        }
         
         if (_keyboardCoroutine != null) StopCoroutine(_keyboardCoroutine);
         if (_activeInputField != null)
@@ -298,16 +302,16 @@ public class VRRayPointer : MonoBehaviour
         field.Select();
         field.ActivateInputField();
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-        _vrKeyboard = TouchScreenKeyboard.Open(
-            field.text,
-            TouchScreenKeyboardType.Default,
-            autocorrection: false,
-            multiline: false,
-            secure: false,
-            alert: false);
-        _keyboardCoroutine = StartCoroutine(SyncKeyboardText());
-#endif
+// #if UNITY_ANDROID && !UNITY_EDITOR
+//         _vrKeyboard = TouchScreenKeyboard.Open(
+//             field.text,
+//             TouchScreenKeyboardType.Default,
+//             autocorrection: false,
+//             multiline: false,
+//             secure: false,
+//             alert: false);
+//         _keyboardCoroutine = StartCoroutine(SyncKeyboardText());
+// #endif
     }
 
     /// <summary>

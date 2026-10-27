@@ -12,9 +12,9 @@ public class EmotionController : MonoBehaviour
 
     void Start()
     {
-        Debug.LogError("ENTRA EN EMOITION CONTROLLER...");
+        Debug.Log("ENTRA EN EMOITION CONTROLLER...");
         if (animator == null) animator = GetComponent<Animator>();
-        Debug.LogError("SALE SEGUNDA LINEA EN EMOITION CONTROLLER...");
+        Debug.Log("SALE SEGUNDA LINEA EN EMOITION CONTROLLER...");
 
         layerIndex = animator.GetLayerIndex(layerName);
 
