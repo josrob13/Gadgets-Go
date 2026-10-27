@@ -1193,6 +1193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: Hablar con Fran y Pablo
+  completedText: "\xA1Misi\xF3n ya completada!"
 --- !u!114 &61657225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16895,6 +16896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: Hablar con Daniela y Bea
+  completedText: "\xA1Misi\xF3n ya completada!"
 --- !u!114 &884564531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18795,7 +18797,6 @@ GameObject:
   - component: {fileID: 950615481}
   - component: {fileID: 950615480}
   - component: {fileID: 950615479}
-  - component: {fileID: 950615478}
   m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
@@ -18825,21 +18826,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1919.9999, y: 1060.728}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &950615478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950615476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cfc9424c2eefad41bfa703264d298bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 950615481}
-  distanceFromPlayer: 2.5
-  heightOffset: 0
 --- !u!114 &950615479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19130,10 +19116,7 @@ MonoBehaviour:
   interactDistance: 2
   interactKey: 2
   interactController: 2
-  menuKey: 4
-  interactiveMenu: {fileID: 0}
   centerEyeAnchor: {fileID: 197660374}
-  uiManager: {fileID: 0}
 --- !u!114 &962998241
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class DialogueUI : MonoBehaviour, IPointerClickHandler, IVRPointerTarget
 
     public void SetHighlight(bool active)
     {
+        Debug.Log($"[DialogueUI] SetHighlight({active}) — highlightFrame:{highlightFrame != null}");
         if (highlightFrame != null)
             highlightFrame.SetActive(active);
     }
