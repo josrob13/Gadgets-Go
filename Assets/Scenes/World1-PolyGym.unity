@@ -3482,6 +3482,7 @@ GameObject:
   - component: {fileID: 145396273}
   - component: {fileID: 145396272}
   - component: {fileID: 145396271}
+  - component: {fileID: 145396275}
   m_Layer: 3
   m_Name: QuestionPanel
   m_TagString: DialoguePanel
@@ -3589,6 +3590,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145396269}
   m_CullTransparentMesh: 1
+--- !u!65 &145396275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145396269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1763.36, y: 474.6, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &146978741
 GameObject:
   m_ObjectHideFlags: 0
@@ -43225,6 +43247,7 @@ GameObject:
   - component: {fileID: 1664035543}
   - component: {fileID: 1664035542}
   - component: {fileID: 1664035541}
+  - component: {fileID: 1664035545}
   m_Layer: 3
   m_Name: DialoguePanel
   m_TagString: DialoguePanel
@@ -43282,7 +43305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1664035539}
   textComp: {fileID: 750380957}
-  highlightFrame: {fileID: 0}
+  highlightFrame: {fileID: 17315560}
   enableVRInteraction: 1
   continueGestureButton: 16384
   controller: 3
@@ -43324,6 +43347,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664035539}
   m_CullTransparentMesh: 1
+--- !u!65 &1664035545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664035539}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1693.4, y: 200, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1673280192
 GameObject:
   m_ObjectHideFlags: 0

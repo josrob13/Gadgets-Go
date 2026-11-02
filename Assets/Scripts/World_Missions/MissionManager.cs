@@ -16,6 +16,8 @@ public class MissionManager : MonoBehaviour
     private SmoothTeleport smoothTeleport;
     private bool isRunning;
 
+    public bool IsRunning => isRunning;
+
     private void Awake()
     {
         Instance = this;
@@ -83,7 +85,6 @@ public class MissionManager : MonoBehaviour
         // ─── Get VR locomotion references ───
         smoothTeleport = smoothTeleport ?? FindObjectOfType<SmoothTeleport>();
         EyeTracking eyeTracker = FindObjectOfType<EyeTracking>();
-        eyeTracker?.ResetTracking();
         Debug.Log($"[Analytics] EyeTracking found: {eyeTracker != null}");
         OVRCameraRig ovrRig = FindObjectOfType<OVRCameraRig>();
         bool isVR = ovrRig != null;
@@ -236,6 +237,7 @@ public class MissionManager : MonoBehaviour
         bool dialogueFinished = false;
         try
         {
+            eyeTracker?.ResetTracking();
             yield return DialogueManager.Instance.StartDialogue(
                 currentMission.GetDialogueNode(),
                 currentMission.GetMissionName(),

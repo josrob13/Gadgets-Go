@@ -171,7 +171,6 @@ public class EyeTracking : MonoBehaviour
         trackedTime = 0f;
         currentDistractedDuration = 0f;
         _distractionCount = 0;
-        warningActive = false;
         IsCurrentlyFocused = false;
         SetWarning(false);
     }

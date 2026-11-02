@@ -22,7 +22,8 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Update()
     {
-        IInteractable i = playerInteraction.GetInteractableObject();
+        bool missionRunning = MissionManager.Instance != null && MissionManager.Instance.IsRunning;
+        IInteractable i = missionRunning ? null : playerInteraction.GetInteractableObject();
 
         if (i != _current)
         {

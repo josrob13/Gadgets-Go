@@ -17156,6 +17156,7 @@ GameObject:
   - component: {fileID: 230732351}
   - component: {fileID: 230732350}
   - component: {fileID: 230732349}
+  - component: {fileID: 230732353}
   m_Layer: 3
   m_Name: QuestionPanel
   m_TagString: DialoguePanel
@@ -17263,6 +17264,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230732347}
   m_CullTransparentMesh: 1
+--- !u!65 &230732353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230732347}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1763.36, y: 474.6, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &230738969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4631730319309726, guid: 5a2b2aefafe7a2f4bb79271e2b6b2e62, type: 3}
@@ -35574,6 +35596,7 @@ GameObject:
   - component: {fileID: 481275661}
   - component: {fileID: 481275660}
   - component: {fileID: 481275659}
+  - component: {fileID: 481275663}
   m_Layer: 3
   m_Name: DialoguePanel
   m_TagString: DialoguePanel
@@ -35631,7 +35654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 481275657}
   textComp: {fileID: 93839834}
-  highlightFrame: {fileID: 0}
+  highlightFrame: {fileID: 1563476692}
   enableVRInteraction: 1
   continueGestureButton: 16384
   controller: 3
@@ -35673,6 +35696,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481275657}
   m_CullTransparentMesh: 1
+--- !u!65 &481275663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481275657}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1693.4, y: 200, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &481410938
 PrefabInstance:
   m_ObjectHideFlags: 0

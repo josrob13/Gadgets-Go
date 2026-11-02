@@ -24740,6 +24740,7 @@ GameObject:
   - component: {fileID: 1095635042}
   - component: {fileID: 1095635041}
   - component: {fileID: 1095635040}
+  - component: {fileID: 1095635044}
   m_Layer: 3
   m_Name: QuestionPanel
   m_TagString: DialoguePanel
@@ -24847,6 +24848,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095635038}
   m_CullTransparentMesh: 1
+--- !u!65 &1095635044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095635038}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1763.36, y: 474.6, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1097253240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28421,6 +28443,7 @@ GameObject:
   - component: {fileID: 1252236923}
   - component: {fileID: 1252236922}
   - component: {fileID: 1252236921}
+  - component: {fileID: 1252236925}
   m_Layer: 3
   m_Name: DialoguePanel
   m_TagString: DialoguePanel
@@ -28478,7 +28501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1252236919}
   textComp: {fileID: 1648500271}
-  highlightFrame: {fileID: 0}
+  highlightFrame: {fileID: 306264594}
   enableVRInteraction: 1
   continueGestureButton: 16384
   controller: 3
@@ -28520,6 +28543,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252236919}
   m_CullTransparentMesh: 1
+--- !u!65 &1252236925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252236919}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1693.4, y: 200, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1255321915
 PrefabInstance:
   m_ObjectHideFlags: 0
