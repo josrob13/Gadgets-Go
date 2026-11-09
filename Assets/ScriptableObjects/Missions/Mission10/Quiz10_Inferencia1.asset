@@ -36,7 +36,7 @@ MonoBehaviour:
   hint: 'Recuerda: costar un ojo de la cara suele significar que algo ha sido muy
     caro.'
   correctText: "\xA1S\xED!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: No, no es eso exactamente...
   revealText: Resulta que la mesa era extremadamente cara y pagaron mucho dinero
     por ella.

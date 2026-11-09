@@ -78,7 +78,35 @@ public class GameHandler : MonoBehaviour
 
         SaveSystem.SaveProgress(progress);
         SaveSystem.SaveMetrics(metrics);
-        SaveSystem.ExportTherapistReports(progress, metrics);
+        SaveSystem.ExportTherapistReports(progress, metrics, BuildMissionLegend());
+    }
+
+    /// <summary>
+    /// Leyenda ID → misión para el informe del terapeuta, construida desde el WorldsDB
+    /// (todas las misiones del juego, ordenadas por ID).
+    /// </summary>
+    private List<MissionLegendEntry> BuildMissionLegend()
+    {
+        var legend = new List<MissionLegendEntry>();
+        if (worldsDB?.worlds == null) return legend;
+
+        foreach (var world in worldsDB.worlds)
+        {
+            if (world?.Missions == null) continue;
+            foreach (var mission in world.Missions)
+            {
+                if (mission == null) continue;
+                legend.Add(new MissionLegendEntry
+                {
+                    id = mission.GetMissionId(),
+                    name = mission.GetMissionName(),
+                    world = world.WorldName
+                });
+            }
+        }
+
+        legend.Sort((a, b) => string.CompareOrdinal(a.id, b.id));
+        return legend;
     }
 
     public void StartNewGame(string baseTherapistId)

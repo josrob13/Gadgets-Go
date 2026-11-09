@@ -31,6 +31,6 @@ MonoBehaviour:
   hint: "Piensa: por la forma en la que Carla ha dicho 'qu\xE9 has roto esta vez',
     parece que no es la primera vez que esto ocurre, osea que como m\xEDnimo se conocen."
   correctText: "\xA1Claro que si!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: "No es exactamente eso, pero sigue intent\xE1ndolo."
   revealText: Resulta que son conocidos con confianza.

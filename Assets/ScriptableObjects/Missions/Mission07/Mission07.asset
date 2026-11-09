@@ -15,7 +15,14 @@ MonoBehaviour:
   missionName: Te vienes al concierto?
   description: "Eva se encuentra con Ra\xFAl en la parada de autob\xFAs, y le invita
     a ir con ella al concierto. Ra\xFAl acepta encantado."
+  userGuide: "Ac\xE9rcate a la pista de baloncesto."
   fadeDuration: 1.5
   dialogueNode: {fileID: 11400000, guid: 2e704018d74e2d042aeba423192ea6b2, type: 2}
   cameraID: cameraMission07
   cameraContainerName: Mission07
+  playerStandDistance: 2.5
+  lockPlayerDuringMission: 1
+  missionStartTransform: {fileID: 0}
+  useGlobalCoordinates: 1
+  canvasHeightOffset: 1.5
+  canvasForwardOffset: 1

@@ -31,6 +31,6 @@ MonoBehaviour:
   correctOptionIndex: 1
   hint: "Recuerda: la expresi\xF3n suele significar que algo avanz\xF3 f\xE1cilmente."
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
   revealText: "Resulta que el proyecto avanz\xF3 de forma muy fluida y f\xE1cil."

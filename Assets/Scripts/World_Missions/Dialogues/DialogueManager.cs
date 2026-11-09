@@ -166,8 +166,11 @@ public class DialogueManager : MonoBehaviour
                     }
                     else if (questionAttempts[questionNode] < 3)
                     {
-                        // Show wrong answer message
-                        yield return ShowDialogueLine(questionNode.wrongText);
+                        // Show wrong answer message (generic one if the node has none, so a retry is never silent)
+                        string wrong = string.IsNullOrWhiteSpace(questionNode.wrongText)
+                            ? DefaultWrongText
+                            : questionNode.wrongText;
+                        yield return ShowDialogueLine(wrong);
                     }
                 }
 
@@ -185,14 +188,28 @@ public class DialogueManager : MonoBehaviour
             {
                 // PostAnswerNode uses its own correct/bad clips; all others use voiceClip
                 AudioClip clipToPlay = node.voiceClip;
+                string lineToShow = node.text;
                 if (node is PostAnswerNode pan)
+                {
                     clipToPlay = _lastAnswerWasCorrect ? pan.correctVoiceClip : pan.badVoiceClip;
+                    // If the node has no own text, show the correct/bad answer text that matches the result.
+                    if (string.IsNullOrWhiteSpace(lineToShow))
+                        lineToShow = _lastAnswerWasCorrect ? pan.correctAnswer : pan.badAnswer;
+                }
+
+                // A blank line must not open an empty panel: skip it (and its audio).
+                if (string.IsNullOrWhiteSpace(lineToShow))
+                {
+                    Debug.LogWarning($"[DialogueManager] Node '{node.name}' has no text to show; skipping.");
+                    node = node.nextNode;
+                    continue;
+                }
 
                 // PlayVoice stops any currently playing clip before starting the new one,
                 // making overlapping voices architecturally impossible.
                 DialogueAudioManager.Instance?.PlayVoice(clipToPlay, speakerTransform);
 
-                yield return ShowDialogueLine(node.text);
+                yield return ShowDialogueLine(lineToShow);
                 node = node.nextNode;
             }
         }
@@ -279,8 +296,14 @@ public class DialogueManager : MonoBehaviour
         Debug.Log($"[DialogueManager] Player name set: {enteredName}");
     }
 
+    private const string DefaultWrongText = "Vaya, inténtalo de nuevo...";
+
     public IEnumerator ShowDialogueLine(string line)
     {
+        // Empty feedback texts (e.g. QuestionNode.correctText left blank) must not show an empty panel.
+        if (string.IsNullOrWhiteSpace(line))
+            yield break;
+
         dialogueUI.Show();
         dialogueUI.SetText(string.Empty);
         dialogueUI.NextPressed = false;

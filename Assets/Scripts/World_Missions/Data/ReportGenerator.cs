@@ -5,6 +5,14 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
+/// <summary>Una fila de la leyenda de misiones del informe: ID corto, nombre de la misión y mundo.</summary>
+public class MissionLegendEntry
+{
+    public string id;
+    public string name;
+    public string world;
+}
+
 /// <summary>
 /// Generates a self-contained HTML therapist report from PlayerSaveData and TherapyMetrics.
 /// Place a Chart.js minified build at Assets/Resources/chartjs.txt for offline use;
@@ -15,7 +23,7 @@ public static class ReportGenerator
     private const string CHARTJS_RESOURCE_PATH = "chartjs";
     private const string CHART_CDN_FALLBACK = "https://cdn.jsdelivr.net/npm/chart.js";
 
-    public static string GenerateHTMLReport(PlayerSaveData progress, TherapyMetrics metrics, string sessionId, string outputFolderPath)
+    public static string GenerateHTMLReport(PlayerSaveData progress, TherapyMetrics metrics, string sessionId, string outputFolderPath, List<MissionLegendEntry> missionLegend = null)
     {
         if (progress == null || metrics == null)
         {
@@ -32,7 +40,7 @@ public static class ReportGenerator
 
         try
         {
-            File.WriteAllText(reportPath, BuildHTML(progress, metrics, sessionId, chartJsTag), Encoding.UTF8);
+            File.WriteAllText(reportPath, BuildHTML(progress, metrics, sessionId, chartJsTag, missionLegend), Encoding.UTF8);
             Debug.Log($"[ReportGenerator] HTML report written to: {reportPath}");
         }
         catch (Exception ex)
@@ -48,8 +56,10 @@ public static class ReportGenerator
     // HTML assembly
     // ────────────────────────────────────────────────────────────────────────────
 
-    private static string BuildHTML(PlayerSaveData progress, TherapyMetrics metrics, string sessionId, string chartJsTag)
+    private static string BuildHTML(PlayerSaveData progress, TherapyMetrics metrics, string sessionId, string chartJsTag, List<MissionLegendEntry> missionLegend)
     {
+        var idByName = BuildIdMap(missionLegend);
+
         int totalWrong = 0, totalQuestions = 0;
         if (metrics.dialogueAnalyticsSessions != null)
             foreach (var s in metrics.dialogueAnalyticsSessions) { totalWrong += s.wrongAnswers; totalQuestions += s.questionsAnswered; }
@@ -138,14 +148,20 @@ public static class ReportGenerator
         {
             sb.AppendLine("<section>");
             sb.AppendLine("  <h2 class=\"sec-title\">Detalle por Misión</h2>");
-            sb.AppendLine(BuildDetailTable(metrics.dialogueAnalyticsSessions));
+            sb.AppendLine(BuildDetailTable(metrics.dialogueAnalyticsSessions, idByName));
+            sb.AppendLine("</section>");
+
+            // Legend: ID → mission
+            sb.AppendLine("<section>");
+            sb.AppendLine("  <h2 class=\"sec-title\">Leyenda de Misiones</h2>");
+            sb.AppendLine(BuildMissionLegendTable(missionLegend, metrics.dialogueAnalyticsSessions, idByName));
             sb.AppendLine("</section>");
         }
 
         sb.AppendLine("</main>");
         sb.AppendLine("<footer>Gadgets Go VR &mdash; Informe generado el " + generatedDate + "</footer>");
         sb.AppendLine(chartJsTag);
-        sb.AppendLine(BuildChartJS(metrics));
+        sb.AppendLine(BuildChartJS(metrics, idByName));
         sb.AppendLine("</body>");
         sb.AppendLine("</html>");
         return sb.ToString();
@@ -215,8 +231,8 @@ section{display:flex;flex-direction:column}
 
     private static string BuildInferenceLegend(List<InferenceCategoryErrorCounter> categories)
     {
-        string[] colors = { "#4361ee", "#06d6a0", "#fb8500", "#ef233c" };
-        string[] names  = { "Recepción del Mensaje", "Reconocimiento Emocional", "Predicción de Movimiento", "Comprensión Relacional" };
+        string[] colors = { "#4361ee", "#06d6a0", "#fb8500", "#ef233c", "#9b5de5" };
+        string[] names  = { "Recepción del Mensaje", "Reconocimiento Emocional", "Predicción de Movimiento", "Comprensión Relacional", "Lenguaje Figurado" };
 
         var sb = new StringBuilder();
         foreach (var cat in categories)
@@ -233,13 +249,13 @@ section{display:flex;flex-direction:column}
         return sb.ToString();
     }
 
-    private static string BuildDetailTable(List<DialogueAnalyticsEntry> sessions)
+    private static string BuildDetailTable(List<DialogueAnalyticsEntry> sessions, Dictionary<string, string> idByName)
     {
         var sb = new StringBuilder();
         sb.AppendLine("<div class=\"tbl-wrap\">");
         sb.AppendLine("<table><thead><tr>");
         foreach (string h in new[] {
-            "Misión", "Sesiones", "Tiempo (s)", "Preguntas", "Incorrectas", "Pistas",
+            "ID Misión", "Sesiones", "Tiempo (s)", "Preguntas", "Incorrectas", "Pistas",
             "T. Resp. Prom. (s)", "Enfocado (s)", "Distaído (s)", "Ev. Distracción",
             "Incomod. (ev.)", "Incomod. (s)"
         })
@@ -260,7 +276,7 @@ section{display:flex;flex-direction:column}
                 : "<span class=\"b ok\">0</span>";
 
             sb.AppendLine("<tr>");
-            sb.AppendLine("<td><strong>" + EscapeHtml(s.dialogueId) + "</strong></td>");
+            sb.AppendLine("<td title=\"" + EscapeHtml(s.dialogueId) + "\"><strong>" + EscapeHtml(MissionLabel(s.dialogueId, idByName)) + "</strong></td>");
             sb.AppendLine("<td>" + s.sessionsPlayed + "</td>");
             sb.AppendLine("<td>" + F1(s.timeSpent) + "</td>");
             sb.AppendLine("<td>" + s.questionsAnswered + "</td>");
@@ -283,13 +299,13 @@ section{display:flex;flex-direction:column}
     // Chart.js initialization script
     // ────────────────────────────────────────────────────────────────────────────
 
-    private static string BuildChartJS(TherapyMetrics metrics)
+    private static string BuildChartJS(TherapyMetrics metrics, Dictionary<string, string> idByName)
     {
         if (metrics.dialogueAnalyticsSessions == null || metrics.dialogueAnalyticsSessions.Count == 0)
             return "<script></script>";
 
         var ss = metrics.dialogueAnalyticsSessions;
-        string lbl     = JsStrArr(ss.ConvertAll(s => TruncLabel(s.dialogueId)));
+        string lbl     = JsStrArr(ss.ConvertAll(s => MissionLabel(s.dialogueId, idByName)));
         string wrong   = JsIntArr(ss.ConvertAll(s => s.wrongAnswers));
         string hints   = JsIntArr(ss.ConvertAll(s => s.hintsRequested));
         string eyeFoc  = JsFltArr(ss.ConvertAll(s => s.eyeFocusedSeconds));
@@ -302,8 +318,8 @@ section{display:flex;flex-direction:column}
         string infLbl = "[]", infDat = "[]", infCol = "[]";
         if (metrics.inferenceCategoryErrors != null && metrics.inferenceCategoryErrors.Count > 0)
         {
-            string[] nm  = { "Recepción del Mensaje", "Reconocimiento Emocional", "Predicción de Movimiento", "Comprensión Relacional" };
-            string[] col = { "#4361ee", "#06d6a0", "#fb8500", "#ef233c" };
+            string[] nm  = { "Recepción del Mensaje", "Reconocimiento Emocional", "Predicción de Movimiento", "Comprensión Relacional", "Lenguaje Figurado" };
+            string[] col = { "#4361ee", "#06d6a0", "#fb8500", "#ef233c", "#9b5de5" };
             var ll = new List<string>(); var dd = new List<string>(); var cc = new List<string>();
             foreach (var cat in metrics.inferenceCategoryErrors)
             {
@@ -358,6 +374,66 @@ section{display:flex;flex-direction:column}
     // ────────────────────────────────────────────────────────────────────────────
     // Helpers
     // ────────────────────────────────────────────────────────────────────────────
+
+    // Mission IDs ----------------------------------------------------------------
+
+    private static Dictionary<string, string> BuildIdMap(List<MissionLegendEntry> legend)
+    {
+        var map = new Dictionary<string, string>();
+        if (legend == null) return map;
+        foreach (var e in legend)
+            if (e != null && !string.IsNullOrEmpty(e.name))
+                map.TryAdd(e.name, e.id);
+        return map;
+    }
+
+    /// <summary>ID que se muestra en tabla y gráficos para un dialogueId (nombre de misión).</summary>
+    private static string MissionLabel(string dialogueId, Dictionary<string, string> idByName)
+    {
+        if (!string.IsNullOrEmpty(dialogueId))
+        {
+            if (idByName != null && idByName.TryGetValue(dialogueId, out var id)) return id;
+            if (dialogueId == "intro") return "intro";
+        }
+        return TruncLabel(dialogueId);
+    }
+
+    private static string BuildMissionLegendTable(List<MissionLegendEntry> legend,
+                                                  List<DialogueAnalyticsEntry> sessions,
+                                                  Dictionary<string, string> idByName)
+    {
+        var sb = new StringBuilder();
+        var rows = new List<string>();
+
+        if (legend != null)
+            foreach (var e in legend)
+                if (e != null)
+                    rows.Add("<tr><td><strong>" + EscapeHtml(e.id) + "</strong></td><td>" +
+                             EscapeHtml(e.name) + "</td><td>" + EscapeHtml(e.world) + "</td></tr>");
+
+        // dialogueIds that are not missions of the current game (intro, renamed missions...)
+        var extra = new HashSet<string>();
+        if (sessions != null)
+            foreach (var s in sessions)
+                if (!string.IsNullOrEmpty(s.dialogueId) && !idByName.ContainsKey(s.dialogueId) && extra.Add(s.dialogueId))
+                {
+                    string label = MissionLabel(s.dialogueId, idByName);
+                    string desc = s.dialogueId == "intro"
+                        ? "Diálogo de introducción"
+                        : s.dialogueId + " (no figura entre las misiones actuales del juego)";
+                    rows.Add("<tr><td><strong>" + EscapeHtml(label) + "</strong></td><td>" +
+                             EscapeHtml(desc) + "</td><td>—</td></tr>");
+                }
+
+        if (rows.Count == 0)
+            return "<p>No hay información de misiones disponible.</p>";
+
+        sb.AppendLine("<div class=\"tbl-wrap\">");
+        sb.AppendLine("<table><thead><tr><th>ID</th><th>Misión</th><th>Mundo</th></tr></thead><tbody>");
+        foreach (var r in rows) sb.AppendLine(r);
+        sb.AppendLine("</tbody></table></div>");
+        return sb.ToString();
+    }
 
     private static string JsStrArr(List<string> v) =>
         "[" + string.Join(",", v.ConvertAll(s => "\"" + EscapeJs(s) + "\"")) + "]";

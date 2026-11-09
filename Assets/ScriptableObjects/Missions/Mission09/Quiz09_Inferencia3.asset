@@ -32,7 +32,7 @@ MonoBehaviour:
   hint: "Recuerda: esa expresi\xF3n suele significar que alguien es muy bueno en
     lo que hace."
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
   revealText: "Resulta que Sof\xEDa es muy eficiente, trabajadora y ha logrado algo
     excepcional."

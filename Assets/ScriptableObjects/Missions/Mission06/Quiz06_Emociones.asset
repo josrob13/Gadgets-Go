@@ -31,6 +31,6 @@ MonoBehaviour:
   correctOptionIndex: 0
   hint: "Recuerda: \xBFel olor era agradable o desagradable?"
   correctText: "\xA1Muy bien, s\xED!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: Creo que no es eso exactamente.
   revealText: Fran estaba transmitiendo asco.

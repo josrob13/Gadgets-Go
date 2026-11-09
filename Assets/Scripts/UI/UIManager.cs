@@ -55,8 +55,13 @@ public class UIManager : MonoBehaviour
             yield break;
         }
 
+        fade.fadeTime = duration;
         if (fadeOut) fade.FadeOut(); else fade.FadeIn();
-        yield return new WaitForSeconds(duration);
+
+        float target = fadeOut ? 1f : 0f;
+        float limit  = Time.unscaledTime + duration + 1f;
+        while (Time.unscaledTime < limit && !Mathf.Approximately(fade.currentAlpha, target))
+            yield return null;
     }
 
     private OVRScreenFade GetOvrFade()

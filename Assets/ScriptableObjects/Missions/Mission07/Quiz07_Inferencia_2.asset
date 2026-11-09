@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 5652671380c85424b962842aed6f8cca, type: 2}
+  nextNode: {fileID: 0}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
@@ -27,3 +27,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: \xBFinvitar\xEDas a un extra\xF1o a un concierto? F\xEDjate en la confianza con la que se hablan."
+  correctText: "\xA1S\xED, muy bien!"
+  inferenceCategory: 3
+  wrongText: "No es eso exactamente, prueba otra vez..."
+  revealText: "Ra\xFAl y Eva son amigos."

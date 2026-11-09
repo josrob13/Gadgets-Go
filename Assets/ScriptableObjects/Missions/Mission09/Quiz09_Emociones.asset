@@ -31,6 +31,6 @@ MonoBehaviour:
   correctOptionIndex: 0
   hint: "F\xEDjate en las expresiones faciales de los dos."
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
   revealText: "Resulta que Sof\xEDa est\xE1 aliviada y feliz, y Leo comparte su energ\xEDa."

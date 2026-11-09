@@ -32,6 +32,6 @@ MonoBehaviour:
   hint: "Recuerda el rostro de \xC1ngel y el contexto: \xE9l no deb\xEDa estar en
     esa sala."
   correctText: "\xA1Claro, eso es!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: No es exactamente eso, prueba otra vez.
   revealText: "Resulta que \xC1ngel sent\xEDa miedo."

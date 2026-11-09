@@ -30,6 +30,6 @@ MonoBehaviour:
   correctOptionIndex: 2
   hint: "Recuerda: est\xE1n ya en la cafeter\xEDa, y est\xE1n hablando abiertamente."
   correctText: "\xA1S\xED, muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: No es eso exactamente, prueba otra vez...
   revealText: Fran y Pablo son amigos.

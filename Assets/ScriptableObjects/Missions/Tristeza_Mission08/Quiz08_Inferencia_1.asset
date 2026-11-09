@@ -33,7 +33,7 @@ MonoBehaviour:
   hint: "P\xECensa: Mar\xEDa ha dicho que se va a casa porque est\xE1 muy afectada,
     y Manu parece que est\xE1 preocupado por ella, y consciente del problema."
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 2
   wrongText: No es exactamente eso...
   revealText: "Resulta que lo m\xE1s probable es que Mar\xEDa llame a Manu si necesita
     ayuda."

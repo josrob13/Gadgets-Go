@@ -167,7 +167,7 @@ public static class SaveSystem
         return m;
     }
 
-    internal static void ExportTherapistReports(PlayerSaveData p, TherapyMetrics therapyMetrics)
+    internal static void ExportTherapistReports(PlayerSaveData p, TherapyMetrics therapyMetrics, List<MissionLegendEntry> missionLegend = null)
     {
         if (!HasActiveSession) return;
         try
@@ -176,7 +176,7 @@ public static class SaveSystem
             Directory.CreateDirectory(folderPath);
 
             string csvPath  = WriteCsv(p, therapyMetrics, folderPath);
-            string htmlPath = ReportGenerator.GenerateHTMLReport(p, therapyMetrics, currentTherapistFolder, folderPath);
+            string htmlPath = ReportGenerator.GenerateHTMLReport(p, therapyMetrics, currentTherapistFolder, folderPath, missionLegend);
 
             Debug.Log($"[SaveSystem] CSV exportado a: {csvPath}");
             if (!string.IsNullOrEmpty(htmlPath))

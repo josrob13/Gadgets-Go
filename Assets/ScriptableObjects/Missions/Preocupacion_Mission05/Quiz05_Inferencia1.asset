@@ -32,6 +32,6 @@ MonoBehaviour:
   hint: "Piensa: \xBFqu\xE9 es lo m\xE1s l\xF3gico sabiendo que Miguel tiene el brazo
     mal?"
   correctText: "\xA1Claro!"
-  inferenceCategory: 0
+  inferenceCategory: 2
   wrongText: No es eso del todo, prueba de nuevo.
   revealText: "Probablemente, Miguel se ir\xE1 a descansar el brazo."

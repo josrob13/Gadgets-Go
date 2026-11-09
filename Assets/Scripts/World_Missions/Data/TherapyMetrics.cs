@@ -18,7 +18,8 @@ public enum SocialInferenceCategory
     MessageReception,
     EmotionRecognition,
     NextMovePrediction,
-    RelationshipUnderstanding
+    RelationshipUnderstanding,
+    FigurativeLanguage
 }
 
 [Serializable]

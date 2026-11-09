@@ -32,6 +32,6 @@ MonoBehaviour:
   hint: "Recuerda: \xBFc\xF3mo ha terminado la conversaci\xF3n? -no ha terminado
     muy bien..."
   correctText: "\xA1Bien!"
-  inferenceCategory: 0
+  inferenceCategory: 2
   wrongText: Prueba otra vez...
   revealText: "Con lo que sabemos, lo m\xE1s probable es que Dani se vaya enfadada."

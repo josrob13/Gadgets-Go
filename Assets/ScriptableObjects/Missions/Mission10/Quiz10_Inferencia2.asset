@@ -34,6 +34,6 @@ MonoBehaviour:
   correctOptionIndex: 0
   hint: 'Recuerda: tomar el pelo suele significar vacilar, burlarse de una persona...'
   correctText: "\xA1Eso es!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: Vaya, no es exactamente eso, prueba otra vez...
   revealText: "Leo siente que le est\xE1n enga\xF1ando o burl\xE1ndose de \xE9l."

@@ -30,7 +30,7 @@ MonoBehaviour:
   correctOptionIndex: 1
   hint: "Piensa: \xBFle contar\xEDas tus problemas a un desconocido?"
   correctText: "\xA1Claro, muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: No es eso, pero prueba otra vez.
   revealText: "Mar\xEDa y Manu parecen amigos, ya que Mar\xEDa ha contado con Manu
     para contarle su problema."

@@ -32,6 +32,6 @@ MonoBehaviour:
     visto por la oficina. Si se conociesen, se habr\xEDan reconocido y llamado por
     sus nombres."
   correctText: "\xA1Qu\xE9 bien, s\xED!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: Creo que no es eso exactamente, prueba de nuevo.
   revealText: "Resulta que \xC1ngel y el Manager no se conoc\xEDan de nada"

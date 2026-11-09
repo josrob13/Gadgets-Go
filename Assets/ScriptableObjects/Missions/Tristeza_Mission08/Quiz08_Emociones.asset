@@ -32,7 +32,7 @@ MonoBehaviour:
   hint: "Piensa: Mar\xEDa se acaba de enterar de que su perro necesita operarse.
     \xBFC\xF3mo te sentir\xEDas t\xFA si eso te pasase?"
   correctText: "\xA1Bien!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: "No es eso exactamente, prueba otra vez.\t"
   revealText: "Resulta que Mar\xEDa est\xE1 triste y preocupada por la operaci\xF3n
     de su perro."

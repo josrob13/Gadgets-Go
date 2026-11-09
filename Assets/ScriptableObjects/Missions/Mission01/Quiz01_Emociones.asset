@@ -31,6 +31,6 @@ MonoBehaviour:
   correctOptionIndex: 2
   hint: "Recuerda: \xBFc\xF3mo se ha tomado Dani lo que Bea le ha contado?"
   correctText: "\xA1Eso es!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: "Vaya, int\xE9ntalo de nuevo..."
   revealText: Resulta que dani se siente furiosa e indignada

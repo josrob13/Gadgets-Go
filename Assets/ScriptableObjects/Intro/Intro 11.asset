@@ -15,7 +15,7 @@ MonoBehaviour:
   relatedMission: {fileID: 0}
   text: "No te preocupes, porque enviaremos junto a ti a un compa\xF1ero-robot para
     que puedas preguntarle cualquier duda que te surja."
-  nextNode: {fileID: 11400000, guid: 08f2e3cd656d88e47a9ae3bf1bb103e7, type: 2}
+  nextNode: {fileID: 11400000, guid: c193dfad5fe8f5543a715861a8c3a7c4, type: 2}
   speakerAnimator: Robi
   actorState:
     BodyAnimation: 

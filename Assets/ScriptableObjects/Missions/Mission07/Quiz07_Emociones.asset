@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
   text: 
-  nextNode: {fileID: 11400000, guid: 3857c207bd51565498b498764045cbae, type: 2}
+  nextNode: {fileID: 11400000, guid: e8c3f3429ca45e34d8473f903418211b, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
@@ -28,3 +28,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 1
+  hint: "Recuerda: f\xEDjate en la cara y en el tono de voz de Ra\xFAl cuando Eva le ofrece la entrada."
+  correctText: "\xA1Muy bien, s\xED!"
+  inferenceCategory: 1
+  wrongText: "Creo que no es eso exactamente..."
+  revealText: "Ra\xFAl estaba muy contento: la invitaci\xF3n de Eva le hac\xEDa mucha ilusi\xF3n."

@@ -30,6 +30,6 @@ MonoBehaviour:
   correctOptionIndex: 2
   hint: "Piensa: \xBFle dejar\xEDas tu chaqueta a alguien con el que no tengas confianza?"
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: "Fallaste, int\xE9ntalo de nuevo."
   revealText: A primera vista, son amigas o conocidas con confianza

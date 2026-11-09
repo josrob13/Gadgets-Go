@@ -60,9 +60,15 @@ public class QuestionUI : MonoBehaviour, IVRPointerTarget
         }
     }
 
+    // Grosor (en unidades del canvas) del collider de cada opción. Es mayor que el del collider
+    // del panel (z = 1) para que, al apuntar a una opción, el rayo golpee antes el botón que el
+    // panel: con el mismo grosor ambos quedaban en el mismo plano y el resultado era un empate.
+    private const float ButtonColliderDepth = 20f;
+
     /// <summary>
     /// Añade un BoxCollider a cada botón para que Physics.Raycast del VRRayPointer
-    /// pueda detectarlos. El collider se ajusta al tamaño del RectTransform del botón.
+    /// pueda detectarlos. El collider cubre el botón y todos sus hijos (la letra y el texto
+    /// de la respuesta, que sobresale del rectángulo del propio botón) y es grueso en Z.
     /// </summary>
     private void SetupButtonColliders()
     {
@@ -75,10 +81,30 @@ public class QuestionUI : MonoBehaviour, IVRPointerTarget
             BoxCollider col = button.GetComponent<BoxCollider>();
             if (col == null) col = button.gameObject.AddComponent<BoxCollider>();
 
-            // Ajustar el collider al tamaño del botón (plano en Z)
-            col.size   = new Vector3(rt.rect.width, rt.rect.height, 1f);
-            col.center = Vector3.zero;
+            Bounds b = GetLocalBoundsWithChildren(rt);
+            col.size   = new Vector3(b.size.x, b.size.y, ButtonColliderDepth);
+            col.center = new Vector3(b.center.x, b.center.y, 0f);
         }
+    }
+
+    private static Bounds GetLocalBoundsWithChildren(RectTransform root)
+    {
+        var corners = new Vector3[4];
+        Bounds bounds = new Bounds();
+        bool first = true;
+
+        foreach (RectTransform child in root.GetComponentsInChildren<RectTransform>())
+        {
+            child.GetWorldCorners(corners);
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 p = root.InverseTransformPoint(corners[i]);
+                if (first) { bounds = new Bounds(p, Vector3.zero); first = false; }
+                else bounds.Encapsulate(p);
+            }
+        }
+
+        return bounds;
     }
 
     /// <summary>

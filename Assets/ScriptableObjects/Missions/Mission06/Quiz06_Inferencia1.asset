@@ -23,14 +23,14 @@ MonoBehaviour:
   questionText: "\xBFQu\xE9 crees que va a pasar ahora?"
   options:
   - Se van a alejar del mal olor
-  - Van a seguir paseando por la zona
-  - "Van a entrar a la cafeter\xEDa"
+  - Van a ponerse unas mascarillas
+  - Van a cocinar algo
   - "Se aguantar\xE1n el olor"
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
-  correctOptionIndex: 2
+  correctOptionIndex: 0
   hint: "Recuerda: \xBFqu\xE9 ha propuesto Pablo al final de la conversaci\xF3n?"
   correctText: "\xA1Claro!"
-  inferenceCategory: 0
+  inferenceCategory: 2
   wrongText: Vaya, no es eso exactamente...
   revealText: Seguramente se alejen del mal olor.

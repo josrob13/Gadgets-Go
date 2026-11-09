@@ -35,7 +35,7 @@ MonoBehaviour:
   hint: "Recuerda: echar le\xF1a al fuego suele significar avivar un motivo de enfado,
     o dar motivos para que alguien est\xE9 molesto."
   correctText: "\xA1Eso es!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: No es eso, prueba otra vez...
   revealText: "Leo, al decirle a Sof\xEDa 'no eches le\xF1a al fuego', le est\xE1
     pidiendo que no empeore la situaci\xF3n haciendo algo que pueda romper el mueble."

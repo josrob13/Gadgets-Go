@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 11400000, guid: 6d427ce90b567d44b82a1de240fd1bf2, type: 2}
   text: 
-  nextNode: {fileID: 11400000, guid: d6b5a41a6ff46e84c90cbf52b9d4a040, type: 2}
+  nextNode: {fileID: 11400000, guid: 73b142eb1908baa46b618d8b6ecaa2c4, type: 2}
   speakerAnimator: 
   actorState:
     BodyAnimation: 
@@ -28,3 +28,8 @@ MonoBehaviour:
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
+  hint: "Recuerda: \xBFqu\xE9 le ha propuesto Eva a Ra\xFAl y c\xF3mo ha reaccionado \xE9l?"
+  correctText: "\xA1Eso es!"
+  inferenceCategory: 0
+  wrongText: "Vaya, prueba otra vez..."
+  revealText: "Eva ha invitado a Ra\xFAl al concierto de esta noche y \xE9l ha aceptado encantado."

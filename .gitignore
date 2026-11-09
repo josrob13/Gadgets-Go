@@ -78,6 +78,9 @@ crashlytics-build.properties
 !README.md
 !notas.md
 
+# Case studies
+/files/
+
 # Large size assets
 Assets/Synty/
 Assets/TirgamesAssets/

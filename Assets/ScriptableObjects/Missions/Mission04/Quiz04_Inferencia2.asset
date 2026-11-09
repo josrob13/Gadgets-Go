@@ -30,6 +30,6 @@ MonoBehaviour:
   correctOptionIndex: 2
   hint: "Recuerda: \xBFle dir\xEDas a un extra\xF1o una noticia que acabas de conocer?"
   correctText: "\xA1S\xED, muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: Creo que no es eso exactamente...
   revealText: "Resulta que Mario y \xC1ngela son amigos."

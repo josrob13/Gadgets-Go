@@ -51,6 +51,18 @@ public class Mission : ScriptableObject
         return missionName;
     }
 
+    /// <summary>
+    /// ID corto de la misión para el informe del terapeuta: los dígitos del nombre del asset
+    /// ("Mission04" → "04"). Si el asset no lleva número, usa el nombre de la misión.
+    /// </summary>
+    public string GetMissionId()
+    {
+        var digits = new System.Text.StringBuilder();
+        foreach (char c in name)
+            if (char.IsDigit(c)) digits.Append(c);
+        return digits.Length > 0 ? digits.ToString() : missionName;
+    }
+
     public string GetMissionDescription()
     {
         return description;

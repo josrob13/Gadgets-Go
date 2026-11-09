@@ -33,7 +33,7 @@ MonoBehaviour:
   correctOptionIndex: 1
   hint: "'Estar chupado' suele significar que algo es muy f\xE1cil."
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: "No es eso exactamente, int\xE9ntalo de nuevo..."
   revealText: "Resulta que el vendedor quer\xEDa decir que montar el mueble es algo
     muy sencillo."

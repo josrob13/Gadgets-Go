@@ -32,7 +32,7 @@ MonoBehaviour:
   hint: "Ten en cuenta: la noticia ha impactado, como para tener una conversaci\xF3n
     larga y tendida..."
   correctText: "\xA1Claro!"
-  inferenceCategory: 0
+  inferenceCategory: 2
   wrongText: Vaya, puede que no sea exactamente eso...
   revealText: Probablemente sigan hablando del cantante, ya que la noticia ha causado
     sorpresa en ambos.

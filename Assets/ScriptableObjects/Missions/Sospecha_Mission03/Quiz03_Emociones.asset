@@ -32,6 +32,6 @@ MonoBehaviour:
   hint: "Piensa en la expresi\xF3n de Carla. No parece que est\xE9 crey\xE9ndose
     la versi\xF3n de Rafa..."
   correctText: "\xA1Claro!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: No es eso del todo, pero prueba otra vez.
   revealText: Resulta que Carla expresa sospecha.

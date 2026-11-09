@@ -32,6 +32,6 @@ MonoBehaviour:
   hint: "Piensa de nuevo en Pepe, nada m\xE1s sabe la noticia del accidente. \xBFLe
     di\xF3 igual, o parec\xEDa que le importaba?"
   correctText: "\xA1Bien!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: Vaya, no es eso, pero prueba otra vez.
   revealText: "Resulta que Pepe se preocup\xF3 por Miguel."

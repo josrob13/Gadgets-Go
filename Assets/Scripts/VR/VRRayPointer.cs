@@ -38,9 +38,6 @@ public class VRRayPointer : MonoBehaviour
     private Button hoveredButton = null;
     private TMP_InputField hoveredInputField = null;
     private bool isGrabbing = false;
-    private TouchScreenKeyboard _vrKeyboard;
-    private TMP_InputField _activeInputField;
-    private Coroutine _keyboardCoroutine;
     private IVRPointerTarget[] _targets;
     private GraphicRaycaster[] _canvasRaycasters;
     private string _lastHitName = "";
@@ -280,103 +277,19 @@ public class VRRayPointer : MonoBehaviour
     // ---------------------------------------------------------------
 
     /// <summary>
-    /// Opens the Quest system keyboard for <paramref name="field"/> without
-    /// ever blocking Update(). Text is synced inside a Coroutine so that
-    /// any native exception (e.g. status / text not supported) stays isolated.
-    /// onEndEdit provides a guaranteed exit path regardless of native support.
+    /// Opens the Quest system keyboard for <paramref name="field"/>. TMP shows it by itself
+    /// when the field is activated. If the field is already focused (NameInputUI focuses it
+    /// when the panel is shown), ActivateInputField() brings the keyboard back.
     /// </summary>
     private void OpenVRKeyboard(TMP_InputField field)
     {
-        if (field.isFocused)
-        {
-            field.ActivateInputField();
-            return;
-        }
-        
-        if (_keyboardCoroutine != null) StopCoroutine(_keyboardCoroutine);
-        if (_activeInputField != null)
-            _activeInputField.onEndEdit.RemoveListener(OnInputFieldEndEdit);
-
-        _activeInputField = field;
-        field.onEndEdit.AddListener(OnInputFieldEndEdit);
-        field.Select();
+        if (!field.isFocused)
+            field.Select();
         field.ActivateInputField();
-
-// #if UNITY_ANDROID && !UNITY_EDITOR
-//         _vrKeyboard = TouchScreenKeyboard.Open(
-//             field.text,
-//             TouchScreenKeyboardType.Default,
-//             autocorrection: false,
-//             multiline: false,
-//             secure: false,
-//             alert: false);
-//         _keyboardCoroutine = StartCoroutine(SyncKeyboardText());
-// #endif
-    }
-
-    /// <summary>
-    /// Coroutine that safely bridges TouchScreenKeyboard → TMP_InputField.
-    /// Each native property is guarded independently: if .status throws we
-    /// stop polling it, if .text throws we skip the sync frame — neither
-    /// crash bleeds into Update().
-    /// </summary>
-    private System.Collections.IEnumerator SyncKeyboardText()
-    {
-        bool pollStatus = true;
-
-        while (_vrKeyboard != null && _activeInputField != null)
-        {
-            // Sync typed text into the field
-            try
-            {
-                string t = _vrKeyboard.text;
-                if (t != null) _activeInputField.text = t;
-            }
-            catch { /* native text property unavailable; TMP handles input natively */ }
-
-            // Check whether the keyboard was dismissed
-            if (pollStatus)
-            {
-                bool done = false;
-                try
-                {
-                    var s = _vrKeyboard.status;
-                    done = s == TouchScreenKeyboard.Status.Done ||
-                           s == TouchScreenKeyboard.Status.Canceled;
-                }
-                catch
-                {
-                    // .status not supported on this platform/config — stop polling it;
-                    // onEndEdit will fire the exit path when the user confirms.
-                    pollStatus = false;
-                }
-                if (done) break;
-            }
-
-            yield return null;
-        }
-
-        CloseVRKeyboard();
-    }
-
-    private void OnInputFieldEndEdit(string _)
-    {
-        if (_keyboardCoroutine != null) StopCoroutine(_keyboardCoroutine);
-        CloseVRKeyboard();
-    }
-
-    private void CloseVRKeyboard()
-    {
-        if (_activeInputField != null)
-            _activeInputField.onEndEdit.RemoveListener(OnInputFieldEndEdit);
-        _vrKeyboard       = null;
-        _activeInputField = null;
-        _keyboardCoroutine = null;
     }
 
     private void OnDestroy()
     {
         if (dot != null) Destroy(dot);
-        CloseVRKeyboard();
     }
 }

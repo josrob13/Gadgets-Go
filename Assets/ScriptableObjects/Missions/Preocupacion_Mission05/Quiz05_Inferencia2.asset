@@ -31,6 +31,6 @@ MonoBehaviour:
   hint: "Piensa: si hac\xEDa mucho tiempo que no se ve\xEDan, realmente no son tan
     amigos."
   correctText: "\xA1Claro!"
-  inferenceCategory: 0
+  inferenceCategory: 3
   wrongText: Prueba de nuevo
   revealText: Resulta que son conocidos, no muy cercanos.

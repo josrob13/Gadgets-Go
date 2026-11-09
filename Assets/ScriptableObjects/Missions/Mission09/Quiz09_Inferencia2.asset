@@ -33,6 +33,6 @@ MonoBehaviour:
   hint: "Recuerda: esa expresi\xF3n suele significar que alguien se ha aliviado de
     un problema grande que ten\xEDa."
   correctText: "\xA1Muy bien!"
-  inferenceCategory: 0
+  inferenceCategory: 4
   wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
   revealText: "Resulta que Sof\xEDa siente un gran alivio y tranquilidad."

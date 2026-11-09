@@ -31,7 +31,7 @@ MonoBehaviour:
   correctOptionIndex: 1
   hint: "Recuerda: han descubierto algo no muy com\xFAn."
   correctText: "\xA1Eso es!"
-  inferenceCategory: 0
+  inferenceCategory: 1
   wrongText: Vaya, puede que no sea exactamente eso...
   revealText: "Expresaban sorpresa, porque no se esperaban que Ed Sheeran se ti\xF1ese
     de nuevo el pelo."
