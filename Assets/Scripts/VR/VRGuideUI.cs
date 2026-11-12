@@ -56,6 +56,16 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     [SerializeField] private Transform missionListContainer;
     [SerializeField] private Button missionListBackButton;
 
+    [Header("Mission List - Aspecto y scroll")]
+    [Tooltip("Alto fijo de cada fila (unidades del canvas). El texto se encoge para caber en él.")]
+    [SerializeField] private float rowHeight = 20f;
+    [Tooltip("Tamaño máximo de la fuente de cada misión (autosize).")]
+    [SerializeField] private float fontMax = 8.5f;
+    [Tooltip("Tamaño mínimo de la fuente; por debajo se corta con '...'.")]
+    [SerializeField] private float fontMin = 5f;
+    [Tooltip("Velocidad del scroll con el joystick (alturas de viewport por segundo).")]
+    [SerializeField] private float scrollSpeed = 1.5f;
+
     [Header("Hint Panel")]
     [SerializeField] private GameObject hintPanel;
     [SerializeField] private TextMeshProUGUI hintText;
@@ -69,13 +79,27 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     public bool BlocksTriggerFallback => true;
     public void OnPointerTriggerFallback() { }
 
-    private static readonly Color ColorPending   = Color.white;
+    private static readonly Color ColorPending   = Color.black;
     private static readonly Color ColorCompleted = new Color(0.45f, 0.85f, 0.45f);
-    private static readonly Color ColorDimmed    = new Color(0.55f, 0.55f, 0.55f);
+    private static readonly Color ColorDimmed    = new Color(0.6f, 0.6f, 0.6f);
 
     private readonly List<GameObject> _missionEntries = new();
+    private ScrollRect _scroll;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
+    private void Update()
+    {
+        if (_scroll == null || missionListPanel == null || !missionListPanel.activeInHierarchy) return;
+
+        float y = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.RTouch).y;
+
+        float overflow = _scroll.content.rect.height - _scroll.viewport.rect.height;
+        if (Mathf.Abs(y) < 0.2f || overflow <= 0f) return;   // si cabe todo, no hace nada
+
+        _scroll.verticalNormalizedPosition = Mathf.Clamp01(
+            _scroll.verticalNormalizedPosition
+            + y * scrollSpeed * Time.unscaledDeltaTime * _scroll.viewport.rect.height / overflow);
+    }
 
     private void Awake()
     {
@@ -200,6 +224,8 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
 
         if (world == null || missionListContainer == null) return;
 
+        EnsureScrollView();
+
         // El contenedor debe controlar el ANCHO de cada fila para que el texto se ajuste
         // al panel y no se salga. Con childControlHeight + !forceExpandHeight cada fila
         // crece en alto según el texto envuelto.
@@ -223,6 +249,46 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
             entry.transform.SetParent(missionListContainer, false);
             _missionEntries.Add(entry);
         }
+
+        // Recalcula el layout y deja la lista arriba del todo.
+        Canvas.ForceUpdateCanvases();
+        if (_scroll != null) _scroll.verticalNormalizedPosition = 1f;
+    }
+
+    private void EnsureScrollView()
+    {
+        if (_scroll != null || missionListContainer == null) return;
+
+        var content = (RectTransform)missionListContainer;
+
+        var vpGO = new GameObject("MissionViewport", typeof(RectTransform), typeof(RectMask2D));
+        var vp = (RectTransform)vpGO.transform;
+        vp.SetParent(content.parent, false);
+        vp.anchorMin = content.anchorMin;
+        vp.anchorMax = content.anchorMax;
+        vp.pivot = content.pivot;
+        vp.sizeDelta = content.sizeDelta;
+        vp.anchoredPosition = content.anchoredPosition;
+        vp.SetSiblingIndex(content.GetSiblingIndex());
+
+        content.SetParent(vp, false);
+        content.anchorMin = new Vector2(0f, 1f);
+        content.anchorMax = new Vector2(1f, 1f);
+        content.pivot = new Vector2(0.5f, 1f);
+        content.anchoredPosition = Vector2.zero;
+        content.sizeDelta = Vector2.zero;
+
+        var fitter = content.GetComponent<ContentSizeFitter>();
+        if (fitter == null) fitter = content.gameObject.AddComponent<ContentSizeFitter>();
+        fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+        fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        _scroll = vpGO.AddComponent<ScrollRect>();
+        _scroll.viewport = vp;
+        _scroll.content = content;
+        _scroll.horizontal = false;
+        _scroll.vertical = true;
+        _scroll.movementType = ScrollRect.MovementType.Clamped;
     }
 
     /// <summary>
@@ -230,7 +296,7 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
     /// Layout: [dot] [mission name]
     /// Completed missions are greyed out with strikethrough; pending are white.
     /// </summary>
-    private static GameObject BuildMissionEntry(string missionName, bool completed)
+    private GameObject BuildMissionEntry(string missionName, bool completed)
     {
         // ── Row ──────────────────────────────────────────────────────────────
         // Sin ancho fijo: el VerticalLayoutGroup del contenedor controla el ancho
@@ -239,12 +305,16 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
 
         var rowLayout = row.AddComponent<HorizontalLayoutGroup>();
         rowLayout.spacing = 10f;
-        rowLayout.childAlignment = TextAnchor.UpperLeft;
+        rowLayout.childAlignment = TextAnchor.MiddleLeft;
         rowLayout.childControlWidth = true;
         rowLayout.childControlHeight = true;
         rowLayout.childForceExpandWidth = false;
         rowLayout.childForceExpandHeight = false;
-        rowLayout.padding = new RectOffset(6, 6, 4, 4);
+        rowLayout.padding = new RectOffset(6, 6, 2, 2);
+
+        var rowLE = row.AddComponent<LayoutElement>();
+        rowLE.minHeight = rowHeight;
+        rowLE.preferredHeight = rowHeight;
 
         // ── Status dot ───────────────────────────────────────────────────────
         var dot = new GameObject("Dot", typeof(RectTransform));
@@ -271,11 +341,14 @@ public class VRGuideUI : MonoBehaviour, IVRPointerTarget
 
         var label = labelGO.AddComponent<TextMeshProUGUI>();
         label.text = missionName;
-        label.fontSize = 13f;
         label.color = completed ? ColorDimmed : ColorPending;
         label.fontStyle = completed ? FontStyles.Strikethrough : FontStyles.Normal;
         label.enableWordWrapping = true;            // texto largo baja de línea en vez de salirse
-        label.overflowMode = TextOverflowModes.Overflow; // la fila crece en alto, no hace falta cortar
+        label.enableAutoSizing = true;              // se encoge para caber en el alto fijo de la fila
+        label.fontSizeMin = fontMin;
+        label.fontSizeMax = fontMax;
+        label.overflowMode = TextOverflowModes.Ellipsis; // solo si ni con fontMin cabe
+        label.alignment = TextAlignmentOptions.MidlineLeft;
 
         return row;
     }

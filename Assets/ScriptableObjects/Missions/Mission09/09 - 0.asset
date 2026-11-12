@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: 09 - 0
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "\xA1Qu\xE9 sonrisa traes, Sof\xEDa! Transmites felicidad por todo el parque."
+  text: "\xA1Qu\xE9 sonrisa traes, Sof\xEDa! Transmites felicidad por todo el teatro."
   nextNode: {fileID: 11400000, guid: 6432b2ce682cd8243b543238bc131fb7, type: 2}
   speakerAnimator: Leo
   actorState:
     BodyAnimation: Talk
     FaceExpression: Content
+  voiceClip: {fileID: 0}
