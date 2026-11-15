@@ -20,19 +20,20 @@ MonoBehaviour:
     BodyAnimation: 
     FaceExpression: 
   voiceClip: {fileID: 0}
-  questionText: "\xBFQu\xE9 quiere decir Sof\xEDa cuando dice 'estoy arrib\xEDsima'?"
+  questionText: "\xBFQu\xE9 quiere decir Sof\xEDa cuando dice 'estoy m\xE1s feliz
+    que una perdiz'?"
   options:
-  - "Que va a viajar pronto en avi\xF3n"
-  - "Que est\xE1 muy despistada y no presta atenci\xF3n"
+  - "Que va a coger un vuelo, y se sentir\xE1 como una perdiz.."
+  - Que se ha despistado viendo una perdiz.
   - "Que est\xE1 extremadamente feliz y motivada"
-  - Que quiere subir al palco del teatro
+  - Que quiere domesticar una perdiz.
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2
-  hint: "Recuerda: estar arrib\xEDsima suele significar estar euf\xF3rico/a, motivado/a
-    o feliz."
+  hint: "Recuerda: estar m\xE1s feliz que una perdiz suele significar estar euf\xF3rico/a,
+    motivado/a o feliz."
   correctText: "\xA1Claro, muy bien!"
   inferenceCategory: 4
   wrongText: "Vaya, no es eso exactamente, int\xE9ntalo de nuevo..."
-  revealText: "Resulta que Sof\xEDa, al decir 'estoy arrib\xEDsima, quiere decir
-    que est\xE1 extrememadamente feliz y motivada."
+  revealText: "Resulta que Sof\xEDa, al decir 'estoy m\xE1s peliz que una perdiz',
+    quiere decir que est\xE1 extrememadamente feliz y motivada."

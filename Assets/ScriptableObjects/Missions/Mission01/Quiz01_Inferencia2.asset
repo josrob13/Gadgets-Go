@@ -23,8 +23,8 @@ MonoBehaviour:
   questionText: "Por la forma de hablarse, \xBFcu\xE1nto se conocen?"
   options:
   - Son desconocidos
-  - "Compa\xF1eros de trabajo muy formales"
-  - Amigos o conocidos con confianza
+  - "Compa\xF1eras de trabajo muy formales"
+  - Amigas o conocidas con confianza
   onCorrect: {fileID: 0}
   onIncorrect: {fileID: 0}
   correctOptionIndex: 2

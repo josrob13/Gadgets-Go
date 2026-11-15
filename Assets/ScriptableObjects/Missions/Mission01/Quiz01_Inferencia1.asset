@@ -23,7 +23,7 @@ MonoBehaviour:
   questionText: "\xBFQu\xE9 crees que pasar\xE1 a continuaci\xF3n?"
   options:
   - "Dani abrazar\xE1 a Bea e ir\xE1n a la tintorer\xEDa."
-  - "Dani se ir\xE1 enfadado dejando a Bea sola."
+  - "Dani se ir\xE1 enfadada dejando a Bea sola."
   - "Dani se echar\xE1 a re\xEDr (era broma)."
   - "Bea invitar\xE1 a Dani a otra pizza."
   onCorrect: {fileID: 0}

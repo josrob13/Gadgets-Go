@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 09 - 1
   m_EditorClassIdentifier: 
   relatedMission: {fileID: 0}
-  text: "Ay, Leo, es que estoy arrib\xEDsima. \xA1Por fin he aprobado el proyecto
-    final!"
+  text: "Ay, Leo, es que estoy m\xE1s feliz que una perdiz. \xA1Por fin he aprobado
+    el proyecto final!"
   nextNode: {fileID: 11400000, guid: 9a42a6ba4bb9947468882d21c7bcf484, type: 2}
   speakerAnimator: Sofia
   actorState:
