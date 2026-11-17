@@ -1,0 +1,182 @@
+@startuml FaceTrackingEcosystem
+' ============================================================================
+'  Ecosistema de Face Tracking — Gadgets & Go v2.0 (Meta Quest Pro)
+'  Vista resumida: se detallan Face Tracking, World_Missions (diálogos y
+'  misiones) y los tipos de Unity / Meta XR. Interacción VR y Analíticas se
+'  muestran solo como paquetes y se explican en sus propios diagramas.
+'  En las clases de World_Missions solo aparecen los miembros relacionados
+'  con el face tracking.
+' ============================================================================
+
+skinparam monochrome false
+skinparam shadowing false
+skinparam BackgroundColor #FEFEFE
+skinparam ClassBackgroundColor #F8F9F9
+skinparam ClassBorderColor #5D6D7E
+skinparam ArrowColor #2E4053
+skinparam ClassHeaderBackgroundColor #D4E6F1
+skinparam classAttributeIconSize 0
+skinparam PackageBorderColor #AAB7B8
+skinparam NoteBackgroundColor #FEF9E7
+skinparam NoteBorderColor #B7950B
+skinparam nodesep 60
+skinparam ranksep 70
+
+' ----------------------------------------------------------------------------
+'  Núcleo: detección y aviso
+' ----------------------------------------------------------------------------
+package "Face Tracking (VR/FaceTracking)" #F4F9FD {
+
+    class FaceTrackingManager <<singleton por escena>> #EBF5FB {
+        {static} + Instance : FaceTrackingManager
+        - scoreThreshold : float = 0.15f
+        - discomfortDurationThreshold : float = 3.5f
+        - resumeCooldown : float = 15f
+        - browLowererWeight : float = 1.0f
+        - eyeWideWeight : float = 0.8f
+        - lipStretchWeight : float = 0.6f
+        + <<event>> OnDiscomfortStateChanged : Action<bool>
+        + IsDiscomfortActive : bool
+        + DiscomfortScore : float
+        + DiscomfortTimer : float
+        - _trackingAvailable : bool
+        - _inCooldown : bool
+        - _guidePaused : bool
+        - _cooldownTimer : float
+        - _debugTimer : float
+        --
+        - Awake() : void
+        - OnDestroy() : void
+        - Update() : void
+        + SetGuidePause(paused : bool) : void
+        + OnUserResumed() : void
+        - ComputeDiscomfortScore() : float
+        - TryGetBlend(expression : OVRFaceExpressions.FaceExpression, out value : float) : bool
+        - TryClearDiscomfort() : void
+    }
+
+    class FaceTrackingUI #EBF5FB {
+        - distanceFromPlayer : float = 1.5f
+        - heightOffset : float = 0f
+        - fadeDuration : float = 0.5f
+        - title : string = "Tómate un descanso"
+        - body : string = "Hemos notado que podrías estar sintiéndote estresado/a..."
+        - buttonLabel : string = "Estoy listo/a para continuar"
+        - confirmButton : OVRInput.Button = PrimaryIndexTrigger
+        - confirmController : OVRInput.Controller = RTouch
+        - _isVisible : bool
+        + IsVisible : bool
+        + IsPointerActive : bool
+        + BlocksTriggerFallback : bool
+        --
+        - Awake() : void
+        - Start() : void
+        - OnDestroy() : void
+        - Update() : void
+        + ShowBreakSuggestion(show : bool) : void
+        + OnPointerTriggerFallback() : void
+        - OnDiscomfortStateChanged(isDiscomfort : bool) : void
+        - OnReadyButtonClicked() : void
+        - PositionInFrontOfPlayer() : void
+        - FadePanel(show : bool) : IEnumerator
+    }
+}
+
+' ----------------------------------------------------------------------------
+'  Diálogos y misiones
+' ----------------------------------------------------------------------------
+package "Diálogos y misiones (World_Missions)" #FBF7FD {
+
+    class DialogueManager <<singleton por escena>> {
+        {static} + Instance : DialogueManager
+        - _faceTrackingPaused : bool
+        - _guidePaused : bool
+        - IsPaused : bool
+        --
+        - Start() : void
+        - OnDestroy() : void
+        - OnDiscomfortStateChanged(isDiscomfort : bool) : void
+        + SetGuidePause(paused : bool) : void
+        + ShowDialogueLine(line : string) : IEnumerator
+    }
+
+    class DialogueAudioManager <<singleton persistente>> {
+        {static} + Instance : DialogueAudioManager
+        - _isPaused : bool
+        --
+        + PauseVoice() : void
+        + ResumeVoice() : void
+    }
+
+    class MissionManager <<singleton por escena>> {
+        {static} + Instance : MissionManager
+        --
+        + GetCurrentMissionId() : string
+    }
+}
+
+' ----------------------------------------------------------------------------
+'  Paquetes resumidos (detallados en otros diagramas)
+' ----------------------------------------------------------------------------
+package "Interacción VR (VR / Interfaces)" as InteraccionVR #F5FBF7 {
+    note "Explicado más adelante" as NotaVR
+}
+
+package "Analíticas y persistencia (World_Missions/Data)" as Analiticas #FDFAF3 {
+    note "Explicado más adelante" as NotaAnaliticas
+}
+
+' ----------------------------------------------------------------------------
+'  Tipos externos (Unity / Meta XR SDK)
+' ----------------------------------------------------------------------------
+package "Unity / Meta XR SDK" #F2F3F4 {
+    class MonoBehaviour #EAFAF1
+    class OVRFaceExpressions #D5F5E3
+    class OVRCameraRig #D5F5E3
+    class TextMeshProUGUI #FADBD8
+}
+
+' ============================================================================
+'  Herencia
+' ============================================================================
+MonoBehaviour <|-- FaceTrackingManager
+MonoBehaviour <|-- FaceTrackingUI
+
+' ============================================================================
+'  Asociaciones estructurales (campos)
+' ============================================================================
+FaceTrackingManager --> "1" OVRFaceExpressions : faceExpressions
+
+FaceTrackingUI --> "3" TextMeshProUGUI : titleText, bodyText,\nreadyButtonText
+FaceTrackingUI --> "0..1" OVRCameraRig : _ovrRig
+
+' ============================================================================
+'  Dependencias de uso (singleton .Instance, eventos)
+' ============================================================================
+FaceTrackingUI ..> FaceTrackingManager : <<subscribe>> OnDiscomfortStateChanged\nOnUserResumed()
+DialogueManager ..> FaceTrackingManager : <<subscribe>> OnDiscomfortStateChanged\nlee DiscomfortScore
+DialogueManager ..> DialogueAudioManager : PauseVoice()\nResumeVoice()
+
+' Relaciones con los paquetes resumidos
+FaceTrackingUI ..> InteraccionVR : implementa IVRPointerTarget\nusa VRGrabbableCanvas
+InteraccionVR ..> FaceTrackingManager : VRGuideController\nSetGuidePause()
+InteraccionVR ..> DialogueManager : VRGuideController\nSetGuidePause()
+DialogueManager ..> Analiticas : RegisterFaceDiscomfort()
+Analiticas ..> MissionManager : GetCurrentMissionId()
+
+' ============================================================================
+'  Notas de comportamiento
+' ============================================================================
+note top of FaceTrackingManager
+  Score = media ponderada de BrowLowerer,
+  UpperLidRaiser y LipStretcher (L/R).
+  Score >= umbral durante 3.5 s → evento(true).
+  OnUserResumed() → evento(false) + cooldown de 15 s.
+end note
+
+note bottom of FaceTrackingUI
+  ShowBreakSuggestion(true) pausa el juego
+  (Time.timeScale = 0).
+end note
+
+@enduml
