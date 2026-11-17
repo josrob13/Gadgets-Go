@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.27)  12 NOV 2026 23:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.27)  17 NOV 2026 19:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -462,8 +462,8 @@ Package babel Info: Making . an active character on input line 675.
 Package babel Info: Making < an active character on input line 722.
 Package babel Info: Making > an active character on input line 722.
 ))
-LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) on input line 40.
-LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1) on input line 40.
+LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) on input line 41.
+LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1) on input line 41.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks20
@@ -904,9 +904,9 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 \zifour@ocount=\count492
 )
-Package hyperref Info: Option `pageanchor' set `true' on input line 165.
-Package hyperref Info: Option `colorlinks' set `true' on input line 165.
-LaTeX Font Info:    Trying to load font information for T1+txtt on input line 215.
+Package hyperref Info: Option `pageanchor' set `true' on input line 166.
+Package hyperref Info: Option `colorlinks' set `true' on input line 166.
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 216.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
@@ -928,27 +928,31 @@ LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
+
+
+LaTeX Warning: Label `fig:persistence' multiply defined.
+
 )
 \openout1 = `memory.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 326.
-LaTeX Font Info:    ... okay on input line 326.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 336.
+LaTeX Font Info:    ... okay on input line 336.
 Package biblatex Info: Trying to load language 'spanish'...
 Package biblatex Info: ... file 'spanish.lbx' found.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\spanish.lbx
@@ -962,8 +966,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'memory.bbl' found.
  (memory.bbl)
-Package biblatex Info: Reference section=0 on input line 326.
-Package biblatex Info: Reference segment=0 on input line 326.
+Package biblatex Info: Reference section=0 on input line 336.
+Package biblatex Info: Reference segment=0 on input line 336.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1006,7 +1010,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 326.
+Package hyperref Info: Link coloring ON on input line 336.
 (memory.out) (memory.out)
 \@outlinefile=\write6
 \openout6 = `memory.out'.
@@ -1030,36 +1034,36 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \sptext on input line 326.
-LaTeX Info: Redefining \. on input line 326.
-LaTeX Info: Redefining \% on input line 326.
+LaTeX Info: Redefining \sptext on input line 336.
+LaTeX Info: Redefining \. on input line 336.
+LaTeX Info: Redefining \% on input line 336.
 \c@lstlisting=\count501
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
 )
-LaTeX Info: Redefining \sptext on input line 339.
-LaTeX Info: Redefining \. on input line 339.
-LaTeX Info: Redefining \% on input line 339.
+LaTeX Info: Redefining \sptext on input line 349.
+LaTeX Info: Redefining \. on input line 349.
+LaTeX Info: Redefining \% on input line 349.
 <logoURJC.pdf, id=214, 413.545pt x 158.5925pt>
 File: logoURJC.pdf Graphic file (type pdf)
 <use logoURJC.pdf>
-Package pdftex.def Info: logoURJC.pdf  used on input line 343.
+Package pdftex.def Info: logoURJC.pdf  used on input line 353.
 (pdftex.def)             Requested size: 248.1289pt x 95.15622pt.
  [1
 
 {C:/Users/josec/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./logoURJC.pdf>]
-LaTeX Info: Redefining \sptext on input line 404.
-LaTeX Info: Redefining \. on input line 404.
-LaTeX Info: Redefining \% on input line 404.
-Package hyperref Info: Option `pageanchor' set `true' on input line 406.
-LaTeX Font Info:    Trying to load font information for OT1+pbk on input line 431.
+LaTeX Info: Redefining \sptext on input line 414.
+LaTeX Info: Redefining \. on input line 414.
+LaTeX Info: Redefining \% on input line 414.
+Package hyperref Info: Option `pageanchor' set `true' on input line 416.
+LaTeX Font Info:    Trying to load font information for OT1+pbk on input line 441.
  (C:\Users\josec\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pbk.fd
 File: ot1pbk.fd 2001/06/04 font definitions for OT1/pbk.
 )
 LaTeX Font Info:    Font shape `OT1/pbk/b/n' in size <24.88> not available
-(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 431.
+(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 441.
 LaTeX Font Info:    Font shape `OT1/pbk/b/n' in size <100> not available
-(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 431.
+(Font)              Font shape `OT1/pbk/db/n' tried instead on input line 441.
  (memory.toc
 LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
@@ -1105,19 +1109,22 @@ File: ot1zi4.fd 2018/01/14 OT1/zi4 (Inconsolata)
 LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
 (Font)              scaled to size 12.0pt on input line 15.
 
-Overfull \hbox (2.46066pt too wide) in paragraph at lines 20--20
+Overfull \hbox (2.46066pt too wide) in paragraph at lines 21--21
  [][] [][][]\OT1/cmr/m/n/12 Diagrama de cla-ses del sis-te-ma de di^^Salo-gos en la v2.0: \OT1/zi4/m/n/12 DialogueNode 
  []
 
 
-Overfull \hbox (10.98433pt too wide) in paragraph at lines 20--20
+Overfull \hbox (10.98433pt too wide) in paragraph at lines 21--21
  \OT1/cmr/m/n/12 y sus es-pe-cia-li-za-cio-nes (\OT1/zi4/m/n/12 QuestionNode\OT1/cmr/m/n/12 , \OT1/zi4/m/n/12 PostAnswerNode\OT1/cmr/m/n/12 , \OT1/zi4/m/n/12 InputNode\OT1/cmr/m/n/12 ), 
  []
 
-[4
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4
 
 {C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}]
-Overfull \hbox (56.55159pt too wide) in paragraph at lines 27--27
+Overfull \hbox (56.55159pt too wide) in paragraph at lines 28--28
  [][] [][][]\OT1/cmr/m/n/12 Captura del in-for-me HTML ge-ne-ra-do au-tom^^Sati-ca-men-te (\OT1/zi4/m/n/12 informe[]terapeuta\OT1/cmr/m/n/12 ), 
  []
 
@@ -1128,17 +1135,17 @@ Overfull \hbox (56.55159pt too wide) in paragraph at lines 27--27
  [5]
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--484
+Underfull \hbox (badness 10000) in paragraph at lines 491--494
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--490
+Underfull \hbox (badness 10000) in paragraph at lines 495--500
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 491--496
+Underfull \hbox (badness 10000) in paragraph at lines 501--506
 
  []
 
@@ -1148,220 +1155,226 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [6
 
 {C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 501--519
+Underfull \hbox (badness 10000) in paragraph at lines 511--529
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 501--519
+Underfull \hbox (badness 10000) in paragraph at lines 511--529
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 501--519
+Underfull \hbox (badness 10000) in paragraph at lines 511--529
 
  []
 
-LaTeX Info: Redefining \sptext on input line 519.
-LaTeX Info: Redefining \. on input line 519.
-LaTeX Info: Redefining \% on input line 519.
+LaTeX Info: Redefining \sptext on input line 529.
+LaTeX Info: Redefining \. on input line 529.
+LaTeX Info: Redefining \% on input line 529.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 519.
+(babel)             Reported on input line 529.
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 522--541
+Underfull \hbox (badness 10000) in paragraph at lines 532--551
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--541
+Underfull \hbox (badness 10000) in paragraph at lines 532--551
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--541
+Underfull \hbox (badness 10000) in paragraph at lines 532--551
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--541
+Underfull \hbox (badness 10000) in paragraph at lines 532--551
 
  []
 
-LaTeX Info: Redefining \sptext on input line 541.
-LaTeX Info: Redefining \. on input line 541.
-LaTeX Info: Redefining \% on input line 541.
+LaTeX Info: Redefining \sptext on input line 551.
+LaTeX Info: Redefining \. on input line 551.
+LaTeX Info: Redefining \% on input line 551.
 [8]
-LaTeX Info: Redefining \sptext on input line 550.
-LaTeX Info: Redefining \. on input line 550.
-LaTeX Info: Redefining \% on input line 550.
+LaTeX Info: Redefining \sptext on input line 560.
+LaTeX Info: Redefining \. on input line 560.
+LaTeX Info: Redefining \% on input line 560.
  [9]
-LaTeX Info: Redefining \sptext on input line 573.
-LaTeX Info: Redefining \. on input line 573.
-LaTeX Info: Redefining \% on input line 573.
+LaTeX Info: Redefining \sptext on input line 583.
+LaTeX Info: Redefining \. on input line 583.
+LaTeX Info: Redefining \% on input line 583.
  [10]
-Underfull \hbox (badness 10000) in paragraph at lines 583--597
+Underfull \hbox (badness 10000) in paragraph at lines 593--607
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 583--597
+Underfull \hbox (badness 10000) in paragraph at lines 593--607
 
  []
 
-LaTeX Info: Redefining \sptext on input line 597.
-LaTeX Info: Redefining \. on input line 597.
-LaTeX Info: Redefining \% on input line 597.
+LaTeX Info: Redefining \sptext on input line 607.
+LaTeX Info: Redefining \. on input line 607.
+LaTeX Info: Redefining \% on input line 607.
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 600--605
+<images/use_of_github_projects.png, id=419, 941.01563pt x 441.90094pt>
+File: images/use_of_github_projects.png Graphic file (type png)
+<use images/use_of_github_projects.png>
+Package pdftex.def Info: images/use_of_github_projects.png  used on input line 608.
+(pdftex.def)             Requested size: 350.43935pt x 164.56615pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 610--615
 
  []
 
-LaTeX Info: Redefining \sptext on input line 605.
-LaTeX Info: Redefining \. on input line 605.
-LaTeX Info: Redefining \% on input line 605.
-[12]
-LaTeX Info: Redefining \sptext on input line 625.
-LaTeX Info: Redefining \. on input line 625.
-LaTeX Info: Redefining \% on input line 625.
+LaTeX Info: Redefining \sptext on input line 615.
+LaTeX Info: Redefining \. on input line 615.
+LaTeX Info: Redefining \% on input line 615.
+[12 <./images/use_of_github_projects.png>]
+LaTeX Info: Redefining \sptext on input line 635.
+LaTeX Info: Redefining \. on input line 635.
+LaTeX Info: Redefining \% on input line 635.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.625 \chapter
+l.635 \chapter
               {Estado del Arte y Tecnologías Inmersivas} [1]
 Cap\'{\i }tulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 633--644
+Underfull \hbox (badness 10000) in paragraph at lines 643--654
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 633--644
+Underfull \hbox (badness 10000) in paragraph at lines 643--654
 
  []
 
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 647--652
+Underfull \hbox (badness 10000) in paragraph at lines 657--662
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--665
+Underfull \hbox (badness 10000) in paragraph at lines 664--675
 
  []
 
-LaTeX Info: Redefining \sptext on input line 665.
-LaTeX Info: Redefining \. on input line 665.
-LaTeX Info: Redefining \% on input line 665.
+LaTeX Info: Redefining \sptext on input line 675.
+LaTeX Info: Redefining \. on input line 675.
+LaTeX Info: Redefining \% on input line 675.
 [3]
-LaTeX Info: Redefining \sptext on input line 677.
-LaTeX Info: Redefining \. on input line 677.
-LaTeX Info: Redefining \% on input line 677.
+LaTeX Info: Redefining \sptext on input line 687.
+LaTeX Info: Redefining \. on input line 687.
+LaTeX Info: Redefining \% on input line 687.
  [4]
 LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 679.
-LaTeX Info: Redefining \sptext on input line 696.
-LaTeX Info: Redefining \. on input line 696.
-LaTeX Info: Redefining \% on input line 696.
+(Font)              scaled to size 10.0pt on input line 689.
+LaTeX Info: Redefining \sptext on input line 706.
+LaTeX Info: Redefining \. on input line 706.
+LaTeX Info: Redefining \% on input line 706.
  [5]
-Underfull \hbox (badness 10000) in paragraph at lines 704--709
+Underfull \hbox (badness 10000) in paragraph at lines 714--719
 
  []
 
-LaTeX Info: Redefining \sptext on input line 718.
-LaTeX Info: Redefining \. on input line 718.
-LaTeX Info: Redefining \% on input line 718.
+LaTeX Info: Redefining \sptext on input line 728.
+LaTeX Info: Redefining \. on input line 728.
+LaTeX Info: Redefining \% on input line 728.
 [6]
-Overfull \hbox (5.40775pt too wide) in paragraph at lines 726--728
+Overfull \hbox (5.40775pt too wide) in paragraph at lines 736--738
 \OT1/cmr/m/n/12 bre que tie-ne la in-ves-ti-ga-ci^^Son que llev^^So a ca-bo el \OT1/cmr/bx/n/12 Cen-ter for BrainHealth
  []
 
-LaTeX Info: Redefining \sptext on input line 735.
-LaTeX Info: Redefining \. on input line 735.
-LaTeX Info: Redefining \% on input line 735.
+LaTeX Info: Redefining \sptext on input line 745.
+LaTeX Info: Redefining \. on input line 745.
+LaTeX Info: Redefining \% on input line 745.
 [7]
-Overfull \hbox (1.58766pt too wide) in paragraph at lines 738--739
+Overfull \hbox (1.58766pt too wide) in paragraph at lines 748--749
 []\OT1/cmr/bx/n/12 Reconocimiento de Emo-cio-nes\OT1/cmr/m/n/12 , don-de el usua-rio de-ber^^Sa iden-
  []
 
-LaTeX Info: Redefining \sptext on input line 756.
-LaTeX Info: Redefining \. on input line 756.
-LaTeX Info: Redefining \% on input line 756.
+LaTeX Info: Redefining \sptext on input line 766.
+LaTeX Info: Redefining \. on input line 766.
+LaTeX Info: Redefining \% on input line 766.
 [8]
-Overfull \hbox (8.4925pt too wide) in paragraph at lines 765--765
+Overfull \hbox (8.4925pt too wide) in paragraph at lines 775--775
 []\OT1/cmr/bx/n/14.4 Atenci^^Son Sos-te-ni-da y Eye-tracking (se-gui-mien-to ocu-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--781
+Underfull \hbox (badness 10000) in paragraph at lines 777--791
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--781
+Underfull \hbox (badness 10000) in paragraph at lines 777--791
 
  []
 
-LaTeX Info: Redefining \sptext on input line 781.
-LaTeX Info: Redefining \. on input line 781.
-LaTeX Info: Redefining \% on input line 781.
+LaTeX Info: Redefining \sptext on input line 791.
+LaTeX Info: Redefining \. on input line 791.
+LaTeX Info: Redefining \% on input line 791.
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 784--790
+Underfull \hbox (badness 10000) in paragraph at lines 794--800
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--820
+Underfull \hbox (badness 10000) in paragraph at lines 803--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--820
+Underfull \hbox (badness 10000) in paragraph at lines 803--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--820
+Underfull \hbox (badness 10000) in paragraph at lines 803--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--820
+Underfull \hbox (badness 10000) in paragraph at lines 803--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--820
+Underfull \hbox (badness 10000) in paragraph at lines 803--830
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--820
+Underfull \hbox (badness 10000) in paragraph at lines 803--830
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 820.
-LaTeX Info: Redefining \. on input line 820.
-LaTeX Info: Redefining \% on input line 820.
+LaTeX Info: Redefining \sptext on input line 830.
+LaTeX Info: Redefining \. on input line 830.
+LaTeX Info: Redefining \% on input line 830.
  [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 820.
-LaTeX Info: Redefining \. on input line 820.
-LaTeX Info: Redefining \% on input line 820.
+LaTeX Info: Redefining \sptext on input line 830.
+LaTeX Info: Redefining \. on input line 830.
+LaTeX Info: Redefining \% on input line 830.
  [11]
-LaTeX Info: Redefining \sptext on input line 822.
-LaTeX Info: Redefining \. on input line 822.
-LaTeX Info: Redefining \% on input line 822.
+LaTeX Info: Redefining \sptext on input line 832.
+LaTeX Info: Redefining \. on input line 832.
+LaTeX Info: Redefining \% on input line 832.
  [12]
 Cap\'{\i }tulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 837--841
+Underfull \hbox (badness 10000) in paragraph at lines 847--851
 
  []
 
@@ -1371,394 +1384,537 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [13
 
 ]
-LaTeX Info: Redefining \sptext on input line 855.
-LaTeX Info: Redefining \. on input line 855.
-LaTeX Info: Redefining \% on input line 855.
+<images/comparacion_modelos_tfg.png, id=516, 582.67688pt x 384.6872pt>
+File: images/comparacion_modelos_tfg.png Graphic file (type png)
+<use images/comparacion_modelos_tfg.png>
+Package pdftex.def Info: images/comparacion_modelos_tfg.png  used on input line 864.
+(pdftex.def)             Requested size: 350.43935pt x 231.36586pt.
+LaTeX Info: Redefining \sptext on input line 865.
+LaTeX Info: Redefining \. on input line 865.
+LaTeX Info: Redefining \% on input line 865.
  [14]
-Underfull \hbox (badness 10000) in paragraph at lines 856--862
+Underfull \hbox (badness 10000) in paragraph at lines 866--872
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--883
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--883
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 864.
-LaTeX Info: Redefining \. on input line 864.
-LaTeX Info: Redefining \% on input line 864.
- [15]
-Underfull \hbox (badness 10000) in paragraph at lines 867--875
+LaTeX Info: Redefining \sptext on input line 883.
+LaTeX Info: Redefining \. on input line 883.
+LaTeX Info: Redefining \% on input line 883.
+ [15 <./images/comparacion_modelos_tfg.png>]
+LaTeX Info: Redefining \sptext on input line 892.
+LaTeX Info: Redefining \. on input line 892.
+LaTeX Info: Redefining \% on input line 892.
+ [16]
+<images/mundo_gimnasio.png, id=538, 682.04813pt x 379.4175pt>
+File: images/mundo_gimnasio.png Graphic file (type png)
+<use images/mundo_gimnasio.png>
+Package pdftex.def Info: images/mundo_gimnasio.png  used on input line 898.
+(pdftex.def)             Requested size: 350.43935pt x 194.94771pt.
+<images/draw_calls.png, id=539, 814.54312pt x 517.935pt>
+File: images/draw_calls.png Graphic file (type png)
+<use images/draw_calls.png>
+Package pdftex.def Info: images/draw_calls.png  used on input line 900.
+(pdftex.def)             Requested size: 350.43935pt x 222.82625pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 901.
+LaTeX Info: Redefining \. on input line 901.
+LaTeX Info: Redefining \% on input line 901.
+ [17 <./images/mundo_gimnasio.png>]
+<images/robi_jefe.png, id=545, 657.95813pt x 378.66469pt>
+File: images/robi_jefe.png Graphic file (type png)
+<use images/robi_jefe.png>
+Package pdftex.def Info: images/robi_jefe.png  used on input line 907.
+(pdftex.def)             Requested size: 350.43935pt x 201.68513pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 908.
+LaTeX Info: Redefining \. on input line 908.
+LaTeX Info: Redefining \% on input line 908.
+ [18 <./images/draw_calls.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 911--916
 
  []
 
+LaTeX Info: Redefining \sptext on input line 921.
+LaTeX Info: Redefining \. on input line 921.
+LaTeX Info: Redefining \% on input line 921.
+[19 <./images/robi_jefe.png>]
+<images/panel_diegetico.png, id=560, 645.91313pt x 382.42876pt>
+File: images/panel_diegetico.png Graphic file (type png)
+<use images/panel_diegetico.png>
+Package pdftex.def Info: images/panel_diegetico.png  used on input line 927.
+(pdftex.def)             Requested size: 350.43935pt x 207.48296pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 867--875
-
- []
-
-LaTeX Info: Redefining \sptext on input line 880.
-LaTeX Info: Redefining \. on input line 880.
-LaTeX Info: Redefining \% on input line 880.
-[16]
-LaTeX Info: Redefining \sptext on input line 894.
-LaTeX Info: Redefining \. on input line 894.
-LaTeX Info: Redefining \% on input line 894.
- [17]
-Underfull \hbox (badness 10000) in paragraph at lines 897--902
+Underfull \hbox (badness 10000) in paragraph at lines 929--938
 
  []
 
-LaTeX Info: Redefining \sptext on input line 907.
-LaTeX Info: Redefining \. on input line 907.
-LaTeX Info: Redefining \% on input line 907.
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 915--924
+LaTeX Info: Redefining \sptext on input line 938.
+LaTeX Info: Redefining \. on input line 938.
+LaTeX Info: Redefining \% on input line 938.
+[20 <./images/panel_diegetico.png>]
+<images/interfaz_monedas.png, id=568, 595.47469pt x 446.41782pt>
+File: images/interfaz_monedas.png Graphic file (type png)
+<use images/interfaz_monedas.png>
+Package pdftex.def Info: images/interfaz_monedas.png  used on input line 939.
+(pdftex.def)             Requested size: 350.43935pt x 262.71666pt.
 
- []
-
-LaTeX Info: Redefining \sptext on input line 924.
-LaTeX Info: Redefining \. on input line 924.
-LaTeX Info: Redefining \% on input line 924.
-[19]
-Overfull \hbox (45.77916pt too wide) in paragraph at lines 928--928
+Overfull \hbox (45.77916pt too wide) in paragraph at lines 942--942
 []\OT1/cmr/bx/n/17.28 Arquitectura del Sis-te-ma e In-te-gra-ci^^Son Biom^^Setri-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 939--964
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 939--964
+LaTeX Info: Redefining \sptext on input line 948.
+LaTeX Info: Redefining \. on input line 948.
+LaTeX Info: Redefining \% on input line 948.
+[21 <./images/interfaz_monedas.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 953--978
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 939--964
+Underfull \hbox (badness 10000) in paragraph at lines 953--978
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 939--964
+Underfull \hbox (badness 10000) in paragraph at lines 953--978
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 939--964
+Underfull \hbox (badness 10000) in paragraph at lines 953--978
 
  []
 
 
-Underfull \vbox (badness 5548) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 953--978
 
-LaTeX Info: Redefining \sptext on input line 964.
-LaTeX Info: Redefining \. on input line 964.
-LaTeX Info: Redefining \% on input line 964.
- [20]
-LaTeX Info: Redefining \sptext on input line 964.
-LaTeX Info: Redefining \. on input line 964.
-LaTeX Info: Redefining \% on input line 964.
- [21]
-Overfull \hbox (14.47449pt too wide) in paragraph at lines 973--975
+ []
+
+LaTeX Info: Redefining \sptext on input line 978.
+LaTeX Info: Redefining \. on input line 978.
+LaTeX Info: Redefining \% on input line 978.
+[22]
+Overfull \hbox (14.47449pt too wide) in paragraph at lines 987--989
 \OT1/zi4/m/n/12 OVRCameraRig\OT1/cmr/m/n/12 , que pro-por-cio-na los an-cla-jes de la ca-be-za (\OT1/zi4/m/n/12 centerEyeAnchor\OT1/cmr/m/n/12 )
  []
 
-LaTeX Info: Redefining \sptext on input line 977.
-LaTeX Info: Redefining \. on input line 977.
-LaTeX Info: Redefining \% on input line 977.
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 979--984
-
- []
-
-LaTeX Info: Redefining \sptext on input line 991.
-LaTeX Info: Redefining \. on input line 991.
-LaTeX Info: Redefining \% on input line 991.
+LaTeX Info: Redefining \sptext on input line 989.
+LaTeX Info: Redefining \. on input line 989.
+LaTeX Info: Redefining \% on input line 989.
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
+Underfull \hbox (badness 10000) in paragraph at lines 993--998
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1026
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1026.
-LaTeX Info: Redefining \. on input line 1026.
-LaTeX Info: Redefining \% on input line 1026.
-[24]
-
-LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
-(Font)              using `OT1/zi4/m/n' instead on input line 1027.
-
-LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
-(Font)              scaled to size 12.0pt on input line 1027.
-LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
-(Font)              scaled to size 10.95pt on input line 1027.
+<images/meta_sdk_hierarchy.png, id=588, 265.74281pt x 191.9672pt>
+File: images/meta_sdk_hierarchy.png Graphic file (type png)
+<use images/meta_sdk_hierarchy.png>
+Package pdftex.def Info: images/meta_sdk_hierarchy.png  used on input line 999.
+(pdftex.def)             Requested size: 350.43935pt x 253.17192pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1028.
-LaTeX Info: Redefining \. on input line 1028.
-LaTeX Info: Redefining \% on input line 1028.
- [25]
+LaTeX Info: Redefining \sptext on input line 1000.
+LaTeX Info: Redefining \. on input line 1000.
+LaTeX Info: Redefining \% on input line 1000.
+ [24]
+LaTeX Info: Redefining \sptext on input line 1015.
+LaTeX Info: Redefining \. on input line 1015.
+LaTeX Info: Redefining \% on input line 1015.
+ [25 <./images/meta_sdk_hierarchy.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1040
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1040
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1040
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1040
+
+ []
+
 LaTeX Info: Redefining \sptext on input line 1040.
 LaTeX Info: Redefining \. on input line 1040.
 LaTeX Info: Redefining \% on input line 1040.
- [26]
+[26]
+<images/./diagrams/EyeTracking.drawio.png, id=610, 1537.745pt x 1216.545pt>
+File: images/./diagrams/EyeTracking.drawio.png Graphic file (type png)
+<use images/./diagrams/EyeTracking.drawio.png>
+Package pdftex.def Info: images/./diagrams/EyeTracking.drawio.png  used on input line 1041.
+(pdftex.def)             Requested size: 350.43935pt x 277.23778pt.
+
+
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 1041.
+
+LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
+(Font)              scaled to size 10.95pt on input line 1041.
+LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
+(Font)              scaled to size 10.95pt on input line 1041.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1056.
-LaTeX Info: Redefining \. on input line 1056.
-LaTeX Info: Redefining \% on input line 1056.
+LaTeX Info: Redefining \sptext on input line 1042.
+LaTeX Info: Redefining \. on input line 1042.
+LaTeX Info: Redefining \% on input line 1042.
  [27]
-LaTeX Info: Redefining \sptext on input line 1070.
-LaTeX Info: Redefining \. on input line 1070.
-LaTeX Info: Redefining \% on input line 1070.
- [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1085--1089
+<images/highlight_frame.png, id=615, 557.83406pt x 380.17032pt>
+File: images/highlight_frame.png Graphic file (type png)
+<use images/highlight_frame.png>
+Package pdftex.def Info: images/highlight_frame.png  used on input line 1043.
+(pdftex.def)             Requested size: 350.43935pt x 238.83566pt.
 
- []
+Underfull \vbox (badness 2894) has occurred while \output is active []
 
-
-Underfull \vbox (badness 2932) has occurred while \output is active []
-
-LaTeX Info: Redefining \sptext on input line 1089.
-LaTeX Info: Redefining \. on input line 1089.
-LaTeX Info: Redefining \% on input line 1089.
+LaTeX Info: Redefining \sptext on input line 1049.
+LaTeX Info: Redefining \. on input line 1049.
+LaTeX Info: Redefining \% on input line 1049.
+ [28 <./images/./diagrams/EyeTracking.drawio.png> <./images/highlight_frame.png>]
+LaTeX Info: Redefining \sptext on input line 1068.
+LaTeX Info: Redefining \. on input line 1068.
+LaTeX Info: Redefining \% on input line 1068.
  [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1132
+<images/./diagrams/facetracking.drawio.png, id=629, 2009.5075pt x 1376.14125pt>
+File: images/./diagrams/facetracking.drawio.png Graphic file (type png)
+<use images/./diagrams/facetracking.drawio.png>
+Package pdftex.def Info: images/./diagrams/facetracking.drawio.png  used on input line 1069.
+(pdftex.def)             Requested size: 350.43935pt x 239.9674pt.
+LaTeX Info: Redefining \sptext on input line 1080.
+LaTeX Info: Redefining \. on input line 1080.
+LaTeX Info: Redefining \% on input line 1080.
+ [30 <./images/./diagrams/facetracking.drawio.png>]
+<images/discomfort_panel.png, id=637, 613.54219pt x 378.66469pt>
+File: images/discomfort_panel.png Graphic file (type png)
+<use images/discomfort_panel.png>
+Package pdftex.def Info: images/discomfort_panel.png  used on input line 1089.
+(pdftex.def)             Requested size: 350.43935pt x 216.28601pt.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1132
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1132
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1132
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1132
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1132.
-LaTeX Info: Redefining \. on input line 1132.
-LaTeX Info: Redefining \% on input line 1132.
-[30]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1132.
-LaTeX Info: Redefining \. on input line 1132.
-LaTeX Info: Redefining \% on input line 1132.
- [31]
-Overfull \hbox (8.31958pt too wide) in paragraph at lines 1134--1139
-\OT1/cmr/m/n/12 JSON, y a con-ti-nua-ci^^Son in-vo-ca a \OT1/zi4/m/it/12 SaveSystem.ExportTherapistReports()\OT1/cmr/m/n/12 ,
+LaTeX Info: Redefining \sptext on input line 1096.
+LaTeX Info: Redefining \. on input line 1096.
+LaTeX Info: Redefining \% on input line 1096.
+ [31 <./images/discomfort_panel.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1103
+
  []
 
-LaTeX Info: Redefining \sptext on input line 1139.
-LaTeX Info: Redefining \. on input line 1139.
-LaTeX Info: Redefining \% on input line 1139.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1146
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1146.
+LaTeX Info: Redefining \. on input line 1146.
+LaTeX Info: Redefining \% on input line 1146.
 [32]
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1146.
+LaTeX Info: Redefining \. on input line 1146.
+LaTeX Info: Redefining \% on input line 1146.
+ [33]
+Overfull \hbox (8.31958pt too wide) in paragraph at lines 1148--1153
+\OT1/cmr/m/n/12 JSON, y a con-ti-nua-ci^^Son in-vo-ca a \OT1/zi4/m/n/12 SaveSystem.ExportTherapistReports()\OT1/cmr/m/n/12 ,
+ []
 
 LaTeX Info: Redefining \sptext on input line 1153.
 LaTeX Info: Redefining \. on input line 1153.
 LaTeX Info: Redefining \% on input line 1153.
- [33]
-LaTeX Info: Redefining \sptext on input line 1171.
-LaTeX Info: Redefining \. on input line 1171.
-LaTeX Info: Redefining \% on input line 1171.
- [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1179--1186
+[34]
+<images/./diagrams/persistence_flow1.drawio.png, id=663, 1467.4825pt x 1487.5575pt>
+File: images/./diagrams/persistence_flow1.drawio.png Graphic file (type png)
+<use images/./diagrams/persistence_flow1.drawio.png>
+Package pdftex.def Info: images/./diagrams/persistence_flow1.drawio.png  used on input line 1166.
+(pdftex.def)             Requested size: 350.43935pt x 355.22794pt.
 
- []
-
-LaTeX Info: Redefining \sptext on input line 1186.
-LaTeX Info: Redefining \. on input line 1186.
-LaTeX Info: Redefining \% on input line 1186.
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 1191--1197
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1201.
-LaTeX Info: Redefining \. on input line 1201.
-LaTeX Info: Redefining \% on input line 1201.
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1238
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1238
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1238
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1238
-
- []
-
-
-Overfull \hbox (12.0219pt too wide) in paragraph at lines 1205--1238
-\OT1/cmr/m/n/12 (\OT1/zi4/m/it/12 VRGrabbableCanvas\OT1/cmr/m/n/12 ), el acom-pa~namien-to sua-ve de la gu^^S^^Pa (\OT1/zi4/m/it/12 CompanionLazyFollow\OT1/cmr/m/n/12 ),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1238
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1238
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1238.
-LaTeX Info: Redefining \. on input line 1238.
-LaTeX Info: Redefining \% on input line 1238.
-[37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1238.
-LaTeX Info: Redefining \. on input line 1238.
-LaTeX Info: Redefining \% on input line 1238.
- [38]
-Underfull \hbox (badness 10000) in paragraph at lines 1243--1249
+LaTeX Info: Redefining \sptext on input line 1167.
+LaTeX Info: Redefining \. on input line 1167.
+LaTeX Info: Redefining \% on input line 1167.
+ [35]
+<images/./diagrams/persistence_part2.drawio.png, id=670, 1467.4825pt x 1274.7625pt>
+File: images/./diagrams/persistence_part2.drawio.png Graphic file (type png)
+<use images/./diagrams/persistence_part2.drawio.png>
+Package pdftex.def Info: images/./diagrams/persistence_part2.drawio.png  used on input line 1168.
+(pdftex.def)             Requested size: 350.43935pt x 304.4126pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1169.
+LaTeX Info: Redefining \. on input line 1169.
+LaTeX Info: Redefining \% on input line 1169.
+ [36 <./images/./diagrams/persistence_flow1.drawio.png>]
+LaTeX Info: Redefining \sptext on input line 1182.
+LaTeX Info: Redefining \. on input line 1182.
+LaTeX Info: Redefining \% on input line 1182.
+ [37 <./images/./diagrams/persistence_part2.drawio.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1195--1202
 
  []
 
-LaTeX Info: Redefining \sptext on input line 1253.
-LaTeX Info: Redefining \. on input line 1253.
-LaTeX Info: Redefining \% on input line 1253.
-[39]
-LaTeX Info: Redefining \sptext on input line 1268.
-LaTeX Info: Redefining \. on input line 1268.
-LaTeX Info: Redefining \% on input line 1268.
- [40]
-LaTeX Info: Redefining \sptext on input line 1282.
-LaTeX Info: Redefining \. on input line 1282.
-LaTeX Info: Redefining \% on input line 1282.
+LaTeX Info: Redefining \sptext on input line 1202.
+LaTeX Info: Redefining \. on input line 1202.
+LaTeX Info: Redefining \% on input line 1202.
+[38]
+<images/./diagrams/Dialogues_v2.0.drawio.png, id=690, 2240.37pt x 1367.1075pt>
+File: images/./diagrams/Dialogues_v2.0.drawio.png Graphic file (type png)
+<use images/./diagrams/Dialogues_v2.0.drawio.png>
+Package pdftex.def Info: images/./diagrams/Dialogues_v2.0.drawio.png  used on input line 1203.
+(pdftex.def)             Requested size: 350.43935pt x 213.83948pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1213
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1213.
+LaTeX Info: Redefining \. on input line 1213.
+LaTeX Info: Redefining \% on input line 1213.
+[39 <./images/./diagrams/Dialogues_v2.0.drawio.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1254
+
+ []
+
+
+Overfull \hbox (12.0219pt too wide) in paragraph at lines 1221--1254
+\OT1/cmr/m/n/12 (\OT1/zi4/m/n/12 VRGrabbableCanvas\OT1/cmr/m/n/12 ), el acom-pa~namien-to sua-ve de la gu^^S^^Pa (\OT1/zi4/m/n/12 CompanionLazyFollow\OT1/cmr/m/n/12 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1254
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1254.
+LaTeX Info: Redefining \. on input line 1254.
+LaTeX Info: Redefining \% on input line 1254.
+[40]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1254.
+LaTeX Info: Redefining \. on input line 1254.
+LaTeX Info: Redefining \% on input line 1254.
  [41]
+<images/./diagrams/VRay_Pointer.drawio.png, id=708, 2163.08125pt x 1252.68pt>
+File: images/./diagrams/VRay_Pointer.drawio.png Graphic file (type png)
+<use images/./diagrams/VRay_Pointer.drawio.png>
+Package pdftex.def Info: images/./diagrams/VRay_Pointer.drawio.png  used on input line 1255.
+(pdftex.def)             Requested size: 350.43935pt x 202.93687pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1259--1265
+
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1297.
-LaTeX Info: Redefining \. on input line 1297.
-LaTeX Info: Redefining \% on input line 1297.
- [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1309--1315
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1315.
-LaTeX Info: Redefining \. on input line 1315.
-LaTeX Info: Redefining \% on input line 1315.
-[43]
-Underfull \hbox (badness 10000) in paragraph at lines 1323--1330
-
- []
-
-LaTeX Info: Redefining \sptext on input line 1330.
-LaTeX Info: Redefining \. on input line 1330.
-LaTeX Info: Redefining \% on input line 1330.
-[44]
-LaTeX Info: Redefining \sptext on input line 1343.
-LaTeX Info: Redefining \. on input line 1343.
-LaTeX Info: Redefining \% on input line 1343.
+LaTeX Info: Redefining \sptext on input line 1265.
+LaTeX Info: Redefining \. on input line 1265.
+LaTeX Info: Redefining \% on input line 1265.
+ [42 <./images/./diagrams/VRay_Pointer.drawio.png>]
+LaTeX Info: Redefining \sptext on input line 1276.
+LaTeX Info: Redefining \. on input line 1276.
+LaTeX Info: Redefining \% on input line 1276.
+ [43]
+<images/sceneries.png, id=723, 1303.11844pt x 752.0597pt>
+File: images/sceneries.png Graphic file (type png)
+<use images/sceneries.png>
+Package pdftex.def Info: images/sceneries.png  used on input line 1285.
+(pdftex.def)             Requested size: 350.43935pt x 202.24406pt.
+LaTeX Info: Redefining \sptext on input line 1290.
+LaTeX Info: Redefining \. on input line 1290.
+LaTeX Info: Redefining \% on input line 1290.
+ [44 <./images/sceneries.png>]
+LaTeX Info: Redefining \sptext on input line 1308.
+LaTeX Info: Redefining \. on input line 1308.
+LaTeX Info: Redefining \% on input line 1308.
  [45]
-Underfull \hbox (badness 10000) in paragraph at lines 1350--1355
+<images/profiler_TFG2.png, id=737, 786.68906pt x 453.94594pt>
+File: images/profiler_TFG2.png Graphic file (type png)
+<use images/profiler_TFG2.png>
+Package pdftex.def Info: images/profiler_TFG2.png  used on input line 1312.
+(pdftex.def)             Requested size: 350.43935pt x 202.21657pt.
+LaTeX Info: Redefining \sptext on input line 1323.
+LaTeX Info: Redefining \. on input line 1323.
+LaTeX Info: Redefining \% on input line 1323.
+ [46 <./images/profiler_TFG2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1325--1331
 
  []
 
-LaTeX Info: Redefining \sptext on input line 1355.
-LaTeX Info: Redefining \. on input line 1355.
-LaTeX Info: Redefining \% on input line 1355.
-[46]
 
-LaTeX Warning: Reference `fig:informe' on page 47 undefined on input line 1363.
+Underfull \hbox (badness 10000) in paragraph at lines 1339--1346
 
-LaTeX Info: Redefining \sptext on input line 1368.
-LaTeX Info: Redefining \. on input line 1368.
-LaTeX Info: Redefining \% on input line 1368.
+ []
+
+LaTeX Info: Redefining \sptext on input line 1346.
+LaTeX Info: Redefining \. on input line 1346.
+LaTeX Info: Redefining \% on input line 1346.
 [47]
-LaTeX Info: Redefining \sptext on input line 1372.
-LaTeX Info: Redefining \. on input line 1372.
-LaTeX Info: Redefining \% on input line 1372.
+<images/excel_cuestionarios.png, id=756, 1113.40968pt x 557.08125pt>
+File: images/excel_cuestionarios.png Graphic file (type png)
+<use images/excel_cuestionarios.png>
+Package pdftex.def Info: images/excel_cuestionarios.png  used on input line 1352.
+(pdftex.def)             Requested size: 350.43935pt x 175.337pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1353.
+LaTeX Info: Redefining \. on input line 1353.
+LaTeX Info: Redefining \% on input line 1353.
  [48]
+<images/seguimiento_misiones.png, id=766, 498.36188pt x 440.39531pt>
+File: images/seguimiento_misiones.png Graphic file (type png)
+<use images/seguimiento_misiones.png>
+Package pdftex.def Info: images/seguimiento_misiones.png  used on input line 1364.
+(pdftex.def)             Requested size: 350.43935pt x 309.68578pt.
+
+Underfull \vbox (badness 2293) has occurred while \output is active []
+
+LaTeX Info: Redefining \sptext on input line 1365.
+LaTeX Info: Redefining \. on input line 1365.
+LaTeX Info: Redefining \% on input line 1365.
+ [49 <./images/excel_cuestionarios.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1371
+
+ []
+
+LaTeX Info: Redefining \sptext on input line 1376.
+LaTeX Info: Redefining \. on input line 1376.
+LaTeX Info: Redefining \% on input line 1376.
+[50 <./images/seguimiento_misiones.png>]
+<images/informe_tabla.png, id=787, 821.31844pt x 707.64375pt>
+File: images/informe_tabla.png Graphic file (type png)
+<use images/informe_tabla.png>
+Package pdftex.def Info: images/informe_tabla.png  used on input line 1381.
+(pdftex.def)             Requested size: 350.43935pt x 301.93777pt.
+<images/informe_barras+Circulo.png, id=788, 875.52094pt x 962.84718pt>
+File: images/informe_barras+Circulo.png Graphic file (type png)
+<use images/informe_barras+Circulo.png>
+Package pdftex.def Info: images/informe_barras+Circulo.png  used on input line 1385.
+(pdftex.def)             Requested size: 350.43935pt x 385.3965pt.
+LaTeX Info: Redefining \sptext on input line 1386.
+LaTeX Info: Redefining \. on input line 1386.
+LaTeX Info: Redefining \% on input line 1386.
+ [51 <./images/informe_tabla.png>]
+LaTeX Info: Redefining \sptext on input line 1388.
+LaTeX Info: Redefining \. on input line 1388.
+LaTeX Info: Redefining \% on input line 1388.
+ [52 <./images/informe_barras+Circulo.png>]
 Cap\'{\i }tulo 4.
-[49
+[53
 
 ]
-LaTeX Info: Redefining \sptext on input line 1405.
-LaTeX Info: Redefining \. on input line 1405.
-LaTeX Info: Redefining \% on input line 1405.
- [50]
-Underfull \hbox (badness 10000) in paragraph at lines 1415--1416
+LaTeX Info: Redefining \sptext on input line 1421.
+LaTeX Info: Redefining \. on input line 1421.
+LaTeX Info: Redefining \% on input line 1421.
+ [54]
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1432
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1417--1420
+Underfull \hbox (badness 10000) in paragraph at lines 1433--1436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1421--1424
+Underfull \hbox (badness 10000) in paragraph at lines 1437--1440
 
  []
 
-LaTeX Info: Redefining \sptext on input line 1424.
-LaTeX Info: Redefining \. on input line 1424.
-LaTeX Info: Redefining \% on input line 1424.
-[51]
+LaTeX Info: Redefining \sptext on input line 1440.
+LaTeX Info: Redefining \. on input line 1440.
+LaTeX Info: Redefining \% on input line 1440.
+[55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \sptext on input line 1446.
-LaTeX Info: Redefining \. on input line 1446.
-LaTeX Info: Redefining \% on input line 1446.
- [52]
-LaTeX Info: Redefining \sptext on input line 1460.
-LaTeX Info: Redefining \. on input line 1460.
-LaTeX Info: Redefining \% on input line 1460.
- [53] [54]
-Overfull \hbox (8.61671pt too wide) in paragraph at lines 1468--1468
+LaTeX Info: Redefining \sptext on input line 1462.
+LaTeX Info: Redefining \. on input line 1462.
+LaTeX Info: Redefining \% on input line 1462.
+ [56]
+LaTeX Info: Redefining \sptext on input line 1476.
+LaTeX Info: Redefining \. on input line 1476.
+LaTeX Info: Redefining \% on input line 1476.
+ [57] [58]
+Overfull \hbox (8.61671pt too wide) in paragraph at lines 1484--1484
 \OT1/cmr/m/n/12 Spec-trum Di-sor-der: An Evidence-Based Sys-te-ma-tic Re-view'', \OT1/cmr/m/it/12 Sen-sors\OT1/cmr/m/n/12 , vol. 18,
  []
 
-[55
+[59
 
 
 ]
-LaTeX Info: Redefining \sptext on input line 1472.
-LaTeX Info: Redefining \. on input line 1472.
-LaTeX Info: Redefining \% on input line 1472.
- [56] (memory.aux
+LaTeX Info: Redefining \sptext on input line 1488.
+LaTeX Info: Redefining \. on input line 1488.
+LaTeX Info: Redefining \% on input line 1488.
+ [60] (memory.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -1778,7 +1934,7 @@ L3 programming layer <2025-12-24>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `memory.out' has not changed.
 (rerunfilecheck)             Checksum: DE0A316F276BE4E1CE6BD73A98B0EBD2;15177.
@@ -1788,17 +1944,17 @@ Package logreq Info: Writing requests to 'memory.run.xml'.
  )
 (\end occurred inside a group at level 2)
 
-### semi simple group (level 2) entered at line 616 (\begingroup)
-### semi simple group (level 1) entered at line 417 (\begingroup)
+### semi simple group (level 2) entered at line 626 (\begingroup)
+### semi simple group (level 1) entered at line 427 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 37422 strings out of 467871
- 717940 string characters out of 5418376
- 1620557 words of memory out of 5000000
- 65491 multiletter control sequences out of 15000+600000
+ 37649 strings out of 467871
+ 725588 string characters out of 5418376
+ 1623773 words of memory out of 5000000
+ 65711 multiletter control sequences out of 15000+600000
  641612 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,12n,108p,873b,2353s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,108p,873b,2352s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
 
@@ -1815,9 +1971,9 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\josec\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/josec/AppData/Local/Programs/MiKTeX/fonts/type1/urw/bookman/ubkd8a.pfb>
-Output written on memory.pdf (68 pages, 477976 bytes).
+Output written on memory.pdf (72 pages, 4227180 bytes).
 PDF statistics:
- 907 PDF objects out of 1000 (max. 8388607)
- 248 named destinations out of 1000 (max. 500000)
- 434 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 971 PDF objects out of 1000 (max. 8388607)
+ 255 named destinations out of 1000 (max. 500000)
+ 544 words of extra memory for PDF output out of 10000 (max. 10000000)
 

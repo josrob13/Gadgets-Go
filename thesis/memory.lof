@@ -6,23 +6,24 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Comparativa entre los avatares del paquete provisional (v1.0) y los nuevos avatares profesionales \textit {Modern Civilians} integrados en la v2.0.}}{15}{figure.caption.4}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Detalle de las expresiones faciales (\textit {Blend Shapes}) de un personaje observadas a corta distancia en Realidad Virtual, mostrando la transición entre dos estados emocionales.}}{16}{figure.caption.5}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Vista de uno de los nuevos entornos inmersivos (gimnasio) y captura del Frame Debugger de Unity mostrando la reducción de \textit {draw calls} tras la optimización.}}{17}{figure.caption.6}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Escena introductoria con el jefe de A.A.D.S}}{18}{figure.caption.7}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Panel de diálogo y cuestionario de evaluación renderizados como interfaz espacial (\textit {World Space}) dentro de la escena.}}{19}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Indicador de monedas (\textit {SpyCoins}) acompañando al usuario en la zona inferior del campo de visión.}}{20}{figure.caption.9}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de la pila tecnológica: aplicación (Unity/C\#) sobre Meta XR SDK (OVR) sobre OpenXR sobre el \textit {runtime} de Meta Quest Pro.}}{23}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de clases del funcionamiento de \texttt {EyeTracking}: rayo de \texttt {OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}}{26}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Estética visual del aviso de distracción en el recuadro de diálogo de las misiones, HighlightFrame.}}{26}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de clases del \texttt {FaceTrackingManager}: lectura de \textit {blendshapes} de \texttt {OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt {OnDiscomfortStateChanged}.}}{28}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Panel de descanso (\textit {``Tómate un descanso''}) mostrado en \textit {World Space} al detectarse incomodidad facial sostenida, con el botón de reanudación bajo control del usuario.}}{29}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Diagrama del flujo de exportación y persistencia de datos: procesamiento de \texttt {AnalyticsManager}, \texttt {SaveSystem} y \texttt {GameHandler}.}}{34}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Diagrama de clases del sistema de diálogos en la v2.0: \texttt {DialogueNode} y sus especializaciones (\texttt {QuestionNode}, \texttt {PostAnswerNode}, \texttt {InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}}{36}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Funcionamiento del puntero láser (\texttt {VRRayPointer}): doble detección por física y por \textit {GraphicRaycaster}, interfaz \texttt {IVRPointerTarget}.}}{39}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Distintos escenarios del videojuego, diseño de niveles.}}{41}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.16}{\ignorespaces \textit {Profiler} de Unity y de \textit {Metrics Tool} de Meta durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco.}}{43}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Excel con los 15 cuestionarios iniciales recogidos. En rojo los que no eran gratuitos, en verde los finalmente escogidos.}}{45}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Capturas de la experiencia de usuario en RV: el menú principal, una misión en curso y el HUD cómodo de monedas siempre visible en la zona baja del campo de visión.}}{46}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Ejemplo de la tabla de métricas del ensayo, detalle por misión.}}{47}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.20}{\ignorespaces Captura del informe HTML generado automáticamente (\texttt {informe\_terapeuta}), con las tarjetas de resumen, los gráficos de barras por misión y el gráfico de anillo de categorías de inferencia social.}}{48}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Vista de uno de los nuevos entornos inmersivos (gimnasio).}}{17}{figure.caption.5}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Captura del Frame Debugger de Unity mostrando la reducción de \textit {draw calls} tras la optimización (máximo de 61).}}{18}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Escena introductoria con el jefe de A.A.D.S.}}{19}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Panel de diálogo renderizado como interfaz espacial (\textit {World Space}) dentro de la escena.}}{20}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Indicador de monedas (\textit {SpyCoins}) acompañando al usuario en la zona inferior del campo de visión.}}{21}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Jerarquía del uso del Meta XR SDK en las escenas del proyecto, representando las nuevas tecnologías en el juego.}}{25}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de clases del funcionamiento de \texttt {EyeTracking}: rayo de \texttt {OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}}{28}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Estética visual del aviso de distracción en el recuadro de diálogo de las misiones, HighlightFrame.}}{28}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de clases del \texttt {FaceTrackingManager}: lectura de \textit {blendshapes} de \texttt {OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt {OnDiscomfortStateChanged}.}}{30}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Panel de descanso (\textit {``Quizá tengas que tomarte un respiro''}) mostrado en \textit {World Space} al detectarse incomodidad facial sostenida, con el botón de reanudación bajo control del usuario.}}{31}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Diagrama del flujo de exportación y persistencia de datos: procesamiento de \texttt {AnalyticsManager}, \texttt {SaveSystem} y \texttt {GameHandler}, primera parte.}}{36}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Diagrama del flujo de exportación y persistencia de datos, segunda parte.}}{37}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Diagrama de clases del sistema de diálogos en la v2.0: \texttt {DialogueNode} y sus especializaciones (\texttt {QuestionNode}, \texttt {PostAnswerNode}, \texttt {InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}}{39}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Funcionamiento del puntero láser (\texttt {VRRayPointer}): doble detección por física y por \textit {GraphicRaycaster}, interfaz \texttt {IVRPointerTarget}.}}{42}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Distintos escenarios del videojuego, diseño de niveles.}}{44}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces \textit {Profiler} de Unity durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco.}}{46}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Excel con los 15 cuestionarios iniciales recogidos. En rojo los que no eran gratuitos, en verde los finalmente escogidos.}}{49}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Menú principal, panel de guía de misiones.}}{50}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Ejemplo de la tabla de métricas del ensayo, detalle por misión.}}{51}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Captura del informe HTML generado automáticamente (\texttt {informe\_terapeuta}), con las tarjetas de resumen, los gráficos de barras por misión y el gráfico de anillo de categorías de inferencia social.}}{52}{figure.caption.24}%
 \addvspace {10\p@ }

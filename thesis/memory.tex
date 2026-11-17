@@ -33,6 +33,7 @@
 
 \usepackage[colorlinks=true,pdftex]{hyperref}   %%% Opcional. Para incluir marcadores y enlaces en el pdf
 \usepackage[pdftex]{graphicx}  %%% para pdflatex. Las figuras pueden estar en pdf, jpg, svg y otros formatos
+\graphicspath{{images/}}
 
 \usepackage{fancyvrb}
 
@@ -319,6 +320,15 @@ upquote=true,
     \caption{#2}
   \end{figure}}
 
+% \figura[ancho]{archivo}{pie}{etiqueta}
+\newcommand{\figura}[4][0.85\textwidth]{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                           Inicio del documento
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -595,7 +605,7 @@ GitHub Projects, una herramienta de organización de trabajo parecida a la herra
 las tareas pendientes en un Backlog, además de actualizarlas y/o modificarlas al gusto. Esta herramienta ha sido clave en la metodología de este segundo trabajo, y ha permitido tener un registro más claro de las tareas que
 se iban completando a lo largo del desarrollo. En esta imagen se puede ver un ejemplo de una de las tareas propuestas.
 
-\huecofigura[7cm]{Ejemplo de la tarea 'Implement Eye-Tracking', propuesta para el backlog de GitHub Projects de este proyecto.}
+\figura{use_of_github_projects.png}{Ejemplo de la tarea 'Implement Eye-Tracking', propuesta para el backlog de GitHub Projects de este proyecto.}{fig:github-projects}
 
 El segundo matiz es la incorporación de una fase específica de \textbf{pruebas sobre hardware real}.
 A diferencia de un videojuego de PC, una aplicación de Realidad Virtual no puede validarse íntegramente en el editor: el confort, la latencia de los sensores, la legibilidad de las interfaces espaciales o la naturalidad de la locomoción solo se aprecian con las gafas puestas; y, a pesar de que exista una alternativa, como el simulador de Realidad Virtual de Meta, este presentaba problemas en su incorporación con el proyecto, y no representaba fielmente la experiencia real, o directamente no se podía utilizar en ciertas ocasiones.
@@ -851,7 +861,7 @@ Al ser un entorno completamente inmersivo, un fotorrealismo imperfecto resultar�
 El estilo estilizado ofrece personajes expresivos y agradables, evitando el efecto del Valle Inquietante.
 \end{enumerate}
 
-\huecofigura[7cm]{Comparativa entre los avatares del paquete provisional (v1.0) y los nuevos avatares profesionales \textit{Modern Civilians} integrados en la v2.0.}
+\figura{comparacion_modelos_tfg.png}{Comparativa entre los avatares del paquete provisional (v1.0) y los nuevos avatares profesionales \textit{Modern Civilians} integrados en la v2.0.}{fig:3d-model-comparison}
 
 Más allá de la geometría de los avatares, la coherencia de la herramienta depende en gran medida de la \textbf{expresividad facial}, que en Realidad Virtual adquiere una exigencia que el formato de pantalla no imponía.
 Como el usuario puede acercarse al rostro de un personaje hasta una distancia mínima, cualquier defecto en la malla o en la transición entre gestos resulta inmediatamente perceptible y rompe la inmersión.
@@ -859,8 +869,6 @@ Por ello se ha conservado y depurado el sistema de animación facial heredado de
 \\
 Este desacoplamiento entre cuerpo y rostro, gestionado por los componentes encargados de la animación de los personajes, es el que permite componer escenas sociales ricas y poco ambiguas combinando libremente lenguaje corporal y emoción facial.
 En la versión de Realidad Virtual se ha prestado especial atención a que estas transiciones sean suaves (mediante mezclas o \textit{blends} temporizadas) y a que las emociones resulten legibles desde cualquier ángulo y a corta distancia, condiciones indispensables para que el usuario pueda realizar las inferencias sociales que constituyen el núcleo de la terapia.
-
-\huecofigura[6cm]{Detalle de las expresiones faciales (\textit{Blend Shapes}) de un personaje observadas a corta distancia en Realidad Virtual, mostrando la transición entre dos estados emocionales.}
 
 \subsection{Entornos Inmersivos: Nuevos escenarios coherentes con la narrativa}
 
@@ -876,21 +884,27 @@ Para conseguir ese sólido rendimiento en las gafas, y evitar tirones y bajadas 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
   \item \textbf{Iluminación precalculada (\textit{baked lighting}):} se ha llevado al extremo la estrategia de iluminación estática ya iniciada en el primer trabajo.
 La iluminación y las sombras se calculan una sola vez en el editor y se almacenan en mapas de luz (\textit{lightmaps}), de modo que en tiempo de ejecución el coste de iluminar la escena es prácticamente nulo.
-Esto libera el procesador para tareas más críticas como el seguimiento de la cabeza y de los sensores.
+Esto libera el procesador para tareas más críticas, como las de los sensores de seguimiento.
+  \item \textbf{Oclusión de mallas (\textit{mesh occlusion culling}):} consiste en una técnica que aporta rendimiento a los escenarios mediante el renderizado selectivo de los objetos que son visibles por el usuario.
+De esta manera, se calcula qué objetos son visibles detrás de otros, y se deja de renderizar los objetos ocultos, reduciendo drásticamente el número de vértices que la GPU tiene que procesar.
+  \item \textbf{Loteado Estático (\textit{static batching}):} esta técnica ayuda a reducir las \textit{Draw Calls} específicamente, ya que consigue agrupar múltiples objetos estáticos que comparten el mismo material en una sola malla para enviarla a la GPU de una sola vez.
+Esto ha sido posible ya que los escenarios 3D son estáticos, y se ha podido aplicar sin problema, por ejemplo, en el conjunto de las gradas del escenario del gimnasio, o en las sillas de la cafetería.
 \end{enumerate}
 
 Los entornos escogidos han sido: un pabellón, donde el usuario comenzará la serie de misiones en la historia; una cafetería; un teatro; y una oficina.
 Estos cuatro entornos no se han elegido al azar: dan cuerpo a la continuidad de la narrativa detectivesca de la A.A.D.S. (Agencia de Análisis y Decodificación Social) iniciada en el primer trabajo, y todos son espacios cotidianos en los que la comunicación social es frecuente y rica en matices, lo que refuerza la validez ecológica del entrenamiento; a la vez, son suficientemente distintos entre sí como para sostener la variedad y el \textit{engagement} a lo largo de la progresión.
 Cada uno reside en su propia escena de Unity, lo que aísla los recursos de cada nivel y evita saturar la memoria del dispositivo, una consideración importante también con el hardware.
 
-\huecofigura[7cm]{Vista de uno de los nuevos entornos inmersivos (gimnasio) y captura del Frame Debugger de Unity mostrando la reducción de \textit{draw calls} tras la optimización.}
+\figura{mundo_gimnasio.png}{Vista de uno de los nuevos entornos inmersivos (gimnasio).}{fig:gimnasio}
+
+\figura{draw_calls.png}{Captura del Frame Debugger de Unity mostrando la reducción de \textit{draw calls} tras la optimización (máximo de 61).}{fig:gym_frameDebugger}
 
 Además de contar con esos escenarios que serán los principales, y donde ocurra la trama principal del videojuego, se ha adaptado el \textit{asset} que servía de menú principal, y se ha creado una escena extra
 al comenzar el juego, donde el usuario entablará conversación con el que será, según la narrativa, su ``jefe de la agencia detectivesca''. Este le preguntará su nombre, y le dará una breve introducción sobre por qué
 está ahí y qué debe lograr. La escena se ha creado exclusivamente para esta introducción y cuenta con pocos elementos 3D, pero todos ellos han sido recogidos de fuentes públicas. Como se observa, el propio diálogo de la introducción
 se basa en el sistema de diálogos actual, que no necesita de una misión para su correcto funcionamiento.
 
-\huecofigura[7cm]{Escena introductoria con el jefe de A.A.D.S}
+\figura{robi_jefe.png}{Escena introductoria con el jefe de A.A.D.S.}{fig:intro}
 
 \subsection{Diseño de la Interfaz Espacial (Diegetic UI): Menús integrados en el mundo virtual}
 
@@ -910,7 +924,7 @@ Estos paneles se orientan automáticamente hacia el usuario para que siempre que
 
 El resultado es una interfaz que se siente parte del mundo virtual y no un elemento extraño superpuesto, reforzando la inmersión y respetando en todo momento la comodidad sensorial del usuario.
 
-\huecofigura[7cm]{Panel de diálogo y cuestionario de evaluación renderizados como interfaz espacial (\textit{World Space}) dentro de la escena.}
+\figura{panel_diegetico.png}{Panel de diálogo renderizado como interfaz espacial (\textit{World Space}) dentro de la escena.}{fig:diegetic-ui}
 
 Conviene detenerse en dos elementos diegéticos que ilustran especialmente bien esta filosofía de interfaz integrada en el mundo.
 El primero es el ya mencionado \textbf{lienzo de diálogo agarrable}: además de orientarse automáticamente hacia el usuario, puede ser tomado con el gatillo lateral del mando y reubicado en el espacio, conservando la posición y la orientación relativas a la mano en el momento de agarrarlo, y permaneciendo fijo allí donde se suelte.
@@ -922,7 +936,7 @@ En lugar de fijarlo a una esquina de la pantalla (algo imposible y molesto en RV
 De manera deliberada, este panel carece de cualquier componente de detección de rayos, de modo que jamás intercepta el puntero láser ni interfiere con la interacción.
 Ambos elementos comparten un mismo principio: la información debe estar disponible cuando se necesita, sin imponerse ni romper la sensación de presencia.
 
-\huecofigura[6cm]{Indicador de monedas (\textit{SpyCoins}) acompañando al usuario en la zona inferior del campo de visión.}
+\figura{interfaz_monedas.png}{Indicador de monedas (\textit{SpyCoins}) acompañando al usuario en la zona inferior del campo de visión.}{fig:monedas}
 
 % Antiguo Capitulo 4 (ahora apartado del capítulo de Realidad Virtual)
 \section{Arquitectura del Sistema e Integración Biométrica}
@@ -982,7 +996,7 @@ Frente al primer trabajo, donde el avatar era un objeto \texttt{Player} controla
 \\
 Se ha mantenido, además, el \textit{Universal Render Pipeline} (URP) del primer trabajo, ahora configurado para un renderizado eficiente, una decisión clave para el presupuesto de rendimiento descrito en el capítulo anterior.
 
-\huecofigura[6.5cm]{Diagrama de la pila tecnológica: aplicación (Unity/C\#) sobre Meta XR SDK (OVR) sobre OpenXR sobre el \textit{runtime} de Meta Quest Pro.}
+\figura{meta_sdk_hierarchy.png}{Jerarquía del uso del Meta XR SDK en las escenas del proyecto, representando las nuevas tecnologías en el juego.}{fig:sdk_hierarchy}
 
 \subsection{Implementación del Sistema de Eye-tracking}
 
@@ -1024,9 +1038,9 @@ Este componente permite crear una animación sencilla de ``pulso'' sobre el bord
 Junto a esto, también se ha utilizado un icono de advertencia que aparece en la esquina superior derecha, junto al texto personalizable, que vivirán en el objeto \texttt{AttentionBadge}, y que usarán el \texttt{HorizontalLayoutGroup} para una correcta alineación con el marco.
 Finalmente, estos \textit{gameObjects} estarán colocados en la jerarquía del proyecto de tal forma que sean hijos de un objeto padre principal, llamado \texttt{HighlightFrame}, y que será el que finalmente se active o desactive por código.
 
-\huecofigura[6.5cm]{Diagrama de clases del funcionamiento de \texttt{EyeTracking}: rayo de \texttt{OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}
+\figura{./diagrams/EyeTracking.drawio.png}{Diagrama de clases del funcionamiento de \texttt{EyeTracking}: rayo de \texttt{OVREyeGaze}, clasificación del objetivo y acumuladores de atención.}{fig:EyeTracking}
 
-\huecofigura[6.5cm]{Estética visual del aviso de distracción en el recuadro de diálogo de las misiones, HighlightFrame.}
+\figura{highlight_frame.png}{Estética visual del aviso de distracción en el recuadro de diálogo de las misiones, HighlightFrame.}{fig:highlight_frame}
 
 \subsection{Algoritmo de Detección de Estado del Ánimo}
 
@@ -1052,7 +1066,7 @@ Cuando se confirma la incomodidad sostenida, el gestor dispara \texttt{OnDiscomf
 Toda la lógica de qué hacer ante esa señal recae en los sistemas suscriptores, manteniendo el gestor facial completamente ajeno a ellos.
 Actualmente se suscriben a él la interfaz de descanso (\texttt{FaceTrackingUI}) y el gestor de diálogos, que pausa la voz y reenvía el dato a las analíticas.
 
-\huecofigura[6.5cm]{Diagrama de clases del \texttt{FaceTrackingManager}: lectura de \textit{blendshapes} de \texttt{OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt{OnDiscomfortStateChanged}.}
+\figura{./diagrams/facetracking.drawio.png}{Diagrama de clases del \texttt{FaceTrackingManager}: lectura de \textit{blendshapes} de \texttt{OVRFaceExpressions}, cálculo de la puntuación ponderada y emisión del evento \texttt{OnDiscomfortStateChanged}.}{fig:faceTrackingManager}
 
 \subsubsection{Sistema de alertas y pausas preventivas ante fatiga o frustración}
 
@@ -1060,7 +1074,7 @@ La respuesta a la señal de incomodidad la gestiona la clase \texttt{FaceTrackin
 Su comportamiento se ha diseñado siguiendo estrictamente una puntualización de cara al colectivo TEA: el sistema de parada debe ser \textbf{reactivo pero sutil}, para no generar más frustración de la que pretende aliviar:
 
 \begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=1.5cm, itemsep=0.5em]
-  \item \textbf{Panel de descanso:} al detectarse la incomodidad, aparece de forma suave (con un fundido de entrada) un panel en \textit{World Space} situado frente a los ojos del usuario, con un mensaje sereno (\textit{``Tómate un descanso''}) que reconoce que el usuario podría estar estresado y le invita a respirar, sin lenguaje alarmista ni señalar el error.
+  \item \textbf{Panel de descanso:} al detectarse la incomodidad, aparece de forma suave (con un fundido de entrada) un panel en \textit{World Space} situado frente a los ojos del usuario, con un mensaje sereno (\textit{``Quizá tengas que tomarte un respiro''}) que reconoce que el usuario podría estar estresado y le invita a respirar, sin lenguaje alarmista ni señalar el error.
   \item \textbf{Pausa real del juego:} al mostrarse el panel, se detiene el tiempo del juego (\texttt{Time.timeScale = 0}) y se pausa también la voz del diálogo, de modo que el usuario no pierde nada de la escena mientras descansa.
 La experiencia queda literalmente congelada esperándole.
   \item \textbf{Reanudación bajo control del usuario:} la experiencia no se reanuda automáticamente ni por temporizador, sino \textbf{cuando el propio usuario decide} que está listo, pulsando un botón de confirmación.
@@ -1072,7 +1086,7 @@ Esto evita el molesto efecto de alarmas repetidas en cadena, dando al usuario ma
 Es importante subrayar que, mientras la guía virtual está abierta, la detección facial se suspende deliberadamente: las expresiones de concentración al leer una pista no deben confundirse con malestar.
 Esta coordinación entre subsistemas se resuelve, de nuevo, mediante una simple llamada que pone el gestor facial en pausa.
 
-\huecofigura[7cm]{Panel de descanso (\textit{``Tómate un descanso''}) mostrado en \textit{World Space} al detectarse incomodidad facial sostenida, con el botón de reanudación bajo control del usuario.}
+\figura{discomfort_panel.png}{Panel de descanso (\textit{``Quizá tengas que tomarte un respiro''}) mostrado en \textit{World Space} al detectarse incomodidad facial sostenida, con el botón de reanudación bajo control del usuario.}{fig:discomfort}
 
 \subsection{Guía Virtual}
 
@@ -1149,7 +1163,9 @@ A continuación, el guardado de la partida sigue el siguiente procedimiento:
 
 A este volcado de datos en bruto se le suma, como se verá en el apartado de pruebas (\ref{sec:pruebas}), la generación automática de un informe visual en HTML que transforma estos números en gráficos interpretables.
 
-\huecofigura[6.5cm]{Diagrama del flujo de exportación y persistencia de datos: procesamiento de \texttt{AnalyticsManager}, \texttt{SaveSystem} y \texttt{GameHandler}.}
+\figura{./diagrams/persistence_flow1.drawio.png}{Diagrama del flujo de exportación y persistencia de datos: procesamiento de \texttt{AnalyticsManager}, \texttt{SaveSystem} y \texttt{GameHandler}, primera parte.}{fig:persistence}
+
+\figura{./diagrams/persistence_part2.drawio.png}{Diagrama del flujo de exportación y persistencia de datos, segunda parte.}{fig:persistence}
 
 % Antiguo Capitulo 5 (ahora apartado del capítulo de Realidad Virtual)
 \section{Desarrollo de Misiones y Dinámicas en RV}
@@ -1184,7 +1200,7 @@ Se ha conservado, asimismo, la pedagogía de gestión del error del primer traba
 La novedad es que, en cada intento, la voz de la pregunta se reproduce de nuevo, por si el usuario desea volver a escucharla antes de responder.
 Todo este flujo respeta las dos fuentes de pausa del sistema, deteniéndose y reanudándose con limpieza ante la incomodidad facial o la apertura de la guía.
 
-\huecofigura[6.5cm]{Diagrama de clases del sistema de diálogos en la v2.0: \texttt{DialogueNode} y sus especializaciones (\texttt{QuestionNode}, \texttt{PostAnswerNode}, \texttt{InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}
+\figura{./diagrams/Dialogues_v2.0.drawio.png}{Diagrama de clases del sistema de diálogos en la v2.0: \texttt{DialogueNode} y sus especializaciones (\texttt{QuestionNode}, \texttt{PostAnswerNode}, \texttt{InputNode}), con los nuevos campos de voz, pista y categoría de inferencia.}{fig:dialoguesV2.0}
 
 \subsection{Navegación e interacción en RV: Librería SDK y adaptaciones \textit{ad hoc}}
 
@@ -1236,7 +1252,7 @@ Cada uno de estos sistemas declara si el puntero debe estar activo en un momento
 El puntero, por su parte, solo se muestra cuando algún sistema lo solicita, manteniéndose oculto el resto del tiempo para no recargar el campo de visión.
 Este diseño basado en interfaces, heredado de la filosofía del primer trabajo, mantiene el puntero completamente desacoplado de los sistemas concretos a los que sirve, respetando el principio de abierto/cerrado: pueden añadirse nuevos elementos interactivos sin tocar el código del puntero.
 
-\huecofigura[5.5cm]{Funcionamiento del puntero láser (\texttt{VRRayPointer}): doble detección por física y por \textit{GraphicRaycaster}, interfaz \texttt{IVRPointerTarget}.}
+\figura{./diagrams/VRay_Pointer.drawio.png}{Funcionamiento del puntero láser (\texttt{VRRayPointer}): doble detección por física y por \textit{GraphicRaycaster}, interfaz \texttt{IVRPointerTarget}.}{fig:vrraypointer}
 
 \subsection{Flujo final del videojuego}
 
@@ -1266,7 +1282,7 @@ Este proceso se repite por cada nivel, hasta que se llega al final del juego: en
 
 Esta preparación del diseño de niveles del videojuego, ha permitido verificar que todos los subsistemas conviven correctamente y que la experiencia, de principio a fin, resulta fluida, cómoda y coherente con los principios de accesibilidad del proyecto.
 
-\huecofigura[7cm]{Distintos escenarios del videojuego, diseño de niveles.}
+\figura{sceneries.png}{Distintos escenarios del videojuego, diseño de niveles.}{fig:escenarios}
 
 Por último, la migración a un flujo de múltiples escenas (un entorno por mundo) sacó a la luz una dependencia que en el primer trabajo quedaba oculta: los gestores de progreso e inventario del jugador existían únicamente en la escena original y no en las nuevas.
 Para resolverlo de forma robusta, se ha dotado a estos gestores de un mecanismo de \textbf{autoarranque}: mediante la inicialización automática tras la carga de escena, el sistema crea la instancia persistente del gestor si ninguna escena la aporta, garantizando que la cadena de recompensa (completar una misión, registrar el progreso y otorgar las monedas) funcione siempre, con independencia de por qué escena entre el usuario.
@@ -1293,7 +1309,7 @@ Las técnicas de optimización descritas en el apartado de diseño de activos (\
   \item \textbf{Tiempos de carga y transiciones:} se validó que las transiciones entre escenas y misiones (siempre acompañadas de fundidos a negro) son fluidas y no rompen la sensación de presencia.
 \end{enumerate}
 
-\huecofigura[6.5cm]{\textit{Profiler} de Unity y de \textit{Metrics Tool} de Meta durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco.}
+\figura{profiler_TFG2.png}{\textit{Profiler} de Unity durante la ejecución en las Quest Pro, mostrando la estabilidad de la tasa de refresco.}{fig:profiler}
 
 \subsection{Evaluación de la precisión del seguimiento ocular y facial}
 
@@ -1333,7 +1349,7 @@ Para ello, el ensayo está estructurado en cuatro partes:
   Gracias a estos cuestionarios, se podrá saber qué aspectos son mejorables en cuanto a la propia experiencia del videojuego, su usabilidad y añadidos extra que podrían implementarse de cara a trabajos futuros.
 \end{enumerate}
 
-\huecofigura[5.5cm]{Excel con los 15 cuestionarios iniciales recogidos. En rojo los que no eran gratuitos, en verde los finalmente escogidos.}
+\figura{excel_cuestionarios.png}{Excel con los 15 cuestionarios iniciales recogidos. En rojo los que no eran gratuitos, en verde los finalmente escogidos.}{fig:cuestionarios}
 
 Las pruebas realizadas gracias a los ensayos permitieron confirmar varios aciertos de diseño y, también, recoger los puntos negativos:
 
@@ -1345,7 +1361,7 @@ Las pruebas realizadas gracias a los ensayos permitieron confirmar varios aciert
   \item \textbf{Acompañamiento de la guía:} la presencia del compañero y el panel de seguimiento de misiones aportaron estructura y redujeron la incertidumbre, un aspecto importante a la hora de utilizar esta herramienta con gente neurodivergente, ya que la sensación de acompañamiento refuerza la confianza y seguridad en sí mismos.
 \end{enumerate}
 
-\huecofigura[6cm]{Capturas de la experiencia de usuario en RV: el menú principal, una misión en curso y el HUD cómodo de monedas siempre visible en la zona baja del campo de visión.}
+\figura{seguimiento_misiones.png}{Menú principal, panel de guía de misiones.}{fig:seguimiento_misiones}
 
 Para poder analizar con precisión los resultados de los ensayos, el mecanismo fundamental es el de la exportación de métricas terapéuticas.
 Para ello, además del volcado en CSV (pensado para el análisis estadístico fino), el sistema genera, mediante la clase \texttt{ReportGenerator}, un \textbf{informe visual en HTML} autocontenido, que el terapeuta puede abrir en cualquier navegador y que incorpora la librería de gráficos \textit{Chart.js}~\cite{chartjs2023} (versión 4.4.1, distribuida bajo licencia MIT).
@@ -1360,13 +1376,13 @@ El informe se estructura en varias secciones:
   \item \textbf{Tabla de detalle:} una tabla con la totalidad de las métricas por misión, para una consulta exhaustiva.
 \end{enumerate}
 
-La Figura~\ref{fig:informe} muestra un ejemplo de los datos por misión tal y como aparecerían en el detalle del informe, con valores traídos de uno de los usuarios del ensayo clínico.
+La Figura~\ref{fig:informe_tabla} muestra un ejemplo de los datos por misión tal y como aparecerían en el detalle del informe, con valores traídos de uno de los usuarios del ensayo clínico.
 
-\huecofigura[5cm]{Ejemplo de la tabla de métricas del ensayo, detalle por misión.}
+\figura{informe_tabla.png}{Ejemplo de la tabla de métricas del ensayo, detalle por misión.}{fig:informe_tabla}
 
-Como se observa, el informe convierte datos en bruto en información clínicamente accionable: permite ver, por ejemplo, que la misión de la oficina concentró más errores, más pistas y más tiempo distraído, lo que sugiere que su contenido social resultó más exigente para el usuario y merece una atención especial en la terapia.
+Como se observa, el informe convierte datos en bruto en información clínicamente accionable: permite ver, por ejemplo, que la misión con ``ID: 10'' concentró más errores, y que la misión con ``ID: 1'' fue la que más se tardó en completar, y en la que más tiempo estuvo distraído el usuario, lo que sugiere que su contenido social resultó más exigente.
 
-\huecofigura[7.5cm]{Captura del informe HTML generado automáticamente (\texttt{informe\_terapeuta}), con las tarjetas de resumen, los gráficos de barras por misión y el gráfico de anillo de categorías de inferencia social.}
+\figura{informe_barras+Circulo.png}{Captura del informe HTML generado automáticamente (\texttt{informe\_terapeuta}), con las tarjetas de resumen, los gráficos de barras por misión y el gráfico de anillo de categorías de inferencia social.}{fig:informe_graficos}
 
 % Capitulo 4 (fusión de los antiguos capítulos 7 y 8)
 \chapter{Discusión, Conclusiones y Trabajos Futuros}
